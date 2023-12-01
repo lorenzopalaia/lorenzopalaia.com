@@ -345,6 +345,10 @@ export default {
     await this.getRepos();
   },
 
+  created() {
+    document.title = this.info.name;
+  },
+
   computed: {
     // view of repos with only the first 3 entries
     latest_projects() {
