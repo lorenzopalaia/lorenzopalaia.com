@@ -13,11 +13,13 @@
   "about": "Hello fellow Earthlings! 🌍 I'm Lorenzo, your friendly neighborhood Software Engineer. When I'm not coding, you can find me exploring the vast realms of programming, diving deep into the mysteries of artificial intelligence, and navigating the blockchain universe. I've got a knack for finance, and I love to embark on adventures around the globe. Let's create some magic with code!",
   "workExperience": [
     {
-      "company": "Freelance Developer",
+      "date": "2019 - Present",
+      "company": "Freelance",
       "description": [
         "Developed websites and applications for more than 5 private and corporate clients including landing pages, bots and trackers"
       ],
-      "date": "2019 - Present",
+      "role": "Software Engineer",
+      "location": "Rome, Italy",
       "badges": ["Python", "HTML"],
       "url": ""
     }
