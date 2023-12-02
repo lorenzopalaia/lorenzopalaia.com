@@ -10,16 +10,16 @@
 
           <!-- nav -->
           <!--
-          <div class="group mt-2" v-for="item in nav" :key="item.id">
+          <div class="group mt-2" v-for="item in nav" :key="item">
             <hr
               class="inline-flex w-8 group-hover:w-16 mt-0 mb-1 mr-2 rounded bg-gray-500 group-hover:bg-neutral-300 transition ease-in-out duration-500"
-              :class="{ 'bg-neutral-300': activeSection === item.id, 'bg-gray-500': activeSection !== item.id }"
+              :class="{ 'bg-neutral-300': activeSection === item, 'bg-gray-500': activeSection !== item }"
             />
             <a
-              :href="`#${item.id}`"
+              :href="`#${item}`"
               class="no-underline uppercase text-gray-500 group-hover:text-neutral-300"
-              :class="{ 'text-white': activeSection === item.id, 'text-gray-500': activeSection !== item.id }"
-              @click="updateActiveSection(item.id)"
+              :class="{ 'text-white': activeSection === item, 'text-gray-500': activeSection !== item }"
+              @click="updateActiveSection(item)"
             >{{ item.name }}</a>
           </div>
           -->
@@ -62,7 +62,7 @@
                 class="flex group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
                 :class="work.url ? 'cursor-pointer' : ''"
                 v-for="work in workExperience"
-                :key="work.id"
+                :key="work"
                 @click="redirectToExternalLink(work.url)"
               >
                 <div class="w-1/4 mx-4">
@@ -72,20 +72,20 @@
                   <h4 class="group-hover/inside:text-primary">
                     {{ work.company }}
                     <font-awesome-icon
-                      icon="fa-solid fa-arrow-up-right-from-square"
-                      class="ml-2 group-hover/inside:ml-3 group-hover/inside:mb-1"
+                      icon="fa-solid fa-arrow-right"
+                      class="ml-2 group-hover/inside:ml-3"
                       v-if="work.url"
                     />
                   </h4>
                   <p
                     v-for="description in work.description"
-                    :key="description.id"
+                    :key="description"
                   >
                     {{ description }}
                   </p>
                   <div
                     v-for="badge in work.badges"
-                    :key="badge.it"
+                    :key="badge"
                     class="badge badge-lg badge-secondary mr-2 mb-8"
                   >
                     <p class="text-primary">{{ badge }}</p>
@@ -93,13 +93,18 @@
                 </div>
               </div>
             </div>
-            <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
-              View Full CV
-              <font-awesome-icon
-                icon="fa-solid fa-arrow-up-right-from-square"
-                class="ml-2 group-hover:ml-3 group-hover:mb-1"
-              />
-            </h4>
+            <router-link
+              to="/work-experience"
+              class="no-underline"
+            >
+              <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
+                View All Work Experiences
+                <font-awesome-icon
+                  icon="fa-solid fa-arrow-right"
+                  class="ml-2 group-hover:ml-3"
+                />
+              </h4>
+            </router-link>
           </section>
 
           <!-- projects -->
@@ -109,7 +114,7 @@
                 class="flex flex-col lg:flex-row group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
                 :class="project.url ? 'cursor-pointer' : ''"
                 v-for="project in latest_projects"
-                :key="project.id"
+                :key="project"
                 @click="redirectToExternalLink(project.html_url)"
               >
                 <div class="mx-4 order-2 lg:order-1 lg:w-1/4">
@@ -124,8 +129,8 @@
                   <h4 class="group-hover/inside:text-primary lg:order-2">
                     {{ project.name.replace(/-/g, " ") }}
                     <font-awesome-icon
-                      icon="fa-solid fa-arrow-up-right-from-square"
-                      class="ml-2 group-hover/inside:ml-3 group-hover/inside:mb-1"
+                      icon="fa-solid fa-arrow-right"
+                      class="ml-2 group-hover/inside:ml-3"
                     />
                   </h4>
                   <p>{{ project.description }}</p>
@@ -135,7 +140,7 @@
                   </p>
                   <div
                     v-for="language in project.languages"
-                    :key="language.id"
+                    :key="language"
                     class="badge badge-lg badge-secondary mr-2 mb-8"
                   >
                     <p class="text-primary">{{ language }}</p>
@@ -143,13 +148,18 @@
                 </div>
               </div>
             </div>
-            <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
-              View All Projects
-              <font-awesome-icon
-                icon="fa-solid fa-arrow-up-right-from-square"
-                class="ml-2 group-hover:ml-3 group-hover:mb-1"
-              />
-            </h4>
+            <router-link
+              to="/projects"
+              class="no-underline"
+            >
+              <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
+                View All Projects
+                <font-awesome-icon
+                  icon="fa-solid fa-arrow-right"
+                  class="ml-2 group-hover:ml-3"
+                />
+              </h4>
+            </router-link>
           </section>
 
           <!-- education -->
@@ -159,7 +169,7 @@
                 class="flex group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
                 :class="degree.url ? 'cursor-pointer' : ''"
                 v-for="degree in education"
-                :key="degree.id"
+                :key="degree"
                 @click="redirectToExternalLink(degree.url)"
               >
                 <div class="w-1/4 mx-4">
@@ -169,27 +179,32 @@
                   <h4 class="group-hover/inside:text-primary">
                     {{ degree.degree }}
                     <font-awesome-icon
-                      icon="fa-solid fa-arrow-up-right-from-square"
-                      class="ml-2 group-hover/inside:ml-3 group-hover/inside:mb-1"
+                      icon="fa-solid fa-arrow-right"
+                      class="ml-2 group-hover/inside:ml-3"
                       v-if="degree.url"
                     />
                   </h4>
                   <p
                     v-for="description in degree.description"
-                    :key="description.id"
+                    :key="description"
                   >
                     {{ description }}
                   </p>
                 </div>
               </div>
             </div>
-            <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
-              View Full Education
-              <font-awesome-icon
-                icon="fa-solid fa-arrow-up-right-from-square"
-                class="ml-2 group-hover:ml-3 group-hover:mb-1"
-              />
-            </h4>
+            <router-link
+              to="/education"
+              class="no-underline"
+            >
+              <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
+                View All Education
+                <font-awesome-icon
+                  icon="fa-solid fa-arrow-right"
+                  class="ml-2 group-hover:ml-3"
+                />
+              </h4>
+            </router-link>
           </section>
 
           <!-- extra activities -->
@@ -199,7 +214,7 @@
                 class="flex group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
                 :class="activity.url ? 'cursor-pointer' : ''"
                 v-for="activity in extraActivities"
-                :key="activity.id"
+                :key="activity"
                 @click="redirectToExternalLink(activity.url)"
               >
                 <div class="w-1/4 mx-4">
@@ -209,34 +224,39 @@
                   <h4 class="group-hover/inside:text-primary">
                     {{ activity.name }}
                     <font-awesome-icon
-                      icon="fa-solid fa-arrow-up-right-from-square"
-                      class="ml-2 group-hover/inside:ml-3 group-hover/inside:mb-1"
+                      icon="fa-solid fa-arrow-right"
+                      class="ml-2 group-hover/inside:ml-3"
                       v-if="activity.url"
                     />
                   </h4>
                   <p
                     v-for="description in activity.description"
-                    :key="description.id"
+                    :key="description"
                   >
                     {{ description }}
                   </p>
                   <div
-                    v-for="chip in activity.chips"
-                    :key="chip.it"
+                    v-for="badge in activity.badges"
+                    :key="badge"
                     class="badge badge-lg badge-secondary mr-2 mb-8"
                   >
-                    <p class="text-primary">{{ chip }}</p>
+                    <p class="text-primary">{{ badge }}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
-              View Full Extra Activities
-              <font-awesome-icon
-                icon="fa-solid fa-arrow-up-right-from-square"
-                class="ml-2 group-hover:ml-3 group-hover:mb-1"
-              />
-            </h4>
+              <router-link
+                to="/extra-activities"
+                class="no-underline"
+              >
+              <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
+                View All Extra Activities
+                <font-awesome-icon
+                  icon="fa-solid fa-arrow-right"
+                  class="ml-2 group-hover:ml-3"
+                />
+              </h4>
+            </router-link>
           </section>
 
           <!-- skills -->
@@ -244,7 +264,7 @@
             <div
               class="flex flex-col lg:flex-row mb-8"
               v-for="skill in skills"
-              :key="skill.id"
+              :key="skill"
             >
               <div class="w-1/4 mx-4">
                 <p class="uppercase mt-0 mb-0">{{ skill.name }}</p>
@@ -265,7 +285,7 @@
             <div
               class="flex flex-col lg:flex-row mb-8"
               v-for="language in languages"
-              :key="language.id"
+              :key="language"
             >
               <div class="w-1/4 mx-4">
                 <p class="uppercase mt-0 mb-0">{{ language.name }}</p>

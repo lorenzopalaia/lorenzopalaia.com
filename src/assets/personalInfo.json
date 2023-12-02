@@ -41,7 +41,7 @@
         "Secured the 2nd spot out of 8 contenders, reached an F1 score of 75%, explored both Bag of Words and Word2Vec solutions"
       ],
       "date": "Mar 2023",
-      "chips": ["Python", "Tensorflow"],
+      "badges": ["Python", "Tensorflow"],
       "url": "https://www.github.com/lorenzopalaia/Randstad-AI-Hackathon"
     },
     {
@@ -53,7 +53,7 @@
         "Earned a 15th position out of 71 entries for the Technical Design Paper in the AUVSI SUAS competition"
       ],
       "date": "Sep 2021 - Oct 2022",
-      "chips": ["Python", "Tensorflow"],
+      "badges": ["Python", "Tensorflow"],
       "url": "https://www.sasa-aerospace.it/flight-team"
     }
   ],
