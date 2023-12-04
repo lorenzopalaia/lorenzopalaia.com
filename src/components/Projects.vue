@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto my-auto">
+  <div class="container mx-auto my-auto h-screen">
     <div class="flex flex-col mx-8">
       <article class="prose">
         <router-link to="/" class="no-underline">
@@ -10,15 +10,17 @@
         </router-link>
         <h1 class="mb-16">Projects</h1>
       </article>
-      <table class="table">
+      <div v-if="projects && projects.length === 0">
+        <div class="skeleton w-full h-48 mb-8 opacity-50"></div>
+      </div>
+      <table v-else class="table">
         <thead class="sticky top-0 backdrop-blur">
           <tr class="border-b-neutral-800">
-            <th class="text-neutral-200 font-bold table-cell">Last Update</th>
+            <th class="text-neutral-200 font-bold table-cell">Updated</th>
             <th class="text-neutral-200 font-bold hidden lg:table-cell">
               Started
             </th>
             <th class="text-neutral-200 font-bold table-cell">Project</th>
-
             <th class="text-neutral-200 font-bold hidden md:table-cell">
               Technologies
             </th>

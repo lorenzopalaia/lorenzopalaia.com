@@ -111,7 +111,7 @@
           <!-- projects -->
           <section id="projects">
             <div v-if="projects && projects.length === 0">
-              <div v-for="times in showedProjects.length" :key="times" class="skeleton w-full h-48 mb-8"></div>
+              <div v-for="times in showedProjects.length" :key="times" class="skeleton w-full h-48 mb-8 opacity-50"></div>
             </div>
             <div v-else class="group">
               <div

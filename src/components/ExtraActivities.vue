@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto my-auto">
+  <div class="container mx-auto my-auto h-screen">
     <div class="flex flex-col mx-8">
       <article class="prose">
         <router-link to="/" class="no-underline">
