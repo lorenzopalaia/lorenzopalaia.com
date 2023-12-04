@@ -5,8 +5,8 @@
         <article class="prose mx-4" style="position: sticky; top: 4rem">
           <!-- info -->
           <h1 class="mb-4 mt-16">{{ info.name }}</h1>
-          <h4 class="mt-0 mb-4">{{ info.title }}</h4>
-          <p>{{ info.description }}</p>
+          <h3 class="mt-0 mb-4 font-light">{{ info.title }}</h3>
+          <p class="font-light">{{ info.description }}</p>
 
           <!-- nav -->
           <!--
@@ -45,14 +45,13 @@
               @click="redirectToExternalLink(`mailto:${info.socials.mail}`)"
             />
           </div>
-
         </article>
       </div>
       <div class="md:w-1/2">
         <article class="prose">
           <!-- about -->
-          <section id="about">
-            <p class="mb-32 mx-4 md:mt-16 mt-8">{{ about }}</p>
+          <section id="about" class="mb-32 mx-4 md:mt-16 mt-8">
+            <p v-for="line in about" :key="line" class="font-light">{{ line }}</p>
           </section>
 
           <!-- work experience -->
@@ -66,21 +65,22 @@
                 @click="redirectToExternalLink(work.url)"
               >
                 <div class="w-1/4 mx-4">
-                  <p class="uppercase">{{ work.date }}</p>
+                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ work.date }}</p>
                 </div>
                 <div class="w-3/4 mx-4">
-                  <h4 class="group-hover/inside:text-primary">
+                  <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
                     {{ work.company }}
                     <font-awesome-icon
                       icon="fa-solid fa-arrow-right"
                       class="ml-2 group-hover/inside:ml-3"
                       v-if="work.url"
                     />
-                  </h4>
-                  <p>{{ work.role }}</p>
+                  </p>
+                  <p class="font-light text-neutral-400 mt-0">{{ work.role }}</p>
                   <p
                     v-for="description in work.description"
                     :key="description"
+                    class="font-extralight"
                   >
                     {{ description }}
                   </p>
@@ -89,7 +89,7 @@
                     :key="badge"
                     class="badge badge-lg badge-secondary mr-2 mb-8"
                   >
-                    <p class="text-primary">{{ badge }}</p>
+                    <p class="text-primary font-light">{{ badge }}</p>
                   </div>
                 </div>
               </div>
@@ -98,13 +98,13 @@
               to="/work-experience"
               class="no-underline"
             >
-              <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
+              <p class="mb-32 mx-4 group hover:underline decoration-primary">
                 View All Work Experiences
                 <font-awesome-icon
                   icon="fa-solid fa-arrow-right"
                   class="ml-2 group-hover:ml-3"
                 />
-              </h4>
+              </p>
             </router-link>
           </section>
 
@@ -116,8 +116,9 @@
             <div v-else class="group">
               <div
                 class="flex flex-col lg:flex-row group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
+
                 :class="project.url ? 'cursor-pointer' : ''"
-                v-for="project in latest_projects"
+                v-for="project in projects"
                 :key="project"
                 @click="redirectToExternalLink(project.html_url)"
               >
@@ -125,20 +126,20 @@
                   <img
                     :src="`https://raw.githubusercontent.com/lorenzopalaia/${project.name}/main/repo_assets/preview.png`"
                     alt="Project Preview"
-                    class="mt-4 rounded"
+                    class="lg:mt-6 mt-0 rounded"
                     style="border: 3px solid rgba(255, 255, 255, 0.075)"
                   />
                 </div>
                 <div class="w-3/4 mx-4 order-1">
-                  <h4 class="group-hover/inside:text-primary lg:order-2">
+                  <p class="group-hover/inside:text-primary lg:order-2 text-neutral-300 font-normal mb-0">
                     {{ project.name.replace(/-/g, " ") }}
                     <font-awesome-icon
                       icon="fa-solid fa-arrow-right"
                       class="ml-2 group-hover/inside:ml-3"
                     />
-                  </h4>
-                  <p>{{ project.description }}</p>
-                  <p>
+                  </p>
+                  <p class="font-extralight">{{ project.description }}</p>
+                  <p class="text-neutral-500">
                     <font-awesome-icon icon="fa-solid fa-star" class="mr-1" />
                     {{ project.stargazers_count }}
                   </p>
@@ -147,7 +148,7 @@
                     :key="language"
                     class="badge badge-lg badge-secondary mr-2 mb-8"
                   >
-                    <p class="text-primary">{{ language }}</p>
+                    <p class="text-primary font-light">{{ language }}</p>
                   </div>
                 </div>
               </div>
@@ -156,13 +157,13 @@
               to="/projects"
               class="no-underline"
             >
-              <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
+              <p class="mb-32 mx-4 group hover:underline decoration-primary">
                 View All Projects
                 <font-awesome-icon
                   icon="fa-solid fa-arrow-right"
                   class="ml-2 group-hover:ml-3"
                 />
-              </h4>
+              </p>
             </router-link>
           </section>
 
@@ -177,21 +178,22 @@
                 @click="redirectToExternalLink(degree.url)"
               >
                 <div class="w-1/4 mx-4">
-                  <p class="uppercase">{{ degree.date }}</p>
+                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ degree.date }}</p>
                 </div>
                 <div class="w-3/4 mx-4">
-                  <h4 class="group-hover/inside:text-primary">
+                  <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
                     {{ degree.degree }}
                     <font-awesome-icon
                       icon="fa-solid fa-arrow-right"
                       class="ml-2 group-hover/inside:ml-3"
                       v-if="degree.url"
                     />
-                  </h4>
-                  <p>{{ degree.school }}</p>
+                  </p>
+                  <p class="font-light text-neutral-400 mt-0">{{ degree.school }}</p>
                   <p
                     v-for="description in degree.description"
                     :key="description"
+                    class="font-extralight"
                   >
                     {{ description }}
                   </p>
@@ -202,13 +204,13 @@
               to="/education"
               class="no-underline"
             >
-              <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
+              <p class="mb-32 mx-4 group hover:underline decoration-primary">
                 View All Education
                 <font-awesome-icon
                   icon="fa-solid fa-arrow-right"
                   class="ml-2 group-hover:ml-3"
                 />
-              </h4>
+              </p>
             </router-link>
           </section>
 
@@ -223,21 +225,22 @@
                 @click="redirectToExternalLink(activity.url)"
               >
                 <div class="w-1/4 mx-4">
-                  <p class="uppercase">{{ activity.date }}</p>
+                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ activity.date }}</p>
                 </div>
                 <div class="w-3/4 mx-4">
-                  <h4 class="group-hover/inside:text-primary">
+                  <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
                     {{ activity.name }}
                     <font-awesome-icon
                       icon="fa-solid fa-arrow-right"
                       class="ml-2 group-hover/inside:ml-3"
                       v-if="activity.url"
                     />
-                  </h4>
-                  <p>{{ activity.role }}</p>
+                  </p>
+                  <p class="font-light text-neutral-400 mt-0">{{ activity.role }}</p>
                   <p
                     v-for="description in activity.description"
                     :key="description"
+                    class="font-extralight"
                   >
                     {{ description }}
                   </p>
@@ -246,7 +249,7 @@
                     :key="badge"
                     class="badge badge-lg badge-secondary mr-2 mb-8"
                   >
-                    <p class="text-primary">{{ badge }}</p>
+                    <p class="text-primary font-light">{{ badge }}</p>
                   </div>
                 </div>
               </div>
@@ -255,13 +258,13 @@
                 to="/extra-activities"
                 class="no-underline"
               >
-              <h4 class="mb-32 mx-4 group hover:underline decoration-primary">
+              <p class="mb-32 mx-4 group hover:underline decoration-primary">
                 View All Extra Activities
                 <font-awesome-icon
                   icon="fa-solid fa-arrow-right"
                   class="ml-2 group-hover:ml-3"
                 />
-              </h4>
+              </p>
             </router-link>
           </section>
 
@@ -273,7 +276,7 @@
               :key="skill"
             >
               <div class="w-1/4 mx-4">
-                <p class="uppercase mt-0 mb-0">{{ skill.name }}</p>
+                <p class="uppercase font-light text-neutral-400 text-sm mt-1 mb-0">{{ skill.name }}</p>
               </div>
               <div class="w-3/4 mx-4">
                 <progress
@@ -294,7 +297,7 @@
               :key="language"
             >
               <div class="w-1/4 mx-4">
-                <p class="uppercase mt-0 mb-0">{{ language.name }}</p>
+                <p class="uppercase ont-light text-neutral-400 text-sm mt-1 mb-0">{{ language.name }}</p>
               </div>
               <div class="w-3/4 mx-4">
                 <progress
@@ -307,7 +310,7 @@
           </section>
 
           <!-- footer -->
-          <p class="mt-32 mb-16 mx-4">{{ footer }}</p>
+          <p class="mt-32 mb-16 mx-4 font-light">{{ footer }}</p>
         </article>
       </div>
     </div>
@@ -349,6 +352,12 @@ export default {
         "https://api.github.com/users/lorenzopalaia/repos"
       );
       const data = await response.json();
+      //get languages
+      for (let i = 0; i < data.length; i++) {
+        const response = await fetch(data[i].languages_url);
+        const languages = await response.json();
+        data[i].languages = Object.keys(languages);
+      }
       //filter by showedProjects
       this.projects = data.filter((repo) => this.showedProjects.includes(repo.name));
     },
@@ -364,18 +373,8 @@ export default {
   },
 
   async mounted() {
-    await this.getRepos();
-  },
-
-  created() {
     document.title = this.info.name;
-  },
-
-  computed: {
-    // view of repos with only the first 3 entries
-    latest_projects() {
-      return this.projects.slice(0, this.latestProjecttsLength);
-    },
+    await this.getRepos();
   },
 };
 </script>
