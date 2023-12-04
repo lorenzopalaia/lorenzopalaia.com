@@ -77,6 +77,7 @@
                       v-if="work.url"
                     />
                   </h4>
+                  <p>{{ work.role }}</p>
                   <p
                     v-for="description in work.description"
                     :key="description"
@@ -109,7 +110,10 @@
 
           <!-- projects -->
           <section id="projects">
-            <div class="group">
+            <div v-if="projects && projects.length === 0">
+              <div v-for="times in showedProjects.length" :key="times" class="skeleton w-full h-48 mb-8"></div>
+            </div>
+            <div v-else class="group">
               <div
                 class="flex flex-col lg:flex-row group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
                 :class="project.url ? 'cursor-pointer' : ''"
@@ -184,6 +188,7 @@
                       v-if="degree.url"
                     />
                   </h4>
+                  <p>{{ degree.school }}</p>
                   <p
                     v-for="description in degree.description"
                     :key="description"
@@ -229,6 +234,7 @@
                       v-if="activity.url"
                     />
                   </h4>
+                  <p>{{ activity.role }}</p>
                   <p
                     v-for="description in activity.description"
                     :key="description"
@@ -301,7 +307,7 @@
           </section>
 
           <!-- footer -->
-          <p class="mt-32 mb-16 mx-4">{{ info.footer }}</p>
+          <p class="mt-32 mb-16 mx-4">{{ footer }}</p>
         </article>
       </div>
     </div>
@@ -320,6 +326,8 @@ export default {
     extraActivities: personalInfo.extraActivities,
     skills: personalInfo.skills,
     languages: personalInfo.languages,
+    footer: personalInfo.footer,
+    showedProjects: personalInfo.showedProjects,
     projects: [],
     /*
     nav: [
@@ -341,14 +349,8 @@ export default {
         "https://api.github.com/users/lorenzopalaia/repos"
       );
       const data = await response.json();
-      data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
-      for (let i = 0; i < data.length; i++) {
-        const response = await fetch(data[i].languages_url);
-        const languages = await response.json();
-        data[i].languages = Object.keys(languages);
-      }
-      //console.log(data);
-      this.projects = data;
+      //filter by showedProjects
+      this.projects = data.filter((repo) => this.showedProjects.includes(repo.name));
     },
     redirectToExternalLink(url) {
       if (url) window.open(url, "_blank");
@@ -372,7 +374,7 @@ export default {
   computed: {
     // view of repos with only the first 3 entries
     latest_projects() {
-      return this.projects.slice(0, 3);
+      return this.projects.slice(0, this.latestProjecttsLength);
     },
   },
 };

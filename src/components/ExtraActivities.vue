@@ -8,13 +8,13 @@
             Lorenzo Palaia
           </h4>
         </router-link>
-        <h1 class="mb-16">Work Experience</h1>
+        <h1 class="mb-16">Extra Activities</h1>
       </article>
       <table class="table">
         <thead class="sticky top-0 backdrop-blur">
           <tr class="border-b-neutral-800">
             <th class="text-neutral-200 font-bold table-cell">Period</th>
-            <th class="text-neutral-200 font-bold table-cell">Company</th>
+            <th class="text-neutral-200 font-bold table-cell">Activty</th>
             <th class="text-neutral-200 font-bold table-cell">Role</th>
             <th class="text-neutral-200 font-bold hidden lg:table-cell">
               Location
@@ -29,25 +29,25 @@
         </thead>
         <tbody>
           <tr
-            v-for="experience in workExperience"
-            :key="experience"
+            v-for="activity in extraActivities"
+            :key="activity"
             class="border-b-neutral-800"
           >
             <td class="text-neutral-400 font-light table-cell">
-              {{ experience.date }}
+              {{ activity.date }}
             </td>
             <td class="text-neutral-200 font-bold table-cell">
-              {{ experience.company }}
+              {{ activity.name }}
             </td>
             <td class="text-neutral-400 font-light table-cell">
-              {{ experience.role }}
+              {{ activity.role }}
             </td>
             <td class="text-neutral-400 font-light hidden lg:table-cell">
-              {{ experience.location }}
+              {{ activity.location }}
             </td>
             <td class="hidden lg:table-cell">
               <div
-                v-for="badge in experience.badges"
+                v-for="badge in activity.badges"
                 :key="badge"
                 class="badge badge-lg badge-secondary m-1"
               >
@@ -56,13 +56,13 @@
             </td>
             <td class="text-neutral-400 font-light hidden md:table-cell group">
               <a
-                :href="experience.url"
+                :href="activity.url"
                 target="_blank"
                 class="group-hover:text-primary transition duration-250 ease-in-out"
               >
-                {{ experience.url.replace(/^(https?:\/\/)?(www\.)?/i, "") }}
+                {{ activity.url.replace(/^(https?:\/\/)?(www\.)?/i, "") }}
                 <font-awesome-icon
-                  v-if="experience.url"
+                  v-if="activity.url"
                   icon="fa-solid fa-arrow-right"
                   class="ml-2"
                 />
@@ -80,11 +80,11 @@ import personalInfo from "../assets/personalInfo.json";
 
 export default {
   data: () => ({
-    workExperience: personalInfo.workExperience,
+    extraActivities: personalInfo.extraActivities,
   }),
 
   mounted() {
-    document.title = "Work Experience | Lorenzo Palaia";
+    document.title = "Work activity | Lorenzo Palaia";
     window.scrollTo(0, 0);
   },
 };

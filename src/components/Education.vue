@@ -8,19 +8,16 @@
             Lorenzo Palaia
           </h4>
         </router-link>
-        <h1 class="mb-16">Work Experience</h1>
+        <h1 class="mb-16">Education</h1>
       </article>
       <table class="table">
         <thead class="sticky top-0 backdrop-blur">
           <tr class="border-b-neutral-800">
             <th class="text-neutral-200 font-bold table-cell">Period</th>
-            <th class="text-neutral-200 font-bold table-cell">Company</th>
-            <th class="text-neutral-200 font-bold table-cell">Role</th>
+            <th class="text-neutral-200 font-bold table-cell">Degree</th>
+            <th class="text-neutral-200 font-bold table-cell">School</th>
             <th class="text-neutral-200 font-bold hidden lg:table-cell">
               Location
-            </th>
-            <th class="text-neutral-200 font-bold hidden lg:table-cell">
-              Technologies
             </th>
             <th class="text-neutral-200 font-bold hidden md:table-cell">
               Link
@@ -29,40 +26,31 @@
         </thead>
         <tbody>
           <tr
-            v-for="experience in workExperience"
-            :key="experience"
+            v-for="edu in education"
+            :key="edu"
             class="border-b-neutral-800"
           >
             <td class="text-neutral-400 font-light table-cell">
-              {{ experience.date }}
+              {{ edu.date }}
             </td>
             <td class="text-neutral-200 font-bold table-cell">
-              {{ experience.company }}
+              {{ edu.degree }}
             </td>
             <td class="text-neutral-400 font-light table-cell">
-              {{ experience.role }}
+              {{ edu.school }}
             </td>
             <td class="text-neutral-400 font-light hidden lg:table-cell">
-              {{ experience.location }}
-            </td>
-            <td class="hidden lg:table-cell">
-              <div
-                v-for="badge in experience.badges"
-                :key="badge"
-                class="badge badge-lg badge-secondary m-1"
-              >
-                <p class="text-primary font-light">{{ badge }}</p>
-              </div>
+              {{ edu.location }}
             </td>
             <td class="text-neutral-400 font-light hidden md:table-cell group">
               <a
-                :href="experience.url"
+                :href="edu.url"
                 target="_blank"
                 class="group-hover:text-primary transition duration-250 ease-in-out"
               >
-                {{ experience.url.replace(/^(https?:\/\/)?(www\.)?/i, "") }}
+                {{ edu.url.replace(/^(https?:\/\/)?(www\.)?/i, '') }}
                 <font-awesome-icon
-                  v-if="experience.url"
+                  v-if="edu.url"
                   icon="fa-solid fa-arrow-right"
                   class="ml-2"
                 />
@@ -80,11 +68,11 @@ import personalInfo from "../assets/personalInfo.json";
 
 export default {
   data: () => ({
-    workExperience: personalInfo.workExperience,
+    education: personalInfo.education,
   }),
 
   mounted() {
-    document.title = "Work Experience | Lorenzo Palaia";
+    document.title = "Projects | Lorenzo Palaia";
     window.scrollTo(0, 0);
   },
 };

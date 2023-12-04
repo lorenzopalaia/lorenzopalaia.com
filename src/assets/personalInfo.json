@@ -7,8 +7,7 @@
       "github": "https://www.github.com/lorenzopalaia",
       "linkedin": "https://www.linkedin.com/in/lorenzopalaia",
       "mail": "lorenzopalaia53@gmail.com"
-    },
-    "footer": "Made with ❤️ by Lorenzo Palaia. Loosely coded in Visual Studio Code by yours truly. Built with Vue and Tailwind CSS, deployed with GitHub Pages"
+    }
   },
   "about": "Hello fellow Earthlings! 🌍 I'm Lorenzo, your friendly neighborhood Software Engineer. When I'm not coding, you can find me exploring the vast realms of programming, diving deep into the mysteries of artificial intelligence, and navigating the blockchain universe. I've got a knack for finance, and I love to embark on adventures around the globe. Let's create some magic with code!",
   "workExperience": [
@@ -21,40 +20,50 @@
       "role": "Software Engineer",
       "location": "Rome, Italy",
       "badges": ["Python", "HTML"],
-      "url": ""
+      "url": "https://www.github.com/lorenzopalaia"
     }
   ],
-  "projects": [],
+  "showedProjects": [
+    "Neural-Style-Transfer-and-Genre-Classification",
+    "Arduino-Oscilloscope",
+    "Blocktracr"
+  ],
   "education": [
     {
-      "degree": "Computer and Automatic Engineering - Sapienza University of Rome",
+      "date": "Sep 2019 - Mar 2024",
+      "degree": "Computer and Automatic Engineering",
+      "school": "Sapienza University of Rome",
       "description": [
         "Best Marks: Operative Systems, Functional Programming, Programming Techniques 4.0 GPA cum laude, Data Structures & Algorithms, Software Design, Parallel Computing, Electronics, Web Development 4.0 GPA"
       ],
-      "date": "Sep 2019 - Mar 2024",
+      "location": "Rome, Italy",
       "url": "https://www.uniroma1.it"
     }
   ],
   "extraActivities": [
     {
+      "date": "Mar 2023",
       "name": "Randstad <Code.Your.Future> AI Hackathon",
+      "role": "",
       "description": [
         "Guided the development of a job description neural network in a team of 5 using Tensorflow in a 4 hour challenge",
         "Secured the 2nd spot out of 8 contenders, reached an F1 score of 75%, explored both Bag of Words and Word2Vec solutions"
       ],
-      "date": "Mar 2023",
+      "location": "Rome, Italy",
       "badges": ["Python", "Tensorflow"],
       "url": "https://www.github.com/lorenzopalaia/Randstad-AI-Hackathon"
     },
     {
+      "date": "Sep 2021 - Oct 2022",
       "name": "Sapienza Flight Team - AUVSI SUAS competition",
+      "role": "Computer Vision Software Engineer",
       "description": [
         "Implemented the object detection and terrain mapping systems of a UAV, trained YOLOv5/EfficientNet models with custom datasets",
         "Designed the communication protocols between UAV and Ground Station from scratch via endpoints using Flask, restructured the labeling GUI",
         "Worked in a subteam of 5 and collaborated frequently with 60 people in other sumteams, migrated the entire Flight Team workflow to Slack",
         "Earned a 15th position out of 71 entries for the Technical Design Paper in the AUVSI SUAS competition"
       ],
-      "date": "Sep 2021 - Oct 2022",
+      "location": "Rome, Italy",
       "badges": ["Python", "Tensorflow"],
       "url": "https://www.sasa-aerospace.it/flight-team"
     }
@@ -76,5 +85,6 @@
     { "name": "Italian", "value": 100 },
     { "name": "English", "value": 80 },
     { "name": "French", "value": 25 }
-  ]
+  ],
+  "footer": "Made with ❤️ by Lorenzo Palaia. Loosely coded in Visual Studio Code by yours truly. Built with Vue and Tailwind CSS, deployed with GitHub Pages"
 }
