@@ -16,5 +16,19 @@ export default defineConfig({
   server: {
     host: true
   },
-  base: '/Personal-Portfolio/'
+  base: '/Personal-Portfolio/',
+  build: {
+    assetsDir: 'assets',
+    outDir: 'dist',
+    assetsInlineLimit: 0,
+    rollupOptions: {
+      input: 'src/main.js',
+      output: {
+        entryFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: `assets/[name].[ext]`
+      },
+    },
+    assetsInclude: ['favicon.ico', 'robots.txt', 'sitemap.xml']
+  }
 })
