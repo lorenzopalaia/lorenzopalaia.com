@@ -22,7 +22,8 @@
       "role": "Software Engineer",
       "location": "Rome, Italy",
       "badges": ["Python", "HTML"],
-      "url": "https://www.github.com/lorenzopalaia"
+      "url": "https://www.github.com/lorenzopalaia",
+      "show": true
     }
   ],
   "showedProjects": [
@@ -39,10 +40,23 @@
         "Best Marks: Operative Systems, Functional Programming, Programming Techniques 4.0 GPA cum laude, Data Structures & Algorithms, Software Design, Parallel Computing, Electronics, Web Development 4.0 GPA"
       ],
       "location": "Rome, Italy",
-      "url": "https://www.uniroma1.it"
+      "url": "https://www.uniroma1.it",
+      "show": true
     }
   ],
   "extraActivities": [
+    {
+      "date": "Nov 2023",
+      "name": "Boolean Data Week",
+      "role": "",
+      "description": [
+        
+      ],
+      "location": "Remote",
+      "badges": ["Python", "Pandas", "Tableau"],
+      "url": "https://www.boolean.careers",
+      "show": false
+    },
     {
       "date": "Mar 2023",
       "name": "Randstad <Code.Your.Future> AI Hackathon",
@@ -53,7 +67,8 @@
       ],
       "location": "Rome, Italy",
       "badges": ["Python", "Tensorflow"],
-      "url": "https://www.github.com/lorenzopalaia/Randstad-AI-Hackathon"
+      "url": "https://www.github.com/lorenzopalaia/Randstad-AI-Hackathon",
+      "show": true
     },
     {
       "date": "Sep 2021 - Oct 2022",
@@ -67,7 +82,8 @@
       ],
       "location": "Rome, Italy",
       "badges": ["Python", "Tensorflow"],
-      "url": "https://www.sasa-aerospace.it/flight-team"
+      "url": "https://www.sasa-aerospace.it/flight-team",
+      "show": true
     }
   ],
   "skills": [

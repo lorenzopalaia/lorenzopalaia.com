@@ -64,10 +64,10 @@
                 :key="work"
                 @click="redirectToExternalLink(work.url)"
               >
-                <div class="w-1/4 mx-4">
+                <div class="w-1/4 mx-4" v-if="work.show">
                   <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ work.date }}</p>
                 </div>
-                <div class="w-3/4 mx-4">
+                <div class="w-3/4 mx-4" v-if="work.show">
                   <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
                     {{ work.company }}
                     <font-awesome-icon
@@ -177,10 +177,10 @@
                 :key="degree"
                 @click="redirectToExternalLink(degree.url)"
               >
-                <div class="w-1/4 mx-4">
+                <div class="w-1/4 mx-4" v-if="degree.show">
                   <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ degree.date }}</p>
                 </div>
-                <div class="w-3/4 mx-4">
+                <div class="w-3/4 mx-4" v-if="degree.show">
                   <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
                     {{ degree.degree }}
                     <font-awesome-icon
@@ -224,10 +224,10 @@
                 :key="activity"
                 @click="redirectToExternalLink(activity.url)"
               >
-                <div class="w-1/4 mx-4">
+                <div class="w-1/4 mx-4" v-if="activity.show">
                   <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ activity.date }}</p>
                 </div>
-                <div class="w-3/4 mx-4">
+                <div class="w-3/4 mx-4" v-if="activity.show">
                   <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
                     {{ activity.name }}
                     <font-awesome-icon
@@ -373,7 +373,7 @@ export default {
   },
 
   async mounted() {
-    document.title = this.info.name;
+    document.title = "Lorenzo Palaia | Software Engineer";
     await this.getRepos();
   },
 };
