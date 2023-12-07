@@ -17,7 +17,4 @@ export default defineConfig({
     host: true
   },
   base: '/Personal-Portfolio/',
-  build: {
-    assetsInclude: ['robots.txt', 'favicon.ico', 'sitemap.xml']
-  }
 })
