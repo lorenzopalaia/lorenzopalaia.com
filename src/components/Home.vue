@@ -5,7 +5,7 @@
         <article class="prose mx-4" style="position: sticky; top: 4rem">
           <!-- info -->
           <h1 class="mb-4 mt-16">{{ info.name }}</h1>
-          <h3 class="mt-0 mb-4 font-light">{{ info.title }}</h3>
+          <h2 class="mt-0 mb-4 font-thin">{{ info.title }}</h2>
           <p class="font-light">{{ info.description }}</p>
 
           <!-- nav -->
