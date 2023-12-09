@@ -52,6 +52,15 @@
           <!-- about -->
           <section id="about" class="mb-32 mx-4 md:mt-16 mt-8">
             <p v-for="line in about" :key="line" class="font-light">{{ line }}</p>
+            <a :href="info.socials.cal" target="_blank" class="no-underline">
+              <p class="mb-32 group hover:underline decoration-primary">
+                Book a Call
+                <font-awesome-icon
+                  icon="fa-solid fa-arrow-right"
+                  class="ml-2 group-hover:ml-3"
+                />
+              </p>
+            </a>
           </section>
 
           <!-- work experience -->
