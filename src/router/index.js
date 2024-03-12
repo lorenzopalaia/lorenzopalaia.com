@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import WorkExperienceView from '../views/WorkExperienceView.vue'
+import ProjectsView from '../views/ProjectsView.vue'
+import EducationView from '../views/EducationView.vue'
+import ExtraActivitiesView from '../views/ExtraActivitiesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,22 +16,22 @@ const router = createRouter({
     {
       path: '/work-experience',
       name: 'work-experience',
-      component: () => import('../views/WorkExperienceView.vue')
+      component: WorkExperienceView
     },
     {
       path: '/projects',
       name: 'projects',
-      component: () => import('../views/ProjectsView.vue')
+      component: ProjectsView
     },
     {
       path: '/education',
       name: 'education',
-      component: () => import('../views/EducationView.vue')
+      component: EducationView
     },
     {
       path: '/extra-activities',
       name: 'extra-activities',
-      component: () => import('../views/ExtraActivitiesView.vue')
+      component: ExtraActivitiesView
     }
   ]
 })
