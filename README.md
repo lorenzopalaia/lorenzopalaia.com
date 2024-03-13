@@ -28,7 +28,7 @@
   <p align="center">
     Personal webpage that serves as portfolio
     <br />
-    <a href="https://www.lorenzopalaia.it">View Demo</a>
+    <a href="https://www.lorenzopalaia.it">View</a>
     ·
     <a href="https://github.com/lorenzopalaia/Personal-Portfolio/issues">Report Bug</a>
     ·
