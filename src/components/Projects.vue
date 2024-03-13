@@ -84,10 +84,10 @@
 </template>
 
 <script>
-import {
-  fetchRepos,
-  redirectToExternalLink,
-} from "../utils/api.js";
+import { fetchRepos, redirectToExternalLink } from "../utils/api.js";
+
+const CACHE_KEY = "projectsCache";
+const CACHE_EXPIRATION_TIME = 60 * 60 * 1000; // 60 minutes
 
 export default {
   data: () => ({
@@ -96,8 +96,27 @@ export default {
 
   methods: {
     async getReposAndSort(username) {
-      const data = await fetchRepos(username)
-      this.projects = data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+      let cachedData = localStorage.getItem(CACHE_KEY);
+      if (cachedData) {
+        cachedData = JSON.parse(cachedData);
+        const currentTime = new Date().getTime();
+        if (currentTime - cachedData.timestamp < CACHE_EXPIRATION_TIME) {
+          this.projects = cachedData.projects;
+          this.projects = this.projects.sort(
+            (a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)
+          );
+          return;
+        }
+      }
+
+      const data = await fetchRepos(username);
+      localStorage.setItem(
+        CACHE_KEY,
+        JSON.stringify({ projects: data, timestamp: new Date().getTime() })
+      );
+      this.projects = data.sort(
+        (a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)
+      );
     },
     redirectToExternalLink,
   },

@@ -51,7 +51,9 @@
         <article class="prose">
           <!-- about -->
           <section id="about" class="mb-32 mx-4 md:mt-16 mt-8">
-            <p v-for="line in about" :key="line" class="font-light">{{ line }}</p>
+            <p v-for="line in about" :key="line" class="font-light">
+              {{ line }}
+            </p>
             <a :href="info.socials.cal" target="_blank" class="no-underline">
               <p class="mb-32 group hover:underline decoration-primary">
                 Book a Call
@@ -74,10 +76,14 @@
                 @click="redirectToExternalLink(work.url)"
               >
                 <div class="w-1/4 mx-4" v-if="work.show">
-                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ work.date }}</p>
+                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">
+                    {{ work.date }}
+                  </p>
                 </div>
                 <div class="w-3/4 mx-4" v-if="work.show">
-                  <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
+                  <p
+                    class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0"
+                  >
                     {{ work.company }}
                     <font-awesome-icon
                       icon="fa-solid fa-arrow-right"
@@ -85,7 +91,9 @@
                       v-if="work.url"
                     />
                   </p>
-                  <p class="font-light text-neutral-400 mt-0">{{ work.role }}</p>
+                  <p class="font-light text-neutral-400 mt-0">
+                    {{ work.role }}
+                  </p>
                   <p
                     v-for="description in work.description"
                     :key="description"
@@ -103,10 +111,7 @@
                 </div>
               </div>
             </div>
-            <router-link
-              to="/work-experience"
-              class="no-underline"
-            >
+            <router-link to="/work-experience" class="no-underline">
               <p class="mb-32 mx-4 group hover:underline decoration-primary">
                 View All Work Experiences
                 <font-awesome-icon
@@ -120,12 +125,15 @@
           <!-- projects -->
           <section id="projects">
             <div v-if="projects && projects.length === 0">
-              <div v-for="times in showedProjects.length" :key="times" class="skeleton w-full h-48 mb-8 opacity-50"></div>
+              <div
+                v-for="times in showedProjects.length"
+                :key="times"
+                class="skeleton w-full h-48 mb-8 opacity-50"
+              ></div>
             </div>
             <div v-else class="group">
               <div
                 class="flex flex-col lg:flex-row group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
-
                 :class="project.url ? 'cursor-pointer' : ''"
                 v-for="project in projects"
                 :key="project"
@@ -140,7 +148,9 @@
                   />
                 </div>
                 <div class="w-3/4 mx-4 order-1">
-                  <p class="group-hover/inside:text-primary lg:order-2 text-neutral-300 font-normal mb-0">
+                  <p
+                    class="group-hover/inside:text-primary lg:order-2 text-neutral-300 font-normal mb-0"
+                  >
                     {{ project.name.replace(/-/g, " ") }}
                     <font-awesome-icon
                       icon="fa-solid fa-arrow-right"
@@ -162,10 +172,7 @@
                 </div>
               </div>
             </div>
-            <router-link
-              to="/projects"
-              class="no-underline"
-            >
+            <router-link to="/projects" class="no-underline">
               <p class="mb-32 mx-4 group hover:underline decoration-primary">
                 View All Projects
                 <font-awesome-icon
@@ -187,10 +194,14 @@
                 @click="redirectToExternalLink(degree.url)"
               >
                 <div class="w-1/4 mx-4" v-if="degree.show">
-                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ degree.date }}</p>
+                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">
+                    {{ degree.date }}
+                  </p>
                 </div>
                 <div class="w-3/4 mx-4" v-if="degree.show">
-                  <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
+                  <p
+                    class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0"
+                  >
                     {{ degree.degree }}
                     <font-awesome-icon
                       icon="fa-solid fa-arrow-right"
@@ -198,7 +209,9 @@
                       v-if="degree.url"
                     />
                   </p>
-                  <p class="font-light text-neutral-400 mt-0">{{ degree.school }}</p>
+                  <p class="font-light text-neutral-400 mt-0">
+                    {{ degree.school }}
+                  </p>
                   <p
                     v-for="description in degree.description"
                     :key="description"
@@ -209,10 +222,7 @@
                 </div>
               </div>
             </div>
-            <router-link
-              to="/education"
-              class="no-underline"
-            >
+            <router-link to="/education" class="no-underline">
               <p class="mb-32 mx-4 group hover:underline decoration-primary">
                 View All Education
                 <font-awesome-icon
@@ -234,10 +244,14 @@
                 @click="redirectToExternalLink(activity.url)"
               >
                 <div class="w-1/4 mx-4" v-if="activity.show">
-                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">{{ activity.date }}</p>
+                  <p class="uppercase font-light text-neutral-400 text-sm mt-6">
+                    {{ activity.date }}
+                  </p>
                 </div>
                 <div class="w-3/4 mx-4" v-if="activity.show">
-                  <p class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0">
+                  <p
+                    class="group-hover/inside:text-primary text-neutral-300 font-normal mb-0"
+                  >
                     {{ activity.name }}
                     <font-awesome-icon
                       icon="fa-solid fa-arrow-right"
@@ -245,7 +259,9 @@
                       v-if="activity.url"
                     />
                   </p>
-                  <p class="font-light text-neutral-400 mt-0">{{ activity.role }}</p>
+                  <p class="font-light text-neutral-400 mt-0">
+                    {{ activity.role }}
+                  </p>
                   <p
                     v-for="description in activity.description"
                     :key="description"
@@ -263,10 +279,7 @@
                 </div>
               </div>
             </div>
-              <router-link
-                to="/extra-activities"
-                class="no-underline"
-              >
+            <router-link to="/extra-activities" class="no-underline">
               <p class="mb-32 mx-4 group hover:underline decoration-primary">
                 View All Extra Activities
                 <font-awesome-icon
@@ -285,7 +298,11 @@
               :key="skill"
             >
               <div class="w-1/4 mx-4">
-                <p class="uppercase font-light text-neutral-400 text-sm mt-1 mb-0">{{ skill.name }}</p>
+                <p
+                  class="uppercase font-light text-neutral-400 text-sm mt-1 mb-0"
+                >
+                  {{ skill.name }}
+                </p>
               </div>
               <div class="w-3/4 mx-4">
                 <progress
@@ -306,7 +323,11 @@
               :key="language"
             >
               <div class="w-1/4 mx-4">
-                <p class="uppercase ont-light text-neutral-400 text-sm mt-1 mb-0">{{ language.name }}</p>
+                <p
+                  class="uppercase ont-light text-neutral-400 text-sm mt-1 mb-0"
+                >
+                  {{ language.name }}
+                </p>
               </div>
               <div class="w-3/4 mx-4">
                 <progress
@@ -329,6 +350,9 @@
 <script>
 import personalInfo from "../assets/personalInfo.json";
 import { fetchRepos, redirectToExternalLink } from "../utils/api.js";
+
+const CACHE_KEY = "projectsCache";
+const CACHE_EXPIRATION_TIME = 60 * 60 * 1000; // 60 minutes
 
 export default {
   data: () => ({
@@ -358,8 +382,27 @@ export default {
 
   methods: {
     async getReposAndFilter(username) {
+      let cachedData = localStorage.getItem(CACHE_KEY);
+      if (cachedData) {
+        cachedData = JSON.parse(cachedData);
+        const currentTime = new Date().getTime();
+        if (currentTime - cachedData.timestamp < CACHE_EXPIRATION_TIME) {
+          this.projects = cachedData.projects;
+          this.projects = this.projects.filter((repo) =>
+            this.showedProjects.includes(repo.name)
+          );
+          return;
+        }
+      }
+
       const data = await fetchRepos(username);
-      this.projects = data.filter((repo) => this.showedProjects.includes(repo.name));
+      localStorage.setItem(
+        CACHE_KEY,
+        JSON.stringify({ projects: data, timestamp: new Date().getTime() })
+      );
+      this.projects = data.filter((repo) =>
+        this.showedProjects.includes(repo.name)
+      );
     },
     redirectToExternalLink,
     /*
