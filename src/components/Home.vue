@@ -349,10 +349,7 @@
 
 <script>
 import personalInfo from "../assets/personalInfo.json";
-import { fetchRepos, redirectToExternalLink } from "../utils/api.js";
-
-const CACHE_KEY = "projectsCache";
-const CACHE_EXPIRATION_TIME = 60 * 60 * 1000; // 60 minutes
+import { getCachedProjects, fetchProjectsAndUpdateCache, redirectToExternalLink } from "../utils/api.js";
 
 export default {
   data: () => ({
@@ -382,27 +379,17 @@ export default {
 
   methods: {
     async getReposAndFilter(username) {
-      let cachedData = localStorage.getItem(CACHE_KEY);
-      if (cachedData) {
-        cachedData = JSON.parse(cachedData);
-        const currentTime = new Date().getTime();
-        if (currentTime - cachedData.timestamp < CACHE_EXPIRATION_TIME) {
-          this.projects = cachedData.projects;
-          this.projects = this.projects.filter((repo) =>
-            this.showedProjects.includes(repo.name)
-          );
-          return;
-        }
+      const cachedProjects = await getCachedProjects();
+      if (cachedProjects) {
+        this.projects = cachedProjects.filter(repo =>
+          this.showedProjects.includes(repo.name)
+        );
+      } else {
+        const data = await fetchProjectsAndUpdateCache(username);
+        this.projects = data.filter(repo =>
+          this.showedProjects.includes(repo.name)
+        );
       }
-
-      const data = await fetchRepos(username);
-      localStorage.setItem(
-        CACHE_KEY,
-        JSON.stringify({ projects: data, timestamp: new Date().getTime() })
-      );
-      this.projects = data.filter((repo) =>
-        this.showedProjects.includes(repo.name)
-      );
     },
     redirectToExternalLink,
     /*
