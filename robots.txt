@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://lorenzopalaia.github.io/Personal-Portfolio/sitemap.xml
+Sitemap: https://www.lorenzopalaia.it/sitemap.xml
