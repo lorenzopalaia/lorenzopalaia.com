@@ -109,7 +109,7 @@ export default {
 
   mounted() {
     document.title = "Projects | Lorenzo Palaia";
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0, "smooth");
     this.getRepos();
   },
 };

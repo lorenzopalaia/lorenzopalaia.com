@@ -73,7 +73,7 @@ export default {
 
   mounted() {
     document.title = "Education | Lorenzo Palaia";
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0, "smooth");
   },
 };
 </script>

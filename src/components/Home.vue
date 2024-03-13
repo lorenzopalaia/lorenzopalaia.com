@@ -383,6 +383,7 @@ export default {
 
   async mounted() {
     document.title = "Lorenzo Palaia | Software Engineer";
+    window.scrollTo(0, 0, "smooth");
     await this.getRepos();
   },
 };

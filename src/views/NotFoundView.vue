@@ -1,15 +1,9 @@
 <template>
-  <div>
-    <h1>404 - Not Found</h1>
-  </div>
+    <main>
+        <NotFound />
+    </main>
 </template>
 
-<script>
-export default {
-
-}
+<script setup>
+import NotFound from '../components/NotFound.vue';
 </script>
-
-<style>
-
-</style>
