@@ -84,7 +84,7 @@ export default {
   }),
 
   mounted() {
-    document.title = "Work activity | Lorenzo Palaia";
+    document.title = "Extra Activities | Lorenzo Palaia";
     window.scrollTo(0, 0);
   },
 };

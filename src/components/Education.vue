@@ -72,7 +72,7 @@ export default {
   }),
 
   mounted() {
-    document.title = "Projects | Lorenzo Palaia";
+    document.title = "Education | Lorenzo Palaia";
     window.scrollTo(0, 0);
   },
 };
