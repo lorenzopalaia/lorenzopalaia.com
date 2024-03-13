@@ -44,10 +44,12 @@
               }}
             </td>
             <td class="text-neutral-400 font-light hidden lg:table-cell">
-              {{ new Date(project.created_at).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-              }) }}
+              {{
+                new Date(project.created_at).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                })
+              }}
             </td>
             <td class="text-neutral-200 font-bold table-cell">
               {{ project.name.replace(/-/g, " ") }}
@@ -82,35 +84,28 @@
 </template>
 
 <script>
+import {
+  fetchRepos,
+  redirectToExternalLink,
+} from "../utils/api.js";
+
 export default {
   data: () => ({
     projects: [],
   }),
 
   methods: {
-    async getRepos() {
-      const response = await fetch(
-        "https://api.github.com/users/lorenzopalaia/repos"
-      );
-      const data = await response.json();
-      data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
-      for (let i = 0; i < data.length; i++) {
-        const response = await fetch(data[i].languages_url);
-        const languages = await response.json();
-        data[i].languages = Object.keys(languages);
-      }
-      console.log(data);
-      this.projects = data;
+    async getReposAndSort(username) {
+      const data = await fetchRepos(username)
+      this.projects = data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
     },
-    redirectToExternalLink(url) {
-      if (url) window.open(url, "_blank");
-    },
+    redirectToExternalLink,
   },
 
   mounted() {
     document.title = "Projects | Lorenzo Palaia";
     window.scrollTo(0, 0, "smooth");
-    this.getRepos();
+    this.getReposAndSort("lorenzopalaia");
   },
 };
 </script>

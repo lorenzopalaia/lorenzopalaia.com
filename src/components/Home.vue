@@ -328,6 +328,7 @@
 
 <script>
 import personalInfo from "../assets/personalInfo.json";
+import { fetchRepos, redirectToExternalLink } from "../utils/api.js";
 
 export default {
   data: () => ({
@@ -356,23 +357,11 @@ export default {
   }),
 
   methods: {
-    async getRepos() {
-      const response = await fetch(
-        "https://api.github.com/users/lorenzopalaia/repos"
-      );
-      const data = await response.json();
-      //get languages
-      for (let i = 0; i < data.length; i++) {
-        const response = await fetch(data[i].languages_url);
-        const languages = await response.json();
-        data[i].languages = Object.keys(languages);
-      }
-      //filter by showedProjects
+    async getReposAndFilter(username) {
+      const data = await fetchRepos(username);
       this.projects = data.filter((repo) => this.showedProjects.includes(repo.name));
     },
-    redirectToExternalLink(url) {
-      if (url) window.open(url, "_blank");
-    },
+    redirectToExternalLink,
     /*
     updateActiveSection(section) {
       this.activeSection = section;
@@ -384,7 +373,7 @@ export default {
   async mounted() {
     document.title = "Lorenzo Palaia | Software Engineer";
     window.scrollTo(0, 0, "smooth");
-    await this.getRepos();
+    await this.getReposAndFilter("lorenzopalaia");
   },
 };
 </script>
