@@ -1,12 +1,15 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import WorkExperienceView from '../views/WorkExperienceView.vue';
 import ProjectsView from '../views/ProjectsView.vue';
 import EducationView from '../views/EducationView.vue';
 import ExtraActivitiesView from '../views/ExtraActivitiesView.vue';
+import NotFoundView from '../views/NotFoundView.vue';
+
+const history = createWebHistory(import.meta.env.BASE_URL);
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: history,
   routes: [
     {
       path: '/',
@@ -32,6 +35,11 @@ const router = createRouter({
       path: '/extra-activities',
       name: 'extra-activities',
       component: ExtraActivitiesView,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: NotFoundView,
     },
   ],
 });
