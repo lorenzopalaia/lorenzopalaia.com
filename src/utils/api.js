@@ -10,6 +10,7 @@ async function fetchReposWithLanguages(username) {
     const response = await fetch(data[i].languages_url);
     const languages = await response.json();
     data[i].languages = Object.keys(languages);
+    data[i].repo_preview = `https://raw.githubusercontent.com/lorenzopalaia/${data[i].name}/main/repo_assets/preview.png`
   }
   return data;
 }
@@ -28,6 +29,7 @@ async function getCachedProjects() {
 
 async function fetchProjectsAndUpdateCache(username) {
   const data = await fetchReposWithLanguages(username);
+  console.log(data);
   localStorage.setItem(
     CACHE_KEY,
     JSON.stringify({ projects: data, timestamp: new Date().getTime() })

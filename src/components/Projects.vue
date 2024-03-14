@@ -84,7 +84,12 @@
 </template>
 
 <script>
-import { getCachedProjects, fetchProjectsAndUpdateCache, redirectToExternalLink } from "../utils/api.js";
+import personalInfo from "../assets/personalInfo.json";
+import {
+  getCachedProjects,
+  fetchProjectsAndUpdateCache,
+  redirectToExternalLink,
+} from "../utils/api.js";
 
 export default {
   data: () => ({
@@ -94,16 +99,18 @@ export default {
   methods: {
     async getReposAndSort(username) {
       const cachedProjects = await getCachedProjects();
+      let combinedProjects = [];
+
       if (cachedProjects) {
-        this.projects = cachedProjects.sort(
-          (a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)
-        );
+        combinedProjects = cachedProjects.concat(personalInfo.projects);
       } else {
         const data = await fetchProjectsAndUpdateCache(username);
-        this.projects = data.sort(
-          (a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)
-        );
+        combinedProjects = data.concat(personalInfo.projects);
       }
+
+      this.projects = combinedProjects.sort(
+        (a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)
+      );
     },
     redirectToExternalLink,
   },

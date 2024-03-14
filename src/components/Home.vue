@@ -141,7 +141,7 @@
               >
                 <div class="mx-4 order-2 lg:order-1 lg:w-1/4">
                   <img
-                    :src="`https://raw.githubusercontent.com/lorenzopalaia/${project.name}/main/repo_assets/preview.png`"
+                    :src="project.repo_preview"
                     alt="Project Preview"
                     class="lg:mt-6 mt-0 rounded"
                     style="border: 3px solid rgba(255, 255, 255, 0.075)"
@@ -158,7 +158,7 @@
                     />
                   </p>
                   <p class="font-extralight">{{ project.description }}</p>
-                  <p class="text-neutral-500">
+                  <p class="text-neutral-500" v-if="project.hasOwnProperty('stargazers_count')">
                     <font-awesome-icon icon="fa-solid fa-star" class="mr-1" />
                     {{ project.stargazers_count }}
                   </p>
@@ -362,7 +362,7 @@ export default {
     languages: personalInfo.languages,
     footer: personalInfo.footer,
     showedProjects: personalInfo.showedProjects,
-    projects: [],
+    projects: personalInfo.projects,
     /*
     nav: [
       { name: "About", id: "about" },
@@ -380,16 +380,18 @@ export default {
   methods: {
     async getReposAndFilter(username) {
       const cachedProjects = await getCachedProjects();
+      let combinedProjects = [];
+      
       if (cachedProjects) {
-        this.projects = cachedProjects.filter(repo =>
-          this.showedProjects.includes(repo.name)
-        );
+        combinedProjects = cachedProjects.concat(personalInfo.projects);
       } else {
         const data = await fetchProjectsAndUpdateCache(username);
-        this.projects = data.filter(repo =>
-          this.showedProjects.includes(repo.name)
-        );
+        combinedProjects = data.concat(personalInfo.projects);
       }
+
+      this.projects = combinedProjects.filter(repo =>
+        this.showedProjects.includes(repo.name)
+      );
     },
     redirectToExternalLink,
     /*

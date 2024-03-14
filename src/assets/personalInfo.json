@@ -32,6 +32,26 @@
     "Arduino-Oscilloscope",
     "Blocktracr"
   ],
+  "projects": [
+    {
+      "pushed_at": "2024-03-01",
+      "created_at": "2024-02-01",
+      "name": "Sysco S.p.A.",
+      "languages": ["Vue", "Javascript", "HTML", "CSS"],
+      "html_url": "https://syscospa.it",
+      "description": "Developed a corporate website for Sysco S.p.A. using Vue.js, HTML and CSS",
+      "repo_preview": "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png"
+    },
+    {
+      "pushed_at": "2020-10-01",
+      "created_at": "2020-09-01",
+      "name": "Alfa Impianti S.r.l.",
+      "languages": ["Javascript", "HTML", "CSS"],
+      "html_url": "https://alfa-impiantisrl.it",
+      "description": "Developed a corporate website for Alfa Impianti S.r.l. using HTML and CSS",
+      "repo_preview": "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png"
+    }
+  ],
   "education": [
     {
       "date": "Mar 2024",
