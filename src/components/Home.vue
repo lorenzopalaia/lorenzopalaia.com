@@ -9,20 +9,29 @@
           <p class="font-light">{{ info.description }}</p>
 
           <!-- nav -->
-          <!--
-          <div class="group mt-2" v-for="item in nav" :key="item">
-            <hr
-              class="inline-flex w-8 group-hover:w-16 mt-0 mb-1 mr-2 rounded bg-gray-500 group-hover:bg-neutral-300 transition ease-in-out duration-500"
-              :class="{ 'bg-neutral-300': activeSection === item, 'bg-gray-500': activeSection !== item }"
-            />
-            <a
-              :href="`#${item}`"
-              class="no-underline uppercase text-gray-500 group-hover:text-neutral-300"
-              :class="{ 'text-white': activeSection === item, 'text-gray-500': activeSection !== item }"
-              @click="updateActiveSection(item)"
-            >{{ item.name }}</a>
-          </div>
-          -->
+          <nav class="hidden md:block">
+            <div
+              v-for="section in nav"
+              :key="section.id"
+              class="flex flex-row group cursor-pointer"
+              @click="scrollToSection(section.id)"  
+            >
+              <div
+                class="divider group-hover:w-16 group-hover:divider-primary mt-1.5 mr-4"
+                :class="{
+                  'w-16 divider-primary': currentSection === section.id,
+                  'w-8 divider-accent': currentSection !== section.id,
+                }"
+              ></div>
+              <div
+                class="uppercase group-hover:text-primary active:text-accent font-bold"
+                :class="{
+                  'text-primary': currentSection === section.id,
+                  'text-accent': currentSection !== section.id,
+                }"
+                >{{ section.name }}</div>
+            </div>
+          </nav>
 
           <!-- socials -->
           <div class="mt-8">
@@ -50,7 +59,7 @@
       <div class="md:w-1/2">
         <article class="prose">
           <!-- about -->
-          <section id="about" class="mb-32 mx-4 md:mt-16 mt-8">
+          <section id="about" class="mb-32 mx-4 md:mt-16 mt-8 section">
             <p v-for="line in about" :key="line" class="font-light">
               {{ line }}
             </p>
@@ -66,7 +75,7 @@
           </section>
 
           <!-- work experience -->
-          <section id="workExperience">
+          <section id="work-experience" class="section">
             <div class="group">
               <div
                 class="flex group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
@@ -123,7 +132,7 @@
           </section>
 
           <!-- projects -->
-          <section id="projects">
+          <section id="projects" class="section">
             <div v-if="projects && projects.length === 0">
               <div
                 v-for="times in showedProjects.length"
@@ -158,7 +167,10 @@
                     />
                   </p>
                   <p class="font-extralight">{{ project.description }}</p>
-                  <p class="text-neutral-500" v-if="project.hasOwnProperty('stargazers_count')">
+                  <p
+                    class="text-neutral-500"
+                    v-if="project.hasOwnProperty('stargazers_count')"
+                  >
                     <font-awesome-icon icon="fa-solid fa-star" class="mr-1" />
                     {{ project.stargazers_count }}
                   </p>
@@ -184,7 +196,7 @@
           </section>
 
           <!-- education -->
-          <section id="education">
+          <section id="education" class="section">
             <div class="group">
               <div
                 class="flex group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
@@ -234,7 +246,7 @@
           </section>
 
           <!-- extra activities -->
-          <section id="extraActivities">
+          <section id="extra-activities" class="section">
             <div class="group">
               <div
                 class="flex group-hover:opacity-50 hover:bg-white/5 hover:!opacity-100 mb-8 rounded-md group/inside hover:border-t border-white/10 transition ease-in-out duration-250"
@@ -291,9 +303,9 @@
           </section>
 
           <!-- skills -->
-          <section id="skills">
+          <section id="skills" class="section">
             <div
-              class="flex flex-col lg:flex-row mb-8"
+              class="flex flex-col lg:flex-row mb-12"
               v-for="skill in skills"
               :key="skill"
             >
@@ -312,13 +324,9 @@
                 ></progress>
               </div>
             </div>
-          </section>
-
-          <!-- languages -->
-          <section id="languages">
-            <div class="mt-16"></div>
+            <div class="mt-24"></div>
             <div
-              class="flex flex-col lg:flex-row mb-8"
+              class="flex flex-col lg:flex-row mb-12"
               v-for="language in languages"
               :key="language"
             >
@@ -349,7 +357,11 @@
 
 <script>
 import personalInfo from "../assets/personalInfo.json";
-import { getCachedProjects, fetchProjectsAndUpdateCache, redirectToExternalLink } from "../utils/api.js";
+import {
+  getCachedProjects,
+  fetchProjectsAndUpdateCache,
+  redirectToExternalLink,
+} from "../utils/api.js";
 
 export default {
   data: () => ({
@@ -363,25 +375,23 @@ export default {
     footer: personalInfo.footer,
     showedProjects: personalInfo.showedProjects,
     projects: personalInfo.projects,
-    /*
+
     nav: [
       { name: "About", id: "about" },
-      { name: "Work Experience", id: "workExperience" },
+      { name: "Work Experience", id: "work-experience" },
       { name: "Projects", id: "projects" },
       { name: "Education", id: "education" },
-      { name: "Extra Activities", id: "extraActivities" },
+      { name: "Extra Activities", id: "extra-activities" },
       { name: "Skills", id: "skills" },
-      { name: "Languages", id: "languages" },
     ],
-    */
-    //activeSection: "",
+    currentSection: null,
   }),
 
   methods: {
     async getReposAndFilter(username) {
       const cachedProjects = await getCachedProjects();
       let combinedProjects = [];
-      
+
       if (cachedProjects) {
         combinedProjects = cachedProjects.concat(personalInfo.projects);
       } else {
@@ -389,23 +399,42 @@ export default {
         combinedProjects = data.concat(personalInfo.projects);
       }
 
-      this.projects = combinedProjects.filter(repo =>
+      this.projects = combinedProjects.filter((repo) =>
         this.showedProjects.includes(repo.name)
       );
     },
-    redirectToExternalLink,
-    /*
-    updateActiveSection(section) {
-      this.activeSection = section;
-      localStorage.setItem('activeSection', section);
+    onScroll() {
+      const scrollPosition = window.scrollY;
+      const sections = document.querySelectorAll(".section");
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 32;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          this.currentSection = section.id;
+        }
+      });
     },
-    */
+    scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const offset = 32;
+        const scrollTo = section.offsetTop - offset;
+        window.scrollTo({ top: scrollTo, behavior: "smooth" });
+        window.history.pushState(null, null, `#${sectionId}`);
+      }
+    },
+    redirectToExternalLink,
   },
 
   async mounted() {
+    window.addEventListener("scroll", this.onScroll);
     document.title = "Lorenzo Palaia | Software Engineer";
     window.scrollTo(0, 0, "smooth");
     await this.getReposAndFilter("lorenzopalaia");
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll);
   },
 };
 </script>
