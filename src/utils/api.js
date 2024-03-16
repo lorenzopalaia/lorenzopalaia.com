@@ -1,12 +1,11 @@
-import { Octokit } from "octokit";
+//import { Octokit } from "octokit";
 
 const CACHE_KEY = "projectsCache";
 const CACHE_EXPIRATION_TIME = 60 * 60 * 1000; // 60 minutes
 
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
-const octokit = new Octokit({ auth: GITHUB_TOKEN });
+//const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+//const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
-/*
 async function fetchReposWithLanguages(username) {
   const response = await fetch(
     `https://api.github.com/users/${username}/repos`
@@ -20,8 +19,8 @@ async function fetchReposWithLanguages(username) {
   }
   return data;
 }
-*/
 
+/*
 async function fetchReposWithLanguages(username) {
   try {
     const { data: repos } = await octokit.rest.repos.listForUser({
@@ -42,6 +41,7 @@ async function fetchReposWithLanguages(username) {
     throw error;
   }
 }
+*/
 
 async function getCachedProjects() {
   let cachedData = localStorage.getItem(CACHE_KEY);
