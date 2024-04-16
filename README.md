@@ -19,20 +19,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/lorenzopalaia/Personal-Portfolio">
+  <a href="https://github.com/lorenzopalaia/lorenzopalaia.it">
     <img src="repo_assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Personal Portfolio</h3>
+<h3 align="center">lorenzopalaia.it</h3>
 
   <p align="center">
     Personal webpage that serves as portfolio
     <br />
     <a href="https://www.lorenzopalaia.it">View</a>
     ·
-    <a href="https://github.com/lorenzopalaia/Personal-Portfolio/issues">Report Bug</a>
+    <a href="https://github.com/lorenzopalaia/lorenzopalaia.it/issues">Report Bug</a>
     ·
-    <a href="https://github.com/lorenzopalaia/Personal-Portfolio/issues">Request Feature</a>
+    <a href="https://github.com/lorenzopalaia/lorenzopalaia.it/issues">Request Feature</a>
   </p>
 </div>
 
@@ -107,7 +107,7 @@
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/lorenzopalaia/Personal-Portfolio.git
+   git clone https://github.com/lorenzopalaia/lorenzopalaia.it.git
    ```
 2. Install NPM packages
    ```sh
@@ -127,14 +127,6 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ROADMAP -->
-
-## Roadmap
-
-- [ ] Navbar
-
-See the [open issues](https://github.com/lorenzopalaia/Personal-Portfolio/issues) for a full list of proposed features (and known issues).
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
@@ -149,7 +141,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Lorenzo Palaia <!-- - [@twitter_handle](https://twitter.com/twitter_handle)--> - lorenzopalaia53@gmail.com
 
-Project Link: [https://github.com/lorenzopalaia/Personal-Portfolio](https://github.com/lorenzopalaia/Personal-Portfolio)
+Project Link: [https://github.com/lorenzopalaia/lorenzopalaia.it](https://github.com/lorenzopalaia/lorenzopalaia.it)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -167,16 +159,16 @@ Project Link: [https://github.com/lorenzopalaia/Personal-Portfolio](https://gith
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/lorenzopalaia/Personal-Portfolio.svg?style=for-the-badge
-[contributors-url]: https://github.com/lorenzopalaia/Personal-Portfolio/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/lorenzopalaia/Personal-Portfolio.svg?style=for-the-badge
-[forks-url]: https://github.com/lorenzopalaia/Personal-Portfolio/network/members
-[stars-shield]: https://img.shields.io/github/stars/lorenzopalaia/Personal-Portfolio.svg?style=for-the-badge
-[stars-url]: https://github.com/lorenzopalaia/Personal-Portfolio/stargazers
-[issues-shield]: https://img.shields.io/github/issues/lorenzopalaia/Personal-Portfolio.svg?style=for-the-badge
-[issues-url]: https://github.com/lorenzopalaia/Personal-Portfolio/issues
-[license-shield]: https://img.shields.io/github/license/lorenzopalaia/Personal-Portfolio.svg?style=for-the-badge
-[license-url]: https://github.com/lorenzopalaia/Personal-Portfolio/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/lorenzopalaia/lorenzopalaia.it.svg?style=for-the-badge
+[contributors-url]: https://github.com/lorenzopalaia/lorenzopalaia.it/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/lorenzopalaia/lorenzopalaia.it.svg?style=for-the-badge
+[forks-url]: https://github.com/lorenzopalaia/lorenzopalaia.it/network/members
+[stars-shield]: https://img.shields.io/github/stars/lorenzopalaia/lorenzopalaia.it.svg?style=for-the-badge
+[stars-url]: https://github.com/lorenzopalaia/lorenzopalaia.it/stargazers
+[issues-shield]: https://img.shields.io/github/issues/lorenzopalaia/lorenzopalaia.it.svg?style=for-the-badge
+[issues-url]: https://github.com/lorenzopalaia/lorenzopalaia.it/issues
+[license-shield]: https://img.shields.io/github/license/lorenzopalaia/lorenzopalaia.it.svg?style=for-the-badge
+[license-url]: https://github.com/lorenzopalaia/lorenzopalaia.it/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/lorenzopalaia
 [product-preview]: repo_assets/preview.png
