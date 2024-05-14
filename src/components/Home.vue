@@ -14,7 +14,7 @@
               v-for="section in nav"
               :key="section.id"
               class="flex flex-row group cursor-pointer"
-              @click="scrollToSection(section.id)"  
+              @click="scrollToSection(section.id)"
             >
               <div
                 class="divider group-hover:w-16 group-hover:divider-primary mt-1.5 mr-4"
@@ -29,7 +29,9 @@
                   'text-primary': currentSection === section.id,
                   'text-accent': currentSection !== section.id,
                 }"
-                >{{ section.name }}</div>
+              >
+                {{ section.name }}
+              </div>
             </div>
           </nav>
 
@@ -64,7 +66,7 @@
               {{ line }}
             </p>
             <a :href="info.socials.cal" target="_blank" class="no-underline">
-              <p class="mb-32 group hover:underline decoration-primary">
+              <p class="group hover:underline decoration-primary">
                 Book a Call
                 <font-awesome-icon
                   icon="fa-solid fa-arrow-right"
@@ -72,6 +74,20 @@
                 />
               </p>
             </a>
+            <p class="font-light">
+              I always like to introduce some gamification 🕹️ into my projects.
+              Here I would like to summarize my work path through the
+              <router-link
+                to="/milestones"
+                class="no-underline group hover:underline decoration-primary"
+              >
+                Milestones
+                <font-awesome-icon
+                  icon="fa-solid fa-arrow-right"
+                  class="ml-2 group-hover:ml-3"
+                />
+              </router-link>
+            </p>
           </section>
 
           <!-- work experience -->
