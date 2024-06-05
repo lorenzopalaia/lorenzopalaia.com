@@ -14,9 +14,10 @@ export default function Home() {
         <main className="container mx-auto my-auto">
             <div className="flex flex-col md:flex-row mx-8">
                 <div className="md:w-1/2">
-                    <div style={{ position: "sticky", top: "4rem" }}>
+                    <div className="left-side">
                         <Hero />
                         <Navigation />
+                        <div className="h-[700px]"></div>
                         <Socials />
                     </div>
                 </div>

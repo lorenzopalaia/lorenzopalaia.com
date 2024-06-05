@@ -39,9 +39,11 @@ const config = {
         },
     ],
     showedProjects: [
+        // github projects
         "Neural-Style-Transfer-and-Genre-Classification",
         "Arduino-Oscilloscope",
         "Blocktracr",
+        // local projects
     ],
     projects: [
         {
@@ -50,8 +52,9 @@ const config = {
             name: "Sysco S.p.A.",
             languages: ["Vue", "Javascript", "HTML", "CSS"],
             html_url: "https://syscospa.it",
-            description:
+            description: [
                 "Developed a corporate website for Sysco S.p.A. using Vue.js, HTML and CSS",
+            ],
             repo_preview:
                 "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png",
         },
@@ -61,8 +64,9 @@ const config = {
             name: "Alfa Impianti S.r.l.",
             languages: ["Javascript", "HTML", "CSS"],
             html_url: "https://alfa-impiantisrl.it",
-            description:
+            description: [
                 "Developed a corporate website for Alfa Impianti S.r.l. using HTML and CSS",
+            ],
             repo_preview:
                 "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png",
         },
@@ -94,7 +98,7 @@ const config = {
         {
             date: "Mar 2023",
             name: "Randstad <Code.Your.Future> AI Hackathon",
-            role: "",
+            role: "Participant",
             description: [
                 "Guided the development of a job description neural network in a team of 5 using Tensorflow in a 4 hour challenge",
                 "Secured the 2nd spot out of 8 contenders, reached an F1 score of 75%, explored both Bag of Words and Word2Vec solutions",
@@ -138,7 +142,7 @@ const config = {
         { name: "English", value: 80 },
         { name: "French", value: 25 },
     ],
-    footer: "Made with ❤️ by Lorenzo Palaia. Loosely coded in Visual Studio Code by yours truly. Built with NextJS and Tailwind CSS, deployed with GitHub Pages",
+    footer: "Made with ❤️ by Lorenzo Palaia. Loosely coded in Visual Studio Code by yours truly. Built with NextJS and Tailwind CSS, deployed with GitHub Pages.",
 };
 
 export default config;

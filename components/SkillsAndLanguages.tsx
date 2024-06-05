@@ -5,7 +5,7 @@ const SkillsAndLanguages = () => {
         <section id="skills" className="section">
             {config.skills.map((skill) => (
                 <div
-                    key={skill.id || skill.name}
+                    key={skill.name}
                     className="flex flex-col lg:flex-row mb-12"
                 >
                     <div className="w-1/4 mx-4">
@@ -24,7 +24,7 @@ const SkillsAndLanguages = () => {
             ))}
             {config.languages.map((language) => (
                 <div
-                    key={language.id || language.name}
+                    key={language.name}
                     className="flex flex-col lg:flex-row mb-12"
                 >
                     <div className="w-1/4 mx-4">

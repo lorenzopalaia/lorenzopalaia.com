@@ -1,7 +1,5 @@
 import config from "@/config";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import CustomLink from "./CustomLink";
 
 const About = () => {
     return (
@@ -10,37 +8,20 @@ const About = () => {
             className="mb-32 mx-4 md:mt-16 mt-8 section" // section class is unused ?
         >
             {config.about.map((paragraph, index) => (
-                <p key={index} className="font-light">
+                <p key={index} className="mb-4 font-light">
                     {paragraph}
                 </p>
             ))}
-            <Link
-                href={config.socials.cal}
-                target="_blank"
-                className="no-underline"
-            >
-                <p className="gtoup hover:underline decoration-primary">
-                    Book a Call
-                </p>
-                <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className="ml-2 group-hover:ml-3"
-                />
-            </Link>
-            <p className="font-light">
+            <CustomLink href={config.socials.cal} target="_blank">
+                Book a Call
+            </CustomLink>
+            <p className="font-light mt-8">
                 I always like to introduce some gamification 🕹️ into my
                 projects. Here I would like to summarize my work path through
-                the
-                <Link
-                    href="/milestones"
-                    className="no-underline group hover:underline decoration-primary"
-                >
+                the{" "}
+                <CustomLink href="/milestones" className="inline">
                     Milestones
-                    <FontAwesomeIcon
-                        icon={faArrowRight}
-                        className="ml-2 group-hover:ml-3"
-                    />
-                </Link>
+                </CustomLink>
             </p>
         </section>
     );

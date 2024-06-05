@@ -1,22 +1,10 @@
 "use client";
 
 import config from "@/config";
-import { useState } from "react";
+import useNavigation from "@/hooks/useNavigation";
 
 const Navigation = () => {
-    /* window.addEventListener("scroll", () => {
-        const scrollPosition = window.scrollY;
-        const sections = document.querySelectorAll("section");
-        sections.forEach((section) => {
-            const setionTop = section.offsetTop - 32;
-            const sectionBottom = setionTop + section.offsetHeight;
-            if (scrollPosition >= setionTop && scrollPosition < sectionBottom) {
-                setActiveSection(section.id);
-            }
-        });
-    }); */
-
-    const [activeSection, setActiveSection] = useState(null);
+    const { activeSection, handleScroll } = useNavigation();
 
     return (
         <header>
@@ -25,7 +13,7 @@ const Navigation = () => {
                     <div
                         className="flex flex-row group cursor-pointer"
                         key={section.id}
-                        onClick={() => setActiveSection(section.id)}
+                        onClick={() => handleScroll(section.id)}
                     >
                         <div
                             className={`divider group-hover:w-16 group-hover:divider-primary mt-1.5 mr-4 ${
