@@ -15,7 +15,7 @@ interface Project {
 }
 
 const Projects = () => {
-  const { repos, isLoading } = useGithubRepos(true); //! useCache param is true by default
+  const { repos, isLoading } = useGithubRepos();
 
   const filteredRepos = repos.filter((repo: Project) => {
     return config.showedProjects.includes(repo.name);

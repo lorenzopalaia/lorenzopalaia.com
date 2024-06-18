@@ -15,7 +15,7 @@ interface Project {
 }
 
 export default function Projects() {
-  const { repos, isLoading } = useGithubRepos(true); //! useCache param is true by default
+  const { repos, isLoading } = useGithubRepos();
 
   const sortedRepos = repos.sort((a: Project, b: Project) => {
     return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
