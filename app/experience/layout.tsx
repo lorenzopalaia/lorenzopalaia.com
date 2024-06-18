@@ -1,11 +1,11 @@
 import { getSEOTags } from "@/libs/seo";
 
 export const metadata = getSEOTags({
-    title: "Education | Lorenzo Palaia",
-    canonicalUrlRelative: "/education",
+    title: "Experience | Lorenzo Palaia",
+    canonicalUrlRelative: "/experience",
 });
 
-export default function EducationLayout({
+export default function ExperienceLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

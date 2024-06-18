@@ -1,13 +1,18 @@
 import config from "@/config";
+import Link from "next/link";
 
 const Hero = () => {
     return (
         <>
-            <h1 className="mb-2 mt-16 text-4xl font-bold">
-                {config.hero.name}
+            <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+                <Link href="/">{config.hero.name}</Link>
             </h1>
-            <h2 className="mb-4 text-xl font-thin">{config.hero.title}</h2>
-            <p className="mb-16 font-light">{config.hero.description}</p>
+            <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+                {config.hero.title}
+            </h2>
+            <p className="mt-4 max-w-md leading-normal">
+                {config.hero.description}
+            </p>
         </>
     );
 };

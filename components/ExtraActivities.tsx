@@ -1,29 +1,43 @@
 "use client";
 
 import config from "@/config";
-import CustomLink from "@/components/CustomLink";
-import Card from "@/components/Card";
+import DateCard from "@/components/DateCard";
+import LocalLink from "./Links/LocalLink";
+import SectionTitle from "./SectionTitle";
 
 const ExtraActivities = () => {
     return (
-        <section id="extra-activities" className="section mb-32">
-            <div className="group">
-                {config.extraActivities.map((activity, index) => (
-                    <Card
-                        key={index}
-                        title={activity.role}
-                        subtitle={activity.name}
-                        description={activity.description}
-                        badges={activity.badges}
-                        date={activity.date}
-                        url={activity.url}
-                        show={activity.show}
-                    />
-                ))}
+        <section
+            id="extra-activities"
+            className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+            aria-label="Extra Activities"
+        >
+            <SectionTitle>Extra Activities</SectionTitle>
+            <div>
+                <ol className="group/list">
+                    {config.extraActivities
+                        .filter((activity) => activity.show)
+                        .map((activity, index) => (
+                            <li className="mb-12" key={index}>
+                                <DateCard
+                                    date={activity.date}
+                                    title1={activity.activity}
+                                    title2={activity.category}
+                                    title3={activity.role}
+                                    title4={activity.location}
+                                    description={activity.description}
+                                    badges={activity.badges}
+                                    url={activity.url}
+                                />
+                            </li>
+                        ))}
+                </ol>
+                <div className="mt-12">
+                    <LocalLink href="/extra-activities">
+                        View All Extra Activities
+                    </LocalLink>
+                </div>
             </div>
-            <CustomLink href="/extra-activities" className="mx-4">
-                View All Extra Activities
-            </CustomLink>
         </section>
     );
 };

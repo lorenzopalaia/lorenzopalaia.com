@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-::selection {
-    background-color: #55d7cf;
-    color: #142d46;
-}
-
-.left-side {
-    position: sticky;
-    top: 4rem;
+body {
+    @apply bg-slate-900 leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900;
 }

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+const offset = 32;
+
 const useNavigation = () => {
     const [activeSection, setActiveSection] = useState<any>(null);
     const scrollHandlerRef = useRef<any>(null);
@@ -11,7 +13,7 @@ const useNavigation = () => {
             const sections = document.querySelectorAll(".section");
 
             sections.forEach((section: any) => {
-                const sectionTop = section.offsetTop - 32;
+                const sectionTop = section.offsetTop - offset;
                 const sectionBottom = sectionTop + section.offsetHeight;
                 if (
                     scrollPosition >= sectionTop &&
@@ -25,7 +27,7 @@ const useNavigation = () => {
         window.addEventListener("scroll", scrollHandlerRef.current);
 
         // Scroll to top on initial render
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0 });
 
         // Cleanup function for removing event listener on component unmount
         return () => {
@@ -36,7 +38,6 @@ const useNavigation = () => {
     const scrollToSection = (sectionId: string) => {
         const section = document.getElementById(sectionId);
         if (section) {
-            const offset = 32;
             const scrollTo = section.offsetTop - offset;
             window.scrollTo({ top: scrollTo });
             // window.history.pushState(null, null, `#${sectionId}`); // Update URL hash
