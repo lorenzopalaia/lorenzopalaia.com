@@ -4,6 +4,7 @@ import useGithubRepos from "@/hooks/useGitHubRepos";
 import config from "@/config";
 import LocalLink from "./Links/LocalLink";
 import SectionTitle from "./SectionTitle";
+import Image from "next/image";
 
 interface Project {
   name: string;
@@ -123,7 +124,7 @@ const Projects = () => {
                         ))}
                     </ul>
                   </div>
-                  <img
+                  <Image
                     alt={`${project.name} homepage`}
                     loading="lazy"
                     width="200"
