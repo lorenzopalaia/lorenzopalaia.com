@@ -18,12 +18,12 @@ const SkillsAndLanguages = () => {
               </p>
             </div>
             <div className="w-3/4">
-              <progress
-                className="progress progress-primary bg-teal-400/10 progress-animate"
-                data-value={skill.value}
-                max="100"
-                value={skill.value}
-              />
+              <div className="w-full bg-teal-400/10 rounded-full h-2 mt-3 mb-0">
+                <div
+                  className="bg-teal-300 h-2 rounded-full"
+                  style={{ width: `${skill.value}%` }}
+                ></div>
+              </div>
             </div>
           </div>
         ))}
@@ -37,12 +37,12 @@ const SkillsAndLanguages = () => {
               </p>
             </div>
             <div className="w-3/4">
-              <progress
-                className="progress progress-primary bg-teal-400/10 progress-animate"
-                data-value={language.value}
-                max="100"
-                value={language.value}
-              />
+              <div className="w-full bg-teal-400/10 rounded-full h-2 mt-3 mb-0">
+                <div
+                  className="bg-teal-300 h-2 rounded-full"
+                  style={{ width: `${language.value}%` }}
+                ></div>
+              </div>
             </div>
           </div>
         ))}
