@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit({
-  auth: process.env.NEXT_GITHUB_TOKEN,
+  auth: process.env.GITHUB_TOKEN,
 });
 
 const CACHE_DURATION = 2 * 3600 * 1000; // 2 ore in millisecondi
