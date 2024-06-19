@@ -1,8 +1,14 @@
+"use client";
+
 import config from "@/config";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
+
+import useMousePosition from "@/hooks/useMousePosition";
 
 export default function Milestones() {
+  const { x, y } = useMousePosition();
+
   const sortedMilestones = config.milestones.sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
   );
@@ -11,8 +17,7 @@ export default function Milestones() {
     <div
       className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
       style={{
-        background:
-          "radial-gradient(600px at 529px 393px, rgba(29, 78, 216, 0.15), transparent 80%)",
+        background: `radial-gradient(600px at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 80%)`,
       }}
     ></div>
   );

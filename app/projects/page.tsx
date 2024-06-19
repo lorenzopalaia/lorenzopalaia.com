@@ -1,7 +1,9 @@
 "use client";
 
 import config from "@/config";
+
 import useGithubRepos from "@/hooks/useGitHubRepos";
+import useMousePosition from "@/hooks/useMousePosition";
 
 interface Project {
   updated_at: string;
@@ -15,6 +17,7 @@ interface Project {
 }
 
 export default function Projects() {
+  const { x, y } = useMousePosition();
   const { repos, isLoading } = useGithubRepos();
 
   const sortedRepos = repos.sort((a: Project, b: Project) => {
@@ -33,8 +36,7 @@ export default function Projects() {
     <div
       className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
       style={{
-        background:
-          "radial-gradient(600px at 529px 393px, rgba(29, 78, 216, 0.15), transparent 80%)",
+        background: `radial-gradient(600px at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 80%)`,
       }}
     ></div>
   );
