@@ -29,6 +29,14 @@ const nextConfig = {
             key: "X-XSS-Protection",
             value: "1; mode=block",
           },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, immutable",
+          },
+          {
+            key: "Expires",
+            value: new Date(Date.now() + 86400 * 1000).toUTCString(),
+          },
         ],
       },
     ];
