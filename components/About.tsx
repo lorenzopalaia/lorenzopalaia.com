@@ -45,7 +45,7 @@ const About = () => {
       </div>
       <div className="mt-12">
         <div className="mb-4">
-          <LocalLink href="/resume.pdf">View Full Résumé</LocalLink>
+          <LocalLink href="/assets/resume.pdf">View Full Résumé</LocalLink>
         </div>
         <div>
           <ExternalLink href="/">Book a Call</ExternalLink>
