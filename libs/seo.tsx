@@ -8,65 +8,65 @@ import config from "@/config";
 // But I recommend to set the canonical URL for each page (export const metadata = getSEOTags({canonicalUrlRelative: "/"});)
 // See https://shipfa.st/docs/features/seo
 export const getSEOTags = ({
-    title,
-    description,
-    keywords,
-    openGraph,
-    canonicalUrlRelative,
-    extraTags,
+  title,
+  description,
+  keywords,
+  openGraph,
+  canonicalUrlRelative,
+  extraTags,
 }: Metadata & {
-    canonicalUrlRelative?: string;
-    extraTags?: any; //Record<string, string>;
+  canonicalUrlRelative?: string;
+  extraTags?: any; //Record<string, string>;
 } = {}) => {
-    return {
-        // up to 50 characters (what does your app do for the user?) > your main should be here
-        title: title || config.hero.name,
-        // up to 160 characters (how does your app help the user?)
-        description: description || config.hero.title,
-        // some keywords separated by commas. by default it will be your app name
-        keywords: keywords || [config.hero.name],
-        applicationName: config.hero.name,
-        // set a base URL prefix for other fields that require a fully qualified URL (.e.g og:image: og:image: 'https://yourdomain.com/share.png' => '/share.png')
-        metadataBase: new URL(
-            process.env.NODE_ENV === "development"
-                ? "http://localhost:3000/"
-                : `https://lorenzopalaia.it/`
-        ),
+  return {
+    // up to 50 characters (what does your app do for the user?) > your main should be here
+    title: title || config.hero.title,
+    // up to 160 characters (how does your app help the user?)
+    description: description || config.hero.description,
+    // some keywords separated by commas. by default it will be your app name
+    keywords: keywords || [config.hero.name],
+    applicationName: config.hero.name,
+    // set a base URL prefix for other fields that require a fully qualified URL (.e.g og:image: og:image: 'https://yourdomain.com/share.png' => '/share.png')
+    metadataBase: new URL(
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/"
+        : `https://lorenzopalaia.it/`
+    ),
 
-        openGraph: {
-            title: openGraph?.title || config.hero.name,
-            description: openGraph?.description || config.hero.title,
-            url: openGraph?.url || `https://lorenzopalaia.it/`,
-            siteName: openGraph?.title || config.hero.name,
-            // If you add an opengraph-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
-            // images: [
-            //   {
-            //     url: `https://${config.domainName}/share.png`,
-            //     width: 1200,
-            //     height: 660,
-            //   },
-            // ],
-            locale: "en_US",
-            type: "website",
-        },
+    openGraph: {
+      title: openGraph?.title || config.hero.name,
+      description: openGraph?.description || config.hero.title,
+      url: openGraph?.url || `https://lorenzopalaia.it/`,
+      siteName: openGraph?.title || config.hero.name,
+      // If you add an opengraph-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
+      // images: [
+      //   {
+      //     url: `https://${config.domainName}/share.png`,
+      //     width: 1200,
+      //     height: 660,
+      //   },
+      // ],
+      locale: "en_US",
+      type: "website",
+    },
 
-        twitter: {
-            title: openGraph?.title || config.hero.name,
-            description: openGraph?.description || config.hero.title,
-            // If you add an twitter-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
-            // images: [openGraph?.image || defaults.og.image],
-            card: "summary_large_image",
-            creator: "@lorenzopalaia",
-        },
+    twitter: {
+      title: openGraph?.title || config.hero.name,
+      description: openGraph?.description || config.hero.title,
+      // If you add an twitter-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
+      // images: [openGraph?.image || defaults.og.image],
+      card: "summary_large_image",
+      creator: "@lorenzopalaia",
+    },
 
-        // If a canonical URL is given, we add it. The metadataBase will turn the relative URL into a fully qualified URL
-        ...(canonicalUrlRelative && {
-            alternates: { canonical: canonicalUrlRelative },
-        }),
+    // If a canonical URL is given, we add it. The metadataBase will turn the relative URL into a fully qualified URL
+    ...(canonicalUrlRelative && {
+      alternates: { canonical: canonicalUrlRelative },
+    }),
 
-        // If you want to add extra tags, you can pass them here
-        ...extraTags,
-    };
+    // If you want to add extra tags, you can pass them here
+    ...extraTags,
+  };
 };
 
 // Strctured Data for Rich Results on Google. Learn more: https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
@@ -77,37 +77,37 @@ export const getSEOTags = ({
 // Fill the fields with your own data
 // See https://shipfa.st/docs/features/seo
 export const renderSchemaTags = () => {
-    return (
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                    "@context": "http://schema.org",
-                    "@type": "SoftwareApplication",
-                    name: config.hero.name,
-                    description: config.hero.title,
-                    image: `https://lorenzopalaia.it/icon.png`,
-                    url: `https://lorenzopalaia.it/`,
-                    author: {
-                        "@type": "Person",
-                        name: "Lorenzo Palaia",
-                    },
-                    datePublished: "2024-06-04",
-                    applicationCategory: "Portfolio",
-                    aggregateRating: {
-                        "@type": "AggregateRating",
-                        ratingValue: "4.8",
-                        ratingCount: "48",
-                    },
-                    /* offers: [
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "http://schema.org",
+          "@type": "SoftwareApplication",
+          name: config.hero.name,
+          description: config.hero.title,
+          image: `https://lorenzopalaia.it/icon.png`,
+          url: `https://lorenzopalaia.it/`,
+          author: {
+            "@type": "Person",
+            name: "Lorenzo Palaia",
+          },
+          datePublished: "2024-06-04",
+          applicationCategory: "Portfolio",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.8",
+            ratingCount: "48",
+          },
+          /* offers: [
                         {
                             "@type": "Offer",
                             price: "9.99",
                             priceCurrency: "USD",
                         },
                     ], */
-                }),
-            }}
-        ></script>
-    );
+        }),
+      }}
+    ></script>
+  );
 };

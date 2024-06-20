@@ -3,7 +3,7 @@ const config = {
     name: "Lorenzo Palaia",
     title: "Software Engineer | Computer and Automatic Engineer Graduate",
     description:
-      "Crypto enthusiast, passionate about programming, artificial intelligence, blockchains, finance and traveling",
+      "Crypto enthusiast, passionate about programming, artificial intelligence, blockchains, finance and traveling. Computer and Automatic Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
   },
   navigation: [
     { name: "About", id: "about" },
