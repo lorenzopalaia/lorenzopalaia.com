@@ -73,7 +73,6 @@ export default function Milestones() {
                       alt="University Start"
                       layout="fill"
                       objectFit="cover"
-                      loading="lazy"
                       className="scale-[1.75] group-hover:animate-pulse"
                     />
                   </div>
