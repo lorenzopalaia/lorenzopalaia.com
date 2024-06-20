@@ -79,7 +79,7 @@ export const getSEOTags = ({
 export const renderSchemaTags = () => {
   return (
     <script
-      async
+      defer
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify({
