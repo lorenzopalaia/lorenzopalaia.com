@@ -7,7 +7,6 @@ const nextConfig = {
         hostname: "raw.githubusercontent.com",
       },
     ],
-    minimumCacheTTL: 60,
   },
 };
 

@@ -5,9 +5,15 @@ import Link from "next/link";
 import Image from "next/legacy/image";
 
 import useMousePosition from "@/hooks/useMousePosition";
+import { useState } from "react";
 
 export default function Milestones() {
   const { x, y } = useMousePosition();
+  const [imageLoading, setImageLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setImageLoading(false);
+  };
 
   const sortedMilestones = config.milestones.sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
@@ -68,12 +74,17 @@ export default function Milestones() {
               <li key={index} className="flex flex-col">
                 <div className="text-center group">
                   <div className="transform w-24 h-24 relative overflow-hidden rounded-full mx-auto">
+                    {imageLoading && (
+                      <div className="absolute inset-0 bg-teal-400/10 animate-pulse"></div>
+                    )}
                     <Image
                       src={`/assets/imgs/milestones/${milestone.img}.webp`}
                       alt="University Start"
                       layout="fill"
+                      loading="lazy"
                       objectFit="cover"
                       className="scale-[1.75] group-hover:animate-pulse"
+                      onLoadingComplete={handleImageLoad}
                     />
                   </div>
                   <p className="font-semibold leading-snug text-slate-200 group-hover:text-teal-300 mt-2">

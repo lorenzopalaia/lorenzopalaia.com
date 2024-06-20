@@ -162,7 +162,7 @@ const config = {
       img: "randstad_hackathon",
     },
     {
-      name: "Grauation",
+      name: "Graduation",
       date: "Mar 2024",
       img: "graduation",
     },
