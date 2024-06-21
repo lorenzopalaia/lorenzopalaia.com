@@ -40,10 +40,9 @@ const config = {
     "Arduino-Oscilloscope",
     "Blocktracr",
     // local projects
-    "Sysco S.p.A.",
   ],
   projects: [
-    {
+    /* {
       created_at: "Feb 2024",
       updated_at: "Mar 2024",
       img: "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png",
@@ -53,7 +52,7 @@ const config = {
         "Developed a corporate website for Sysco S.p.A. using Vue.js, HTML and CSS",
       // stargazers_count: 0,
       languages: ["Vue", "Javascript", "HTML", "CSS"],
-    },
+    }, */
     {
       created_at: "Sep 2020",
       updated_at: "Oct 2020",

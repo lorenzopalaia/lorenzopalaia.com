@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://lorenzopalaia.it/education</loc><lastmod>2024-06-20T13:24:16.779Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://lorenzopalaia.it/extra-activities</loc><lastmod>2024-06-20T13:24:16.784Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://lorenzopalaia.it/milestones</loc><lastmod>2024-06-20T13:24:16.785Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://lorenzopalaia.it/experience</loc><lastmod>2024-06-20T13:24:16.785Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://lorenzopalaia.it</loc><lastmod>2024-06-20T13:24:16.785Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://lorenzopalaia.it/apple-icon.png</loc><lastmod>2024-06-20T13:24:16.785Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://lorenzopalaia.it/projects</loc><lastmod>2024-06-20T13:24:16.785Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://lorenzopalaia.it/api/githubRepos</loc><lastmod>2024-06-20T13:24:16.785Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://lorenzopalaia.it/education</loc><lastmod>2024-06-21T13:13:22.789Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://lorenzopalaia.it</loc><lastmod>2024-06-21T13:13:22.794Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://lorenzopalaia.it/milestones</loc><lastmod>2024-06-21T13:13:22.794Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://lorenzopalaia.it/api/githubRepos</loc><lastmod>2024-06-21T13:13:22.794Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://lorenzopalaia.it/projects</loc><lastmod>2024-06-21T13:13:22.794Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://lorenzopalaia.it/experience</loc><lastmod>2024-06-21T13:13:22.794Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://lorenzopalaia.it/extra-activities</loc><lastmod>2024-06-21T13:13:22.794Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://lorenzopalaia.it/apple-icon.png</loc><lastmod>2024-06-21T13:13:22.794Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

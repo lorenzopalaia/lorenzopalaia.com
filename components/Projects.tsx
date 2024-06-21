@@ -64,7 +64,7 @@ const Projects = () => {
                       >
                         <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                         <span>
-                          {project.name}
+                          {project.name.replaceAll("-", " ")}
                           <span className="inline-block">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"

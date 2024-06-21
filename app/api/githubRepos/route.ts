@@ -13,7 +13,6 @@ const fetchGithubRepos = async () => {
   const response = await octokit.repos.listForUser({
     username: "lorenzopalaia",
   });
-  console.log("Retrieving data from GitHub");
   return response.data;
 };
 
@@ -33,7 +32,6 @@ export async function GET(req: NextRequest) {
   };
 
   if (cachedData && cacheTimestamp && now - cacheTimestamp < CACHE_DURATION) {
-    console.log("Retrieving data from cache");
     return NextResponse.json(cachedData, { headers });
   }
 
