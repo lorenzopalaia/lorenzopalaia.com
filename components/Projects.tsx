@@ -22,6 +22,22 @@ const Projects = () => {
     return config.showedProjects.includes(repo.name);
   });
 
+  const StarIcon = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      className="mr-1 h-3 w-3"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+
   return (
     <section
       id="projects"
@@ -86,7 +102,7 @@ const Projects = () => {
                     <p className="mt-2 text-sm leading-normal">
                       {project.description}
                     </p>
-                    {project.stargazers_count && (
+                    {project.stargazers_count !== undefined && (
                       <a
                         className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300"
                         href={project.html_url}
@@ -94,19 +110,7 @@ const Projects = () => {
                         rel="noreferrer noopener"
                         aria-label="0 stars on GitHub (opens in a new tab)"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="mr-1 h-3 w-3"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
+                        <StarIcon />
                         <span>{project.stargazers_count}</span>
                       </a>
                     )}
