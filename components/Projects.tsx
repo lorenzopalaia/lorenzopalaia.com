@@ -1,10 +1,14 @@
 "use client";
 
 import useGithubRepos from "@/hooks/useGitHubRepos";
+
 import config from "@/config";
+
 import LocalLink from "./Links/LocalLink";
 import SectionTitle from "./SectionTitle";
+
 import Image from "next/image";
+import Link from "next/link";
 
 interface Project {
   name: string;
@@ -71,7 +75,7 @@ const Projects = () => {
                   <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
                   <div className="z-10 sm:order-2 sm:col-span-6">
                     <h3>
-                      <a
+                      <Link
                         className="inline-flex items-baseline text-base font-medium leading-tight group/link text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
                         href={project.html_url}
                         target="_blank"
@@ -97,13 +101,13 @@ const Projects = () => {
                             </svg>
                           </span>
                         </span>
-                      </a>
+                      </Link>
                     </h3>
                     <p className="mt-2 text-sm leading-normal">
                       {project.description}
                     </p>
                     {project.stargazers_count !== undefined && (
-                      <a
+                      <Link
                         className="relative inline-flex items-center mt-2 text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300"
                         href={project.html_url}
                         target="_blank"
@@ -112,7 +116,7 @@ const Projects = () => {
                       >
                         <StarIcon />
                         <span>{project.stargazers_count}</span>
-                      </a>
+                      </Link>
                     )}
                     <ul
                       className="flex flex-wrap mt-2"

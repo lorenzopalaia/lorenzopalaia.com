@@ -1,11 +1,11 @@
-import config from "@/config";
+import Link from "next/link";
 
 const Footer = () => {
   return (
     <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
       <p>
         Loosely designed in{" "}
-        <a
+        <Link
           href="https://www.figma.com/"
           className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
           target="_blank"
@@ -13,9 +13,9 @@ const Footer = () => {
           aria-label="Figma (opens in a new tab)"
         >
           Figma
-        </a>{" "}
+        </Link>{" "}
         and coded in{" "}
-        <a
+        <Link
           href="https://code.visualstudio.com/"
           className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
           target="_blank"
@@ -23,9 +23,9 @@ const Footer = () => {
           aria-label="Visual Studio Code (opens in a new tab)"
         >
           Visual Studio Code
-        </a>{" "}
+        </Link>{" "}
         by yours truly. Built with{" "}
-        <a
+        <Link
           href="https://nextjs.org/"
           className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
           target="_blank"
@@ -33,9 +33,9 @@ const Footer = () => {
           aria-label="Next.js (opens in a new tab)"
         >
           Next.js
-        </a>{" "}
+        </Link>{" "}
         and{" "}
-        <a
+        <Link
           href="https://tailwindcss.com/"
           className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
           target="_blank"
@@ -43,9 +43,9 @@ const Footer = () => {
           aria-label="Tailwind CSS (opens in a new tab)"
         >
           Tailwind CSS
-        </a>
+        </Link>
         , deployed with{" "}
-        <a
+        <Link
           href="https://vercel.com/"
           className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
           target="_blank"
@@ -53,9 +53,9 @@ const Footer = () => {
           aria-label="Vercel (opens in a new tab)"
         >
           Vercel
-        </a>
+        </Link>
         . All text is set in the{" "}
-        <a
+        <Link
           href="https://rsms.me/inter/"
           className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
           target="_blank"
@@ -63,7 +63,7 @@ const Footer = () => {
           aria-label="Inter (opens in a new tab)"
         >
           Inter
-        </a>{" "}
+        </Link>{" "}
         typeface.
         <br />
         <br />

@@ -3,6 +3,8 @@
 import config from "@/config";
 import useNavigation from "@/hooks/useNavigation";
 
+import Link from "next/link";
+
 const Navigation = () => {
   const activeSection = useNavigation();
 
@@ -12,7 +14,7 @@ const Navigation = () => {
         {config.navigation.map((section) => {
           return (
             <li key={section.id}>
-              <a
+              <Link
                 className="flex items-center py-3 group"
                 href={`#${section.id}`}
               >
@@ -32,7 +34,7 @@ const Navigation = () => {
                 >
                   {section.name}
                 </span>
-              </a>
+              </Link>
             </li>
           );
         })}

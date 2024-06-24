@@ -29,12 +29,12 @@ export default function Milestones() {
   );
 
   const SkipToContent = () => (
-    <a
+    <Link
       href="#content"
       className="absolute top-0 left-0 block px-4 py-3 text-sm font-bold tracking-widest text-white uppercase -translate-x-full rounded bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 focus-visible:translate-x-0"
     >
       Skip to Content
-    </a>
+    </Link>
   );
 
   const LeftArrowIcon = () => (

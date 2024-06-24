@@ -3,6 +3,7 @@
 import config from "@/config";
 
 import useMousePosition from "@/hooks/useMousePosition";
+import Link from "next/link";
 
 export default function Experience() {
   const { x, y } = useMousePosition();
@@ -25,12 +26,12 @@ export default function Experience() {
   );
 
   const SkipToContent = () => (
-    <a
+    <Link
       href="#content"
       className="absolute top-0 left-0 block px-4 py-3 text-sm font-bold tracking-widest text-white uppercase -translate-x-full rounded bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 focus-visible:translate-x-0"
     >
       Skip to Content
-    </a>
+    </Link>
   );
 
   const LeftArrowIcon = () => (
@@ -83,13 +84,13 @@ export default function Experience() {
       <div className="max-w-screen-xl min-h-screen px-6 py-12 mx-auto font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
         <SkipToContent />
         <div className="lg:py-24">
-          <a
+          <Link
             className="inline-flex items-center mb-2 font-semibold leading-tight text-teal-300 group"
             href="/"
           >
             <LeftArrowIcon />
             Lorenzo Palaia
-          </a>
+          </Link>
           <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
             Experience
           </h1>
@@ -152,8 +153,8 @@ export default function Experience() {
                     <ul className="translate-y-1">
                       {experience.links.map((link, index) => (
                         <li key={index} className="flex items-center mb-1">
-                          <a
-                            className="inline-flex items-baseline text-sm font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 text-slate-400 hover:text-slate-200 group/link"
+                          <Link
+                            className="inline-flex items-baseline text-sm font-medium leading-tight hover:text-teal-300 focus-visible:text-teal-300 text-slate-400 group/link"
                             href={link.url}
                             target="_blank"
                             rel="noreferrer noopener"
@@ -170,7 +171,7 @@ export default function Experience() {
                                 )}
                               </span>
                             </span>
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>

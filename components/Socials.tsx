@@ -3,6 +3,8 @@ import LinkedInIcon from "./Icons/LinkedInIcon";
 import InstagramIcon from "./Icons/InstagramIcon";
 import TwitterIcon from "./Icons/TwitterIcon";
 
+import Link from "next/link";
+
 const socials = [
   {
     name: "GitHub",
@@ -31,7 +33,7 @@ const Socials = () => {
     <ul className="flex items-center mt-8 ml-1" aria-label="Social media">
       {socials.map((social) => (
         <li key={social.name} className="mr-5 text-xs shrink-0">
-          <a
+          <Link
             className="block hover:text-slate-200"
             href={social.href}
             target="_blank"
@@ -41,7 +43,7 @@ const Socials = () => {
           >
             <span className="sr-only">{social.name}</span>
             {social.icon}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

@@ -26,12 +26,12 @@ export default function ExtraActivities() {
   );
 
   const SkipToContent = () => (
-    <a
+    <Link
       href="#content"
       className="absolute top-0 left-0 block px-4 py-3 text-sm font-bold tracking-widest text-white uppercase -translate-x-full rounded bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 focus-visible:translate-x-0"
     >
       Skip to Content
-    </a>
+    </Link>
   );
 
   const LeftArrowIcon = () => (
@@ -152,8 +152,8 @@ export default function ExtraActivities() {
                   <td className="py-4 pr-4 text-sm align-top">
                     <ul className="translate-y-1">
                       <li key={index} className="flex items-center mb-1">
-                        <a
-                          className="inline-flex items-baseline text-sm font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 text-slate-400 hover:text-slate-200 group/link"
+                        <Link
+                          className="inline-flex items-baseline text-sm font-medium leading-tight hover:text-teal-300 focus-visible:text-teal-300 text-slate-400 group/link"
                           href={activity.url}
                           target="_blank"
                           rel="noreferrer noopener"
@@ -166,7 +166,7 @@ export default function ExtraActivities() {
                               <RightUpArrowIcon2 />
                             </span>
                           </span>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </td>
