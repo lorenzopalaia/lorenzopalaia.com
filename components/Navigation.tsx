@@ -7,13 +7,13 @@ const Navigation = () => {
   const activeSection = useNavigation();
 
   return (
-    <nav className="nav hidden lg:block" aria-label="In-page jump links">
+    <nav className="hidden nav lg:block" aria-label="In-page jump links">
       <ul className="mt-16 w-max">
         {config.navigation.map((section) => {
           return (
             <li key={section.id}>
               <a
-                className="group flex items-center py-3"
+                className="flex items-center py-3 group"
                 href={`#${section.id}`}
               >
                 <span

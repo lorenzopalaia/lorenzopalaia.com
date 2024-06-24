@@ -18,7 +18,7 @@ const LocalLink = ({
       href={href}
     >
       <span>
-        <span className="border-b border-transparent pb-px transition group-hover:border-teal-300 motion-reduce:transition-none">
+        <span className="pb-px transition border-b border-transparent group-hover:border-teal-300 motion-reduce:transition-none">
           {children}
         </span>
         <span className="whitespace-nowrap">

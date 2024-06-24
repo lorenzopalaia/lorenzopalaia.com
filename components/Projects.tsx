@@ -27,7 +27,7 @@ const Projects = () => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
-      className="mr-1 h-3 w-3"
+      className="w-3 h-3 mr-1"
       aria-hidden="true"
     >
       <path
@@ -50,16 +50,16 @@ const Projects = () => {
           <div>
             {Array.from({ length: 4 }).map((_, index) => (
               <div
-                className="mb-12 relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 animate-pulse"
+                className="relative grid gap-4 pb-1 mb-12 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 animate-pulse"
                 key={index}
               >
-                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50"></div>
+                <div className="absolute z-0 hidden transition rounded-md -inset-x-4 -inset-y-4 motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50"></div>
                 <div className="z-10 sm:order-2 sm:col-span-6">
-                  <div className="w-full h-4 bg-teal-400/10 rounded mb-1"></div>
-                  <div className="w-full h-2 bg-teal-400/10 rounded mb-2"></div>
-                  <div className="w-full h-10 bg-teal-400/10 rounded"></div>
+                  <div className="w-full h-4 mb-1 rounded bg-teal-400/10"></div>
+                  <div className="w-full h-2 mb-2 rounded bg-teal-400/10"></div>
+                  <div className="w-full h-10 rounded bg-teal-400/10"></div>
                 </div>
-                <div className="rounded transition sm:order-1 sm:col-span-2 bg-teal-400/10"></div>
+                <div className="transition rounded sm:order-1 sm:col-span-2 bg-teal-400/10"></div>
               </div>
             ))}
           </div>
@@ -72,7 +72,7 @@ const Projects = () => {
                   <div className="z-10 sm:order-2 sm:col-span-6">
                     <h3>
                       <a
-                        className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+                        className="inline-flex items-baseline text-base font-medium leading-tight group/link text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
                         href={project.html_url}
                         target="_blank"
                         rel="noreferrer noopener"
@@ -86,7 +86,7 @@ const Projects = () => {
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 20 20"
                               fill="currentColor"
-                              className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none"
+                              className="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none"
                               aria-hidden="true"
                             >
                               <path
@@ -104,7 +104,7 @@ const Projects = () => {
                     </p>
                     {project.stargazers_count !== undefined && (
                       <a
-                        className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300"
+                        className="relative inline-flex items-center mt-2 text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300"
                         href={project.html_url}
                         target="_blank"
                         rel="noreferrer noopener"
@@ -115,13 +115,13 @@ const Projects = () => {
                       </a>
                     )}
                     <ul
-                      className="mt-2 flex flex-wrap"
+                      className="flex flex-wrap mt-2"
                       aria-label="Technologies used:"
                     >
                       {project.languages &&
                         project.languages.map((language, index) => (
                           <li key={index} className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                            <div className="flex items-center px-3 py-1 text-xs font-medium leading-5 text-teal-300 rounded-full bg-teal-400/10">
                               {language}
                             </div>
                           </li>
@@ -135,7 +135,7 @@ const Projects = () => {
                     height="48"
                     decoding="async"
                     data-nimg="1"
-                    className="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                    className="transition border-2 rounded border-slate-200/10 group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
                     style={{
                       color: "transparent",
                     }}

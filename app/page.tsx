@@ -20,7 +20,7 @@ export default function Home() {
 
   const BackgroundHandler = () => (
     <div
-      className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
+      className="fixed inset-0 z-30 transition duration-300 pointer-events-none lg:absolute"
       style={{
         background: `radial-gradient(600px at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 80%)`,
       }}
@@ -30,16 +30,16 @@ export default function Home() {
   const SkipToContent = () => (
     <Link
       href="#content"
-      className="absolute left-0 top-0 block -translate-x-full rounded bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 px-4 py-3 text-sm font-bold uppercase tracking-widest text-white focus-visible:translate-x-0"
+      className="absolute top-0 left-0 block px-4 py-3 text-sm font-bold tracking-widest text-white uppercase -translate-x-full rounded bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 focus-visible:translate-x-0"
     >
       Skip to Content
     </Link>
   );
 
   return (
-    <div className="group/spotlight relative">
+    <div className="relative group/spotlight">
       <BackgroundHandler />
-      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+      <div className="max-w-screen-xl min-h-screen px-6 py-12 mx-auto font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
         <SkipToContent />
         <div className="lg:flex lg:justify-between lg:gap-4">
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">

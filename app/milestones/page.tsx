@@ -21,7 +21,7 @@ export default function Milestones() {
 
   const BackgroundHandler = () => (
     <div
-      className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
+      className="fixed inset-0 z-30 transition duration-300 pointer-events-none lg:absolute"
       style={{
         background: `radial-gradient(600px at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 80%)`,
       }}
@@ -31,7 +31,7 @@ export default function Milestones() {
   const SkipToContent = () => (
     <a
       href="#content"
-      className="absolute left-0 top-0 block -translate-x-full rounded bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 px-4 py-3 text-sm font-bold uppercase tracking-widest text-white focus-visible:translate-x-0"
+      className="absolute top-0 left-0 block px-4 py-3 text-sm font-bold tracking-widest text-white uppercase -translate-x-full rounded bg-gradient-to-br from-teal-400 via-blue-500 to-purple-600 focus-visible:translate-x-0"
     >
       Skip to Content
     </a>
@@ -42,7 +42,7 @@ export default function Milestones() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
-      className="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-2"
+      className="w-4 h-4 mr-1 transition-transform rotate-180 group-hover:-translate-x-2"
       aria-hidden="true"
     >
       <path
@@ -56,11 +56,11 @@ export default function Milestones() {
   return (
     <>
       <BackgroundHandler />
-      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+      <div className="max-w-screen-xl min-h-screen px-6 py-12 mx-auto font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
         <SkipToContent />
         <div className="lg:py-24">
           <Link
-            className="group mb-2 inline-flex items-center font-semibold leading-tight text-teal-300"
+            className="inline-flex items-center mb-2 font-semibold leading-tight text-teal-300 group"
             href="/"
           >
             <LeftArrowIcon />
@@ -69,11 +69,11 @@ export default function Milestones() {
           <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
             Milestones
           </h1>
-          <ul className="mt-12 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-16">
+          <ul className="grid grid-cols-3 gap-16 mt-12 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {sortedMilestones.map((milestone, index) => (
               <li key={index} className="flex flex-col">
                 <div className="text-center group">
-                  <div className="transform w-24 h-24 relative overflow-hidden rounded-full mx-auto">
+                  <div className="relative w-24 h-24 mx-auto overflow-hidden transform rounded-full">
                     {imageLoading && (
                       <div className="absolute inset-0 bg-teal-400/10 animate-pulse"></div>
                     )}
@@ -87,7 +87,7 @@ export default function Milestones() {
                       onLoadingComplete={handleImageLoad}
                     />
                   </div>
-                  <p className="font-semibold leading-snug text-slate-200 group-hover:text-teal-300 mt-2">
+                  <p className="mt-2 font-semibold leading-snug text-slate-200 group-hover:text-teal-300">
                     {milestone.name}
                   </p>
                   <p className="mt-1">{milestone.date}</p>
