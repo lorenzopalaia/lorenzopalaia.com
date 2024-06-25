@@ -13,7 +13,7 @@ const ExternalLink = ({
 }) => {
   return (
     <Link
-      className={`group/link inline-flex items-baseline text-base font-medium font-semibold leading-tight text-slate-200 text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 ${className}`}
+      className={`group/link inline-flex items-baseline text-base font-semibold leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 ${className}`}
       href={href}
       target="_blank"
       rel="noreferrer noopener"
