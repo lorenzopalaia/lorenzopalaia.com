@@ -22,7 +22,7 @@ const ExternalLink = ({
       <span>
         {children}
         <span className="inline-block">
-          <RightUpArrowIcon />
+          <RightUpArrowIcon className="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
         </span>
       </span>
     </Link>

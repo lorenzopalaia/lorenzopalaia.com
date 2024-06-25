@@ -1,7 +1,5 @@
 import BadgeList from "@/components/BadgeList";
 import LinkList from "./LinkList";
-import Link from "next/link";
-import RightUpArrowIcon from "./Icons/RightUpArrowIcon";
 import CardLink from "./Links/CardLink";
 
 const DateCard = ({
