@@ -1,14 +1,16 @@
 import { getSEOTags } from "@/libs/seo";
+import config from "@/config";
 
 export const metadata = getSEOTags({
-    title: "Projects | Lorenzo Palaia",
-    canonicalUrlRelative: "/projects",
+  title: "Projects | Lorenzo Palaia",
+  canonicalUrlRelative: "/projects",
+  keywords: config.keywords,
 });
 
 export default function EducationLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return <>{children}</>;
+  return <>{children}</>;
 }
