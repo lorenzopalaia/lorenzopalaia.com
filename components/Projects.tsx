@@ -52,7 +52,7 @@ const Projects = () => {
       <div>
         {isLoading ? (
           <div>
-            {Array.from({ length: 4 }).map((_, index) => (
+            {Array.from({ length: 3 }).map((_, index) => (
               <div
                 className="relative grid gap-4 pb-1 mb-12 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 animate-pulse"
                 key={index}

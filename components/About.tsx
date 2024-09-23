@@ -28,7 +28,7 @@ const About = () => {
           <PlainLink href="https://github.com/lorenzopalaia">
             programming
           </PlainLink>
-          , , diving deep into the mysteries of{" "}
+          , diving deep into the mysteries of{" "}
           <PlainLink href="/">artificial intelligence</PlainLink>, and
           navigating the <PlainLink href="/">blockchain</PlainLink> universe.
         </p>
@@ -48,7 +48,9 @@ const About = () => {
           <LocalLink href="/assets/resume.pdf">View Full Résumé</LocalLink>
         </div>
         <div>
-          <ExternalLink href="/">Book a Call</ExternalLink>
+          <ExternalLink href="https://cal.com/lorenzopalaia/30min">
+            Book a Call
+          </ExternalLink>
         </div>
       </div>
     </section>

@@ -1,10 +1,10 @@
-const TwitterIcon = () => {
+const TwitterIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 1227"
       fill="none"
-      className="w-5 h-5"
+      className={className}
       aria-hidden="true"
     >
       <path
