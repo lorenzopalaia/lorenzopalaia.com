@@ -1,10 +1,10 @@
-const RightUpArrowIcon = ({ className }: { className?: string }) => {
+const RightUpArrowIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
-      className={className}
+      className="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none"
       aria-hidden="true"
     >
       <path

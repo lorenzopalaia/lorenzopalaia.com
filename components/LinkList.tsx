@@ -20,7 +20,7 @@ const LinkList = ({
             rel="noreferrer noopener"
             aria-label={`${link.name} (opens in a new tab)`}
           >
-            <LinkIcon className="w-3 h-3 mr-1" />
+            <LinkIcon />
             <span>{link.name}</span>
           </Link>
         </li>

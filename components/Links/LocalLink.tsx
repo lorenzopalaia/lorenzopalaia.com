@@ -13,7 +13,7 @@ const LocalLink = ({
 }) => {
   return (
     <Link
-      className={`group inline-flex items-center font-semibold leading-tight text-slate-200 ${className}`}
+      className={`group inline-flex items-center font-medium font-semibold leading-tight text-slate-200 text-slate-200 ${className}`}
       aria-label="View Full Archive"
       href={href}
     >
@@ -22,7 +22,7 @@ const LocalLink = ({
           {children}
         </span>
         <span className="whitespace-nowrap">
-          <RightArrowIcon className="inline-block w-4 h-4 ml-1 transition-transform -translate-y-px shrink-0 group-hover:translate-x-2 group-focus-visible:translate-x-2 motion-reduce:transition-none" />
+          <RightArrowIcon />
         </span>
       </span>
     </Link>

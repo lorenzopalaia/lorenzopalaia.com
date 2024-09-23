@@ -9,22 +9,22 @@ const socials = [
   {
     name: "GitHub",
     href: "https://github.com/lorenzopalaia",
-    icon: <GitHubIcon className="w-6 h-6" />,
+    icon: <GitHubIcon />,
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/lorenzopalaia/",
-    icon: <LinkedInIcon className="w-6 h-6" />,
+    icon: <LinkedInIcon />,
   },
-  /* {
+  {
     name: "Instagram",
     href: "https://www.instagram.com/lorenzo_palaia/",
-    icon: <InstagramIcon className="w-6 h-6" />,
-  }, */
+    icon: <InstagramIcon />,
+  },
   {
     name: "Twitter",
     href: "https://twitter.com/lorenzo_palaia",
-    icon: <TwitterIcon className="w-5 h-5" />,
+    icon: <TwitterIcon />,
   },
 ];
 
