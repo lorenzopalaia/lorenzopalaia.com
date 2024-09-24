@@ -38,8 +38,9 @@ const About = () => {
           the globe. Let&apos;s create some magic with code!
         </p>
         <p>
-          I always like to introduce some gamification 🕹️ into my projects. Here
-          I would like to summarize my work path through the{" "}
+          I always like to introduce some{" "}
+          <PlainLink href="/milestones">gamification</PlainLink> 🕹️ into my
+          projects. Here I would like to summarize my work path through the{" "}
           <LocalLink href="/milestones">Milestones</LocalLink>
         </p>
       </div>
