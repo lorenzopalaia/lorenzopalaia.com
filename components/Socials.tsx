@@ -2,6 +2,7 @@ import GitHubIcon from "./Icons/GitHubIcon";
 import LinkedInIcon from "./Icons/LinkedInIcon";
 import InstagramIcon from "./Icons/InstagramIcon";
 import TwitterIcon from "./Icons/TwitterIcon";
+import ResumeIcon from "./Icons/ResumeIcon";
 
 import Link from "next/link";
 
@@ -25,6 +26,11 @@ const socials = [
     name: "Twitter",
     href: "https://twitter.com/lorenzo_palaia",
     icon: <TwitterIcon className="w-5 h-5" />,
+  },
+  {
+    name: "Resume",
+    href: "/assets/resume.pdf",
+    icon: <ResumeIcon className="w-5 h-5" />,
   },
 ];
 
