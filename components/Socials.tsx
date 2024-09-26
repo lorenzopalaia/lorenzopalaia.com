@@ -3,6 +3,7 @@ import LinkedInIcon from "./Icons/LinkedInIcon";
 import InstagramIcon from "./Icons/InstagramIcon";
 import TwitterIcon from "./Icons/TwitterIcon";
 import ResumeIcon from "./Icons/ResumeIcon";
+import EnvelopeIcon from "./Icons/EnvelopeIcon";
 
 import Link from "next/link";
 
@@ -10,27 +11,32 @@ const socials = [
   {
     name: "GitHub",
     href: "https://github.com/lorenzopalaia",
-    icon: <GitHubIcon className="w-6 h-6" />,
+    icon: <GitHubIcon className="size-6" />,
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/lorenzopalaia/",
-    icon: <LinkedInIcon className="w-6 h-6" />,
+    icon: <LinkedInIcon className="size-6" />,
   },
   /* {
     name: "Instagram",
     href: "https://www.instagram.com/lorenzo_palaia/",
-    icon: <InstagramIcon className="w-6 h-6" />,
+    icon: <InstagramIcon className="size-6" />,
   }, */
   {
     name: "Twitter",
     href: "https://twitter.com/lorenzo_palaia",
-    icon: <TwitterIcon className="w-5 h-5" />,
+    icon: <TwitterIcon className="size-5" />,
   },
   {
     name: "Resume",
     href: "/assets/resume.pdf",
-    icon: <ResumeIcon className="w-5 h-5" />,
+    icon: <ResumeIcon className="size-5" />,
+  },
+  {
+    name: "Email",
+    href: "mailto:lorenzopalaia53@gmail.com",
+    icon: <EnvelopeIcon className="size-6" />,
   },
 ];
 

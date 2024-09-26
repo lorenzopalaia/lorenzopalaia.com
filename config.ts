@@ -2,6 +2,7 @@ const config = {
   hero: {
     name: "Lorenzo Palaia",
     title: "Software Engineer | Computer and Automatic Engineer Graduate",
+    location: "Rome, Italy",
     description:
       "Crypto enthusiast, passionate about programming, artificial intelligence, blockchains, finance and traveling. Computer and Automatic Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
   },
