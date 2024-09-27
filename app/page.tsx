@@ -2,6 +2,7 @@
 
 import Hero from "@/components/Hero";
 import Navigation from "@/components/Navigation";
+import Wakatime from "@/components/Wakatime";
 import GitHubCal from "@/components/GitHubCal";
 import Socials from "@/components/Socials";
 import About from "@/components/About";
@@ -50,6 +51,7 @@ export default function Home() {
             </div>
             <div>
               <GitHubCal />
+              <Wakatime />
               <Socials />
             </div>
           </header>
