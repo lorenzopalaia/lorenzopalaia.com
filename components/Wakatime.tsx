@@ -14,7 +14,8 @@ const Wakatime = () => {
         </div>
       ) : (
         <p className="text-sm text-gray-500">
-          Total time coded this week: {wakatime.data.human_readable_total}
+          Total time coded this week:{" "}
+          {wakatime.data.human_readable_total_including_other_language}
         </p>
       )}
     </div>
