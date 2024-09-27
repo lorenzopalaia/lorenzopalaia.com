@@ -2,6 +2,7 @@
 
 import Hero from "@/components/Hero";
 import Navigation from "@/components/Navigation";
+import GitHubCal from "@/components/GitHubCal";
 import Socials from "@/components/Socials";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -47,7 +48,10 @@ export default function Home() {
               <Hero />
               <Navigation />
             </div>
-            <Socials />
+            <div>
+              <GitHubCal />
+              <Socials />
+            </div>
           </header>
           <main id="content" className="pt-24 lg:w-1/2 lg:py-24">
             <About />
