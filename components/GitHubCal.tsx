@@ -39,7 +39,7 @@ const GitHubCal = () => {
 
   const explicitTheme: ThemeInput = {
     light: ["#E1E6F4", "#0069FF"],
-    dark: ["#1B284B", "#39BDF8"],
+    dark: ["#1B284B", "#5EEAD4"],
   };
 
   const selectLastMonths = (contributions: any, monthsToSelect: number) => {

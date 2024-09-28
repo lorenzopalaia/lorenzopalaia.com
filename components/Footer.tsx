@@ -71,14 +71,8 @@ const Footer = () => {
         <br />
         Copyright © {new Date().getFullYear()} - All Rights Reserved
       </p>
-      <Link
-        className="hover:text-slate-200"
-        href="/"
-        aria-label="Back to the homepage"
-        title="Back to the homepage"
-      >
-        <SignatureIcon className="size-24 mt-8" />
-      </Link>
+
+      <SignatureIcon className="size-24 mt-8 hover:text-teal-300" />
     </footer>
   );
 };
