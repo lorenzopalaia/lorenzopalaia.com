@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import SignatureIcon from "./Icons/SignatureIcon";
+
 const Footer = () => {
   return (
     <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
@@ -69,6 +71,14 @@ const Footer = () => {
         <br />
         Copyright © {new Date().getFullYear()} - All Rights Reserved
       </p>
+      <Link
+        className="hover:text-slate-200"
+        href="/"
+        aria-label="Back to the homepage"
+        title="Back to the homepage"
+      >
+        <SignatureIcon className="size-24 mt-8" />
+      </Link>
     </footer>
   );
 };
