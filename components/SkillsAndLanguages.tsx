@@ -46,7 +46,7 @@ const SkillsAndLanguages = () => {
       <SectionTitle>Skills & Languages</SectionTitle>
       <div className="mb-20">
         {config.skills.map((skill, index) => (
-          <div key={skill.name} className="flex flex-col mb-8 lg:flex-row">
+          <div key={skill.name} className="flex flex-col mb-9 lg:flex-row">
             <div className="w-1/4">
               <p className="mt-2 mb-0 text-xs font-semibold tracking-wide uppercase text-slate-500">
                 {skill.name}
@@ -60,7 +60,7 @@ const SkillsAndLanguages = () => {
       </div>
       <div>
         {config.languages.map((language, index) => (
-          <div key={language.name} className="flex flex-col mb-8 lg:flex-row">
+          <div key={language.name} className="flex flex-col mb-9 lg:flex-row">
             <div className="w-1/4">
               <p className="mt-2 mb-0 text-xs font-semibold tracking-wide uppercase text-slate-500">
                 {language.name}
