@@ -25,6 +25,12 @@ export default function RootLayout({
           data-domain="lorenzopalaia.it"
           src="https://datafa.st/js/script.js"
         ></script>
+        <script
+          defer
+          data-website-id="4d510912-52dc-45a9-ada5-a166e260e315"
+          data-domain="lorenzopalaia.it"
+          src="https://https://site-pulse.vercel.app/js/script.js"
+        ></script>
       </head>
       <body className={inter.className}>{children}</body>
     </html>
