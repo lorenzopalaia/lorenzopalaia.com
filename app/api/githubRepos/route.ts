@@ -27,12 +27,13 @@ const fetchRepoLanguages = async (owner: string, repo: string) => {
 export async function GET(req: NextRequest) {
   const now = Date.now();
 
-  const headers = {
-    "Cache-Control": `public, max-age=${CACHE_DURATION / 1000}`,
-  };
+  // const headers = {"Cache-Control": `public, max-age=${CACHE_DURATION / 1000}`};
 
   if (cachedData && cacheTimestamp && now - cacheTimestamp < CACHE_DURATION) {
-    return NextResponse.json(cachedData, { headers });
+    return NextResponse.json(
+      cachedData
+      //  { headers }
+    );
   }
 
   try {
