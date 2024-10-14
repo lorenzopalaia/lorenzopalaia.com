@@ -42,10 +42,10 @@ export async function GET(req: NextRequest) {
     const reposWithLanguages = await Promise.all(
       githubRepos.map(async (repo) => {
         try {
-          const languages = await fetchRepoLanguages(
-            repo.owner.login,
-            repo.name
-          );
+          let languages = await fetchRepoLanguages(repo.owner.login, repo.name);
+          if (languages.length === 0) {
+            languages = ["Markdown"];
+          }
           return {
             ...repo,
             languages,
