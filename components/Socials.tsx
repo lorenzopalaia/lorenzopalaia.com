@@ -10,7 +10,7 @@ import Link from "next/link";
 const socials = [
   {
     name: "GitHub",
-    href: "https://github.com/lorenzopalaia",
+    href: "https://www.github.com/lorenzopalaia",
     icon: <GitHubIcon className="size-6" />,
   },
   {
