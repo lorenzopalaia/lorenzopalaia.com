@@ -1,4 +1,8 @@
 const config = {
+  featured: {
+    text: "Check out my blog",
+    url: "https://blog.lorenzopalaia.it",
+  },
   hero: {
     name: "Lorenzo Palaia",
     title: "Software Engineer | Computer and Automatic Engineer Graduate",
