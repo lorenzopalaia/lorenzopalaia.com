@@ -3,6 +3,8 @@ import "./globals.css";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
+import Featured from "@/components/Featured";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = getSEOTags({
@@ -26,7 +28,10 @@ export default function RootLayout({
           src="https://sitepulse.lorenzopalaia.it/js/script.js"
         ></script>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {/* <Featured /> */}
+        {children}
+      </body>
     </html>
   );
 }
