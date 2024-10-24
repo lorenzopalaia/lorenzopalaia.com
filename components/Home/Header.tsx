@@ -1,8 +1,8 @@
-import Hero from "@/components/Hero";
-import Navigation from "@/components/Navigation";
-import GitHubCalendar from "@/components/GitHubCalendar";
-import Wakatime from "@/components/Wakatime";
-import Socials from "@/components/Socials";
+import Hero from "@/components/Home/Header/Hero";
+import Navigation from "@/components/Home/Header/Navigation";
+import GitHubCalendar from "@/components/Home/Header/GitHubCalendar";
+import Wakatime from "@/components/Home/Header/Wakatime";
+import Socials from "@/components/Home/Header/Socials";
 
 export default function Header() {
   return (
