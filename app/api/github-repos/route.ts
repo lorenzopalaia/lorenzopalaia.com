@@ -1,12 +1,12 @@
 // ! Caching is not working
 
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit();
 
 const CACHE_DURATION = 2 * 3600 * 1000; // * 2 hours in milliseconds
-let cachedData: any | null = null;
+let cachedData: unknown | null = null;
 let cacheTimestamp: number | null = null;
 
 const fetchGithubRepos = async () => {
@@ -24,7 +24,7 @@ const fetchRepoLanguages = async (owner: string, repo: string) => {
   return Object.keys(response.data);
 };
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const now = Date.now();
 
   if (cachedData && cacheTimestamp && now - cacheTimestamp < CACHE_DURATION) {

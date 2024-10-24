@@ -1,6 +1,6 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const response = await fetch(
       "https://wakatime.com/api/v1/users/@lorenzopalaia/stats/last_7_days"

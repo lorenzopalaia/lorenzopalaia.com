@@ -3,7 +3,7 @@ import "./globals.css";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
-import SitePulseTracker from "@/components/SitePulseTracker";
+// import SitePulseTracker from "@/components/SitePulseTracker";
 import Featured from "@/components/Featured";
 import Spotlight from "@/components/Spotlight";
 
