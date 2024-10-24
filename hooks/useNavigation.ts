@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useNavigation = (offset = 96) => {
+export default function useNavigation(offset = 96) {
   // * Default offset of 6rem (96px)
   const [scrollCoordinates, setScrollCoordinates] = useState({ x: 0, y: 0 });
   const [activeSection, setActiveSection] = useState(null);
@@ -46,6 +46,4 @@ const useNavigation = (offset = 96) => {
   }, [offset]); // * Add the offset as a dependency to recalculate the effect when it changes
 
   return activeSection;
-};
-
-export default useNavigation;
+}

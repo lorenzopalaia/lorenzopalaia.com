@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useWakatime = () => {
+export default function useWakatime() {
   const [wakatime, setWakatime] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,6 +24,4 @@ const useWakatime = () => {
   }, []);
 
   return { wakatime, isLoading };
-};
-
-export default useWakatime;
+}

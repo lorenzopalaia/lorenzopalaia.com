@@ -1,7 +1,7 @@
 import Header from "@/components/Home/Header";
 import About from "@/components/Home/About";
 import Experience from "@/components/Home/Experience";
-// import Projects from "@/components/Home/Projects";
+import Projects from "@/components/Home/Projects";
 import Education from "@/components/Home/Education";
 import ExtraActivities from "@/components/Home/ExtraActivities";
 import SkillsAndLangs from "@/components/Home/SkillsAndLangs";
@@ -16,7 +16,7 @@ export default function Home() {
           <main>
             <About />
             <Experience />
-            {/* <Projects /> */}
+            <Projects />
             <Education />
             <ExtraActivities />
             <SkillsAndLangs />
