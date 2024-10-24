@@ -1,78 +1,43 @@
-import Link from "next/link";
+import BaseLink from "@/components/Links/BaseLink";
 
 import Signature from "@/components/Signature";
 
 export default function Footer() {
   return (
-    <footer className="pb-16 text-sm  text-slate-500 sm:pb-0">
+    <footer className="pb-16 text-sm text-slate-500 sm:pb-0">
       <p>
         Loosely designed in{" "}
-        <Link
-          href="https://www.figma.com/"
-          className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
-          target="_blank"
-          rel="noreferrer noopener"
-          aria-label="Figma (opens in a new tab)"
-        >
+        <BaseLink href="https://www.figma.com/" className="text-slate-400">
           Figma
-        </Link>{" "}
+        </BaseLink>{" "}
         and coded in{" "}
-        <Link
+        <BaseLink
           href="https://code.visualstudio.com/"
-          className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
-          target="_blank"
-          rel="noreferrer noopener"
-          aria-label="Visual Studio Code (opens in a new tab)"
+          className="text-slate-400"
         >
           Visual Studio Code
-        </Link>{" "}
+        </BaseLink>{" "}
         by yours truly. Built with{" "}
-        <Link
-          href="https://nextjs.org/"
-          className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
-          target="_blank"
-          rel="noreferrer noopener"
-          aria-label="Next.js (opens in a new tab)"
-        >
+        <BaseLink href="https://nextjs.org/" className="text-slate-400">
           Next.js
-        </Link>{" "}
+        </BaseLink>{" "}
         and{" "}
-        <Link
-          href="https://tailwindcss.com/"
-          className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
-          target="_blank"
-          rel="noreferrer noopener"
-          aria-label="Tailwind CSS (opens in a new tab)"
-        >
+        <BaseLink href="https://tailwindcss.com/" className="text-slate-400">
           Tailwind CSS
-        </Link>
+        </BaseLink>
         , deployed with{" "}
-        <Link
-          href="https://vercel.com/"
-          className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
-          target="_blank"
-          rel="noreferrer noopener"
-          aria-label="Vercel (opens in a new tab)"
-        >
+        <BaseLink href="https://vercel.com/" className="text-slate-400">
           Vercel
-        </Link>
+        </BaseLink>
         . All text is set in the{" "}
-        <Link
-          href="https://rsms.me/inter/"
-          className="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
-          target="_blank"
-          rel="noreferrer noopener"
-          aria-label="Inter (opens in a new tab)"
-        >
+        <BaseLink href="https://rsms.me/inter/" className="text-slate-400">
           Inter
-        </Link>{" "}
+        </BaseLink>{" "}
         typeface.
-        <br />
-        <br />
-        Copyright © {new Date().getFullYear()} - All Rights Reserved
       </p>
+      <p>Copyright © {new Date().getFullYear()} - All Rights Reserved</p>
 
-      <Signature className="mt-8 size-24 hover:text-teal-300" />
+      <Signature className="mt-8 size-24" />
     </footer>
   );
 }
