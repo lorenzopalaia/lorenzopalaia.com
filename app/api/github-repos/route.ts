@@ -1,9 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { Octokit } from "@octokit/rest";
 
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
-});
+const octokit = new Octokit();
 
 const CACHE_DURATION = 2 * 3600 * 1000; // 2 ore in millisecondi
 let cachedData: any | null = null;
@@ -28,9 +26,7 @@ export async function GET(req: NextRequest) {
   const now = Date.now();
 
   if (cachedData && cacheTimestamp && now - cacheTimestamp < CACHE_DURATION) {
-    return NextResponse.json(
-      cachedData
-    );
+    return NextResponse.json(cachedData);
   }
 
   try {
