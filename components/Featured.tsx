@@ -1,3 +1,5 @@
+// ! Currently not sticky, should probably set relative to parent?
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
