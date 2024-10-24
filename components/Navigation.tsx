@@ -5,7 +5,7 @@ import useNavigation from "@/hooks/useNavigation";
 
 import Link from "next/link";
 
-const Navigation = () => {
+export default function Navigation() {
   const activeSection = useNavigation();
 
   return (
@@ -41,6 +41,4 @@ const Navigation = () => {
       </ul>
     </nav>
   );
-};
-
-export default Navigation;
+}

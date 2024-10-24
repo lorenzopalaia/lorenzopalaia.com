@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { MapPin } from "lucide-react";
 
-const Hero = () => {
+export default function Hero() {
   return (
     <>
       <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
@@ -21,6 +21,4 @@ const Hero = () => {
       <p className="max-w-md mt-4 leading-normal">{config.hero.description}</p>
     </>
   );
-};
-
-export default Hero;
+}

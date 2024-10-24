@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import config from "@/config";
 
-const Socials = () => {
+export default function Socials() {
   return (
     <ul className="flex items-center mt-8 ml-1" aria-label="Social media">
       {config.socials.map((social) => (
@@ -22,6 +22,4 @@ const Socials = () => {
       ))}
     </ul>
   );
-};
-
-export default Socials;
+}
