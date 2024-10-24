@@ -23,10 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>{/* <SitePulseTracker /> */}</head>
-      <body className={`${inter.className} antialiased`}>
-        <Featured />
-        <Spotlight />
-        {children}
+      <body className={`${inter.className}`}>
+        <div className="relative">
+          <Featured />
+          <Spotlight />
+          {children}
+        </div>
       </body>
     </html>
   );

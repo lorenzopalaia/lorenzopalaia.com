@@ -1,3 +1,5 @@
+// ! Missing smooth scroll to section
+
 "use client";
 
 import config from "@/config";
