@@ -1,5 +1,3 @@
-// ! Spotlight is cut on page bottom edge
-
 "use client";
 
 import useMousePosition from "@/hooks/useMousePosition";

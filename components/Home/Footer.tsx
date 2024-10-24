@@ -38,7 +38,7 @@ export default function Footer() {
       <p className="mt-4">
         Copyright © {new Date().getFullYear()} - All Rights Reserved
       </p>
-      <Signature className="mt-8 size-24" />
+      <Signature className="mt-8 size-24 hover:text-teal-300" />
     </footer>
   );
 }

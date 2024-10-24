@@ -1,4 +1,4 @@
-export default function SignatureIcon({ className }: { className?: string }) {
+export default function Signature({ className }: { className?: string }) {
   return (
     <svg
       version="1.2"
