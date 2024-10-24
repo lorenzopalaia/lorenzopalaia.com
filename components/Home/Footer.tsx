@@ -35,8 +35,9 @@ export default function Footer() {
         </BaseLink>{" "}
         typeface.
       </p>
-      <p>Copyright © {new Date().getFullYear()} - All Rights Reserved</p>
-
+      <p className="mt-4">
+        Copyright © {new Date().getFullYear()} - All Rights Reserved
+      </p>
       <Signature className="mt-8 size-24" />
     </footer>
   );

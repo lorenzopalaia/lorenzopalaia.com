@@ -8,7 +8,7 @@ export default function Socials() {
       {config.socials.map((social) => (
         <li key={social.name} className="mr-5 text-xs shrink-0">
           <Link
-            className="block hover:text-slate-200"
+            className="block hover:text-teal-300"
             href={social.href}
             target="_blank"
             rel="noreferrer noopener"

@@ -1,9 +1,11 @@
+// ! Caching is not working
+
 import { NextResponse, NextRequest } from "next/server";
 import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit();
 
-const CACHE_DURATION = 2 * 3600 * 1000; // 2 ore in millisecondi
+const CACHE_DURATION = 2 * 3600 * 1000; // * 2 hours in milliseconds
 let cachedData: any | null = null;
 let cacheTimestamp: number | null = null;
 
@@ -44,10 +46,7 @@ export async function GET(req: NextRequest) {
             languages,
           };
         } catch (error) {
-          console.error(
-            "Errore durante il recupero dei dati della lingua della repository:",
-            error
-          );
+          console.error("Error while fetching repository languages:", error);
           return {
             ...repo,
             languages: [],
@@ -66,9 +65,9 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(reposWithImage);
   } catch (error) {
-    console.error("Errore durante il recupero dei dati:", error);
+    console.error("Error retrieving data:", error);
     return NextResponse.json(
-      { error: "Errore nel recupero dei dati" },
+      { error: "Error retrieving data" },
       { status: 500 }
     );
   }
