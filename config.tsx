@@ -25,7 +25,7 @@ const config = {
     { name: "Projects", id: "projects" },
     { name: "Education", id: "education" },
     { name: "Extra Activities", id: "extra-activities" },
-    { name: "Skills", id: "skills" },
+    { name: "Skills", id: "skills-and-langs" },
   ],
   socials: [
     {

@@ -5,8 +5,6 @@ import useWakatime from "@/hooks/useWakatime";
 export default function Wakatime() {
   const { wakatime, isLoading } = useWakatime();
 
-  console.log(wakatime);
-
   return (
     <div className="mt-8">
       {isLoading ? (

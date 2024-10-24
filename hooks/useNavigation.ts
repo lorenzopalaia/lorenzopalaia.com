@@ -14,7 +14,8 @@ const useNavigation = (offset = 96) => {
       setScrollCoordinates(newScrollCoordinates);
 
       // * Determine the current section based on the scroll position
-      const sections = document.querySelectorAll("section"); // Select all sections
+      const sections = document.querySelectorAll("section"); // * Select all sections
+      console.log(sections);
       let foundSection = null;
 
       sections.forEach((section) => {

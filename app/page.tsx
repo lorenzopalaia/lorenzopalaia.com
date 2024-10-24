@@ -5,7 +5,7 @@ import Experience from "@/components/Home/Experience";
 import Education from "@/components/Home/Education";
 import ExtraActivities from "@/components/Home/ExtraActivities";
 import SkillsAndLangs from "@/components/Home/SkillsAndLangs";
-// import Footer from "@/components/Home/Footer";
+import Footer from "@/components/Home/Footer";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
             <ExtraActivities />
             <SkillsAndLangs />
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </div>
