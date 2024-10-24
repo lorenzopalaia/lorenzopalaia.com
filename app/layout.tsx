@@ -3,7 +3,9 @@ import "./globals.css";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
+import SitePulseTracker from "@/components/SitePulseTracker";
 import Featured from "@/components/Featured";
+import Spotlight from "@/components/Spotlight";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>{/* <SitePulseTracker /> */}</head>
       <body className={`${inter.className} antialiased`}>
         <Featured />
+        <Spotlight />
         {children}
       </body>
     </html>
