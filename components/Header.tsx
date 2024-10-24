@@ -1,5 +1,7 @@
 import Hero from "@/components/Hero";
 import Navigation from "@/components/Navigation";
+import GitHubCalendar from "@/components/GitHubCalendar";
+import Wakatime from "@/components/Wakatime";
 
 export default function Header() {
   return (
@@ -9,9 +11,9 @@ export default function Header() {
         <Navigation />
       </div>
       <div>
-        {/* <GitHubCal />
+        <GitHubCalendar />
         <Wakatime />
-        <Socials /> */}
+        {/* <Socials /> */}
       </div>
     </header>
   );
