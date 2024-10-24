@@ -1,6 +1,8 @@
 import Header from "@/components/Home/Header";
 import About from "@/components/Home/About";
 import Experience from "@/components/Home/Experience";
+// import Projects from "@/components/Home/Projects";
+import Education from "@/components/Home/Education";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
         <main className="pt-24 lg:w-1/2 lg:py-24">
           <About />
           <Experience />
+          {/* <Projects /> */}
+          <Education />
         </main>
       </div>
     </div>
