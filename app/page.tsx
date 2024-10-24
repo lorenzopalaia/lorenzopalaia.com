@@ -1,5 +1,6 @@
-import Header from "@/components/Header";
-import About from "@/components/About";
+import Header from "@/components/Home/Header";
+import About from "@/components/Home/About";
+import Experience from "@/components/Home/Experience";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <Header />
         <main className="pt-24 lg:w-1/2 lg:py-24">
           <About />
+          <Experience />
         </main>
       </div>
     </div>
