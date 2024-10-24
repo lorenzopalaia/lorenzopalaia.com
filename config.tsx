@@ -1,3 +1,12 @@
+import {
+  Github,
+  Linkedin,
+  Instagram,
+  Twitter,
+  FileUser,
+  Mail,
+} from "lucide-react";
+
 const config = {
   featured: {
     text: "Check out my blog",
@@ -17,6 +26,38 @@ const config = {
     { name: "Education", id: "education" },
     { name: "Extra Activities", id: "extra-activities" },
     { name: "Skills", id: "skills" },
+  ],
+  socials: [
+    {
+      name: "GitHub",
+      href: "https://www.github.com/lorenzopalaia",
+      icon: <Github />,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/lorenzopalaia/",
+      icon: <Linkedin />,
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/lorenzo_palaia/",
+      icon: <Instagram />,
+    },
+    {
+      name: "Twitter",
+      href: "https://twitter.com/lorenzo_palaia",
+      icon: <Twitter />,
+    },
+    {
+      name: "Resume",
+      href: "/assets/resume.pdf",
+      icon: <FileUser />,
+    },
+    {
+      name: "Email",
+      href: "mailto:lorenzopalaia53@gmail.com",
+      icon: <Mail />,
+    },
   ],
   experience: [
     {
