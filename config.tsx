@@ -30,7 +30,7 @@ const config = {
   socials: [
     {
       name: "GitHub",
-      href: "https://www.github.com/lorenzopalaia",
+      href: "https://github.com/lorenzopalaia",
       icon: <Github />,
     },
     {
@@ -45,7 +45,7 @@ const config = {
     },
     {
       name: "Twitter",
-      href: "https://twitter.com/lorenzo_palaia",
+      href: "https://x.com/lorenzo_palaia",
       icon: <Twitter />,
     },
     {
@@ -62,7 +62,7 @@ const config = {
   experience: [
     {
       show: true,
-      url: "https://www.github.com/lorenzopalaia",
+      url: "https://github.com/lorenzopalaia",
       date: "2019 - Present",
       role: "Software Engineer",
       company: "Freelance",
@@ -74,7 +74,7 @@ const config = {
       links: [
         {
           name: "GitHub",
-          url: "https://www.github.com/lorenzopalaia",
+          url: "https://github.com/lorenzopalaia",
         },
       ],
       badges: ["Python", "HTML"],
@@ -114,7 +114,7 @@ const config = {
   education: [
     {
       show: true,
-      url: "https://www.uniroma1.it",
+      url: "https://www.uniroma1.it/it/",
       date: "Mar 2024",
       degree: "Computer and Automatic Engineering",
       school: "Sapienza University of Rome",
@@ -127,7 +127,7 @@ const config = {
   extraActivities: [
     {
       show: false,
-      url: "https://www.boolean.careers",
+      url: "https://boolean.careers",
       date: "Nov 2023",
       activity: "Boolean Data Week",
       category: "Data Visualization",
@@ -138,7 +138,7 @@ const config = {
     },
     {
       show: true,
-      url: "https://www.github.com/lorenzopalaia/Randstad-AI-Hackathon",
+      url: "https://github.com/lorenzopalaia/Randstad-AI-Hackathon",
       date: "Mar 2023",
       activity: "Randstad <Code.Your.Future>",
       category: "AI Hackathon",
@@ -152,7 +152,7 @@ const config = {
     },
     {
       show: true,
-      url: "https://www.sasa-aerospace.it/flight-team",
+      url: "https://www.sasa-aerospace.it/flight-team/",
       date: "Sep 2021 - Oct 2022",
       activity: "Sapienza Flight Team",
       category: "AUVSI SUAS Competition",
