@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function useNavigation(offset = 96) {
   // * Default offset of 6rem (96px)
-  const [scrollCoordinates, setScrollCoordinates] = useState({ x: 0, y: 0 });
+  const [, setScrollCoordinates] = useState({ x: 0, y: 0 });
   const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
@@ -15,7 +15,6 @@ export default function useNavigation(offset = 96) {
 
       // * Determine the current section based on the scroll position
       const sections = document.querySelectorAll("section"); // * Select all sections
-      console.log(sections);
       let foundSection = null;
 
       sections.forEach((section) => {

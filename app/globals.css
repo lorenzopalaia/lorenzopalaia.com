@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply antialiased leading-relaxed bg-slate-900 text-slate-400 selection:bg-teal-300 selection:text-teal-900;
 }
