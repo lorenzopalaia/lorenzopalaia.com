@@ -19,7 +19,7 @@ export default function About() {
         </p>
         <p className="mb-4">
           When I&apos;m not coding, you can find me exploring the vast realms of{" "}
-          <BaseLink href="https://www.github.com/lorenzopalaia">
+          <BaseLink href="https://github.com/lorenzopalaia">
             programming
           </BaseLink>
           , diving deep into the mysteries of{" "}
