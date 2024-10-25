@@ -1,4 +1,4 @@
-/* "use client";
+"use client";
 
 import React, { useState, useEffect, cloneElement } from "react";
 import GitHubCalendar from "react-github-calendar";
@@ -32,21 +32,22 @@ const GitHubCal = () => {
       }
     };
 
-    handleResize(); // Call once to set initial state
+    handleResize(); // * Call once to set initial state
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const explicitTheme: ThemeInput = {
-    light: ["#E1E6F4", "#0069FF"],
     dark: ["#1B284B", "#5EEAD4"],
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const selectLastMonths = (contributions: any, monthsToSelect: number) => {
     const currentDate = new Date();
     const startDate = new Date(currentDate);
     startDate.setMonth(currentDate.getMonth() - monthsToSelect + 1);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return contributions.filter((activity: any) => {
       const activityDate = new Date(activity.date);
       return activityDate >= startDate && activityDate <= currentDate;
@@ -95,10 +96,3 @@ const GitHubCal = () => {
 };
 
 export default GitHubCal;
- */
-
-// ! react-github-calendar does not support React 19, need to find an alternative
-
-export default function GitHubCalendar() {
-  return <></>;
-}
