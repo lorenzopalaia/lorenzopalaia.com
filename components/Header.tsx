@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import ThemeToggle from "@/components/ThemeToggle";
+//import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   return (
@@ -16,7 +16,7 @@ export default function Header() {
           Projects
         </Link>
       </div>
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
     </header>
   );
 }

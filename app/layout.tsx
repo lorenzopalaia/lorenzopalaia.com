@@ -32,15 +32,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased container mx-auto px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20`}
       >
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
-          <Header />
-          {children}
-        </ThemeProvider>
+        > */}
+        <Header />
+        {children}
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
