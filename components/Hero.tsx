@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section>
+    <section className="mt-8">
       <p className="text-6xl font-bold">Hi, Lorenzo here! 👋</p>
       <h1 className="text-lg text-muted-foreground mt-6">
         I&apos;m a software engineer and a designer.
