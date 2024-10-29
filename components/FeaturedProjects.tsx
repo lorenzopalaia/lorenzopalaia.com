@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { link } from "fs";
 
 export default function FeaturedProjects() {
   const data = [
@@ -67,7 +66,7 @@ export default function FeaturedProjects() {
           View More <ArrowRight size={16} />
         </Link>
       </div>
-      <div className="grid grid-cols-2 gap-4 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
         {data.map((project, index) => (
           <Card key={index}>
             <CardHeader>
