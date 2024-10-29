@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Button } from "./ui/button";
 
-import { Globe } from "lucide-react";
+import { Globe, Github } from "lucide-react";
 
 function CardItem({
   title,
@@ -45,7 +45,7 @@ function CardItem({
       <div className="flex flex-1 flex-col justify-start gap-1">
         <time className="text-xs text-muted-foreground">
           <span>{startDate}</span>
-          <span> - </span>
+          {startDate && endDate && <span> - </span>}
           <span>{endDate}</span>
         </time>
         <h2 className="font-semibold leading-none">{company}</h2>
@@ -64,7 +64,11 @@ function CardItem({
             {links.map((link, index) => (
               <Link key={index} href={link.href}>
                 <Button size="sm" className="font-bold py-0.5 px-2.5">
-                  <Globe />
+                  {link.title.toLowerCase() === "github" ? (
+                    <Github />
+                  ) : (
+                    <Globe />
+                  )}
                   {link.title}
                 </Button>
               </Link>

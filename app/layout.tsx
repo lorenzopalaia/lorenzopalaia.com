@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-// import ThemeProvider from "@/components/ThemeProvider";
+import ThemeProvider from "@/components/ThemeProvider";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import DotPattern from "@/components/DotPattern";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,18 +32,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased container mx-auto px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <ThemeProvider
+        <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        > */}
-        <Header />
-        {children}
-        <Footer />
-        {/* </ThemeProvider> */}
+        >
+          <DotPattern>
+            <Header />
+            <div className="container mx-auto px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+              {children}
+              <Footer />
+            </div>
+          </DotPattern>
+        </ThemeProvider>
       </body>
     </html>
   );

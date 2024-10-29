@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import Image from "next/image";
@@ -24,7 +26,7 @@ export default function FeaturedProjects() {
       tags: ["Docker", "Kubernetes"],
       href: "https://www.dbs.com.sg",
       link: "Website",
-      img: "/db.png",
+      img: "https://via.assets.so/album.png?id=1&q=95&w=1600&h=900&fit=fill",
     },
     {
       title: "OpenAI GPT-3",
@@ -32,8 +34,8 @@ export default function FeaturedProjects() {
         "Implemented a chatbot using OpenAI's GPT-3 API to provide customer support",
       tags: ["AI", "Chatbot"],
       href: "https://www.github.com",
-      link: "Github",
-      img: "/openai.png",
+      link: "GitHub",
+      img: "https://via.assets.so/album.png?id=2&q=95&w=1600&h=900&fit=fill",
     },
     {
       title: "Weather App",
@@ -42,7 +44,7 @@ export default function FeaturedProjects() {
       tags: ["React Native", "API"],
       href: "https://www.weatherapp.com",
       link: "Website",
-      img: "/weather.png",
+      img: "https://via.assets.so/album.png?id=3&q=95&w=1600&h=900&fit=fill",
     },
     {
       title: "E-commerce Platform",
@@ -51,7 +53,7 @@ export default function FeaturedProjects() {
       tags: ["Node.js", "MongoDB"],
       href: "https://www.ecommerce.com",
       link: "Website",
-      img: "/ecommerce.png",
+      img: "https://via.assets.so/album.png?id=4&q=95&w=1600&h=900&fit=fill",
     },
   ];
 
@@ -68,15 +70,16 @@ export default function FeaturedProjects() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
         {data.map((project, index) => (
-          <Card key={index}>
+          <Card className="w-full h-full" key={index}>
             <CardHeader>
               <Image
                 src={project.img}
                 alt={project.title}
-                width={100}
-                height={100}
+                width={1600}
+                height={900}
+                className="w-full h-auto rounded-lg"
               />
-              <CardTitle>{project.title}</CardTitle>
+              <CardTitle className="pt-2">{project.title}</CardTitle>
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>
@@ -91,7 +94,11 @@ export default function FeaturedProjects() {
             <CardFooter>
               <Link href={project.href}>
                 <Button size="sm" className="font-bold py-0.5 px-2.5">
-                  {project.link === "Github" ? <Github /> : <Globe />}
+                  {project.link.toLowerCase() === "github" ? (
+                    <Github />
+                  ) : (
+                    <Globe />
+                  )}
                   {project.link}
                 </Button>
               </Link>

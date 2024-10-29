@@ -1,10 +1,10 @@
-import { Button } from "./ui/button";
-
 import { FileDown } from "lucide-react";
 
 import Link from "next/link";
 
 import Socials from "@/components/Socials";
+
+import ShinyButton from "@/components/ui/shiny-button";
 
 export default function Hero() {
   return (
@@ -21,10 +21,12 @@ export default function Hero() {
       </p>
       <div className="mt-6 flex items-center gap-8">
         <Link href="/resume.pdf">
-          <Button variant="outline" className="font-bold">
-            Resume
-            <FileDown />
-          </Button>
+          <ShinyButton className="font-bold">
+            <div className="flex items-center gap-2">
+              Resume
+              <FileDown />
+            </div>
+          </ShinyButton>
         </Link>
         <Socials />
       </div>
