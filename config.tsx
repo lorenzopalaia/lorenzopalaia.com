@@ -151,4 +151,20 @@ export const config = {
     "Bash",
     "Arduino",
   ],
+  projects: [
+    {
+      title: "Portfolio",
+      description: "Personal website to showcase my projects and resume",
+      languages: ["TypeScript", "React", "Next.js", "Tailwind"],
+      img: "/portfolio.png",
+      href: "https://lorenzopalaia.it",
+    },
+  ],
+  featuredProjects: [
+    // ! github projects
+    "Neural-Style-Transfer-and-Genre-Classification",
+    "Arduino-Oscilloscope",
+    "Blocktracr",
+    // ! other projects
+  ],
 };
