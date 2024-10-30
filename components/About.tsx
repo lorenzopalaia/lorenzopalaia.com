@@ -6,7 +6,7 @@ import { config } from "@/config";
 
 export default function About() {
   return (
-    <section className="mt-12">
+    <section className="mt-16">
       <Tabs defaultValue="work">
         <TabsList className="w-full">
           <TabsTrigger className="w-full font-bold" value="work">

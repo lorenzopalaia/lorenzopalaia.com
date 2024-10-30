@@ -47,7 +47,11 @@ export const config = {
       img: "/sapienza.jpeg",
       links: [
         {
-          title: "Thesis",
+          title: "Thesis Paper",
+          href: "/thesis.pdf",
+        },
+        {
+          title: "Thesis Project",
           href: "https://github.com/lorenzopalaia/Neural-Style-Transfer-and-Genre-Classification",
         },
       ],

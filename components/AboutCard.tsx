@@ -64,11 +64,7 @@ function CardItem({
             {links.map((link, index) => (
               <Link key={index} href={link.href}>
                 <Button size="sm" className="font-bold py-0.5 px-2.5">
-                  {link.title.toLowerCase() === "github" ? (
-                    <Github />
-                  ) : (
-                    <Globe />
-                  )}
+                  {link.href.includes("github") ? <Github /> : <Globe />}
                   {link.title}
                 </Button>
               </Link>

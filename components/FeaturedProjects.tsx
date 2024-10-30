@@ -58,9 +58,9 @@ export default function FeaturedProjects() {
   ];
 
   return (
-    <section className="mt-12">
+    <section className="my-16">
       <div className="flex justify-between items-center">
-        <p className="text-2xl font-bold">Featured Projects</p>
+        <p className="text-2xl sm:text-3xl font-bold">Featured Projects</p>
         <Link
           href="/projects"
           className="flex gap-2 items-center text-muted-foreground hover:text-primary"
@@ -94,11 +94,7 @@ export default function FeaturedProjects() {
             <CardFooter>
               <Link href={project.href}>
                 <Button size="sm" className="font-bold py-0.5 px-2.5">
-                  {project.link.toLowerCase() === "github" ? (
-                    <Github />
-                  ) : (
-                    <Globe />
-                  )}
+                  {project.href.includes("github") ? <Github /> : <Globe />}
                   {project.link}
                 </Button>
               </Link>
