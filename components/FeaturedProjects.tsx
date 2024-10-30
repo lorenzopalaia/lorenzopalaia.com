@@ -70,7 +70,7 @@ export default function FeaturedProjects() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
         {data.map((project, index) => (
-          <Card className="w-full h-full" key={index}>
+          <Card className="w-full h-full border-2" key={index}>
             <CardHeader>
               <Image
                 src={project.img}

@@ -15,12 +15,18 @@ export default function About() {
           <TabsTrigger className="w-full" value="education">
             Education
           </TabsTrigger>
+          <TabsTrigger className="w-full" value="extra">
+            Extra
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="work">
           <AboutCard data={config.work} />
         </TabsContent>
         <TabsContent value="education">
           <AboutCard data={config.education} />
+        </TabsContent>
+        <TabsContent value="extra">
+          <AboutCard data={config.extra} />
         </TabsContent>
       </Tabs>
     </section>

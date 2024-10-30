@@ -6,6 +6,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Overlay from "@/components/Overlay";
 import DotPattern from "@/components/DotPattern";
 
 const geistSans = localFont({
@@ -44,9 +45,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Overlay />
           <DotPattern>
             <Header />
-            <div className="container mx-auto max-w-3xl px-8">
+            <div className="container mx-auto max-w-3xl px-8 relative z-10">
               {children}
               <Footer />
             </div>

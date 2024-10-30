@@ -94,7 +94,7 @@ export default function AboutCard({
   }[];
 }) {
   return (
-    <div className="rounded-xl border bg-card text-card-foreground shadow">
+    <div className="rounded-xl border-2 bg-card text-card-foreground shadow">
       <div className="p-0">
         <ul className="ml-10 border-l">
           {data.map((item, index) => (

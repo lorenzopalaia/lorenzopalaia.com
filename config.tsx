@@ -102,6 +102,42 @@ export const config = {
       ],
     },
   ],
+  extra: [
+    {
+      title: "Boolean Data Week",
+      company: "Boolean Careers",
+      startDate: "",
+      endDate: "Nov 2023",
+      href: "https://boolean.careers",
+      img: "/boolean.png",
+    },
+    {
+      title: "<Code.Your.Future> AI Hackathon",
+      company: "Randstad",
+      startDate: "",
+      endDate: "Mar 2023",
+      items: [
+        <p key={1}>
+          Led the development of a{" "}
+          <span className="font-bold">job description classifier</span> in a
+          team of 5 using TensorFlow during a 4-hour challenge
+        </p>,
+        <p key={2}>
+          Secured the <span className="font-bold">2nd</span> spot out of 8
+          contenders, reached an F1 score of 75%, explored both Bag of Words and
+          Word2Vec solutions
+        </p>,
+      ],
+      href: "https://www.randstad.it/",
+      img: "/randstad.png",
+      links: [
+        {
+          title: "Submission",
+          href: "https://github.com/lorenzopalaia/Randstad-AI-Hackathon",
+        },
+      ],
+    },
+  ],
   skills: [
     "React",
     "Next.js",
