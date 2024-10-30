@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesqueBold.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesqueBold.variable} antialiased min-h-screen`}
       >
         <ThemeProvider
           attribute="class"
@@ -46,7 +46,7 @@ export default function RootLayout({
         >
           <DotPattern>
             <Header />
-            <div className="container mx-auto px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+            <div className="container mx-auto max-w-3xl px-8">
               {children}
               <Footer />
             </div>

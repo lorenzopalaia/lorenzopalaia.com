@@ -35,7 +35,7 @@ function CardItem({
         <span className="relative flex shrink-0 overflow-hidden rounded-full size-12 border">
           <Image
             className="aspect-square h-full w-full bg-background object-contain"
-            alt="DBS Bank"
+            alt={company}
             src={img}
             width={48}
             height={48}
@@ -60,7 +60,7 @@ function CardItem({
           </ul>
         )}
         {links && links.length > 0 && (
-          <div className="flex gap-2 mt-2">
+          <div className="flex flex-wrap gap-2 mt-2">
             {links.map((link, index) => (
               <Link key={index} href={link.href}>
                 <Button size="sm" className="font-bold py-0.5 px-2.5">

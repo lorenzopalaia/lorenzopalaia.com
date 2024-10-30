@@ -83,7 +83,7 @@ export default function FeaturedProjects() {
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, index) => (
                   <Badge key={index} variant="secondary">
                     {tag}
