@@ -9,10 +9,10 @@ export default function About() {
     <section className="mt-16">
       <Tabs defaultValue="work">
         <TabsList className="w-full">
-          <TabsTrigger className="w-full font-bold" value="work">
+          <TabsTrigger className="w-full" value="work">
             Work
           </TabsTrigger>
-          <TabsTrigger className="w-full font-bold" value="education">
+          <TabsTrigger className="w-full" value="education">
             Education
           </TabsTrigger>
         </TabsList>

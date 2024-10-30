@@ -49,7 +49,7 @@ function CardItem({
           <span>{endDate}</span>
         </time>
         <h2 className="font-semibold leading-none">{company}</h2>
-        <p className="text-sm text-muted-foreground">{title}</p>
+        <p className="text-sm text-muted-foreground title">{title}</p>
         {items && items.length > 0 && (
           <ul className="ml-4 list-outside list-disc">
             {items.map((item, index) => (

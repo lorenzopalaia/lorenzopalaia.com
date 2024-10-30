@@ -70,3 +70,19 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+h1,
+h2,
+h3,
+p {
+  font-family: var(--font-geist-sans);
+}
+
+pre,
+code {
+  font-family: var(--font-geist-mono);
+}
+
+.title {
+  font-family: var(--font-bricolage-grotesque-bold);
+}

@@ -60,7 +60,7 @@ export default function FeaturedProjects() {
   return (
     <section className="my-16">
       <div className="flex justify-between items-center">
-        <p className="text-2xl sm:text-3xl font-bold">Featured Projects</p>
+        <p className="text-2xl sm:text-3xl title">Featured Projects</p>
         <Link
           href="/projects"
           className="flex gap-2 items-center text-muted-foreground hover:text-primary"
@@ -79,7 +79,7 @@ export default function FeaturedProjects() {
                 height={900}
                 className="w-full h-auto rounded-lg"
               />
-              <CardTitle className="pt-2">{project.title}</CardTitle>
+              <CardTitle className="pt-2 title">{project.title}</CardTitle>
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>
