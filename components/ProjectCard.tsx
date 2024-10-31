@@ -27,7 +27,7 @@ interface ProjectCardProps {
 
 export function CardSkeleton() {
   return (
-    <Card className="w-full h-full border-2">
+    <Card className="w-full h-full border-2 flex flex-col">
       <CardHeader>
         <Skeleton className="w-full h-40 rounded-lg" />
         <CardTitle className="pt-2 title">
@@ -37,7 +37,7 @@ export function CardSkeleton() {
           <Skeleton className="h-24 w-full" />
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-grow">
         <div className="flex gap-2">
           <Skeleton className="h-6 w-1/4" />
           <Skeleton className="h-6 w-1/4" />
@@ -54,7 +54,7 @@ export function CardSkeleton() {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="w-full h-full border-2">
+    <Card className="w-full h-full border-2 flex flex-col">
       <CardHeader>
         <ImageFallback
           src={project.img}
@@ -68,7 +68,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </CardTitle>
         <CardDescription>{project.description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-grow">
         <div className="flex flex-wrap gap-2">
           {project.languages.map((language) => (
             <Badge key={language} variant="secondary">
@@ -77,7 +77,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex gap-4 justify-between items-center">
+      <CardFooter className="mt-auto flex gap-4 justify-between items-center">
         <Link href={project.html_url}>
           <Button size="sm" className="font-bold py-0.5 px-2.5">
             {project.html_url.includes("github") ? (

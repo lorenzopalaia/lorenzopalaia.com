@@ -157,11 +157,12 @@ export const config = {
   ],
   projects: [
     {
-      name: "Portfolio",
-      description: "Personal website to showcase my projects and resume",
-      languages: ["TypeScript", "React", "Next.js", "Tailwind"],
-      img: "/portfolio.png",
-      html_url: "https://lorenzopalaia.it",
+      name: "Alfa Impianti S.r.l.",
+      description: "Developed a corporate website for Alfa Impianti S.r.l.",
+      languages: ["Javascript", "HTML", "CSS"],
+      img: "",
+      html_url: "https://alfa-impiantisrl.it",
+      updated_at: "2020-10-01T00:00:00Z",
     },
   ],
   featuredProjects: [

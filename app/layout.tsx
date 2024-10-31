@@ -49,7 +49,7 @@ export default function RootLayout({
           <DotPattern>
             <Header />
             <div className="container mx-auto max-w-3xl px-8 relative z-10">
-              {children}
+              <main>{children}</main>
               <Footer />
             </div>
           </DotPattern>
