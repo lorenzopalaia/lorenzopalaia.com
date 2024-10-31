@@ -20,7 +20,7 @@ function CardItem({
   company: string;
   startDate: string;
   endDate: string;
-  items?: string[];
+  items?: React.ReactNode[];
   href: string;
   img: string;
   links?: { title: string; href: string }[];
@@ -84,7 +84,7 @@ export default function AboutCard({
     company: string;
     startDate: string;
     endDate: string;
-    items?: string[];
+    items?: React.ReactNode[];
     href: string;
     img: string;
     links?: {
