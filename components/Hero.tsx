@@ -1,3 +1,5 @@
+"use client";
+
 import { FileDown, MapPin } from "lucide-react";
 
 import Link from "next/link";

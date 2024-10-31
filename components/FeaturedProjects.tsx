@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 
-import Image from "next/image";
-
-import { ArrowRight, Globe, Github } from "lucide-react";
+import { ArrowRight, Globe, Github, Star } from "lucide-react";
 
 import {
   Card,
@@ -21,6 +19,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import useGithubRepos from "@/hooks/useGithubRepos";
 
 import { config } from "@/config";
+
+import { ImageFallback } from "@/components/ImageFallback";
 
 export default function FeaturedProjects() {
   const { repos, isLoading } = useGithubRepos();
@@ -70,11 +70,10 @@ export default function FeaturedProjects() {
           </>
         ) : (
           <>
-            {featuredProjects.map((project) => (
-              <Card className="w-full h-full border-2" key={project.id}>
+            {featuredProjects.map((project, index) => (
+              <Card className="w-full h-full border-2" key={index}>
                 <CardHeader>
-                  {/* Add fallback image */}
-                  <Image
+                  <ImageFallback
                     src={project.img}
                     alt={project.name}
                     width={1600}
@@ -95,7 +94,7 @@ export default function FeaturedProjects() {
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="flex gap-4 justify-between items-center">
                   <Link href={project.html_url}>
                     <Button size="sm" className="font-bold py-0.5 px-2.5">
                       {project.html_url.includes("github") ? (
@@ -111,6 +110,12 @@ export default function FeaturedProjects() {
                       )}
                     </Button>
                   </Link>
+                  {project.stargazers_count !== undefined && (
+                    <CardDescription className="flex gap-2 items-center title">
+                      <Star size={16} />
+                      {project.stargazers_count}
+                    </CardDescription>
+                  )}
                 </CardFooter>
               </Card>
             ))}

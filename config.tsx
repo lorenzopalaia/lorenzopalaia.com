@@ -1,6 +1,10 @@
 import { Linkedin, Github, Mail } from "lucide-react";
 
 export const config = {
+  settings: {
+    fallbackImage:
+      "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png",
+  },
   socials: [
     {
       href: "https://www.linkedin.com/in/lorenzopalaia/",
@@ -153,11 +157,11 @@ export const config = {
   ],
   projects: [
     {
-      title: "Portfolio",
+      name: "Portfolio",
       description: "Personal website to showcase my projects and resume",
       languages: ["TypeScript", "React", "Next.js", "Tailwind"],
       img: "/portfolio.png",
-      href: "https://lorenzopalaia.it",
+      html_url: "https://lorenzopalaia.it",
     },
   ],
   featuredProjects: [
@@ -165,6 +169,7 @@ export const config = {
     "Neural-Style-Transfer-and-Genre-Classification",
     "Arduino-Oscilloscope",
     "Blocktracr",
+    "Euro-Hackathons",
     // ! other projects
   ],
 };
