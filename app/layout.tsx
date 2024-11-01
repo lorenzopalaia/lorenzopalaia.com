@@ -2,11 +2,11 @@ import { getSEOTags } from "@/lib/seo";
 import localFont from "next/font/local";
 import "./globals.css";
 import { config } from "@/config";
-// import Head from "next/head";
+import Head from "next/head";
 
 import ThemeProvider from "@/components/ThemeProvider";
 
-// import SitePulseTracker from "@/components/SitePulseTracker";
+import SitePulseTracker from "@/components/SitePulseTracker";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Overlay from "@/components/Overlay";
@@ -40,9 +40,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <Head>
+      <Head>
         <SitePulseTracker />
-      </Head> */}
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesqueBold.variable} antialiased min-h-screen`}
       >
