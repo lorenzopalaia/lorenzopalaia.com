@@ -2,7 +2,6 @@ import { getSEOTags } from "@/lib/seo";
 import localFont from "next/font/local";
 import "./globals.css";
 import { config } from "@/config";
-import Head from "next/head";
 
 import ThemeProvider from "@/components/ThemeProvider";
 
@@ -40,9 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <SitePulseTracker />
-      </Head>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesqueBold.variable} antialiased min-h-screen`}
       >
