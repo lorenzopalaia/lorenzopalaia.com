@@ -1,3 +1,0 @@
-{
-  "ignoreCommand": "if [ \"$VERCEL_GIT_COMMIT_REF\" != \"v1\" ]; then exit 0; fi"
-}
