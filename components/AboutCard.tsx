@@ -29,10 +29,10 @@ function CardItem({
     <li className="relative ml-10 py-4">
       <Link
         target="_blank"
-        className="absolute -left-16 top-4 flex items-center justify-center rounded-full bg-white"
+        className="absolute -left-16 top-4 flex items-center justify-center rounded-full "
         href={href}
       >
-        <span className="relative flex shrink-0 overflow-hidden rounded-full size-12 border">
+        <span className="relative flex shrink-0 overflow-hidden rounded-full size-12 border-2">
           <Image
             className="aspect-square h-full w-full bg-background object-contain"
             alt={company}
@@ -96,7 +96,7 @@ export default function AboutCard({
   return (
     <div className="rounded-xl border-2 bg-card text-card-foreground shadow">
       <div className="p-0">
-        <ul className="ml-10 border-l">
+        <ul className="ml-10 border-l-2">
           {data.map((item, index) => (
             <CardItem key={index} {...item} />
           ))}

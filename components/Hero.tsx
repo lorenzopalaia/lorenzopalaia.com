@@ -1,5 +1,3 @@
-"use client";
-
 import { FileDown, MapPin } from "lucide-react";
 
 import Link from "next/link";
@@ -11,7 +9,7 @@ import TypingAnimation from "@/components/ui/typing-animation";
 
 export default function Hero() {
   return (
-    <section className="mt-8">
+    <section className="mt-8 max-w-xl">
       <TypingAnimation
         className="text-4xl sm:text-5xl title"
         text="Hi, Lorenzo here! 👋"

@@ -1166,7 +1166,7 @@ export const config = {
       name: "Alfa Impianti S.r.l.",
       description: "Developed a corporate website for Alfa Impianti S.r.l.",
       languages: ["Javascript", "HTML", "CSS"],
-      img: "",
+      img: "/",
       html_url: "https://alfa-impiantisrl.it",
       updated_at: "2020-10-01T00:00:00Z",
     },

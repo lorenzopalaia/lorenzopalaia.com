@@ -3,6 +3,8 @@ import { Separator } from "@/components/ui/separator";
 import Socials from "@/components/Socials";
 import Signature from "@/components/Signature";
 
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="mb-16">
@@ -14,6 +16,15 @@ export default function Footer() {
           <p>© {new Date().getFullYear()}</p>
         </div>
       </div>
+      <p className="text-muted-foreground pt-4">
+        Looking for previous website version?{" "}
+        <Link
+          href="https://v1.lorenzopalaia.it/"
+          className="hover:text-primary font-bold"
+        >
+          Click here!
+        </Link>
+      </p>
     </footer>
   );
 }

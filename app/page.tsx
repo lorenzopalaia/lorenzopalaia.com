@@ -7,8 +7,11 @@ import FeaturedProjects from "@/components/FeaturedProjects";
 export default function Home() {
   return (
     <>
-      {/* Somewhere place a reference to old version, like "Looking for previous website version?" */}
-      {/* <Featured /> */}
+      {/* <Featured
+        href="https://blog.lorenzopalaia.it/"
+        emoji="🎉"
+        text="Check out my blog"
+      /> */}
       <Hero />
       <About />
       <Skills />
