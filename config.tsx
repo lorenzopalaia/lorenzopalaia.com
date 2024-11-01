@@ -1,4 +1,4 @@
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Github, Mail, Video } from "lucide-react";
 
 export const config = {
   settings: {
@@ -1023,6 +1023,10 @@ export const config = {
     {
       href: "mailto:lorenzopalaia53@gmail.com",
       icon: <Mail className="text-muted-foreground hover:text-primary" />,
+    },
+    {
+      href: "https://cal.com/lorenzopalaia/30min",
+      icon: <Video className="text-muted-foreground hover:text-primary" />,
     },
   ],
   work: [

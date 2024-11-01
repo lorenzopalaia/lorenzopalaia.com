@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="flex flex-col gap-2 justify-center sm:flex-row-reverse sm:justify-between items-center pt-8">
         <Socials />
         <div className="flex gap-4 items-center text-muted-foreground">
-          <Signature className="size-16" />
+          <Signature className="size-12" />
           <p>© {new Date().getFullYear()}</p>
         </div>
       </div>
