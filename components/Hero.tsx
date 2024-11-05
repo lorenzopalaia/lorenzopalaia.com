@@ -9,7 +9,9 @@ import ShinyButton from "@/components/ui/shiny-button";
 export default function Hero() {
   return (
     <section className="mt-8 max-w-xl">
-      <p className="text-4xl sm:text-5xl title">Hi, Lorenzo here! 👋</p>
+      <p className="text-4xl sm:text-5xl title tracking-tight">
+        Hi, Lorenzo here! 👋
+      </p>
       <h1 className="font-light text-muted-foreground mt-4">
         Software Engineer | Computer and Automatic Engineering Graduate
       </h1>
