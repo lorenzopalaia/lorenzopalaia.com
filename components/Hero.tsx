@@ -5,15 +5,11 @@ import Link from "next/link";
 import Socials from "@/components/Socials";
 
 import ShinyButton from "@/components/ui/shiny-button";
-import TypingAnimation from "@/components/ui/typing-animation";
 
 export default function Hero() {
   return (
     <section className="mt-8 max-w-xl">
-      <TypingAnimation
-        className="text-4xl sm:text-5xl title"
-        text="Hi, Lorenzo here! 👋"
-      />
+      <p className="text-4xl sm:text-5xl title">Hi, Lorenzo here! 👋</p>
       <h1 className="font-light text-muted-foreground mt-4">
         Software Engineer | Computer and Automatic Engineering Graduate
       </h1>
