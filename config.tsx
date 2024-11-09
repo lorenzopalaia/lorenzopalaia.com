@@ -1118,14 +1118,6 @@ export const config = {
   ],
   extra: [
     {
-      title: "Boolean Data Week",
-      company: "Boolean Careers",
-      startDate: "",
-      endDate: "Nov 2023",
-      href: "https://boolean.careers",
-      img: "/boolean.png",
-    },
-    {
       title: "<Code.Your.Future> AI Hackathon",
       company: "Randstad",
       startDate: "",
