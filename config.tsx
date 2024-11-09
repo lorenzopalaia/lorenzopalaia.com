@@ -126,17 +126,6 @@ const config = {
   ],
   extraActivities: [
     {
-      show: false,
-      url: "https://boolean.careers",
-      date: "Nov 2023",
-      activity: "Boolean Data Week",
-      category: "Data Visualization",
-      role: "Participant",
-      location: "Remote",
-      description: [],
-      badges: ["Python", "Pandas", "Tableau"],
-    },
-    {
       show: true,
       url: "https://github.com/lorenzopalaia/Randstad-AI-Hackathon",
       date: "Mar 2023",
