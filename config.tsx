@@ -1010,6 +1010,7 @@ export const config = {
       "GraphCMS",
       "DatoCMS",
     ],
+    email: "lorenzopalaia53@gmail.com",
   },
   socials: [
     {

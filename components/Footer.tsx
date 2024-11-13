@@ -13,10 +13,13 @@ export default function Footer() {
         <Socials />
         <div className="flex gap-4 items-center text-muted-foreground">
           <Signature className="size-12" />
-          <p>© {new Date().getFullYear()}</p>
+          <p>© {new Date().getFullYear()}</p>|
+          <Link href="/privacy" className="hover:text-primary font-bold">
+            Privacy Policy
+          </Link>
         </div>
       </div>
-      <p className="text-muted-foreground pt-4">
+      <p className="text-muted-foreground pt-4 text-center sm:text-start">
         Looking for previous website version?{" "}
         <Link
           href="https://v1.lorenzopalaia.it/"
