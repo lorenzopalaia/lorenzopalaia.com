@@ -21,6 +21,7 @@ interface ProjectCardProps {
     description: string;
     languages: string[];
     html_url?: string;
+    homepage?: string;
     stargazers_count?: number;
   };
 }
@@ -78,23 +79,33 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </CardContent>
       <CardFooter className="mt-auto flex items-center justify-between gap-4">
-        {project.html_url && (
-          <Link href={project.html_url}>
-            <Button size="sm" className="px-2.5 py-0.5 font-bold">
-              {project.html_url.includes("github") ? (
-                <>
-                  <Github />
-                  GitHub
-                </>
-              ) : (
-                <>
-                  <Globe />
-                  Website
-                </>
-              )}
-            </Button>
-          </Link>
-        )}
+        <div className="flex items-center gap-2">
+          {project.html_url && (
+            <Link href={project.html_url} target="_blank">
+              <Button size="sm" className="px-2.5 py-0.5 font-bold">
+                {project.html_url.includes("github") ? (
+                  <>
+                    <Github />
+                    GitHub
+                  </>
+                ) : (
+                  <>
+                    <Globe />
+                    Website
+                  </>
+                )}
+              </Button>
+            </Link>
+          )}
+          {project.homepage && (
+            <Link href={project.homepage} target="_blank">
+              <Button size="sm" className="px-2.5 py-0.5 font-bold">
+                <Globe />
+                Website
+              </Button>
+            </Link>
+          )}
+        </div>
         {project.stargazers_count !== undefined && (
           <CardDescription className="title flex items-center gap-2">
             <Star size={16} />

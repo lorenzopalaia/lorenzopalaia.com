@@ -24,6 +24,7 @@ export default function Footer() {
         <Link
           href="https://v1.lorenzopalaia.it/"
           className="font-bold hover:text-primary"
+          target="_blank"
         >
           Click here!
         </Link>

@@ -62,7 +62,7 @@ function CardItem({
         {links && links.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">
             {links.map((link, index) => (
-              <Link key={index} href={link.href}>
+              <Link key={index} href={link.href} target="_blank">
                 <Button size="sm" className="px-2.5 py-0.5 font-bold">
                   {link.href.includes("github") ? <Github /> : <Globe />}
                   {link.title}

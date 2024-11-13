@@ -26,7 +26,7 @@ export default function Hero() {
         <MapPin />
       </div>
       <div className="mt-8 flex items-center gap-8">
-        <Link href="/assets/resume.pdf">
+        <Link href="/assets/resume.pdf" target="_blank">
           <ShinyButton className="title">
             <div className="flex items-center gap-2">
               Resume
