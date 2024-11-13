@@ -6,12 +6,10 @@ const lastUpdated = "Sep 2024";
 
 export default function page() {
   return (
-    <article className="prose mt-8 pb-16 dark:prose-invert">
+    <article className="prose mt-8 pb-16 dark:prose-invert">      
+      <h1 className="title text-5xl">Privacy Policy</h1>
+      <p>Last Updated: {lastUpdated}</p>      
       <div className="space-y-4">
-        <h1 className="title text-5xl">Privacy Policy</h1>
-        <p>Last Updated: {lastUpdated}</p>
-      </div>
-      <div className="space-y-4 mt-8">
         <h2 className="title text-3xl">Hey, Welcome!</h2>
         <p>
           Thanks for stopping by! This <b>Privacy Policy</b> is just here to let
@@ -33,7 +31,7 @@ export default function page() {
         </p>
         <h2 className="title">How I Use the Info</h2>
         <p>Here&apos;s what I might do with any information I collect:</p>
-        <ul className="list-disc list-inside">
+        <ul className="list-disc">
           <li>Make sure the site is running smoothly</li>
           <li>Improve the website based on feedback you might share</li>
           <li>Respond to your questions or feedback</li>
@@ -62,8 +60,7 @@ export default function page() {
           If you have any questions, concerns, or just want to say hi, drop me
           an email at{" "}
           <Link
-            href={`mailto:${email}`}
-            className="text-muted-foreground hover:text-primary font-bold"
+            href={`mailto:${email}`}            
           >
             {email}
           </Link>{" "}
