@@ -11,7 +11,7 @@ export default function Home() {
         href="https://blog.lorenzopalaia.it/"
         emoji="🎉"
         text="Check out my blog"
-      /> */}      
+      /> */}
       <Hero />
       <About />
       <Skills />

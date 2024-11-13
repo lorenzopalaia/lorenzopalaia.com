@@ -15,8 +15,8 @@ export default function Projects() {
 
   return (
     <section className="my-16">
-      <h1 className="text-2xl sm:text-3xl title">Projects</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+      <h1 className="title text-2xl sm:text-3xl">Projects</h1>
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {isLoading ? (
           <>
             {Array.from({ length: config.featuredProjects.length }, (_, i) => (

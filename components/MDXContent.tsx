@@ -19,7 +19,7 @@ const components = {
 };
 
 export default function MDXContent(
-  props: JSX.IntrinsicAttributes & MDXRemoteProps
+  props: JSX.IntrinsicAttributes & MDXRemoteProps,
 ) {
   return (
     <MDXRemote

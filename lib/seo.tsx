@@ -29,7 +29,7 @@ export const getSEOTags = ({
     metadataBase: new URL(
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000/"
-        : `https://www.lorenzopalaia.it/`
+        : `https://www.lorenzopalaia.it/`,
     ),
 
     openGraph: {

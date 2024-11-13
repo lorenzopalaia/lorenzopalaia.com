@@ -19,16 +19,16 @@ export default function FeaturedProjects() {
 
   return (
     <section className="my-16">
-      <div className="flex justify-between items-center">
-        <p className="text-2xl sm:text-3xl title">Featured Projects</p>
+      <div className="flex items-center justify-between">
+        <p className="title text-2xl sm:text-3xl">Featured Projects</p>
         <Link
           href="/projects"
-          className="flex gap-2 items-center text-muted-foreground hover:text-primary"
+          className="flex items-center gap-2 text-muted-foreground hover:text-primary"
         >
           View More <ArrowRight size={16} />
         </Link>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {isLoading ? (
           <>
             {Array.from({ length: config.featuredProjects.length }, (_, i) => (

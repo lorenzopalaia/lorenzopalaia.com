@@ -4,6 +4,7 @@ import "./globals.css";
 import { config } from "@/config";
 
 import ThemeProvider from "@/components/ThemeProvider";
+import ToastProvider from "@/components/ToastProvider";
 
 import SitePulseTracker from "@/components/SitePulseTracker";
 import Header from "@/components/Header";
@@ -43,7 +44,7 @@ export default function RootLayout({
         <SitePulseTracker />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesqueBold.variable} antialiased min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesqueBold.variable} min-h-screen antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -54,11 +55,12 @@ export default function RootLayout({
           <Overlay />
           <DotPattern>
             <Header />
-            <div className="container mx-auto max-w-3xl px-8 relative z-10">
+            <div className="container relative z-10 mx-auto max-w-3xl px-8">
               <main>{children}</main>
               <Footer />
             </div>
           </DotPattern>
+          <ToastProvider />
         </ThemeProvider>
       </body>
     </html>

@@ -6,9 +6,9 @@ const lastUpdated = "Sep 2024";
 
 export default function page() {
   return (
-    <article className="prose mt-8 pb-16 dark:prose-invert">      
+    <article className="prose mt-8 pb-16 dark:prose-invert">
       <h1 className="title text-5xl">Privacy Policy</h1>
-      <p>Last Updated: {lastUpdated}</p>      
+      <p>Last Updated: {lastUpdated}</p>
       <div className="space-y-4">
         <h2 className="title text-3xl">Hey, Welcome!</h2>
         <p>
@@ -58,14 +58,9 @@ export default function page() {
         <h2 className="title">Got Questions?</h2>
         <p>
           If you have any questions, concerns, or just want to say hi, drop me
-          an email at{" "}
-          <Link
-            href={`mailto:${email}`}            
-          >
-            {email}
-          </Link>{" "}
-          or use the <Link href="/contact">contact form</Link>. I&apos;d love to
-          hear from you!
+          an email at <Link href={`mailto:${email}`}>{email}</Link> or use the{" "}
+          <Link href="/contact">contact form</Link>. I&apos;d love to hear from
+          you!
         </p>
       </div>
     </article>

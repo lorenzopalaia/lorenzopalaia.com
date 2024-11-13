@@ -16,7 +16,9 @@ export async function generateStaticParams() {
   return slugs;
 }
 
-export default async function Post(props: { params: Promise<{ slug: string }> }) {
+export default async function Post(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
   const { slug } = params;
   const post = await getPostBySlug(blogDirectory, slug);
@@ -32,7 +34,7 @@ export default async function Post(props: { params: Promise<{ slug: string }> })
     <article className="mt-8 flex flex-col gap-8 pb-16">
       <Link
         href="/blog"
-        className="flex gap-2 items-center text-muted-foreground hover:text-primary"
+        className="flex items-center gap-2 text-muted-foreground hover:text-primary"
       >
         <ArrowLeft />
         Back to blog

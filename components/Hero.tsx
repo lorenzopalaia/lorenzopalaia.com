@@ -9,19 +9,19 @@ import ShinyButton from "@/components/ui/shiny-button";
 export default function Hero() {
   return (
     <section className="mt-8 max-w-xl">
-      <p className="text-4xl sm:text-5xl title tracking-tight">
+      <p className="title text-4xl tracking-tight sm:text-5xl">
         Hi, Lorenzo here! 👋
       </p>
-      <h1 className="font-light text-muted-foreground mt-4">
+      <h1 className="mt-4 font-light text-muted-foreground">
         Software Engineer | Computer and Automatic Engineering Graduate
       </h1>
-      <h2 className="font-light text-muted-foreground mt-2">
+      <h2 className="mt-2 font-light text-muted-foreground">
         Crypto enthusiast, passionate about programming, artificial
         intelligence, blockchain, finance and traveling. Computer and Automatic
         Engineering graduate at Sapienza University of Rome. Currently working
         as a freelance fullstack developer.
       </h2>
-      <div className="flex gap-1 title mt-4">
+      <div className="title mt-4 flex gap-1">
         Rome, Italy
         <MapPin />
       </div>

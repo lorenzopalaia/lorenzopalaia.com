@@ -23,7 +23,7 @@ const fetchGithubRepos = async (): Promise<Repo[]> => {
 
 const fetchRepoLanguages = async (
   owner: string,
-  repo: string
+  repo: string,
 ): Promise<string[]> => {
   const response = await octokit.repos.listLanguages({
     owner,
@@ -41,7 +41,7 @@ export async function GET() {
         try {
           let languages: string[] = await fetchRepoLanguages(
             repo.owner.login,
-            repo.name
+            repo.name,
           );
           if (languages.length === 0) {
             languages = ["Markdown"];
@@ -59,7 +59,7 @@ export async function GET() {
             img: `https://raw.githubusercontent.com/lorenzopalaia/${repo.name}/main/repo_assets/preview.png`,
           };
         }
-      })
+      }),
     );
 
     return NextResponse.json(reposWithLanguages, {
@@ -71,7 +71,7 @@ export async function GET() {
     console.error("Error retrieving data:", error);
     return NextResponse.json(
       { error: "Error retrieving data" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

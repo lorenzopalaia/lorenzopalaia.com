@@ -10,7 +10,7 @@ export default async function BlogPage() {
   return (
     <section className="my-16">
       <div className="min-h-screen">
-        <h1 className="text-2xl sm:text-3xl title">Blog</h1>
+        <h1 className="title text-2xl sm:text-3xl">Blog</h1>
         <PostsWithSearch posts={posts} />
       </div>
     </section>

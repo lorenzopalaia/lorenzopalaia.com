@@ -61,12 +61,12 @@ export default function GitHubCal() {
   return (
     <div className="mt-8">
       <div
-        className={`relative pb-1 mb-12 transition-all animate-pulse ${
+        className={`relative mb-12 animate-pulse pb-1 transition-all ${
           loading ? "block" : "hidden"
         }`}
       >
-        <div className="absolute z-0 hidden transition rounded-md -inset-x-4 -inset-y-4 motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50"></div>
-        <div className="w-[256px] sm:w-1/2 md:w-[400px] h-32 rounded bg-teal-400/10"></div>
+        <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50"></div>
+        <div className="h-32 w-[256px] rounded bg-teal-400/10 sm:w-1/2 md:w-[400px]"></div>
       </div>
       <div className={loading ? "hidden" : "block"}>
         <GitHubCalendar
@@ -83,7 +83,7 @@ export default function GitHubCal() {
             cloneElement(block, {
               "data-tooltip-id": "react-tooltip",
               "data-tooltip-html": `${activity.count} activities on ${new Date(
-                activity.date
+                activity.date,
               ).toLocaleDateString()}`,
             })
           }

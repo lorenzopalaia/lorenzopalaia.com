@@ -17,7 +17,7 @@ export default function DotPattern({
         cy={1}
         cr={1}
         className={cn(
-          "dark:opacity-50 absolute inset-0 -z-10 [mask-image:radial-gradient(circle,white_0%,transparent_100%)]"
+          "absolute inset-0 -z-10 [mask-image:radial-gradient(circle,white_0%,transparent_100%)] dark:opacity-50",
         )}
       />
       <div>{children}</div>

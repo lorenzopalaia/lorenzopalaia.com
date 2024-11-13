@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const response = await fetch(
-      "https://wakatime.com/api/v1/users/@lorenzopalaia/stats/last_7_days"
+      "https://wakatime.com/api/v1/users/@lorenzopalaia/stats/last_7_days",
     );
     const data = await response.json();
 
@@ -16,7 +16,7 @@ export async function GET() {
     console.error("Error retrieving data:", error);
     return NextResponse.json(
       { error: "Error retrieving data" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

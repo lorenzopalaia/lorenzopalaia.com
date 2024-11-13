@@ -27,10 +27,10 @@ interface ProjectCardProps {
 
 export function CardSkeleton() {
   return (
-    <Card className="w-full h-full border-2 flex flex-col">
+    <Card className="flex h-full w-full flex-col border-2">
       <CardHeader>
-        <Skeleton className="w-full h-40 rounded-lg" />
-        <CardTitle className="pt-2 title">
+        <Skeleton className="h-40 w-full rounded-lg" />
+        <CardTitle className="title pt-2">
           <Skeleton className="h-4 w-full" />
         </CardTitle>
         <div className="pt-2">
@@ -54,16 +54,16 @@ export function CardSkeleton() {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="w-full h-full border-2 flex flex-col">
+    <Card className="flex h-full w-full flex-col border-2">
       <CardHeader>
         <ImageFallback
           src={project.img}
           alt={project.name}
           width={1600}
           height={900}
-          className="w-full h-auto rounded-lg"
+          className="h-auto w-full rounded-lg"
         />
-        <CardTitle className="pt-2 title">
+        <CardTitle className="title pt-2">
           {project.name.replaceAll("-", " ")}
         </CardTitle>
         <CardDescription>{project.description}</CardDescription>
@@ -77,10 +77,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
       </CardContent>
-      <CardFooter className="mt-auto flex gap-4 justify-between items-center">
+      <CardFooter className="mt-auto flex items-center justify-between gap-4">
         {project.html_url && (
           <Link href={project.html_url}>
-            <Button size="sm" className="font-bold py-0.5 px-2.5">
+            <Button size="sm" className="px-2.5 py-0.5 font-bold">
               {project.html_url.includes("github") ? (
                 <>
                   <Github />
@@ -96,7 +96,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </Link>
         )}
         {project.stargazers_count !== undefined && (
-          <CardDescription className="flex gap-2 items-center title">
+          <CardDescription className="title flex items-center gap-2">
             <Star size={16} />
             {project.stargazers_count}
           </CardDescription>

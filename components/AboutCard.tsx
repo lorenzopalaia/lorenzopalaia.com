@@ -29,10 +29,10 @@ function CardItem({
     <li className="relative ml-10 py-4">
       <Link
         target="_blank"
-        className="absolute -left-16 top-4 flex items-center justify-center rounded-full "
+        className="absolute -left-16 top-4 flex items-center justify-center rounded-full"
         href={href}
       >
-        <span className="relative flex shrink-0 overflow-hidden rounded-full size-12 border-2">
+        <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border-2">
           <Image
             className="aspect-square h-full w-full bg-background object-contain"
             alt={company}
@@ -49,7 +49,7 @@ function CardItem({
           <span>{endDate}</span>
         </time>
         <h2 className="font-semibold leading-none">{company}</h2>
-        <p className="text-sm text-muted-foreground title">{title}</p>
+        <p className="title text-sm text-muted-foreground">{title}</p>
         {items && items.length > 0 && (
           <ul className="ml-4 list-outside list-disc">
             {items.map((item, index) => (
@@ -60,10 +60,10 @@ function CardItem({
           </ul>
         )}
         {links && links.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="mt-2 flex flex-wrap gap-2">
             {links.map((link, index) => (
               <Link key={index} href={link.href}>
-                <Button size="sm" className="font-bold py-0.5 px-2.5">
+                <Button size="sm" className="px-2.5 py-0.5 font-bold">
                   {link.href.includes("github") ? <Github /> : <Globe />}
                   {link.title}
                 </Button>

@@ -14,13 +14,13 @@ interface Props {
 export default function PostsWithSearch({ posts }: Props) {
   const [query, setQuery] = useState("");
   const filtered = posts.filter((post) =>
-    post.title?.toLowerCase().includes(query.toLowerCase())
+    post.title?.toLowerCase().includes(query.toLowerCase()),
   );
 
   const resetFilter = () => setQuery("");
 
   return (
-    <div className="flex flex-col gap-12 mt-8">
+    <div className="mt-8 flex flex-col gap-12">
       <div className="flex items-center gap-3">
         <Input
           type="text"

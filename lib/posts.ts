@@ -17,7 +17,7 @@ export type PostMetadata = {
 
 export async function getPostBySlug(
   rootDirectory: string,
-  slug: string
+  slug: string,
 ): Promise<Post | null> {
   try {
     const filePath = path.join(rootDirectory, `${slug}.mdx`);
@@ -33,7 +33,7 @@ export async function getPostBySlug(
 
 export async function getPosts(
   rootDirectory: string,
-  limit?: number
+  limit?: number,
 ): Promise<PostMetadata[]> {
   const files = fs.readdirSync(rootDirectory);
 
@@ -43,7 +43,7 @@ export async function getPosts(
     .sort(
       (a, b) =>
         (new Date(b.publishedAt ?? "").getTime() || 0) -
-        (new Date(a.publishedAt ?? "").getTime() || 0)
+        (new Date(a.publishedAt ?? "").getTime() || 0),
     );
 
   if (limit) {
@@ -55,7 +55,7 @@ export async function getPosts(
 
 export function getPostMetaData(
   rootDirectory: string,
-  filePath: string
+  filePath: string,
 ): PostMetadata {
   const slug = filePath.replace(/\.mdx$/, "");
   const fullFilePath = path.join(rootDirectory, filePath);

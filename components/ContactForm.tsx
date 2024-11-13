@@ -43,7 +43,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(processForm)}>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 mt-8">
+      <div className="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2">
         <div className="h-16">
           <Input
             id="name"
