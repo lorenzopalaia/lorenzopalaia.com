@@ -18,7 +18,7 @@ export default function Featured({
   className?: string;
 }) {
   return (
-    <Link href={href}>
+    <Link href={href} target="_blank">
       <AnimatedGradientText className="mt-8">
         {emoji} <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
         <span
