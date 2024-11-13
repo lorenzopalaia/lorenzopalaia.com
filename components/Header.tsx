@@ -20,6 +20,18 @@ export default function Header() {
             >
               Projects
             </Link>
+            {/* <Link
+              className="text-muted-foreground hover:text-primary title"
+              href="/blog"
+            >
+              Blog
+            </Link> */}
+            <Link
+              className="text-muted-foreground hover:text-primary title"
+              href="/contact"
+            >
+              Contact
+            </Link>
           </div>
           <ThemeToggle />
         </div>

@@ -13,7 +13,7 @@ export default function Footer() {
         <Socials />
         <div className="flex gap-4 items-center text-muted-foreground">
           <Signature className="size-12" />
-          <p>© {new Date().getFullYear()}</p>|
+          <p>&copy; {new Date().getFullYear()}</p>|
           <Link href="/privacy" className="hover:text-primary font-bold">
             Privacy Policy
           </Link>
