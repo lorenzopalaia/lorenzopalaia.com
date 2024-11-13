@@ -13,8 +13,11 @@ interface Props {
 
 export default function PostsWithSearch({ posts }: Props) {
   const [query, setQuery] = useState("");
-  const filtered = posts.filter((post) =>
-    post.title?.toLowerCase().includes(query.toLowerCase()),
+  const filtered = posts.filter(
+    (post) =>
+      post.title?.toLowerCase().includes(query.toLowerCase()) ||
+      post.summary?.toLowerCase().includes(query.toLowerCase()) ||
+      post.tags?.some((tag) => tag.toLowerCase().includes(query.toLowerCase())),
   );
 
   const resetFilter = () => setQuery("");
