@@ -1,13 +1,15 @@
 import { Linkedin, Github, Mail, Video } from "lucide-react";
 
+export const email = "lorenzopalaia53@gmail.com";
+
 export const config = {
   settings: {
-    fallbackImage:
-      "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png",
     name: "Lorenzo Palaia",
     title: "Software Engineer | Computer and Automatic Engineer Graduate",
     description:
       "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automatic Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
+    fallbackImage:
+      "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png",
     keywords: [
       "Lorenzo Palaia",
       "Software Engineer Rome",
@@ -1010,7 +1012,6 @@ export const config = {
       "GraphCMS",
       "DatoCMS",
     ],
-    email: "lorenzopalaia53@gmail.com",
   },
   socials: [
     {
@@ -1022,7 +1023,7 @@ export const config = {
       icon: <Github className="text-muted-foreground hover:text-primary" />,
     },
     {
-      href: "mailto:lorenzopalaia53@gmail.com",
+      href: `mailto:${email}`,
       icon: <Mail className="text-muted-foreground hover:text-primary" />,
     },
     {

@@ -10,10 +10,13 @@ export default function NotFound() {
             <p className="title text-muted-foreground text-6xl">404</p>
             <div className="sm:ml-6">
               <div className="sm:border-l sm:border-gray-200 sm:pl-6">
-                <h1 className="title sm:text-5xl">Oops! Page not found.</h1>
+                <h1 className="title sm:text-5xl">
+                  Oops! Page <i>not found</i>.
+                </h1>
                 <p className="mt-1 text-base text-muted-foreground">
-                  Looks like you took a wrong turn. Don&apos;t worry, it happens
-                  to the best of us. Let&apos;s get you back on track!
+                  Looks like you took a <i>wrong turn</i>. Don&apos;t worry, it
+                  happens to the <i>best of us</i>. Let&apos;s get you back{" "}
+                  <i>on track</i>!
                 </p>
               </div>
               <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">

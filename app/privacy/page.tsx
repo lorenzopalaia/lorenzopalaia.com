@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { config } from "@/config";
+import { email } from "@/config";
 
 const lastUpdated = "Sep 2024";
 
@@ -62,10 +62,10 @@ export default function page() {
           If you have any questions, concerns, or just want to say hi, drop me
           an email at{" "}
           <Link
-            href={`mailto:${config.settings.email}`}
+            href={`mailto:${email}`}
             className="text-muted-foreground hover:text-primary font-bold"
           >
-            {config.settings.email}
+            {email}
           </Link>{" "}
           or use the <Link href="/contact">contact form</Link>. I&apos;d love to
           hear from you!
