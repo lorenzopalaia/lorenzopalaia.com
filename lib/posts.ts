@@ -12,6 +12,9 @@ export type PostMetadata = {
   summary?: string;
   image?: string;
   publishedAt?: string;
+  tags?: string[];
+  draft?: boolean;
+  author?: string;
   slug: string;
 };
 
@@ -40,6 +43,7 @@ export async function getPosts(
   const posts = files
     .filter((file) => file.endsWith(".mdx")) // might have .DS_Store?
     .map((file) => getPostMetaData(rootDirectory, file))
+    .filter((post) => !post.draft) // filter out drafts
     .sort(
       (a, b) =>
         (new Date(b.publishedAt ?? "").getTime() || 0) -

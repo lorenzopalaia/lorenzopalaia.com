@@ -1,19 +1,42 @@
 import MDXContent from "@/components/MDXContent";
+
 import { getPostBySlug, getPosts } from "@/lib/posts";
+import { getAuthor } from "@/lib/authors";
+
 import { formatDate } from "@/lib/utils";
+
 import { ArrowLeft } from "lucide-react";
+
 import Image from "next/image";
+
 import { notFound } from "next/navigation";
+
 import path from "path";
+
 import Link from "next/link";
 
-const blogDirectory = path.join(process.cwd(), "content");
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+
+const blogDirectory = path.join(process.cwd(), "blog/posts");
 
 export async function generateStaticParams() {
   const posts = await getPosts(blogDirectory);
   const slugs = posts.map((post) => ({ slug: post.slug }));
 
   return slugs;
+}
+
+function BackToBlog() {
+  return (
+    <Link
+      href="/blog"
+      className="flex items-center gap-2 text-muted-foreground hover:text-primary"
+    >
+      <ArrowLeft />
+      Back to blog
+    </Link>
+  );
 }
 
 export default async function Post(props: {
@@ -28,17 +51,13 @@ export default async function Post(props: {
   }
 
   const { metadata, content } = post;
-  const { title, image, publishedAt } = metadata;
+  const { title, image, publishedAt, tags, author: authorId } = metadata;
+
+  const author = authorId ? getAuthor({ id: authorId }) : null;
 
   return (
     <article className="mt-8 flex flex-col gap-8 pb-16">
-      <Link
-        href="/blog"
-        className="flex items-center gap-2 text-muted-foreground hover:text-primary"
-      >
-        <ArrowLeft />
-        Back to blog
-      </Link>
+      <BackToBlog />
       {image && (
         <div className="relative mb-6 h-96 w-full overflow-hidden rounded-lg">
           <Image src={image} alt={title || ""} className="object-cover" fill />
@@ -49,10 +68,41 @@ export default async function Post(props: {
         <p className="mt-2 text-xs text-muted-foreground">
           {formatDate(publishedAt ?? "")}
         </p>
+        {author && (
+          <div className="mt-8 flex items-center justify-center gap-2">
+            <Image
+              src={author.avatar}
+              alt={author.name}
+              width={48}
+              height={48}
+              className="size-12 rounded-full"
+            />
+            <p className="text-md">
+              <span className="title">{author.name}</span>
+              <br />
+              <span className="text-muted-foreground">{author.occupation}</span>
+            </p>
+          </div>
+        )}
+        <Separator className="mt-8 h-[2px]" />
       </header>
       <main className="prose dark:prose-invert">
         <MDXContent source={content} />
       </main>
+      <footer className="mt-8">
+        <Separator className="h-[2px]" />
+        {tags && (
+          <>
+            <p className="title mt-4 text-muted-foreground">TAGS</p>
+            <div className="mb-8 mt-2 flex flex-wrap items-center gap-2">
+              {tags.map((tag, index) => (
+                <Badge key={index}>{tag}</Badge>
+              ))}
+            </div>
+          </>
+        )}
+        <BackToBlog />
+      </footer>
     </article>
   );
 }

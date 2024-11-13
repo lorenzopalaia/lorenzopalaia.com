@@ -3,6 +3,7 @@ import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { Card } from "./ui/card";
 import { Separator } from "./ui/separator";
+import { Badge } from "./ui/badge";
 
 interface Props {
   posts: PostMetadata[];
@@ -23,8 +24,14 @@ export default function Posts({ posts }: Props) {
                     <p className="mt-1 line-clamp-2 text-sm font-light text-muted-foreground">
                       {post.summary}
                     </p>
+                    {post.tags && (
+                      <div className="mt-4 flex flex-wrap items-center gap-2">
+                        {post.tags.map((tag, index) => (
+                          <Badge key={index}>{tag}</Badge>
+                        ))}
+                      </div>
+                    )}
                   </div>
-
                   {post.publishedAt && (
                     <p className="mt-2 flex w-full justify-end text-sm font-light sm:mt-0 sm:w-auto">
                       {formatDate(post.publishedAt)}

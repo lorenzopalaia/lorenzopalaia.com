@@ -8,7 +8,7 @@ import { getPosts } from "@/lib/posts";
 
 import path from "path";
 
-const blogDirectory = path.join(process.cwd(), "content");
+const blogDirectory = path.join(process.cwd(), "blog/posts");
 const LIMIT = 3;
 
 export default async function RecentPosts() {
