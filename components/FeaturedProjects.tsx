@@ -13,9 +13,9 @@ import ProjectCard, { CardSkeleton } from "@/components/ProjectCard";
 export default function FeaturedProjects() {
   const { repos, isLoading } = useGithubRepos();
 
-  const featuredProjects = repos.filter((repo) => {
-    return config.featuredProjects.includes(repo.name);
-  });
+  const featuredProjects = config.featuredProjects
+    .map((projectName) => repos.find((repo) => repo.name === projectName))
+    .filter((repo) => repo !== undefined);
 
   return (
     <section className="my-16">

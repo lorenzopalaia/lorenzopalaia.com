@@ -1159,15 +1159,7 @@ export const config = {
     "Bash",
     "Arduino",
   ],
-  projects: [
-    {
-      name: "Blog",
-      description: "Personal blog with markdown support.",
-      languages: ["NextJS", "React", "Typescript", "Tailwind"],
-      img: "/",
-      html_url: "",
-      updated_at: "2024-10-14T00:00:00Z",
-    },
+  projects: [    
     {
       name: "Linktree",
       description: "Personal linktree for socials.",
@@ -1194,11 +1186,12 @@ export const config = {
     },
   ],
   featuredProjects: [
-    // ! github projects
+    // * Add your projects here, they will be displayed in the featured section ordered as they are in the array
+    // github projects
+    "MediaShift",
     "Neural-Style-Transfer-and-Genre-Classification",
     "Arduino-Oscilloscope",
-    "Blocktracr",
     "Euro-Hackathons",
-    // ! other projects
+    // local projects
   ],
 };
