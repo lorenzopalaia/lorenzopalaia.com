@@ -69,7 +69,7 @@ export default async function Post(props: {
           {formatDate(publishedAt ?? "")}
         </p>
         {author && (
-          <div className="mt-8 flex items-center justify-center gap-2">
+          <div className="mt-8 flex items-center justify-center gap-4">
             <Image
               src={author.avatar}
               alt={author.name}
