@@ -1059,7 +1059,7 @@ export const config = {
         </p>,
       ],
       href: "https://www.sasa-aerospace.it/flight-team/",
-      img: "/flightteam.png",
+      img: "/images/flightteam.png",
     },
     {
       title: "Software Developer",
@@ -1074,7 +1074,7 @@ export const config = {
         </p>,
       ],
       href: "https://github.com/lorenzopalaia",
-      img: "/github.png",
+      img: "/images/github.png",
       links: [
         {
           title: "GitHub",
@@ -1105,11 +1105,11 @@ export const config = {
         </div>,
       ],
       href: "https://www.uniroma1.it/it/",
-      img: "/sapienza.jpeg",
+      img: "/images/sapienza.jpeg",
       links: [
         {
           title: "Thesis Paper",
-          href: "/thesis.pdf",
+          href: "/assets/thesis.pdf",
         },
         {
           title: "Thesis Project",
@@ -1137,7 +1137,7 @@ export const config = {
         </p>,
       ],
       href: "https://www.randstad.it/",
-      img: "/randstad.png",
+      img: "/images/randstad.png",
       links: [
         {
           title: "Submission",
@@ -1159,7 +1159,7 @@ export const config = {
     "Bash",
     "Arduino",
   ],
-  projects: [    
+  projects: [
     {
       name: "Linktree",
       description: "Personal linktree for socials.",
