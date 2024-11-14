@@ -14,7 +14,7 @@ export default function Header() {
     <header className="sticky top-0 z-20 border-b bg-opacity-75 py-6 backdrop-blur-md">
       <div className="container mx-auto max-w-3xl px-8">
         <div className="flex items-center justify-between gap-8">
-          <div className="flex gap-8">
+          <div className="flex gap-6">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
