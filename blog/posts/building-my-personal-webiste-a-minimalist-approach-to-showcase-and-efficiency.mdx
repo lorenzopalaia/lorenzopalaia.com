@@ -1,0 +1,119 @@
+---
+title: "Building My Personal Website: A Minimalist Approach to Showcase and Efficiency"
+summary: "In the second iteration of my personal website, I shifted from a CV-oriented design to a minimalistic, user-focused approach. This post dives into the technologies I used, the rationale behind design decisions, and how I tackled technical challenges to create a robust, feature-rich website."
+publishedAt: "2024-11-19"
+image: "/blog/images/posts/building-my-personal-webiste-a-minimalist-approach-to-showcase-and-efficiency/next.jpeg"
+tags: ["Web Development"]
+draft: false
+author: "lorenzo-palaia"
+---
+
+## Overview
+
+Building a personal website is always a balancing act between aesthetics, functionality, and performance. The first version of my site was overly complex, with many pages and data poorly presented, often making it hard for users to focus on key information. For version two, I embraced **minimalism**, reducing the number of pages and prioritizing a clear, efficient display of data. This post explores the **tech stack**, **design philosophy**, and the **technical solutions** behind the latest iteration of my site. 🌐✨
+
+<TOCInline
+  sections={[
+    { url: "#introduction", title: "Introduction" },
+    { url: "#tech-stack", title: "Tech Stack" },
+    {
+      url: "#home-and-presentation-sections",
+      title: "Home and Presentation Sections",
+    },
+    { url: "#skills-and-experience", title: "Skills and Experience" },
+    { url: "#projects-and-blog", title: "Projects and Blog" },
+    { url: "#contact-and-small-features", title: "Contact and Small Features" },
+    { url: "#conclusion", title: "Conclusion" },
+  ]}
+/>
+
+<section id="introduction">  
+## Introduction
+
+The first version of my website felt like an extension of my CV, with multiple detailed pages. While functional, it lacked focus and overwhelmed users with unnecessary complexity. In the second version, I aimed for a **minimalist design**, focusing on essential information and enhancing user engagement. The core goal? Efficiency in navigation, data presentation, and interaction. 🎯
+
+</section>
+
+<section id="tech-stack">  
+## Tech Stack
+
+For this version, I opted for a modern stack tailored to my needs:
+
+- **Next.js 15**: Testing the new **Turbopack** for a faster development experience and the App Router for structured navigation.
+- **React 19**: Leveraging the latest features.
+- **TypeScript**: Ensuring type safety across the codebase.
+- **Tailwind CSS**: A utility-first approach for rapid styling.
+- **shadcn/ui**: Pre-built accessible components for consistency.
+- **MagicUI**: Eye-catching animations for a polished user experience.
+
+Each tool was chosen to balance **developer productivity** with a seamless **user experience**. 🚀
+
+</section>
+
+<section id="home-and-presentation-sections">  
+## Home and Presentation Sections
+
+The **homepage** starts with a `Featured` component that directs attention to key projects or updates. Currently, it highlights [Euro Hackathons](https://github.com/lorenzopalaia/Euro-Hackathons), a curated list of upcoming onsite hackathons in Europe that I maintain.
+
+Next is a **personal introduction** showcasing key details like my role and a direct link to my CV. Subtle graphical accents from MagicUI make this section visually engaging without being overwhelming.
+
+The **minimalist approach** here emphasizes fewer sections with greater impact. 🛠️
+
+</section>
+
+<section id="skills-and-experience">  
+## Skills and Experience
+
+In the **skills section**, I moved away from subjective progress bars. Seriously, what does _“90/100 in Next.js”_ even mean? Did I lose 10 points for not memorizing the docs? 😅 Instead, I use a simple list of badges to showcase my skills without exaggeration. 🎖️
+
+For the **experience section**, I implemented a **timeline view** to chronologically display my professional journey. A toggle allows users to switch between career, education, and personal achievements. The data is stored in a `config.ts` file, making updates effortless without modifying the components. This **config-driven paradigm** ensures scalability and maintainability. 🗂️
+
+</section>
+
+<section id="projects-and-blog">  
+## Projects and Blog
+
+### Featured Projects
+
+Featured projects are rendered using a reusable card component. Data is fetched from a combination of a GitHub API and a local configuration:
+
+1. **GitHub API**: Retrieves repository details, including the list of languages used. To manage rate limits, I use **cache headers** for responses and handle language data through a separate endpoint.
+2. **Custom Config**: Projects not hosted on GitHub are integrated using a standardized configuration file.
+
+To handle missing elements like repository previews, I use a `repo_assets` directory where each project has a `preview.png`. If no preview exists, a fallback image is displayed. This setup balances **real-time updates** with **rate-limit management**.
+
+In the **featured projects** section, I use a config file to filter and display the most relevant projects. On the **projects page**, projects are sorted by their `updated_at` field to highlight recent changes.
+
+### Blog
+
+The blog is dynamically generated from `.mdx` files. Posts are displayed with a dynamic route based on their slug, and features like a **Table of Contents** and **LaTeX support** enhance readability.
+
+The blog archive includes a search bar to filter posts by title, description, or tags, offering an interactive browsing experience. 📖
+
+</section>
+
+<section id="contact-and-small-features">  
+## Contact and Small Features
+
+The **contact form** uses `zod` for validation and `Resend` for reliable email handling. ✉️
+
+Other notable features include:
+
+- **Skeleton loaders** for smooth transitions during data fetching.
+- **Dynamic sorting** for prioritizing recent projects and posts.
+- A **theme switcher** that syncs with the user's system preferences.
+- **Dot patterns** and **animated overlays** provide subtle design enhancements. The animated overlay is powered by a custom library, [Tailwind Animations](https://github.com/lorenzopalaia/Tailwind-Animations), that I developed.
+- **Sitemap generation** with `next-sitemap` at build time.
+
+These small details collectively elevate the user experience. 💎
+
+</section>
+
+<section id="conclusion">  
+## Conclusion
+
+Revamping my website was a journey of refining both design and functionality. By embracing **minimalism**, I’ve created a platform that is visually appealing, highly functional, and easy to maintain. From testing new features like Turbopack to leveraging a **config-driven approach**, this iteration reflects my dedication to efficiency and user-focused development.
+
+The experience has reinforced my belief in balancing **simplicity** and **impact**—a philosophy I aim to carry into future projects. ✨
+
+</section>
