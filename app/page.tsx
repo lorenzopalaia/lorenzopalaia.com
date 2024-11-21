@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <>
       <Featured
-        href="https://github.com/lorenzopalaia/Euro-Hackathons"
-        emoji="🎉"
         text="Check out Euro Hackathons"
+        emoji="🎉"
+        href="https://github.com/lorenzopalaia/Euro-Hackathons"
       />
       <Hero />
       <About />

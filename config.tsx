@@ -1,5 +1,27 @@
 import { Linkedin, Github, Mail, Video } from "lucide-react";
 
+import {
+  SiTypescript,
+  SiGit,
+  SiCss3,
+  SiJavascript,
+  SiJupyter,
+  SiC,
+  SiMake,
+  SiMarkdown,
+  SiMdx,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiVuedotjs,
+  SiHtml5,
+  SiCplusplus,
+  SiPython,
+  SiNodedotjs,
+  SiLinux,
+  SiArduino,
+} from "react-icons/si";
+
 export const email = "lorenzopalaia53@gmail.com";
 
 export const config = {
@@ -1148,9 +1170,9 @@ export const config = {
   ],
   skills: [
     "React",
-    "Next.js",
-    "Tailwind",
-    "Node.js",
+    "NextJS",
+    "TailwindCSS",
+    "NodeJS",
     "Git",
     "Python",
     "C",
@@ -1163,7 +1185,7 @@ export const config = {
     {
       name: "Linktree",
       description: "Personal linktree for socials.",
-      languages: ["NextJS", "React", "Typescript", "Tailwind"],
+      languages: ["NextJS", "React", "Typescript", "TailwindCSS"],
       img: "/",
       html_url: "",
       updated_at: "2024-10-07T00:00:00Z",
@@ -1171,7 +1193,7 @@ export const config = {
     {
       name: "SitePulse",
       description: "Website monitoring tool for developers.",
-      languages: ["NextJS", "React", "Typescript", "Tailwind"],
+      languages: ["NextJS", "React", "Typescript", "TailwindCSS"],
       img: "/",
       html_url: "",
       updated_at: "2024-10-01T00:00:00Z",
@@ -1194,4 +1216,133 @@ export const config = {
     "Euro-Hackathons",
     // local projects
   ],
+};
+
+export const languagesMap = {
+  nodejs: {
+    label: "Node.js",
+    color: "68, 170, 153",
+    icon: SiNodedotjs,
+    description: "JavaScript runtime built on Chrome's V8 JavaScript engine.",
+  },
+  git: {
+    label: "Git",
+    color: "238, 118, 33",
+    icon: SiGit,
+    description: "Distributed version control system.",
+  },
+  linux: {
+    label: "Linux",
+    color: "128, 128, 128",
+    icon: SiLinux,
+    description: "Open-source Unix-like operating system.",
+  },
+  arduino: {
+    label: "Arduino",
+    color: "21, 114, 182",
+    icon: SiArduino,
+    description: "Open-source electronics platform.",
+  },
+  /* java: {
+    label: "Java",
+    color: "219, 83, 61",
+    icon: SiJava,
+    description: "Class-based, object-oriented programming language.",
+  }, */
+  /* bash: {
+    label: "Bash",
+    color: "128, 128, 128",
+    icon: SiBash,
+    description: "Unix shell and command language.",
+  }, */
+  typescript: {
+    label: "Typescript",
+    color: "49, 120, 198",
+    icon: SiTypescript,
+    description: "Strongly typed superset of JavaScript.",
+  },
+  css: {
+    label: "CSS",
+    color: "21, 114, 182",
+    icon: SiCss3,
+    description: "Cascading Style Sheets.",
+  },
+  html: {
+    label: "HTML",
+    color: "227, 79, 38",
+    icon: SiHtml5,
+    description: "HyperText Markup Language.",
+  },
+  react: {
+    label: "React",
+    color: "97, 218, 251",
+    icon: SiReact,
+    description: "JavaScript library for building user interfaces.",
+  },
+  vue: {
+    label: "Vue",
+    color: "79, 192, 141",
+    icon: SiVuedotjs,
+    description: "Progressive JavaScript framework.",
+  },
+  javascript: {
+    label: "Javascript",
+    color: "247, 223, 30",
+    icon: SiJavascript,
+    description: "High-level, interpreted programming language.",
+  },
+  jupyternotebook: {
+    label: "Jupyter",
+    color: "243, 118, 38",
+    icon: SiJupyter,
+    description: "Open-source web application for interactive computing.",
+  },
+  c: {
+    label: "C",
+    color: "168, 185, 204",
+    icon: SiC,
+    description: "General-purpose, procedural computer programming language.",
+  },
+  makefile: {
+    label: "Make",
+    color: "0, 169, 143",
+    icon: SiMake,
+    description: "Build automation tool.",
+  },
+  python: {
+    label: "Python",
+    color: "55, 118, 171",
+    icon: SiPython,
+    description: "High-level, interpreted programming language.",
+  },
+  markdown: {
+    label: "Markdown",
+    color: "128, 128, 128",
+    icon: SiMarkdown,
+    description: "Lightweight markup language.",
+  },
+  mdx: {
+    label: "MDX",
+    color: "128, 128, 128",
+    icon: SiMdx,
+    description: "Markdown for the component era.",
+  },
+  nextjs: {
+    label: "Next.js",
+    color: "128, 128, 128",
+    icon: SiNextdotjs,
+    description: "React framework.",
+  },
+  tailwindcss: {
+    label: "Tailwind CSS",
+    color: "56, 178, 172",
+    icon: SiTailwindcss,
+    description: "Utility-first CSS framework.",
+  },
+  "c++": {
+    label: "C++",
+    color: "0, 89, 156",
+    icon: SiCplusplus,
+    description: "General-purpose programming language.",
+  },
 };

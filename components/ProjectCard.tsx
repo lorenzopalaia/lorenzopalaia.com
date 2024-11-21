@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { Globe, Github, Star } from "lucide-react";
 
 import {
@@ -9,9 +10,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+
+import LanguagesList from "@/components/LanguagesList";
+
 import { ImageFallback } from "@/components/ImageFallback";
 
 interface ProjectCardProps {
@@ -25,7 +28,6 @@ interface ProjectCardProps {
     stargazers_count?: number;
   };
 }
-
 export function CardSkeleton() {
   return (
     <Card className="flex h-full w-full flex-col border-2">
@@ -70,13 +72,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <CardDescription>{project.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
-        <div className="flex flex-wrap gap-2">
-          {project.languages.map((language) => (
-            <Badge key={language} variant="secondary">
-              {language}
-            </Badge>
-          ))}
-        </div>
+        <LanguagesList languages={project.languages} />
       </CardContent>
       <CardFooter className="mt-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
@@ -108,7 +104,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
         {project.stargazers_count !== undefined && (
           <CardDescription className="title flex items-center gap-2">
-            <Star size={16} />
+            <Star size={16} className="text-yellow-500" />
             {project.stargazers_count}
           </CardDescription>
         )}
