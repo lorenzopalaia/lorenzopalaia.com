@@ -43,6 +43,23 @@ export async function GET() {
             repo.owner.login,
             repo.name,
           );
+          if (
+            languages.includes("Jupyter Notebook") &&
+            !languages.includes("Python")
+          ) {
+            languages.push("Python");
+          }
+          if (
+            languages.includes("TypeScript") &&
+            languages.includes("JavaScript")
+          ) {
+            languages = languages.filter(
+              (language) => language !== "JavaScript",
+            );
+          }
+          if (repo.name.toLowerCase().includes("tailwind")) {
+            languages.push("TailwindCSS");
+          }
           if (languages.length === 0) {
             languages = ["Markdown"];
           }

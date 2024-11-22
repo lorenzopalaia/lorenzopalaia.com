@@ -72,6 +72,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <CardDescription>{project.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
+        {/* //* Useful for debugging
+        {project.languages.map((language) => (
+          <>{language}</>
+        ))} */}
         <LanguagesList languages={project.languages} />
       </CardContent>
       <CardFooter className="mt-auto flex items-center justify-between gap-4">

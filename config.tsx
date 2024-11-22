@@ -20,7 +20,10 @@ import {
   SiNodedotjs,
   SiLinux,
   SiArduino,
+  SiGnubash,
+  SiPowershell,
 } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 
 export const email = "lorenzopalaia53@gmail.com";
 
@@ -1171,12 +1174,16 @@ export const config = {
   skills: [
     "React",
     "NextJS",
+    "Typescript",
     "TailwindCSS",
     "NodeJS",
     "Git",
     "Python",
     "C",
     "Java",
+    "HTML",
+    "CSS",
+    "Javascript",
     "Linux",
     "Bash",
     "Arduino",
@@ -1239,22 +1246,28 @@ export const languagesMap = {
   },
   arduino: {
     label: "Arduino",
-    color: "21, 114, 182",
+    color: "0, 148, 151",
     icon: SiArduino,
     description: "Open-source electronics platform.",
   },
-  /* java: {
+  java: {
     label: "Java",
     color: "219, 83, 61",
-    icon: SiJava,
+    icon: FaJava,
     description: "Class-based, object-oriented programming language.",
-  }, */
-  /* bash: {
+  },
+  bash: {
     label: "Bash",
     color: "128, 128, 128",
-    icon: SiBash,
+    icon: SiGnubash,
     description: "Unix shell and command language.",
-  }, */
+  },
+  shell: {
+    label: "Shell",
+    color: "128, 128, 128",
+    icon: SiPowershell,
+    description: "",
+  },
   typescript: {
     label: "Typescript",
     color: "49, 120, 198",
