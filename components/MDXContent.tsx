@@ -2,9 +2,8 @@ import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import { JSX } from "react";
 import { highlight } from "sugar-high";
 
-import TOCInline from "./TOCInline";
-
-import LatexCompiler from "./LatexCompiler";
+import TOCInline from "./mdx/TOCInline";
+import LatexCompiler from "./mdx/LatexCompiler";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Code({ children, ...props }: any) {
