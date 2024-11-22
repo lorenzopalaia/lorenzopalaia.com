@@ -22,6 +22,7 @@ import {
   SiArduino,
   SiGnubash,
   SiPowershell,
+  SiSupabase,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -1172,20 +1173,24 @@ export const config = {
     },
   ],
   skills: [
-    "React",
     "NextJS",
     "Typescript",
     "TailwindCSS",
+    "React",
+    "Vue",
+    "Supabase",
     "NodeJS",
     "Git",
     "Python",
     "C",
     "Java",
+    "Jupyter Notebook",
     "HTML",
     "CSS",
     "Javascript",
     "Linux",
     "Bash",
+    "Markdown",
     "Arduino",
   ],
   projects: [
@@ -1228,7 +1233,7 @@ export const config = {
 export const languagesMap = {
   nodejs: {
     label: "Node.js",
-    color: "68, 170, 153",
+    color: "2, 128, 0",
     icon: SiNodedotjs,
     description: "JavaScript runtime built on Chrome's V8 JavaScript engine.",
   },
@@ -1266,7 +1271,13 @@ export const languagesMap = {
     label: "Shell",
     color: "128, 128, 128",
     icon: SiPowershell,
-    description: "",
+    description: "Command-line interface for Unix-based systems.",
+  },
+  supabase: {
+    label: "Supabase",
+    color: "127, 255, 3",
+    icon: SiSupabase,
+    description: "Open-source Firebase alternative.",
   },
   typescript: {
     label: "Typescript",
