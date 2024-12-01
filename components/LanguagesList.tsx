@@ -37,11 +37,14 @@ export default function LanguagesList({ languages }: { languages: string[] }) {
             <Tooltip key={language}>
               <TooltipTrigger asChild>
                 <div
-                  className="rounded border"
-                  style={{
-                    backgroundColor: `rgba(${lang.color}, 0.1)`,
-                    borderColor: `rgba(${lang.color}, 0.5)`,
-                  }}
+                  className="hover:shadow-lang-glow cursor-pointer rounded border transition-all"
+                  style={
+                    {
+                      "--lang-color": lang.color,
+                      backgroundColor: `rgba(${lang.color}, 0.1)`,
+                      borderColor: `rgba(${lang.color}, 0.5)`,
+                    } as React.CSSProperties
+                  }
                 >
                   <lang.icon
                     size={36}
