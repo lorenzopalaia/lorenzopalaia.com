@@ -6,6 +6,7 @@ import { config } from "@/config";
 import ThemeProvider from "@/components/ThemeProvider";
 import ToastProvider from "@/components/ToastProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ClickEffectProvider from "@/components/ClickEffectProvider";
 
 import SitePulseTracker from "@/components/SitePulseTracker";
 import Header from "@/components/Header";
@@ -53,17 +54,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider>
-            <Overlay />
-            <DotPattern>
-              <Header />
-              <div className="container relative z-10 mx-auto max-w-3xl px-8">
-                <main>{children}</main>
-                <Footer />
-              </div>
-            </DotPattern>
-            <ToastProvider />
-          </TooltipProvider>
+          <ClickEffectProvider>
+            <TooltipProvider>
+              <Overlay />
+              <DotPattern>
+                <Header />
+                <div className="container relative z-10 mx-auto max-w-3xl px-8">
+                  <main>{children}</main>
+                  <Footer />
+                </div>
+              </DotPattern>
+              <ToastProvider />
+            </TooltipProvider>
+          </ClickEffectProvider>
         </ThemeProvider>
       </body>
     </html>
