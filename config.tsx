@@ -31,7 +31,7 @@ export const email = "lorenzopalaia53@gmail.com";
 export const config = {
   settings: {
     name: "Lorenzo Palaia",
-    title: "Software Engineer | Computer and Automatic Engineer Graduate",
+    title: "Software Engineer | Computer and Automatic Engineering Graduate",
     description:
       "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automatic Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
     fallbackImage:
