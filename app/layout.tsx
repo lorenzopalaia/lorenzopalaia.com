@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { config } from "@/config";
 
+import { Toaster } from "@/components/ui/toaster";
 import ThemeProvider from "@/components/ThemeProvider";
-import ToastProvider from "@/components/ToastProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ClickEffectProvider from "@/components/ClickEffectProvider";
 import { AchievementsProvider } from "@/contexts/AchievementsContext";
@@ -66,7 +66,7 @@ export default function RootLayout({
                     <Footer />
                   </div>
                 </ParticlesBG>
-                <ToastProvider />
+                <Toaster />
               </TooltipProvider>
             </ClickEffectProvider>
           </AchievementsProvider>

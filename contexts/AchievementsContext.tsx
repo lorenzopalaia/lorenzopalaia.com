@@ -10,9 +10,7 @@ import {
 
 import { achievements as _achievements } from "@/config";
 
-import { toast } from "sonner";
-
-import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
 
 import useSound from "use-sound";
 
@@ -22,7 +20,6 @@ interface Achievement {
   description: string;
   points: number;
   unlocked: boolean;
-  icon: ReactNode;
 }
 
 interface AchievementsContextProps {
@@ -39,6 +36,8 @@ const AchievementsContext = createContext<AchievementsContextProps | undefined>(
 export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
   const [achievements, setAchievements] =
     useState<Achievement[]>(_achievements);
+
+  const { toast } = useToast();
 
   const [play] = useSound("/audio/achievement.mp3");
 
@@ -94,18 +93,10 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
 
     if (unlockedAchievement) {
       play();
-      toast(
-        <div className="flex gap-2">
-          {unlockedAchievement.icon}
-          <div>
-            <div className="flex items-center gap-2 font-bold">
-              {unlockedAchievement.title}
-              <Badge>+{unlockedAchievement.points}</Badge>
-            </div>
-            <p className="text-sm">{unlockedAchievement.description}</p>
-          </div>
-        </div>,
-      );
+      toast({
+        title: unlockedAchievement.title,
+        description: unlockedAchievement.description,
+      });
     }
   };
 

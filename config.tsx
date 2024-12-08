@@ -1,13 +1,4 @@
-import { Linkedin, Github, Mail, Video, Pencil } from "lucide-react";
-
-import {
-  TriangleAlert,
-  FileText,
-  UserSearch,
-  ScrollText,
-  Sun,
-  //UserCircle,
-} from "lucide-react";
+import { Linkedin, Github, Mail, Video } from "lucide-react";
 
 import {
   SiTypescript,
@@ -1388,7 +1379,6 @@ export const achievements = [
       "Ahoy, treasure hunter! You discovered the secret stash of projects! 🏆",
     points: 10,
     unlocked: false,
-    icon: <TriangleAlert />,
   },
   {
     id: "resume",
@@ -1397,7 +1387,6 @@ export const achievements = [
       "Got curious, huh? You sneaked a peek into my career chronicles! 📜",
     points: 15,
     unlocked: false,
-    icon: <FileText />,
   },
   {
     id: "socials",
@@ -1405,7 +1394,6 @@ export const achievements = [
     description: "Caught me on the interwebs! Let’s stay connected! 🌐",
     points: 15,
     unlocked: false,
-    icon: <UserSearch />,
   },
   {
     id: "thesis-paper",
@@ -1413,7 +1401,6 @@ export const achievements = [
     description: "Brainiac alert! You explored my thesis masterpiece! 📚",
     points: 15,
     unlocked: false,
-    icon: <ScrollText />,
   },
   {
     id: "blog-post",
@@ -1421,7 +1408,6 @@ export const achievements = [
     description: "Whoa, reader mode on! You dove into one of my blog posts! 📝",
     points: 15,
     unlocked: false,
-    icon: <Pencil />,
   },
   {
     id: "theme",
@@ -1430,7 +1416,6 @@ export const achievements = [
       "Dark side or light side? You toggled the theme like a pro! 🌓",
     points: 5,
     unlocked: false,
-    icon: <Sun />,
   },
   {
     id: "contact",
@@ -1438,7 +1423,6 @@ export const achievements = [
     description: "Sliding into my inbox like a champ! You reached out! 🤝",
     points: 30,
     unlocked: false,
-    icon: <Mail />,
   },
   /*
   {

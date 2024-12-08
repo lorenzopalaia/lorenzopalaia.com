@@ -9,7 +9,7 @@ import { PaperPlaneIcon, ReloadIcon } from "@radix-ui/react-icons";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { toast } from "sonner";
+import { useToast } from "@/hooks/use-toast";
 
 import { z } from "zod";
 
@@ -38,19 +38,24 @@ export default function ContactForm() {
     },
   });
 
+  const { toast } = useToast();
+
   const { unlockAchievement } = useAchievementsContext();
 
   const processForm: SubmitHandler<Inputs> = async (data) => {
     const result = await sendEmail(data);
 
     if (result.error) {
-      toast.error("An error occurred! Please try again later.");
+      toast({
+        title: "An error occurred! Please try again later.",
+        variant: "destructive",
+      });
       return;
     }
 
     unlockAchievement("contact");
 
-    toast.success("Message sent successfully!");
+    toast({ title: "Message sent successfully!" });
     reset();
   };
 
