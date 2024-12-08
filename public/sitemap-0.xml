@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.lorenzopalaia.it</loc><lastmod>2024-12-08T18:17:01.362Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog</loc><lastmod>2024-12-08T18:17:01.370Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/privacy</loc><lastmod>2024-12-08T18:17:01.370Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/contact</loc><lastmod>2024-12-08T18:17:01.370Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/projects</loc><lastmod>2024-12-08T18:17:01.370Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog/building-my-personal-webiste-a-minimalist-approach-to-showcase-and-efficiency</loc><lastmod>2024-12-08T18:17:01.370Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog/rediscovering-physics-and-the-derivatives-of-motion-using-formula-1-as-an-example</loc><lastmod>2024-12-08T18:17:01.370Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog/the-importance-of-contributing-to-open-source-projects</loc><lastmod>2024-12-08T18:17:01.370Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/contact</loc><lastmod>2024-12-08T19:06:11.136Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/privacy</loc><lastmod>2024-12-08T19:06:11.143Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it</loc><lastmod>2024-12-08T19:06:11.143Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/projects</loc><lastmod>2024-12-08T19:06:11.143Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog</loc><lastmod>2024-12-08T19:06:11.143Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog/building-my-personal-webiste-a-minimalist-approach-to-showcase-and-efficiency</loc><lastmod>2024-12-08T19:06:11.143Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog/rediscovering-physics-and-the-derivatives-of-motion-using-formula-1-as-an-example</loc><lastmod>2024-12-08T19:06:11.143Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog/the-importance-of-contributing-to-open-source-projects</loc><lastmod>2024-12-08T19:06:11.143Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
