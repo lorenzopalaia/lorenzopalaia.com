@@ -1,18 +1,19 @@
-import { FileDown, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
-import Link from "next/link";
+import Achievements from "@/components/Achievements";
 
 import Image from "next/image";
 
 import Socials from "@/components/Socials";
 
-import ShinyButton from "@/components/ui/shiny-button";
-
 import { config } from "@/config";
+
+import ResumeButton from "@/components/ResumeButton";
 
 export default function Hero() {
   return (
     <section className="mt-8 max-w-2xl">
+      <Achievements />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <Image
           src="/images/avatar.png"
@@ -38,14 +39,7 @@ export default function Hero() {
         <MapPin />
       </div>
       <div className="mt-8 flex items-center gap-8">
-        <Link href="/assets/resume.pdf" target="_blank">
-          <ShinyButton className="title">
-            <div className="flex items-center gap-2">
-              Resume
-              <FileDown />
-            </div>
-          </ShinyButton>
-        </Link>
+        <ResumeButton />
         <Socials />
       </div>
     </section>

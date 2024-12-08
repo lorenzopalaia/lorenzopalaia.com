@@ -1,3 +1,5 @@
+"use client";
+
 import AnimatedGradientText from "@/components/ui/animated-gradient-text";
 
 import { ChevronRight } from "lucide-react";
@@ -5,6 +7,8 @@ import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import Link from "next/link";
+
+import { useAchievementsContext } from "@/contexts/AchievementsContext";
 
 export default function Featured({
   href,
@@ -17,8 +21,14 @@ export default function Featured({
   text: string;
   className?: string;
 }) {
+  const { unlockAchievement } = useAchievementsContext();
+
   return (
-    <Link href={href} target="_blank">
+    <Link
+      href={href}
+      target="_blank"
+      onClick={() => unlockAchievement("featured")}
+    >
       <AnimatedGradientText className="mt-8">
         {emoji} <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
         <span

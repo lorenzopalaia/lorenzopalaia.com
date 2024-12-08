@@ -2,15 +2,24 @@
 
 import { sendEmail } from "@/lib/email";
 import { ContactFormSchema } from "@/lib/schemas";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { PaperPlaneIcon, ReloadIcon } from "@radix-ui/react-icons";
+
 import { SubmitHandler, useForm } from "react-hook-form";
+
 import { toast } from "sonner";
+
 import { z } from "zod";
+
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+
 import Link from "next/link";
+
+import { useAchievementsContext } from "@/contexts/AchievementsContext";
 
 type Inputs = z.infer<typeof ContactFormSchema>;
 
@@ -29,6 +38,8 @@ export default function ContactForm() {
     },
   });
 
+  const { unlockAchievement } = useAchievementsContext();
+
   const processForm: SubmitHandler<Inputs> = async (data) => {
     const result = await sendEmail(data);
 
@@ -36,6 +47,8 @@ export default function ContactForm() {
       toast.error("An error occurred! Please try again later.");
       return;
     }
+
+    unlockAchievement("contact");
 
     toast.success("Message sent successfully!");
     reset();

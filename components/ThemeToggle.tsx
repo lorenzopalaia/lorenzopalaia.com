@@ -3,7 +3,9 @@
 "use client";
 
 import * as React from "react";
+
 import { Moon, Sun } from "lucide-react";
+
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -14,8 +16,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import { useAchievementsContext } from "@/contexts/AchievementsContext";
+
 export default function ThemeToggle() {
   const { setTheme } = useTheme();
+
+  const { unlockAchievement } = useAchievementsContext();
 
   return (
     <DropdownMenu>
@@ -29,7 +35,10 @@ export default function ThemeToggle() {
       <DropdownMenuContent align="end">
         <DropdownMenuItem
           className="cursor-pointer"
-          onClick={() => setTheme("light")}
+          onClick={() => {
+            setTheme("light");
+            unlockAchievement("theme");
+          }}
         >
           Light
         </DropdownMenuItem>

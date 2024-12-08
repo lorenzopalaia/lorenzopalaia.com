@@ -1,4 +1,13 @@
-import { Linkedin, Github, Mail, Video } from "lucide-react";
+import { Linkedin, Github, Mail, Video, Pencil } from "lucide-react";
+
+import {
+  TriangleAlert,
+  FileText,
+  UserSearch,
+  ScrollText,
+  Sun,
+  //UserCircle,
+} from "lucide-react";
 
 import {
   SiTypescript,
@@ -1370,3 +1379,75 @@ export const languagesMap = {
     description: "General-purpose programming language.",
   },
 };
+
+export const achievements = [
+  {
+    id: "featured",
+    title: "Featured",
+    description:
+      "Ahoy, treasure hunter! You discovered the secret stash of projects! 🏆",
+    points: 10,
+    unlocked: false,
+    icon: <TriangleAlert />,
+  },
+  {
+    id: "resume",
+    title: "Resume",
+    description:
+      "Got curious, huh? You sneaked a peek into my career chronicles! 📜",
+    points: 15,
+    unlocked: false,
+    icon: <FileText />,
+  },
+  {
+    id: "socials",
+    title: "Socials",
+    description: "Caught me on the interwebs! Let’s stay connected! 🌐",
+    points: 15,
+    unlocked: false,
+    icon: <UserSearch />,
+  },
+  {
+    id: "thesis-paper",
+    title: "Thesis Paper",
+    description: "Brainiac alert! You explored my thesis masterpiece! 📚",
+    points: 15,
+    unlocked: false,
+    icon: <ScrollText />,
+  },
+  {
+    id: "blog-post",
+    title: "Blog Post",
+    description: "Whoa, reader mode on! You dove into one of my blog posts! 📝",
+    points: 15,
+    unlocked: false,
+    icon: <Pencil />,
+  },
+  {
+    id: "theme",
+    title: "Theme Switch",
+    description:
+      "Dark side or light side? You toggled the theme like a pro! 🌓",
+    points: 5,
+    unlocked: false,
+    icon: <Sun />,
+  },
+  {
+    id: "contact",
+    title: "Contact",
+    description: "Sliding into my inbox like a champ! You reached out! 🤝",
+    points: 30,
+    unlocked: false,
+    icon: <Mail />,
+  },
+  /*
+  {
+    id: "avatar",
+    title: "Avatar",
+    description: "Am I looking good or what? You hovered over my avatar! 👀",
+    points: 5,
+    unlocked: false,
+    icon: <UserCircle />,
+  },
+  */
+];
