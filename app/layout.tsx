@@ -13,7 +13,7 @@ import SitePulseTracker from "@/components/SitePulseTracker";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Overlay from "@/components/Overlay";
-import DotPattern from "@/components/DotPattern";
+import ParticlesBG from "@/components/ParticlesBG";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -59,13 +59,13 @@ export default function RootLayout({
             <ClickEffectProvider>
               <TooltipProvider>
                 <Overlay />
-                <DotPattern>
+                <ParticlesBG>
                   <Header />
                   <div className="container relative z-10 mx-auto max-w-3xl px-8">
                     <main>{children}</main>
                     <Footer />
                   </div>
-                </DotPattern>
+                </ParticlesBG>
                 <ToastProvider />
               </TooltipProvider>
             </ClickEffectProvider>

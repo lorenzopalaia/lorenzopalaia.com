@@ -85,14 +85,14 @@ export default function ClickEffectProvider({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="h-12 w-12 rounded-full border-2 border-sky-400" />
+              <div className="h-12 w-12 rounded-full border-2 border-primary" />
             </motion.div>
 
             {/* Particle explosion */}
             {[...Array(12)].map((_, i) => (
               <motion.div
                 key={i}
-                className="pointer-events-none fixed z-50 h-2 w-2 rounded-full bg-gradient-to-r from-sky-400 to-purple-500"
+                className="pointer-events-none fixed z-50 h-2 w-2 rounded-full bg-primary"
                 style={{
                   left: click.x,
                   top: click.y,
