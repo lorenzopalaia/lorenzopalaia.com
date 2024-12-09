@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
         hostname: "raw.githubusercontent.com",
       },
     ],
+    minimumCacheTTL: 60,
   },
   async headers() {
     return [
