@@ -3,6 +3,7 @@ import { config } from "@/config";
 
 export const metadata = getSEOTags({
   title: "Blog | Lorenzo Palaia",
+  description: "Lorenzo Palaia's blog",
   canonicalUrlRelative: "/blog",
   keywords: config.settings.keywords,
 });

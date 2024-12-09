@@ -22,7 +22,7 @@ export default function ParticlesBG({
       <div className="fixed inset-0 -z-10">
         <Particles
           className="h-full w-full"
-          quantity={500}
+          quantity={250}
           ease={80}
           color={color}
           refresh

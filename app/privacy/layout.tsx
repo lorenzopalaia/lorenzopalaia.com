@@ -3,6 +3,7 @@ import { config } from "@/config";
 
 export const metadata = getSEOTags({
   title: "Privacy Policy | Lorenzo Palaia",
+  description: "Privacy Policy of Lorenzo Palaia",
   canonicalUrlRelative: "/privacy",
   keywords: config.settings.keywords,
 });
