@@ -21,10 +21,9 @@ import {
   SiLinux,
   SiArduino,
   SiGnubash,
-  SiPowershell,
   SiSupabase,
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
+import { FaJava, FaTerminal } from "react-icons/fa";
 
 export const email = "lorenzopalaia53@gmail.com";
 
@@ -1270,7 +1269,7 @@ export const languagesMap = {
   shell: {
     label: "Shell",
     color: "128, 128, 128",
-    icon: SiPowershell,
+    icon: FaTerminal,
     description: "Command-line interface for Unix-based systems.",
   },
   supabase: {
