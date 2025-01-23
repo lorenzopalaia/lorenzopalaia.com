@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.lorenzopalaia.it/contact</loc><lastmod>2025-01-23T20:52:24.309Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/projects</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/privacy</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog/advent-of-code-2024-my-journey</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog/building-my-personal-webiste-a-minimalist-approach</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog/quantum-computing-unlocking-the-future-of-computation</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog/rediscovering-physics-and-motion-derivatives-with-formula-1</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.lorenzopalaia.it/blog/the-importance-of-contributing-to-open-source-projects</loc><lastmod>2025-01-23T20:52:24.311Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it</loc><lastmod>2025-01-23T20:58:02.348Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/privacy</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/projects</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/contact</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog/advent-of-code-2024-my-journey</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog/building-my-personal-webiste-a-minimalist-approach</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog/quantum-computing-unlocking-the-future-of-computation</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog/rediscovering-physics-and-motion-derivatives-with-formula-1</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.lorenzopalaia.it/blog/the-importance-of-contributing-to-open-source-projects</loc><lastmod>2025-01-23T20:58:02.351Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
