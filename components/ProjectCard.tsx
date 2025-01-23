@@ -40,7 +40,7 @@ export function CardSkeleton() {
           <Skeleton className="h-24 w-full" />
         </div>
       </CardHeader>
-      <CardContent className="flex-grow">
+      <CardContent className="grow">
         <div className="flex gap-2">
           <Skeleton className="h-6 w-1/4" />
           <Skeleton className="h-6 w-1/4" />
@@ -71,7 +71,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </CardTitle>
         <CardDescription>{project.description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow">
+      <CardContent className="grow">
         {/* //* Useful for debugging
         {project.languages.map((language) => (
           <>{language}</>
