@@ -25,31 +25,33 @@ export default function Posts({ posts }: Props) {
           {posts.map((post, i) => (
             <li key={i}>
               {i !== 0 && i !== posts.length && <Separator />}
-              <Link
-                href={`/blog/${post.slug}`}
-                onClick={() => unlockAchievement("blog-post")}
-              >
-                <div className="flex flex-col justify-between p-6 sm:flex-row sm:items-center">
-                  <div className="max-w-md md:max-w-lg">
+              <div className="flex flex-col justify-between p-6 sm:flex-row sm:items-center">
+                <div className="max-w-md md:max-w-lg">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    onClick={() => unlockAchievement("blog-post")}
+                  >
                     <h3 className="text-lg font-semibold">{post.title}</h3>
-                    <p className="text-muted-foreground mt-1 line-clamp-2 text-sm font-light">
-                      {post.summary}
-                    </p>
-                    {post.tags && (
-                      <div className="mt-4 flex flex-wrap items-center gap-2">
-                        {post.tags.map((tag, index) => (
+                  </Link>
+                  <p className="text-muted-foreground mt-1 line-clamp-2 text-sm font-light">
+                    {post.summary}
+                  </p>
+                  {post.tags && (
+                    <div className="mt-4 flex flex-wrap items-center gap-2">
+                      {post.tags.map((tag, index) => (
+                        <Link key={index} href={`/blog?search=${tag}`}>
                           <Badge key={index}>{tag}</Badge>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  {post.publishedAt && (
-                    <p className="mt-2 flex w-full justify-end text-sm font-light sm:mt-0 sm:w-auto">
-                      {formatDate(post.publishedAt)}
-                    </p>
+                        </Link>
+                      ))}
+                    </div>
                   )}
                 </div>
-              </Link>
+                {post.publishedAt && (
+                  <p className="mt-2 flex w-full justify-end text-sm font-light sm:mt-0 sm:w-auto">
+                    {formatDate(post.publishedAt)}
+                  </p>
+                )}
+              </div>
             </li>
           ))}
         </ul>

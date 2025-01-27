@@ -96,7 +96,9 @@ export default async function Post(props: {
             <p className="title text-muted-foreground mt-4">TAGS</p>
             <div className="mt-2 mb-8 flex flex-wrap items-center gap-2">
               {tags.map((tag, index) => (
-                <Badge key={index}>{tag}</Badge>
+                <Link key={index} href={`/blog?search=${tag}`}>
+                  <Badge key={index}>{tag}</Badge>
+                </Link>
               ))}
             </div>
           </>
