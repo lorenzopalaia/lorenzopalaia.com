@@ -26,12 +26,12 @@ export default function Hero() {
           <p className="title text-4xl tracking-tight sm:text-5xl">
             {config.settings.name}
           </p>
-          <h1 className="mt-2 font-light text-muted-foreground">
+          <h1 className="text-muted-foreground mt-2 font-light">
             {config.settings.title}
           </h1>
         </div>
       </div>
-      <h2 className="mt-4 font-light text-muted-foreground">
+      <h2 className="text-muted-foreground mt-4 font-light">
         {config.settings.description}
       </h2>
       <div className="title mt-4 flex gap-1">

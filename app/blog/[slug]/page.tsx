@@ -31,7 +31,7 @@ function BackToBlog() {
   return (
     <Link
       href="/blog"
-      className="flex items-center gap-2 text-muted-foreground hover:text-primary"
+      className="text-muted-foreground hover:text-primary flex items-center gap-2"
     >
       <ArrowLeft />
       Back to blog
@@ -65,7 +65,7 @@ export default async function Post(props: {
       )}
       <header>
         <h1 className="title text-5xl">{title}</h1>
-        <p className="mt-2 text-xs text-muted-foreground">
+        <p className="text-muted-foreground mt-2 text-xs">
           {formatDate(publishedAt ?? "")}
         </p>
         {author && (
@@ -93,8 +93,8 @@ export default async function Post(props: {
         <Separator className="h-[2px]" />
         {tags && (
           <>
-            <p className="title mt-4 text-muted-foreground">TAGS</p>
-            <div className="mb-8 mt-2 flex flex-wrap items-center gap-2">
+            <p className="title text-muted-foreground mt-4">TAGS</p>
+            <div className="mt-2 mb-8 flex flex-wrap items-center gap-2">
               {tags.map((tag, index) => (
                 <Badge key={index}>{tag}</Badge>
               ))}

@@ -17,7 +17,7 @@ export default function ResumeButton() {
       target="_blank"
       onClick={() => unlockAchievement("resume")}
     >
-      <ShinyButton className="title">
+      <ShinyButton className="title cursor-pointer">
         <div className="flex items-center gap-2">
           Resume
           <FileDown />

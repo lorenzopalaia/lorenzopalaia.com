@@ -93,7 +93,7 @@ export default function ContactForm() {
             rows={4}
             placeholder="Leave feedback about the site, career opportunities or just to say hello etc."
             autoComplete="Message"
-            className="resize-none bg-background"
+            className="bg-background resize-none"
             {...register("message")}
           />
           {errors.message?.message && (
@@ -105,7 +105,7 @@ export default function ContactForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full disabled:opacity-50"
+          className="w-full cursor-pointer disabled:opacity-50"
         >
           {isSubmitting ? (
             <div className="flex items-center">
@@ -119,7 +119,7 @@ export default function ContactForm() {
             </div>
           )}
         </Button>
-        <p className="mt-4 text-xs text-muted-foreground">
+        <p className="text-muted-foreground mt-4 text-xs">
           By submitting this form, I agree to the{" "}
           <Link href="/privacy" className="link font-semibold">
             privacy&nbsp;policy.

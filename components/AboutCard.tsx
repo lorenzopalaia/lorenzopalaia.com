@@ -27,12 +27,12 @@ function CardItem({
     <li className="relative ml-10 py-4">
       <Link
         target="_blank"
-        className="absolute -left-16 top-4 flex items-center justify-center rounded-full"
+        className="absolute top-4 -left-16 flex items-center justify-center rounded-full"
         href={href}
       >
         <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border-2">
           <Image
-            className="aspect-square h-full w-full bg-background object-contain"
+            className="bg-background aspect-square h-full w-full object-contain"
             alt={company}
             src={img}
             width={48}
@@ -41,17 +41,17 @@ function CardItem({
         </span>
       </Link>
       <div className="flex flex-1 flex-col justify-start gap-1">
-        <time className="text-xs text-muted-foreground">
+        <time className="text-muted-foreground text-xs">
           <span>{startDate}</span>
           {startDate && endDate && <span> - </span>}
           <span>{endDate}</span>
         </time>
-        <h2 className="font-semibold leading-none">{company}</h2>
-        <p className="title text-sm text-muted-foreground">{title}</p>
+        <h2 className="leading-none font-semibold">{company}</h2>
+        <p className="title text-muted-foreground text-sm">{title}</p>
         {items && items.length > 0 && (
           <ul className="ml-4 list-outside list-disc">
             {items.map((item, index) => (
-              <li key={index} className="prose pr-8 text-sm dark:prose-invert">
+              <li key={index} className="prose dark:prose-invert pr-8 text-sm">
                 {item}
               </li>
             ))}
@@ -87,7 +87,7 @@ export default function AboutCard({
   }[];
 }) {
   return (
-    <div className="rounded-xl border-2 bg-card text-card-foreground shadow-sm">
+    <div className="bg-card text-card-foreground rounded-xl border-2 shadow-sm">
       <div className="p-0">
         <ul className="ml-10 border-l-2">
           {data.map((item, index) => (

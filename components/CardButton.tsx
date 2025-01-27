@@ -25,7 +25,7 @@ export default function CardButton({
         }
       }}
     >
-      <Button size="sm" className="px-2.5 py-0.5 font-bold">
+      <Button size="sm" className="cursor-pointer px-2.5 py-0.5 font-bold">
         {link.href.includes("github") ? <Github /> : <Globe />}
         {link.title}
       </Button>

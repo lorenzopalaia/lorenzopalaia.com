@@ -37,7 +37,7 @@ export default function LanguagesList({ languages }: { languages: string[] }) {
             <Tooltip key={language}>
               <TooltipTrigger asChild>
                 <div
-                  className="cursor-pointer rounded border transition-all hover:shadow-lang-glow"
+                  className="hover:shadow-lang-glow rounded border transition-all"
                   style={
                     {
                       "--lang-color": lang.color,

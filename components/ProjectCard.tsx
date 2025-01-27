@@ -82,7 +82,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="flex items-center gap-2">
           {project.html_url && (
             <Link href={project.html_url} target="_blank">
-              <Button size="sm" className="px-2.5 py-0.5 font-bold">
+              <Button
+                size="sm"
+                className="cursor-pointer px-2.5 py-0.5 font-bold"
+              >
                 {project.html_url.includes("github") ? (
                   <>
                     <Github />
@@ -99,7 +102,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           )}
           {project.homepage && (
             <Link href={project.homepage} target="_blank">
-              <Button size="sm" className="px-2.5 py-0.5 font-bold">
+              <Button
+                size="sm"
+                className="cursor-pointer px-2.5 py-0.5 font-bold"
+              >
                 <Globe />
                 Website
               </Button>

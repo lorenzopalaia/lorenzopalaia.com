@@ -11,19 +11,19 @@ export default function Footer() {
       <Separator className="h-[2px]" />
       <div className="flex flex-col items-center justify-center gap-2 pt-8 sm:flex-row-reverse sm:justify-between">
         <Socials />
-        <div className="flex items-center gap-4 text-muted-foreground">
+        <div className="text-muted-foreground flex items-center gap-4">
           <Signature className="size-12" />
           <p>&copy; {new Date().getFullYear()}</p>|
-          <Link href="/privacy" className="font-bold hover:text-primary">
+          <Link href="/privacy" className="hover:text-primary font-bold">
             Privacy Policy
           </Link>
         </div>
       </div>
-      <p className="pt-4 text-center text-muted-foreground sm:text-start">
+      <p className="text-muted-foreground pt-4 text-center sm:text-start">
         Looking for previous website version?{" "}
         <Link
           href="https://v1.lorenzopalaia.it/"
-          className="font-bold hover:text-primary"
+          className="hover:text-primary font-bold"
           target="_blank"
         >
           Click here!

@@ -20,7 +20,7 @@ export default async function RecentPosts() {
         <p className="title text-2xl sm:text-3xl">Recent Posts</p>
         <Link
           href="/blog"
-          className="flex items-center gap-2 text-muted-foreground hover:text-primary"
+          className="text-muted-foreground hover:text-primary flex items-center gap-2"
         >
           View More <ArrowRight size={16} />
         </Link>

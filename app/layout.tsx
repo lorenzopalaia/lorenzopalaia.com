@@ -61,7 +61,7 @@ export default function RootLayout({
                 <Overlay />
                 <ParticlesBG>
                   <Header />
-                  <div className="container relative z-10 mx-auto max-w-3xl px-8">
+                  <div className="relative z-10 container mx-auto max-w-3xl px-8">
                     <main>{children}</main>
                     <Footer />
                   </div>

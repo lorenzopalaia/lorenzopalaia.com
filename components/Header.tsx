@@ -11,7 +11,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-20 border-b bg-opacity-75 py-6 backdrop-blur-md">
+    <header className="bg-opacity-75 sticky top-0 z-20 border-b py-6 backdrop-blur-md">
       <div className="container mx-auto max-w-3xl px-8">
         <div className="flex items-center justify-between gap-8">
           <div className="flex gap-6">
