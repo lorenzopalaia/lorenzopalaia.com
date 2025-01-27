@@ -14,6 +14,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Overlay from "@/components/Overlay";
 import ParticlesBG from "@/components/ParticlesBG";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -60,6 +61,7 @@ export default function RootLayout({
               <TooltipProvider>
                 <Overlay />
                 <ParticlesBG>
+                  <ScrollProgressBar />
                   <Header />
                   <div className="relative z-10 container mx-auto max-w-3xl px-8">
                     <main>{children}</main>
