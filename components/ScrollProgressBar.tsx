@@ -29,18 +29,13 @@ const ScrollProgressBar: React.FC = () => {
   }, []);
 
   return (
-    <div
-      className="fixed top-0 left-0 z-50 w-full"
-      style={{
-        height: "6px",
-      }}
-    >
+    <div className="fixed top-0 left-0 z-50 h-1 w-full">
       <div
         className="h-full"
         style={{
           width: `${scrollWidth}%`,
           backgroundColor: color,
-          transition: "width 0.1s ease-out",
+          transition: "width 0.1s ease-in-out",
         }}
       ></div>
     </div>
