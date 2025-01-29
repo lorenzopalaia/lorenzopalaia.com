@@ -17,6 +17,7 @@ export default function Socials() {
           href={social.href}
           target="_blank"
           onClick={() => unlockAchievement("socials")}
+          aria-label={social.name}
         >
           {social.icon}
         </Link>

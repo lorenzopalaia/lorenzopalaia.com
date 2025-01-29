@@ -1040,18 +1040,22 @@ export const config = {
   },
   socials: [
     {
+      name: "LinkedIn",
       href: "https://www.linkedin.com/in/lorenzopalaia/",
       icon: <Linkedin className="text-muted-foreground hover:text-primary" />,
     },
     {
+      name: "GitHub",
       href: "https://github.com/lorenzopalaia",
       icon: <Github className="text-muted-foreground hover:text-primary" />,
     },
     {
+      name: "Email",
       href: `mailto:${email}`,
       icon: <Mail className="text-muted-foreground hover:text-primary" />,
     },
     {
+      name: "Book a Meeting",
       href: "https://cal.com/lorenzopalaia/30min",
       icon: <Video className="text-muted-foreground hover:text-primary" />,
     },
