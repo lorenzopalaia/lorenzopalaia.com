@@ -62,8 +62,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <ImageFallback
           src={project.img}
           alt={project.name}
-          width={1280}
-          height={720}
+          width={292}
+          height={164.25}
           className="h-auto w-full rounded-lg"
         />
         <CardTitle className="title pt-2">
@@ -72,7 +72,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <CardDescription>{project.description}</CardDescription>
       </CardHeader>
       <CardContent className="grow">
-        {/* //* Useful for debugging
+        {/* //* Useful when adding new languages
         {project.languages.map((language) => (
           <>{language}</>
         ))} */}
