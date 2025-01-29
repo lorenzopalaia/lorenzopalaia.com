@@ -14,6 +14,7 @@ import { notFound } from "next/navigation";
 import path from "path";
 
 import Link from "next/link";
+import Head from "next/head";
 
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
@@ -56,55 +57,93 @@ export default async function Post(props: {
   const author = authorId ? getAuthor({ id: authorId }) : null;
 
   return (
-    <article className="mt-8 flex flex-col gap-8 pb-16">
-      <BackToBlog />
-      {image && (
-        <div className="relative mb-6 h-96 w-full overflow-hidden rounded-lg">
-          <Image src={image} alt={title || ""} className="object-cover" fill />
-        </div>
-      )}
-      <header>
-        <h1 className="title text-5xl">{title}</h1>
-        <p className="text-muted-foreground mt-2 text-xs">
-          {formatDate(publishedAt ?? "")}
-        </p>
-        {author && (
-          <div className="mt-8 flex items-center justify-center gap-4">
+    <>
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://www.lorenzopalaia.it/blog/${slug}`,
+            },
+            headline: title,
+            image: [image],
+            datePublished: publishedAt,
+            dateModified: publishedAt,
+            author: {
+              "@type": "Person",
+              name: author?.name || "Lorenzo Palaia",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Lorenzo Palaia",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.lorenzopalaia.it/images/avatar.png",
+              },
+            },
+            description: content.slice(0, 150), // Assuming the first 150 characters as excerpt
+          })}
+        </script>
+      </Head>
+      <article className="mt-8 flex flex-col gap-8 pb-16">
+        <BackToBlog />
+        {image && (
+          <div className="relative mb-6 h-96 w-full overflow-hidden rounded-lg">
             <Image
-              src={author.avatar}
-              alt={author.name}
-              width={48}
-              height={48}
-              className="size-12 rounded-full"
+              src={image}
+              alt={title || ""}
+              className="object-cover"
+              fill
             />
-            <p className="text-md">
-              <span className="title">{author.name}</span>
-              <br />
-              <span className="text-muted-foreground">{author.occupation}</span>
-            </p>
           </div>
         )}
-        <Separator className="mt-8 h-[2px]" />
-      </header>
-      <main className="prose dark:prose-invert">
-        <MDXContent source={content} />
-      </main>
-      <footer className="mt-8">
-        <Separator className="h-[2px]" />
-        {tags && (
-          <>
-            <p className="title text-muted-foreground mt-4">TAGS</p>
-            <div className="mt-2 mb-8 flex flex-wrap items-center gap-2">
-              {tags.map((tag, index) => (
-                <Link key={index} href={`/blog?search=${tag}`}>
-                  <Badge key={index}>{tag}</Badge>
-                </Link>
-              ))}
+        <header>
+          <h1 className="title text-5xl">{title}</h1>
+          <p className="text-muted-foreground mt-2 text-xs">
+            {formatDate(publishedAt ?? "")}
+          </p>
+          {author && (
+            <div className="mt-8 flex items-center justify-center gap-4">
+              <Image
+                src={author.avatar}
+                alt={author.name}
+                width={48}
+                height={48}
+                className="size-12 rounded-full"
+              />
+              <p className="text-md">
+                <span className="title">{author.name}</span>
+                <br />
+                <span className="text-muted-foreground">
+                  {author.occupation}
+                </span>
+              </p>
             </div>
-          </>
-        )}
-        <BackToBlog />
-      </footer>
-    </article>
+          )}
+          <Separator className="mt-8 h-[2px]" />
+        </header>
+        <main className="prose dark:prose-invert">
+          <MDXContent source={content} />
+        </main>
+        <footer className="mt-8">
+          <Separator className="h-[2px]" />
+          {tags && (
+            <>
+              <p className="title text-muted-foreground mt-4">TAGS</p>
+              <div className="mt-2 mb-8 flex flex-wrap items-center gap-2">
+                {tags.map((tag, index) => (
+                  <Link key={index} href={`/blog?search=${tag}`}>
+                    <Badge key={index}>{tag}</Badge>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+          <BackToBlog />
+        </footer>
+      </article>
+    </>
   );
 }
