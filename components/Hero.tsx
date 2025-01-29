@@ -18,8 +18,8 @@ export default function Hero() {
         <Image
           src="/images/avatar.png"
           alt="Lorenzo Palaia"
-          width={512}
-          height={512}
+          width={80}
+          height={80}
           className="size-20"
         />
         <div>
