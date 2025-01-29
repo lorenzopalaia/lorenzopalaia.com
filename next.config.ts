@@ -39,11 +39,6 @@ const nextConfig: NextConfig = {
             value:
               "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
           },
-          {
-            key: "Feature-Policy",
-            value:
-              "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'",
-          },
         ],
       },
       {
