@@ -64,6 +64,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           alt={project.name}
           width={292}
           height={164.25}
+          sizes="(max-width: 640px) 523px, 294.19px"
           className="h-auto w-full rounded-lg"
         />
         <CardTitle className="title pt-2">
