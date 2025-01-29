@@ -2,6 +2,7 @@ import { getSEOTags } from "@/lib/seo";
 import localFont from "next/font/local";
 import "./globals.css";
 import { config } from "@/config";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Toaster } from "@/components/ui/toaster";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -73,6 +74,7 @@ export default function RootLayout({
             </ClickEffectProvider>
           </AchievementsProvider>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
