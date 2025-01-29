@@ -3,9 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { config } from "@/config";
 
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
-
 import { Toaster } from "@/components/ui/toaster";
 import ThemeProvider from "@/components/ThemeProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -76,8 +73,6 @@ export default function RootLayout({
             </ClickEffectProvider>
           </AchievementsProvider>
         </ThemeProvider>
-        <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   );
