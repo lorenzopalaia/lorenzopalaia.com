@@ -62,8 +62,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <ImageFallback
           src={project.img}
           alt={project.name}
-          width={1600}
-          height={900}
+          width={1280}
+          height={720}
           className="h-auto w-full rounded-lg"
         />
         <CardTitle className="title pt-2">
