@@ -32,12 +32,11 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Referrer-Policy",
-            value: "same-origin",
+            value: "strict-origin-when-cross-origin",
           },
           {
             key: "Permissions-Policy",
-            value:
-              "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
+            value: "camera=(), geolocation=(), payment=()",
           },
         ],
       },
