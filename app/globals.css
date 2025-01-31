@@ -81,6 +81,14 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .dark ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
 }
 
 @layer utilities {
