@@ -1,0 +1,223 @@
+---
+title: "Can AI Predict Chaos? The Three-Body Problem"
+summary: "Exploring the capabilities and limitations of neural networks in predicting chaotic systems like the Three-Body Problem."
+publishedAt: "2025-01-31"
+image: "/blog/images/posts/can-ai-predict-chaos-the-three-body-problem/three-body-problem.png"
+tags: ["AI", "Chaos Theory", "Neural Networks", "Physics"]
+draft: false
+author: "lorenzo-palaia"
+---
+
+## Overview
+
+Talking with a friend, I hypothesized that a neural network wouldn't be able to predict the long-term evolution of the Three-Body Problem—or any chaotic system, for that matter. Despite my skepticism, I wanted to dig deeper, secretly hoping to be proven wrong by some revolutionary discovery. What follows is what I found out. 🚀
+
+Imagine you have three stars dancing in space, each pulling on the others with gravity. Can we predict where they'll be in a million years? Or even next week? Welcome to the **Three-Body Problem**, a challenge that has haunted mathematicians, physicists, and now AI researchers.
+
+With the rise of machine learning, many ask: _Can AI outsmart chaos?_ Can a neural network crack a system where traditional methods fail? Spoiler alert: AI is powerful, but **chaos always wins in the long run**. Let's break it down! 🚀
+
+<TOCInline
+  sections={[
+    {
+      url: "#what-is-a-dynamical-system",
+      title: "What is a Dynamical System?",
+    },
+    {
+      url: "#discrete-vs-continuous-time",
+      title: "Discrete vs. Continuous Time",
+    },
+    { url: "#free-vs-forced-evolution", title: "Free vs. Forced Evolution" },
+    {
+      url: "#lyapunov-time-and-chaos-theory",
+      title: "Lyapunov Time and Chaos Theory",
+    },
+    { url: "#the-three-body-problem", title: "The Three-Body Problem" },
+    {
+      url: "#can-ai-solve-the-three-body-problem",
+      title: "Can AI Solve the Three-Body Problem?",
+    },
+    {
+      url: "#ai-vs-chaos-a-new-approach",
+      title: "AI vs. Chaos: A New Approach to the Three-Body Problem?",
+    },
+    { url: "#conclusion-ai-vs-chaos", title: "Conclusion: AI vs. Chaos" },
+  ]}
+/>
+
+<section id="what-is-a-dynamical-system">
+## What is a Dynamical System? ⚙️
+
+Let's start with some basic theory of dynamical systems. A **dynamical system** describes how things evolve over time according to fixed rules. Mathematically, it’s expressed as:
+
+- **Continuous-time** (flows smoothly, like a river):
+
+  <LatexCompiler formula="$$\frac{dx}{dt} = f(x, t)$$" />
+
+- **Discrete-time** (like a board game, step by step):
+
+  <LatexCompiler formula="$$x_{t+1} = f(x_t, t)$$" />
+
+Example? The motion of planets around the Sun is a **continuous** system, while a financial market simulation might be **discrete** (daily price updates).
+
+</section>
+
+<section id="discrete-vs-continuous-time">
+## Discrete vs. Continuous Time ⏳
+
+- **Continuous-time systems** are described by differential equations (e.g., Newton’s equations of motion).
+- **Discrete-time systems** evolve in fixed time steps, often modeled using difference equations.
+
+💡 When do we use each? If the phenomenon unfolds smoothly, go **continuous**. If events happen at specific intervals, go **discrete**.
+
+</section>
+
+<section id="free-vs-forced-evolution">
+## Free vs. Forced Evolution 🌊⚡
+
+A system’s behavior can be either **free** or **forced**:
+
+- **Free evolution**: The system changes due to its own internal dynamics. Example: planets orbiting without external interference.
+- **Forced evolution**: An external factor influences the system. Example: a pendulum being pushed periodically.
+
+Forced systems often exhibit **chaotic behavior**, which brings us to...
+
+</section>
+
+<section id="lyapunov-time-and-chaos-theory">
+## Lyapunov Time and Chaos Theory 🔥
+
+Chaos isn't just randomness—it’s extreme sensitivity to initial conditions. This is mathematically described using **Lyapunov exponents**:
+
+<LatexCompiler formula="$$\delta x(t) \approx \delta x_0 e^{\lambda t}$$" />
+
+where <LatexCompiler formula="$\lambda$" /> (Lyapunov exponent) determines how fast small errors explode:
+
+- <LatexCompiler formula="$\lambda > 0$" /> → Chaos (small changes grow
+  exponentially)
+- <LatexCompiler formula="$\lambda < 0$" /> → Stability (errors shrink)
+
+### Exponential Divergence and Convergence
+
+Exponential functions can either diverge or converge based on the sign of their exponent.
+
+- **Exponential Divergence**: When the exponent is positive, the function grows without bound as time increases. Mathematically, this is expressed as:
+
+  <LatexCompiler formula="$$f(t) = e^{\lambda t} \quad \text{with} \quad \lambda > 0$$" />
+
+  Here, <LatexCompiler formula="$\lambda$" /> is the growth rate. As <LatexCompiler formula="$t$" /> increases, <LatexCompiler formula="$f(t)$" /> increases exponentially, leading to divergence.
+
+- **Exponential Convergence**: When the exponent is negative, the function decays towards zero as time increases. This is expressed as:
+
+  <LatexCompiler formula="$$f(t) = e^{\lambda t} \quad \text{with} \quad \lambda < 0$$" />
+
+  In this case, <LatexCompiler formula="$\lambda$" /> is the decay rate. As <LatexCompiler formula="$t$" /> increases, <LatexCompiler formula="$f(t)$" /> decreases exponentially, leading to convergence.
+
+In the context of chaotic systems, positive Lyapunov exponents indicate exponential divergence, where small initial differences grow rapidly, making long-term predictions impossible.
+
+The **Lyapunov time** is roughly:
+
+<LatexCompiler formula="$$T_{\lambda} \approx \frac{1}{\lambda}$$" />
+
+which tells us how long predictions remain reliable. In chaotic systems, this time is **shockingly short**. 😱
+
+</section>
+
+<section id="the-three-body-problem">
+## The Three-Body Problem ⚖️
+
+The **Three-Body Problem** models three gravitationally interacting objects. Newton's laws give us the equations:
+
+<LatexCompiler formula="$$m_i \frac{d^2 \mathbf{r}_i}{dt^2} = \sum_{j \neq i} G \frac{m_i m_j}{|\mathbf{r}_i - \mathbf{r}_j|^3} (\mathbf{r}_j - \mathbf{r}_i)$$" />
+
+Sounds simple, right? Wrong. There's **no general solution** for arbitrary conditions!
+
+### Why is it chaotic?
+
+1. Tiny changes in initial conditions create vastly different outcomes.
+2. The system has positive Lyapunov exponents—errors explode exponentially.
+3. Long-term predictions are impossible due to chaotic divergence.
+
+🔬 Physicists must **numerically simulate** solutions using discrete approximations (like Runge-Kutta methods), but accuracy degrades over time.
+
+</section>
+
+<section id="can-ai-solve-the-three-body-problem">
+## Can AI Solve the Three-Body Problem? 🤖
+
+💡 **Short answer:** AI can approximate, but it can't defeat chaos.
+
+### ✅ What AI can do:
+
+- Predict **short-term** behavior with high accuracy.
+- Learn **patterns** from previous simulations.
+- Speed up **numerical approximations**.
+
+### ❌ What AI can't do:
+
+- Make **long-term predictions**—Lyapunov divergence makes this impossible.
+- **Discover a general solution**—chaos means no simple formulas exist.
+- Beat the **uncertainty barrier**—small errors still grow exponentially.
+
+Some researchers have trained neural networks on simulated trajectories, achieving **impressive short-term accuracy**. However, the fundamental nature of chaos ensures that AI predictions will eventually diverge, just like traditional models. **No amount of training can eliminate the exponential amplification of errors.**
+
+</section>
+
+<section id="ai-vs-chaos-a-new-approach">
+## AI vs. Chaos: A New Approach to the Three-Body Problem? 🤖
+
+During my research, I came across a fascinating paper from 2019 titled "Newton vs the Machine: Solving the Chaotic Three-Body Problem using Deep Neural Networks". Researchers Breen, Foley, Boekholt, and Portegies Zwart explored whether deep learning can be used to predict the evolution of chaotic three-body systems.
+
+### The Challenge of the Three-Body Problem
+
+As we've already discussed, the chaotic nature of the three-body problem makes traditional numerical solvers computationally expensive and unpredictable. Classical integrators, like the Brutus algorithm, require arbitrary precision and near-zero time steps, making them impractical for large-scale simulations.
+
+### What Did They Do?
+
+The researchers trained a deep artificial neural network (ANN) using a dataset of high-precision numerical solutions computed with Brutus. The goal was to see if the ANN could accurately reproduce three-body trajectories while being significantly faster than traditional methods.
+
+Key points from their approach:
+
+- They generated an ensemble of solutions for different initial conditions using Brutus.
+- The ANN had 10 hidden layers with 128 nodes each, using ReLU activation.
+- Training was performed using the ADAM optimizer on thousands of trajectories.
+- The ANN was tested on unseen initial conditions to evaluate generalization.
+
+### Results: Can AI Solve the Three-Body Problem?
+
+✅ Short-term accuracy: The ANN could predict trajectories with errors below 0.1% for short timescales.
+
+✅ Speed improvement: Predictions were up to 100 million times faster than traditional solvers.
+
+❌ Long-term divergence: Due to chaos, the ANN's accuracy degraded over time, reflecting the limits imposed by Lyapunov exponents.
+
+A crucial takeaway? The ANN learned the patterns of the system, but it couldn't escape the fundamental unpredictability of chaos.
+
+### What This Means for AI and Chaos Theory
+
+- AI can approximate chaotic systems over short timescales but cannot escape long-term unpredictability.
+- Neural networks offer a fast alternative for expensive numerical solvers in astrophysical simulations.
+- A hybrid approach—combining AI with numerical methods—might offer the best of both worlds.
+
+</section>
+
+<section id="conclusion-ai-vs-chaos">
+## Conclusion: AI vs. Chaos 🥊
+
+The Three-Body Problem is an **excellent case study** of AI's potential and limitations:
+
+- AI excels at **short-term approximations** but fails in **long-term predictability** due to chaotic divergence.
+- The laws of physics impose **hard limits** on prediction, no matter how smart our models get.
+- **No magic algorithm** can break the exponential nature of Lyapunov growth.
+
+So, can AI predict chaos? _For a little while, yes._ But in the end, **chaos always wins.** 😈
+
+The results from the study "Newton vs the Machine" reinforce what we suspected: AI is not a magic bullet for chaos. However, it can be an extremely powerful tool for improving computational efficiency in scenarios where brute-force numerical integration is impractical.
+
+In the end, chaos remains undefeated, but AI has proven itself a worthy challenger—at least for short-term predictions! 🚀
+
+</section>
+
+## References and Additional Links
+
+- [**Newton vs the Machine: Solving the Chaotic Three-Body Problem using Deep Neural Networks**](https://arxiv.org/pdf/1910.07291)
+- [**Using AI to Tame Chaotic Systems**](https://machine-learning-made-simple.medium.com/using-ai-to-tame-chaotic-systems-d54a444e4c7e)
