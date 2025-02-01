@@ -9,6 +9,8 @@ import { Card } from "./ui/card";
 import { Separator } from "./ui/separator";
 import { Badge } from "./ui/badge";
 
+import LikeDislikeButton from "@/components/LikeDislikeButton";
+
 import { useAchievementsContext } from "@/contexts/AchievementsContext";
 
 interface Props {
@@ -46,11 +48,17 @@ export default function Posts({ posts }: Props) {
                     </div>
                   )}
                 </div>
-                {post.publishedAt && (
-                  <p className="mt-2 flex w-full justify-end text-sm font-light sm:mt-0 sm:w-auto">
-                    {formatDate(post.publishedAt)}
-                  </p>
-                )}
+                <div className="space-y-2">
+                  {post.publishedAt && (
+                    <p className="mt-2 flex w-full justify-end text-sm font-light sm:mt-0 sm:w-auto">
+                      {formatDate(post.publishedAt)}
+                    </p>
+                  )}
+                  <LikeDislikeButton
+                    postId={post.slug}
+                    className="justify-end"
+                  />
+                </div>
               </div>
             </li>
           ))}

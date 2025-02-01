@@ -19,6 +19,8 @@ import Head from "next/head";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 
+import LikeDislikeButton from "@/components/LikeDislikeButton";
+
 const blogDirectory = path.join(process.cwd(), "blog/posts");
 
 export async function generateStaticParams() {
@@ -101,9 +103,10 @@ export default async function Post(props: {
         )}
         <header>
           <h1 className="title text-5xl">{title}</h1>
-          <p className="text-muted-foreground mt-2 text-xs">
+          <p className="text-muted-foreground my-2 text-xs">
             {formatDate(publishedAt ?? "")}
           </p>
+          <LikeDislikeButton postId={slug} className="justify-start" />
           {author && (
             <div className="mt-8 flex items-center justify-center gap-4">
               <Image
@@ -129,18 +132,21 @@ export default async function Post(props: {
         </main>
         <footer className="mt-8">
           <Separator className="h-[2px]" />
-          {tags && (
-            <>
-              <p className="title text-muted-foreground mt-4">TAGS</p>
-              <div className="mt-2 mb-8 flex flex-wrap items-center gap-2">
-                {tags.map((tag, index) => (
-                  <Link key={index} href={`/blog?search=${tag}`}>
-                    <Badge key={index}>{tag}</Badge>
-                  </Link>
-                ))}
+          <div className="flex items-center justify-between gap-2">
+            {tags && (
+              <div>
+                <p className="title text-muted-foreground mt-4">TAGS</p>
+                <div className="mt-2 mb-8 flex flex-wrap items-center gap-2">
+                  {tags.map((tag, index) => (
+                    <Link key={index} href={`/blog?search=${tag}`}>
+                      <Badge key={index}>{tag}</Badge>
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </>
-          )}
+            )}
+            <LikeDislikeButton postId={slug} />
+          </div>
           <BackToBlog />
         </footer>
       </article>

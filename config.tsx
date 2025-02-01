@@ -1413,6 +1413,14 @@ export const achievements = [
     unlocked: false,
   },
   {
+    id: "post-like",
+    title: "Post Like",
+    description:
+      "You hit the thumbs up! Thanks for liking one of my blog posts! 👍",
+    points: 15,
+    unlocked: false,
+  },
+  {
     id: "theme",
     title: "Theme Switch",
     description:
