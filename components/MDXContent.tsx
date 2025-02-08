@@ -1,12 +1,19 @@
 "use client";
 
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
-import { JSX } from "react";
+import { JSX, ComponentType } from "react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import type { PrismAsyncLight } from "react-syntax-highlighter";
+import type { default as SyntaxHighlighterType } from "react-syntax-highlighter";
 
 import TOCInline from "./mdx/TOCInline";
 import LatexCompiler from "./mdx/LatexCompiler";
+
+type SyntaxHighlighterComponent = ComponentType<
+  typeof SyntaxHighlighterType extends ComponentType<infer P> ? P : never
+>;
+type PrismComponent = typeof PrismAsyncLight;
 
 function Code({
   children,
@@ -18,8 +25,12 @@ function Code({
 }) {
   const language = className?.replace(/language-/, "") || "text";
   const { resolvedTheme } = useTheme();
-  const [SyntaxHighlighter, setSyntaxHighlighter] = useState<any>(null);
-  const [style, setStyle] = useState<any>(null);
+  const [SyntaxHighlighter, setSyntaxHighlighter] = useState<
+    SyntaxHighlighterComponent | PrismComponent | null
+  >(null);
+  const [style, setStyle] = useState<{
+    [key: string]: React.CSSProperties;
+  } | null>(null);
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = () => {
@@ -76,7 +87,7 @@ function Code({
         showLineNumbers
         showInlineLineNumbers
         wrapLines
-        className="!pt-10" // Aggiungi padding top per il pulsante
+        className="!pt-10"
         {...props}
       >
         {String(children).trim()}
