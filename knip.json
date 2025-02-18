@@ -1,5 +1,5 @@
 {
-  "$schema": "https://unpkg.com/knip@5.44.1/schema.json",
+  "$schema": "https://unpkg.com/knip@5.44.2/schema.json",
   "next": {
     "entry": [
       "next.config.{js,ts,cjs,mjs}",
@@ -26,5 +26,5 @@
     "hooks/use-toast.{js,jsx,ts,tsx}",
     "lib/**/*.{js,jsx,ts,tsx}"
   ],
-  "ignoreDependencies": ["@tailwindcss/typography", "tailwindcss"]
+  "ignoreDependencies": ["@tailwindcss/typography", "tailwindcss", "tree-cli"]
 }
