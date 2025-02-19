@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "npm run update",
     "dev": "next dev --turbopack",
-    "prebuild": "prettier --write . --log-level warn && knip",
+    "prebuild": "npm run update && prettier --write . --log-level warn && knip",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
