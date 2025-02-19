@@ -1,4 +1,4 @@
-import MDXContent from "@/components/MDXContent";
+import MDXServer from "@/components/MDXServer";
 
 import { getPostBySlug, getPosts } from "@/lib/posts";
 import { getAuthor } from "@/lib/authors";
@@ -128,7 +128,7 @@ export default async function Post(props: {
           <Separator className="mt-8 h-[2px]" />
         </header>
         <main className="prose dark:prose-invert">
-          <MDXContent source={content} />
+          <MDXServer source={content} />
         </main>
         <footer className="mt-8">
           <Separator className="h-[2px]" />

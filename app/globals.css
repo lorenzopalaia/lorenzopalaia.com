@@ -169,11 +169,19 @@ p {
   font-family: var(--font-geist-sans);
 }
 
-pre,
+pre {
+  font-family: var(--font-geist-mono);
+  padding: 0;
+}
 code {
   font-family: var(--font-geist-mono);
 }
 
 .title {
   font-family: var(--font-bricolage-grotesque-bold);
+}
+
+.prose {
+  max-width: none !important;
+  width: 100% !important;
 }

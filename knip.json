@@ -26,5 +26,6 @@
     "hooks/use-toast.{js,jsx,ts,tsx}",
     "lib/**/*.{js,jsx,ts,tsx}"
   ],
-  "ignoreDependencies": ["@tailwindcss/typography", "tailwindcss", "tree-cli"]
+  "ignoreDependencies": ["@tailwindcss/typography", "tailwindcss"],
+  "ignoreBinaries": ["tree-cli"]
 }
