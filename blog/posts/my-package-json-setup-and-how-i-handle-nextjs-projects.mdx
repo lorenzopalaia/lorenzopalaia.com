@@ -7,3 +7,211 @@ tags: ["nextjs", "package.json", "javascript", "react"]
 draft: true
 author: "lorenzo-palaia"
 ---
+
+## Overview
+
+Throughout my Next.js development journey, I've refined a `package.json` setup that helps me maintain clean, up-to-date, and well-organized code. In this post, I'll share my professional configuration and explain how it enhances the development workflow. 🎯
+
+Efficient management of a Next.js project requires more than just basic configuration. You need to consider code formatting, unused dependency cleanup, and automation of repetitive tasks. My **package.json** configuration addresses all these challenges. 📦✨
+
+We'll explore the **key components** of the setup, **best practices**, and how this approach can improve your Next.js project's maintainability. Let's dive in! 🚀
+
+<TOCInline
+  sections={[
+    { url: "#introduction", title: "Introduction" },
+    { url: "#scripts-setup", title: "Scripts Setup" },
+    { url: "#automated-tasks", title: "Automated Tasks" },
+    { url: "#dependency-management", title: "Dependency Management" },
+    { url: "#code-quality", title: "Code Quality" },
+    { url: "#project-structure", title: "Project Structure" },
+    { url: "#advanced-configuration", title: "Advanced Configuration" },
+    { url: "#best-practices", title: "Best Practices" },
+    { url: "#conclusion", title: "Conclusion" },
+  ]}
+/>
+
+<section id="introduction">
+## Introduction
+
+A well-structured `package.json` is crucial for an efficient Next.js project. It's not just about listing dependencies but creating an automated system that ensures code quality and consistency. My approach is based on years of experience and continuous refinement. 🧠💻
+
+The goal? **Automate repetitive tasks** and **maintain clean, updated code** with minimal manual effort. Let's see how it works! 🎯
+
+</section>
+
+<section id="scripts-setup">
+## Scripts Setup
+
+The heart of the configuration lies in the npm scripts. Here's my optimized structure:
+
+```json
+{
+  "scripts": {
+    "predev": "npm run update",
+    "dev": "next dev --turbopack",
+    "prebuild": "npx prettier --write . --log-level warn && npx knip",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write . --log-level warn",
+    "knip": "knip",
+    "update": "npm-check-updates -u && npm install",
+    "tree": "npx tree-cli -a -l 3 --ignore 'node_modules, .git, .next'"
+  }
+}
+```
+
+Each script serves a specific purpose:
+
+- **predev**: Automatically updates dependencies before development
+- **dev**: Starts the development server with Turbopack for better performance
+- **prebuild**: Formats code and checks for unused dependencies
+- **build**: Compiles the project
+- **postbuild**: Automatically generates the sitemap 🗺️
+
+</section>
+
+<section id="automated-tasks">
+## Automated Tasks
+
+### Pre and Post Hooks
+
+The `pre` and `post` hooks are crucial for automation, also acting as safety checks. If a `pre` hook fails (for example, if `knip` finds unused dependencies), the process stops, preventing the main command from executing:
+
+```bash
+npm run dev
+# 1. Runs predev (dependency updates)
+# 2. Starts development server
+
+npm run build
+# 1. Runs prebuild (updates, formatting, dependency cleanup)
+# 2. Builds the project
+# 3. Runs postbuild (generates sitemap)
+```
+
+And the best part is that these hooks can be added to any script, not just the classic `dev`, `build`, etc. 🎣
+
+It's also important to choose correctly when to call local binaries (`npx`) and when to use global commands. This ensures the project is portable and doesn't depend on global binaries. In fact, when building on Vercel, the `prettier` binary wouldn't be available, and the build process would fail.
+
+### Automated Dependency Management
+
+The `update` script keeps the project up-to-date:
+
+```bash
+npm run update
+# 1. Checks for available updates
+# 2. Updates package.json
+# 3. Installs new versions
+```
+
+</section>
+
+<section id="dependency-management">
+## Dependency Management
+
+### Knip for Code Cleanup
+
+I use `knip` to identify and remove unused dependencies. Here's my configuration:
+
+```json
+{
+  "$schema": "https://unpkg.com/knip@5.44.2/schema.json",
+  "next": {
+    "entry": ["next.config.{js,ts}", "app/**/{page,layout}.{ts,tsx}"]
+  },
+  "project": ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  "ignore": ["components/ui/**"]
+}
+```
+
+This setup:
+
+- Analyzes relevant Next.js files
+- Ignores third-party UI components like those from `shadcn` that sometimes have unused dependencies
+- Identifies dead code 🧹
+
+</section>
+
+<section id="code-quality">
+## Code Quality
+
+### Prettier for Formatting
+
+Automatic code formatting is handled by Prettier:
+
+```json
+{
+  "scripts": {
+    "format": "prettier --write . --log-level warn"
+  }
+}
+```
+
+### Project Structure
+
+Project structure is essential for maintainability. I've implemented the `tree` script to visualize the project structure and sometimes pass it as additional context when asking for help from ChatGPT or Claude:
+
+```bash
+npm run tree
+
+├── app/          # Route handlers and pages
+├── components/   # Reusable React components
+├── lib/         # Utility and helper functions
+└── public/      # Static assets
+```
+
+I choose to ignore `node_modules`, `.git`, and `.next` folders to keep the visualization clean and use a depth of 3 levels to avoid too detailed output. 🌲
+
+</section>
+
+<section id="advanced-configuration">
+## Advanced Configuration
+
+### Build Optimization
+
+```json
+{
+  "scripts": {
+    "build": "next build",
+    "postbuild": "next-sitemap"
+  }
+}
+```
+
+Automatic sitemap generation improves SEO. 🔍
+
+### Development Workflow
+
+```json
+{
+  "scripts": {
+    "predev": "npm run update",
+    "dev": "next dev --turbopack"
+  }
+}
+```
+
+Turbopack speeds up the development process up to 700x! ⚡
+
+</section>
+
+<section id="best-practices">
+## Best Practices
+
+1. **Prioritize Automation**: Automate every repetitive task
+2. **Quality Control**: Integrate formatting and linting tools
+3. **Clean Dependencies**: Use `knip` to keep the project lean
+4. **Regular Updates**: Automate updates with `npm-check-updates`
+5. **Clear Documentation**: Keep README and comments up to date 📚
+
+</section>
+
+<section id="conclusion">
+## Conclusion
+
+A well-configured `package.json` is the backbone of a successful Next.js project. My configuration focuses on **automation**, **code quality**, and **maintainability**. By implementing these patterns, you can save time and maintain cleaner, more professional code. 🚀
+
+Are you ready to improve your Next.js workflow? 💪
+
+</section>
