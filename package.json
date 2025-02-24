@@ -5,6 +5,7 @@
   "scripts": {
     "predev": "npm run update",
     "dev": "next dev --turbopack",
+    "postdev": "npm run format",
     "prebuild": "npx prettier --write . --log-level warn && npx knip",
     "build": "next build",
     "postbuild": "next-sitemap",
@@ -62,7 +63,7 @@
     "knip": "^5.44.5",
     "postcss": "^8.5.3",
     "postcss-load-config": "^6.0.1",
-    "prettier": "^3.5.1",
+    "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.8",
     "typescript": "^5.7.3"
