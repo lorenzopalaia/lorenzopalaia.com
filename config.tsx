@@ -1222,13 +1222,20 @@ export const config = {
       updated_at: "2020-10-01T00:00:00Z",
     },
   ],
+  additionalProjectsLanguages: {
+    Blocktracr: ["NextJS", "TailwindCSS", "React", "Supabase"],
+    "lorenzopalaia.it": ["NextJS", "TailwindCSS", "React"],
+    MediaShift: ["NextJS", "TailwindCSS", "React"],
+  },
   featuredProjects: [
     // * Add your projects here, they will be displayed in the featured section ordered as they are in the array
     // github projects
-    "MediaShift",
+    "Blocktracr",
     "Neural-Style-Transfer-and-Genre-Classification",
     "Arduino-Oscilloscope",
     "Euro-Hackathons",
+    "MediaShift",
+    "Randstad-AI-Hackathon",
     // local projects
   ],
 };
