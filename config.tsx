@@ -1224,7 +1224,7 @@ export const config = {
   ],
   additionalProjectsLanguages: {
     Blocktracr: ["NextJS", "TailwindCSS", "React", "Supabase"],
-    "lorenzopalaia.it": ["NextJS", "TailwindCSS", "React"],
+    "lorenzopalaia.com": ["NextJS", "TailwindCSS", "React"],
     MediaShift: ["NextJS", "TailwindCSS", "React"],
   },
   featuredProjects: [

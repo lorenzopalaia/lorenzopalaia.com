@@ -67,7 +67,7 @@ export default async function Post(props: {
             "@type": "Article",
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://www.lorenzopalaia.it/blog/${slug}`,
+              "@id": `https://www.lorenzopalaia.com/blog/${slug}`,
             },
             headline: title,
             image: [image],
@@ -82,7 +82,7 @@ export default async function Post(props: {
               name: "Lorenzo Palaia",
               logo: {
                 "@type": "ImageObject",
-                url: "https://www.lorenzopalaia.it/images/avatar.png",
+                url: "https://www.lorenzopalaia.com/images/avatar.png",
               },
             },
             description: content.slice(0, 150), // Assuming the first 150 characters as excerpt

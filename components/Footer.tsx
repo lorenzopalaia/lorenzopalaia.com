@@ -22,7 +22,7 @@ export default function Footer() {
       <p className="text-muted-foreground pt-4 text-center sm:text-start">
         Looking for previous website version?{" "}
         <Link
-          href="https://v1.lorenzopalaia.it/"
+          href="https://v1.lorenzopalaia.com/"
           className="hover:text-primary font-bold"
           target="_blank"
         >

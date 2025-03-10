@@ -23,7 +23,7 @@ const ContactFormEmail: React.FC<Readonly<ContactFormEmailProps>> = ({
     <p>
       Thank you for your message, {name}! 😊 I will reply as soon as I can. 🕒
     </p>
-    <p>&copy; {new Date().getFullYear()} lorenzopalaia.it</p>
+    <p>&copy; {new Date().getFullYear()} lorenzopalaia.com</p>
   </div>
 );
 
