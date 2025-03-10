@@ -10,7 +10,7 @@ import {
 const config = {
   featured: {
     text: "Check out my blog",
-    url: "https://blog.lorenzopalaia.it",
+    url: "https://blog.lorenzopalaia.com",
   },
   hero: {
     name: "Lorenzo Palaia",

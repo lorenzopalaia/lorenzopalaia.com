@@ -29,13 +29,13 @@ export const getSEOTags = ({
     metadataBase: new URL(
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000/"
-        : `https://v1.lorenzopalaia.it/`
+        : `https://v1.lorenzopalaia.com/`
     ),
 
     openGraph: {
       title: openGraph?.title || config.hero.name,
       description: openGraph?.description || config.hero.title,
-      url: openGraph?.url || `https://v1.lorenzopalaia.it/`,
+      url: openGraph?.url || `https://v1.lorenzopalaia.com/`,
       siteName: openGraph?.title || config.hero.name,
       // If you add an opengraph-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
       // images: [
@@ -84,8 +84,8 @@ export const renderSchemaTags = () => {
           "@type": "SoftwareApplication",
           name: config.hero.name,
           description: config.hero.title,
-          image: `https://v1.lorenzopalaia.it/icon.png`,
-          url: `https://v1.lorenzopalaia.it/`,
+          image: `https://v1.lorenzopalaia.com/icon.png`,
+          url: `https://v1.lorenzopalaia.com/`,
           author: {
             "@type": "Person",
             name: "Lorenzo Palaia",

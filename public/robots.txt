@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://v1.lorenzopalaia.it
+Host: https://v1.lorenzopalaia.com
 
 # Sitemaps
-Sitemap: https://v1.lorenzopalaia.it/sitemap.xml
+Sitemap: https://v1.lorenzopalaia.com/sitemap.xml
