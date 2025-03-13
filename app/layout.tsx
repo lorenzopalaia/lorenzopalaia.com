@@ -15,6 +15,8 @@ import Overlay from "@/components/Overlay";
 import ParticlesBG from "@/components/ParticlesBG";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 
+import { Analytics } from "@vercel/analytics/next";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -69,6 +71,7 @@ export default function RootLayout({
             </ClickEffectProvider>
           </AchievementsProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
