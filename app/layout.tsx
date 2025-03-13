@@ -16,6 +16,7 @@ import ParticlesBG from "@/components/ParticlesBG";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -72,6 +73,7 @@ export default function RootLayout({
           </AchievementsProvider>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
