@@ -1,4 +1,10 @@
 import type { NextConfig } from "next";
+import withNextBundleAnalyzer from "@next/bundle-analyzer";
+import CompressionPlugin from "compression-webpack-plugin";
+
+const bundleAnalyzer = withNextBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
   images: {
@@ -51,6 +57,23 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  experimental: {
+    optimizeCss: true,
+  },
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      config.plugins.push(
+        new CompressionPlugin({
+          algorithm: "gzip",
+          test: /\.(js|css|html|svg)$/,
+          threshold: 10240,
+          minRatio: 0.8,
+        }),
+      );
+    }
+
+    return config;
+  },
 };
 
-export default nextConfig;
+export default bundleAnalyzer(nextConfig);
