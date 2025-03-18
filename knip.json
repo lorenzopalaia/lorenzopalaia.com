@@ -13,6 +13,7 @@
     ]
   },
   "project": [
+    "__tests__/**/*.{js,jsx,ts,tsx}",
     "app/**/*.{js,jsx,ts,tsx}",
     "blog/**/*.{js,jsx,ts,tsx}",
     "components/**/*.{js,jsx,ts,tsx}",
