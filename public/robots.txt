@@ -2,6 +2,28 @@
 User-agent: *
 Allow: /
 
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Slurp
+User-agent: Slurp
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api/*
+Disallow: /_next/*
+Disallow: /privacy
+
 # Host
 Host: https://www.lorenzopalaia.com
 
