@@ -7,11 +7,9 @@ import {
   useEffect,
   ReactNode,
 } from "react";
-
+import confetti from "canvas-confetti";
 import { achievements as _achievements } from "@/config";
-
 import { useToast } from "@/hooks/use-toast";
-
 import useSound from "use-sound";
 
 interface Achievement {
@@ -36,6 +34,7 @@ const AchievementsContext = createContext<AchievementsContextProps | undefined>(
 export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
   const [achievements, setAchievements] =
     useState<Achievement[]>(_achievements);
+  const [hasTriggeredConfetti, setHasTriggeredConfetti] = useState(false);
 
   const { toast } = useToast();
 
@@ -69,6 +68,50 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
     return acc + (achievement.unlocked ? achievement.points : 0);
   }, 0);
 
+  // Effetto confetti quando tutti gli achievement sono sbloccati
+  useEffect(() => {
+    if (
+      currentPoints === totalPoints &&
+      totalPoints > 0 &&
+      !hasTriggeredConfetti
+    ) {
+      triggerConfetti();
+      setHasTriggeredConfetti(true);
+    } else if (currentPoints < totalPoints) {
+      setHasTriggeredConfetti(false);
+    }
+  }, [currentPoints, totalPoints, hasTriggeredConfetti]);
+
+  const triggerConfetti = () => {
+    const end = Date.now() + 3 * 1000; // 3 secondi
+    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+
+    const frame = () => {
+      if (Date.now() > end) return;
+
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 0, y: 0.5 },
+        colors: colors,
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 1, y: 0.5 },
+        colors: colors,
+      });
+
+      requestAnimationFrame(frame);
+    };
+
+    frame();
+  };
+
   const unlockAchievement = (id: string) => {
     const alreadyUnlocked = achievements.some(
       (achievement) => achievement.id === id && achievement.unlocked,
@@ -96,6 +139,7 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
       toast({
         title: unlockedAchievement.title,
         description: unlockedAchievement.description,
+        duration: 10000,
       });
     }
   };
@@ -104,6 +148,7 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
     setAchievements((prev) =>
       prev.map((achievement) => ({ ...achievement, unlocked: false })),
     );
+    setHasTriggeredConfetti(false);
   };
 
   return (
