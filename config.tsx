@@ -385,19 +385,19 @@ export const config = {
       endDate: "Oct 2022",
       items: [
         <p key={1}>
-          Implemented the object detection and terrain mapping systems of a UAV,
-          trained <span className="font-bold">YOLOv5/EfficientNet</span> models
+          Developed object detection and terrain mapping systems for a UAV,
+          training <span className="font-bold">YOLOv5/EfficientNet</span> models
           with custom datasets
         </p>,
         <p key={2}>
-          Designed the{" "}
-          <span className="font-bold">communication protocols</span> between UAV
-          and Ground Station from scratch via endpoints using Flask,
-          restructured the labeling GUI
+          Designed and implemented communication protocols between UAV and
+          Ground Station from scratch, developing a{" "}
+          <span className="font-bold">Flask‑based API</span> and revamping the
+          GUI
         </p>,
         <p key={3}>
-          Worked in a subteam of 5 and collaborated frequently with 60 people in
-          other sumteams, migrated the entire Flight Team workflow to Slack
+          Collaborated in a subteam of 5 within a 60‑member team, migrating the
+          entire Flight Team workflow to Slack
         </p>,
         <p key={4}>
           Earned a <span className="font-bold">15th</span> position out of 71
@@ -405,7 +405,7 @@ export const config = {
         </p>,
       ],
       href: "https://www.sasa-aerospace.it/flight-team/",
-      img: "/images/flightteam.png",
+      img: "/images/flight-team.png",
     },
     {
       title: "Software Developer",
@@ -414,9 +414,13 @@ export const config = {
       endDate: "Present",
       items: [
         <p key={1}>
-          Developed websites and applications for more than{" "}
-          <span className="font-bold">5</span> private and corporate clients
-          including landing pages, bots and trackers,
+          Engineered websites and applications for over{" "}
+          <span className="font-bold">5</span> private and corporate clients,
+          delivering solutions including landing pages, bots and trackers
+        </p>,
+        <p key={2}>
+          Collaborated with clients to analyze requirements, propose innovative
+          ideas, document solutions and maintain software post‑release
         </p>,
       ],
       href: "https://github.com/lorenzopalaia",
@@ -436,19 +440,15 @@ export const config = {
       startDate: "",
       endDate: "Mar 2024",
       items: [
-        <div key={1}>
-          Best Marks:
-          <ul className="ml-4 list-outside list-disc">
-            <li>
-              Operative Systems, Functional Programming, Programming Techniques{" "}
-              <span className="font-bold">4.0 GPA with honors</span>
-            </li>
-            <li>
-              Computer Architecture, Computer Networks, Databases, Software
-              Engineering <span className="font-bold">4.0 GPA</span>
-            </li>
-          </ul>
-        </div>,
+        <p key={1}>
+          Excelled in Operative Systems, Functional Programming, Programming
+          Techniques (<span className="font-bold">4.0 GPA with honors</span>)
+        </p>,
+        <p key={2}>
+          Mastered Data Structures & Algorithms, Software Design, Parallel
+          Computing, Electronics, Web Development (
+          <span className="font-bold">4.0 GPA</span>)
+        </p>,
       ],
       href: "https://www.uniroma1.it/it/",
       img: "/images/sapienza.jpeg",
@@ -466,20 +466,46 @@ export const config = {
   ],
   extra: [
     {
+      title: "Open Source Contribution",
+      company: "Origin UI",
+      startDate: "",
+      endDate: "Mar 2025",
+      items: [<p>Refactored code to improve consistency and readability</p>],
+      href: "https://github.com/origin-space/originui",
+      img: "/images/origin-ui.png",
+    },
+    {
+      title: "Open Source Contribution",
+      company: "Maybe Finance",
+      startDate: "Jan 2024",
+      endDate: "Feb 2024",
+      items: [
+        <p key={1}>
+          Removed <span className="font-bold">22,000+ lines</span> of legacy
+          code to improve maintainability
+        </p>,
+        <p key={2}>
+          Identified and reported multiple UI issues including file download
+          problems and behavior bugs
+        </p>,
+      ],
+      href: "https://github.com/maybe-finance/maybe",
+      img: "/images/maybe.jpg",
+    },
+    {
       title: "<Code.Your.Future> AI Hackathon",
       company: "Randstad",
       startDate: "",
       endDate: "Mar 2023",
       items: [
         <p key={1}>
-          Led the development of a{" "}
-          <span className="font-bold">job description classifier</span> in a
-          team of 5 using TensorFlow during a 4-hour challenge
+          Guided the development of a job description classification neural
+          network in a team of 5 using{" "}
+          <span className="font-bold">TensorFlow</span> within 4 hours
         </p>,
         <p key={2}>
-          Secured the <span className="font-bold">2nd</span> spot out of 8
-          contenders, reached an F1 score of 75%, explored both Bag of Words and
-          Word2Vec solutions
+          Secured 2nd place, achieving an F1 score of 75% while experimenting
+          with Bag of Words and Word2Vec approaches
         </p>,
       ],
       href: "https://www.randstad.it/",
@@ -492,6 +518,7 @@ export const config = {
       ],
     },
   ],
+
   skills: [
     "NextJS",
     "Typescript",
