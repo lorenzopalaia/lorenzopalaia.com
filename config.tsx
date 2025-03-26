@@ -471,6 +471,8 @@ export const config = {
       startDate: "",
       endDate: "Mar 2025",
       items: [<p>Refactored code to improve consistency and readability</p>],
+      owner: "origin-space",
+      repo: "originui",
       href: "https://github.com/origin-space/originui",
       img: "/images/origin-ui.png",
     },
@@ -489,6 +491,8 @@ export const config = {
           problems and behavior bugs
         </p>,
       ],
+      owner: "maybe-finance",
+      repo: "maybe",
       href: "https://github.com/maybe-finance/maybe",
       img: "/images/maybe.jpg",
     },
@@ -518,7 +522,6 @@ export const config = {
       ],
     },
   ],
-
   skills: [
     "NextJS",
     "Typescript",

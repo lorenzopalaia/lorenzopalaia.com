@@ -1,8 +1,14 @@
+"use client";
+
 import Image from "next/image";
 
 import Link from "next/link";
 
 import CardButton from "@/components/CardButton";
+
+import { useGithubStars } from "@/hooks/useGithubStars";
+
+import { Star } from "lucide-react";
 
 function CardItem({
   title,
@@ -13,6 +19,8 @@ function CardItem({
   href,
   img,
   links,
+  owner,
+  repo,
 }: {
   title: string;
   company: string;
@@ -22,7 +30,15 @@ function CardItem({
   href: string;
   img: string;
   links?: { title: string; href: string }[];
+  owner?: string;
+  repo?: string;
 }) {
+  const { stars } = useGithubStars({
+    owner: owner || "",
+    repo: repo || "",
+    skipFetch: !owner || !repo,
+  });
+
   return (
     <li className="relative ml-10 py-4">
       <Link
@@ -46,7 +62,15 @@ function CardItem({
           {startDate && endDate && <span> - </span>}
           <span>{endDate}</span>
         </time>
-        <h2 className="leading-none font-semibold">{company}</h2>
+        <h2 className="flex items-center gap-2 leading-none font-semibold">
+          {company}
+          {stars !== null && (
+            <span className="text-muted-foreground flex gap-1 text-xs">
+              <Star size={16} className="text-yellow-500" />{" "}
+              {stars.toLocaleString()}
+            </span>
+          )}
+        </h2>
         <p className="title text-muted-foreground text-sm">{title}</p>
         {items && items.length > 0 && (
           <ul className="ml-4 list-outside list-disc">
@@ -80,6 +104,8 @@ export default function AboutCard({
     items?: React.ReactNode[];
     href: string;
     img: string;
+    owner?: string;
+    repo?: string;
     links?: {
       title: string;
       href: string;
