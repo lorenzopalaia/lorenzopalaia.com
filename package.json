@@ -18,7 +18,8 @@
     "tree": "npx tree-cli -a -l 3 --ignore 'node_modules, .git, .next'",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "reinstall": "rm -rf node_modules .next .swc package-lock.json && npm install --force"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",

@@ -1,0 +1,206 @@
+---
+title: "How Notion Scaled to Handle 200 Billion Blocks"
+summary: "An exploration of Notion's technical evolution from a single database to a sophisticated architecture capable of handling over 200 billion blocks of content."
+publishedAt: "2025-03-27"
+image: "/blog/images/posts/how-notion-scaled-to-handle-billions-of-blocks/notion.jpg"
+tags: ["Database", "Scalability", "Notion", "Sharding"]
+draft: false
+author: "lorenzo-palaia"
+---
+
+## Overview
+
+Notion has become an essential tool for millions of users worldwide, enabling flexible organization of thoughts, projects, and collaborations. But have you ever wondered how they manage the enormous amount of data created by users? In this article, we'll explore Notion's technical journey from a single database to an architecture capable of handling over 200 billion blocks of content. Let's discover how their engineering team tackled this challenge! 🚀💾
+
+In this technical journey, we'll explore how Notion overcame its initial system limitations by implementing innovative database sharding strategies, creating a custom data lake, and continuously optimizing their infrastructure to support exponential growth. 🌐✨
+
+Let's analyze together the evolution of Notion's architecture, the challenges they faced, and the innovative solutions adopted to scale one of the world's most popular productivity tools! 🛠️
+
+<TOCInline
+  sections={[
+    {
+      url: "#initially-a-monolithic-database",
+      title: "Initially: A Monolithic Database",
+    },
+    { url: "#the-transition-to-sharding", title: "The Transition to Sharding" },
+    { url: "#sharding-implementation", title: "Sharding Implementation" },
+    { url: "#data-migration", title: "Data Migration" },
+    {
+      url: "#beyond-transactional-database-the-data-lake",
+      title: "Beyond Transactional Database: The Data Lake",
+    },
+    {
+      url: "#further-scalability-and-optimization",
+      title: "Further Scalability and Optimization",
+    },
+    { url: "#the-block-based-data-model", title: "The Block-Based Data Model" },
+    { url: "#conclusions", title: "Conclusions" },
+  ]}
+/>
+
+<section id="initially-a-monolithic-database">
+## Initially: A Monolithic Database
+
+Like many fast-growing startups, Notion began with a relatively simple architecture: a single PostgreSQL database. This configuration worked well in the early stages when the data load was manageable and the user base was limited. 🏗️
+
+The fundamental unit of Notion is the block - which can be a paragraph of text, an image, a list, a table, or any other interface element. Each block has a unique ID and properties that define its content and type.
+
+However, with the explosion in the platform's popularity, the number of blocks increased exponentially:
+
+- 2021: around 20 billion blocks
+- 2024: over 200 billion blocks
+
+This meteoric growth began to put pressure on their monolithic infrastructure, requiring a rethinking of the database architecture. 📈
+
+</section>
+
+<section id="the-transition-to-sharding">
+## The Transition to Sharding
+
+To address the scalability challenges, Notion's engineering team decided to adopt a sharding strategy for the PostgreSQL database. Sharding is a technique that divides a large database into smaller, manageable parts called "shards," distributed across multiple database instances. 🧩
+
+This strategy offers several advantages:
+
+- Better load distribution
+- Reduced response times
+- Increased resilience
+- Horizontal scaling capacity
+
+The decision to move to a sharded architecture wasn't taken lightly, as it involves significant operational complexity. However, it was necessary to support the platform's continued growth. 🔄
+
+</section>
+
+<section id="sharding-implementation">
+## Sharding Implementation
+
+Notion's sharding strategy included several key components:
+
+1. **Choosing the Sharding Key**: They selected Workspace ID as the sharding key because each block belongs to a single workspace, users typically interact with blocks within the same workspace, and it reduces the need for cross-shard queries.
+
+2. **Infrastructure Sizing**: They initially configured 480 logical shards across 32 physical databases (15 logical shards per database). The number 480 was strategically chosen for its divisibility, offering flexibility for future expansions.
+
+3. **Connection Management**: They implemented PG Bouncer, a connection pooler for PostgreSQL, to reduce connection overhead, manage connection queues, and improve overall database performance.
+
+</section>
+
+<section id="data-migration">
+## Data Migration
+
+Migrating from a monolithic to a sharded system represented a significant challenge. Notion had to move enormous amounts of data without service disruption for users. 🔄
+
+### Double-Write Strategy
+
+They implemented a double-write mechanism:
+
+- New data was written simultaneously to both the old and new systems
+- This ensured consistency during the transition
+- It allowed verification of the new system's proper functioning before complete migration
+
+### Existing Data Migration
+
+For migrating existing data:
+
+- They used a machine with 96 CPUs
+- Despite the computing power, the process took three full days
+- They implemented an audit log system to ensure consistency between the two databases
+
+### Verification and Switchover
+
+Before switching completely to the new system:
+
+- They ran verification scripts to compare data between the two systems
+- They implemented "dark reads" (comparison reads invisible to the user)
+- The final switchover involved minimal downtime, just a few minutes for most users
+
+</section>
+
+<section id="beyond-transactional-database-the-data-lake">
+## Beyond Transactional Database: The Data Lake
+
+As Notion grew, the team recognized that using the same infrastructure for everything—from transactional operations to offline processing for machine learning and analytics—was becoming inefficient. 🔍
+
+### The Data Lake Solution
+
+To address this challenge, they developed a custom data lake using:
+
+- Amazon S3 as the central repository for raw and processed data
+- Apache Spark for processing large datasets
+- Apache Kafka for handling the consistent flow of large amounts of data
+- Change Data Capture (CDC) to publish incremental changes from the PostgreSQL database to Kafka
+- Apache Hudi to simplify building and managing data pipelines, enabling efficient incremental updates
+
+### From Snowflake to S3
+
+Initially, Notion used Snowflake as their data warehouse. However, with rapid data growth (doubling every 6-12 months), they encountered challenges related to costs and efficiently managing Notion's block data, characterized by frequent updates.
+
+The transition to a custom data lake on S3 brought:
+
+- Significant cost savings
+- Greater flexibility
+- Better management of frequent update patterns
+- New possibilities for AI-based features
+
+</section>
+
+<section id="further-scalability-and-optimization">
+## Further Scalability and Optimization
+
+Despite the success of the initial sharding implementation, rapid growth continued to test Notion's infrastructure. 📈
+
+### Addressing Shard Utilization Limits
+
+Over time:
+
+- Database shards began reaching high utilization rates
+- PG Bouncer began reaching its connection limits
+
+### Infrastructure Expansion
+
+To solve these issues, they:
+
+- Tripled the number of database machines, going from 32 to 96
+- Reduced the number of shards per machine from 15 to 5
+- Used PostgreSQL's logical replication to synchronize data between old and new systems
+- Developed internal tools to organize and route incoming data to the correct databases
+- Further divided PG Bouncer into four groups, each managing 24 databases
+
+This transition was executed without any downtime for users, again using techniques like dark reads for testing and a gradual rollout of new database machines. 🔄
+
+</section>
+
+<section id="the-block-based-data-model">
+## The Block-Based Data Model
+
+Underpinning all this scalability is Notion's fundamental data model based on blocks. This seemingly simple concept offers incredible flexibility. 🧱
+
+### Block Model Characteristics
+
+- Every element in Notion is a block
+- Each block can contain other blocks, creating a hierarchical structure
+- This approach allows granular control over information
+- The block structure facilitates data management and sharding
+
+### Advantages for Sharding
+
+The block model is particularly well-suited for sharding because:
+
+- Blocks have well-defined relationships
+- They belong to specific workspaces (the sharding key)
+- They have predictable access patterns
+
+</section>
+
+<section id="conclusions">
+## Conclusions
+
+Notion's journey to scalability is a testament to their engineering team's foresight and adaptability. From their initial monolithic PostgreSQL database to a sophisticated sharded architecture and custom-built data lake, they have consistently innovated to meet the demands of their rapidly growing user base and the increasing complexity of their product. 🌟
+
+Understanding their strategies provides valuable insights for anyone interested in the challenges and solutions involved in building and scaling modern applications. It highlights the importance of:
+
+- Choosing the right architectural patterns
+- Leveraging open-source technologies
+- Continuously monitoring and adapting to the ever-evolving landscape of data and traffic
+
+Notion's story reminds us that scalability is a continuous journey, not a final destination. As platforms grow, their architectures must evolve accordingly, requiring constant innovation, monitoring, and optimization. 🔍
+
+</section>
