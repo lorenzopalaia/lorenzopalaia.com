@@ -467,6 +467,24 @@ export const config = {
   extra: [
     {
       title: "Open Source Contribution",
+      company: "tweakcn",
+      startDate: "",
+      endDate: "Mar 2025",
+      items: [
+        <p>
+          Implemented a{" "}
+          <span className="font-bold">contrast accessibility checker</span> with
+          an optimized <span className="font-bold">debounce mechanism</span> to
+          improve performance
+        </p>,
+      ],
+      owner: "jnsahaj",
+      repo: "tweakcn",
+      href: "https://github.com/jnsahaj/tweakcn",
+      img: "/images/tweakcn.png",
+    },
+    {
+      title: "Open Source Contribution",
       company: "Origin UI",
       startDate: "",
       endDate: "Mar 2025",
