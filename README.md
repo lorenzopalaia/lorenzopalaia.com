@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 lorenzopalaia.com
 
-## Getting Started
+Welcome to the repository for my personal website, [lorenzopalaia.com](https://lorenzopalaia.com)! 🚀
 
-First, run the development server:
+## 🖥️ Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<div align="center">
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next JS" />
+    <span style="margin-left: 10px;">A React framework for server-rendered and static web applications.</span>
+  </div>
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
+    <span style="margin-left: 10px;">A JavaScript library for building user interfaces.</span>
+  </div>
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS" />
+    <span style="margin-left: 10px;">A utility-first CSS framework for rapid UI development.</span>
+  </div>  
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <img src="https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white" alt="shadcn/ui" />
+    <span style="margin-left: 10px;">A collection of reusable UI components built with Radix UI and Tailwind CSS.</span>
+    </div>  
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    <span style="margin-left: 10px;">A superset of JavaScript that adds static typing.</span>
+  </div>
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <img src="https://img.shields.io/badge/MDX-darkslategray?style=for-the-badge&logo=mdx&logoColor=white" alt="MDX" />
+    <span style="margin-left: 10px;">Allows JSX to be used within Markdown documents, enabling interactive content.</span>
+  </div>
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📖 Website Content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Blog**: Articles on programming, artificial intelligence, blockchain, finance, and travel.
+- **Projects**: A selection of developed projects, detailing the technologies used and implemented features.
+- **Contact**: A form to get in touch directly.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌟 Features
 
-## Learn More
+- **Responsive Design**: Optimized for various devices and screen sizes.
+- **Dark Mode Support**: Toggle between light and dark themes for better readability.
+- **Interactive UI**: Engaging user interface with smooth animations and transitions.
+- **SEO Optimized**: Enhanced for search engine visibility.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Explore the codebase to learn more about the implementation details and architecture of [lorenzopalaia.com](https://lorenzopalaia.com).
