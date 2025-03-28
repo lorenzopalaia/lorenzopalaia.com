@@ -34,7 +34,8 @@ const AchievementsContext = createContext<AchievementsContextProps | undefined>(
 export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
   const [achievements, setAchievements] =
     useState<Achievement[]>(_achievements);
-  const [hasTriggeredConfetti, setHasTriggeredConfetti] = useState(false);
+  const [hasTriggeredConfetti, setHasTriggeredConfetti] =
+    useState<boolean>(false);
 
   const { toast } = useToast();
 
@@ -42,14 +43,22 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const savedUnlockedIds = localStorage.getItem("unlockedAchievements");
+    const hasShownConfetti = localStorage.getItem("hasShownConfetti");
+
+    setHasTriggeredConfetti(hasShownConfetti === "true");
+
     if (savedUnlockedIds) {
-      const unlockedIds = JSON.parse(savedUnlockedIds);
-      setAchievements((prev) =>
-        prev.map((achievement) => ({
-          ...achievement,
-          unlocked: unlockedIds.includes(achievement.id),
-        })),
-      );
+      try {
+        const unlockedIds = JSON.parse(savedUnlockedIds);
+        setAchievements((prev) =>
+          prev.map((achievement) => ({
+            ...achievement,
+            unlocked: unlockedIds.includes(achievement.id),
+          })),
+        );
+      } catch (error) {
+        console.error("Errore nel parsing degli achievement sbloccati:", error);
+      }
     }
   }, []);
 
@@ -60,6 +69,10 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("unlockedAchievements", JSON.stringify(unlockedIds));
   }, [achievements]);
 
+  useEffect(() => {
+    localStorage.setItem("hasShownConfetti", hasTriggeredConfetti.toString());
+  }, [hasTriggeredConfetti]);
+
   const totalPoints = achievements.reduce((acc, achievement) => {
     return acc + achievement.points;
   }, 0);
@@ -68,7 +81,6 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
     return acc + (achievement.unlocked ? achievement.points : 0);
   }, 0);
 
-  // Effetto confetti quando tutti gli achievement sono sbloccati
   useEffect(() => {
     if (
       currentPoints === totalPoints &&
@@ -77,13 +89,11 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
     ) {
       triggerConfetti();
       setHasTriggeredConfetti(true);
-    } else if (currentPoints < totalPoints) {
-      setHasTriggeredConfetti(false);
     }
   }, [currentPoints, totalPoints, hasTriggeredConfetti]);
 
   const triggerConfetti = () => {
-    const end = Date.now() + 3 * 1000; // 3 secondi
+    const end = Date.now() + 3 * 1000; // 3 seconds
     const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
 
     const frame = () => {
@@ -149,6 +159,7 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
       prev.map((achievement) => ({ ...achievement, unlocked: false })),
     );
     setHasTriggeredConfetti(false);
+    localStorage.removeItem("hasShownConfetti"); // Rimuovo completamente la voce invece di impostarla a false
   };
 
   return (
