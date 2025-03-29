@@ -588,9 +588,11 @@ export const config = {
     },
   ],
   additionalProjectsLanguages: {
+    // * TailwindCSS automatically overwrites CSS if used in the same project
     Blocktracr: ["NextJS", "TailwindCSS", "React", "Supabase"],
     "lorenzopalaia.com": ["NextJS", "TailwindCSS", "React"],
     MediaShift: ["NextJS", "TailwindCSS", "React"],
+    TurboClone: ["NextJS", "TailwindCSS", "React"],
   },
   featuredProjects: [
     // * Add your projects here, they will be displayed in the featured section ordered as they are in the array
@@ -602,6 +604,10 @@ export const config = {
     "MediaShift",
     "Randstad-AI-Hackathon",
     // local projects
+  ],
+  includedForkRepos: [
+    // * These repos are shown despite being forks
+    "Randstad-AI-Hackathon",
   ],
 };
 

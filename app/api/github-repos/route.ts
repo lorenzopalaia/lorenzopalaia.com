@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Octokit } from "@octokit/rest";
 import type { RestEndpointMethodTypes } from "@octokit/rest";
+import { config } from "@/config";
 
 type Repo =
   RestEndpointMethodTypes["repos"]["listForUser"]["response"]["data"][0];
@@ -13,7 +14,11 @@ const fetchGithubRepos = async (): Promise<Repo[]> => {
   const response = await octokit.repos.listForUser({
     username: "lorenzopalaia",
   });
-  return response.data;
+
+  return response.data.filter(
+    (repo) =>
+      !repo.fork || (repo.fork && config.includedForkRepos.includes(repo.name)),
+  );
 };
 
 const fetchRepoLanguages = async (
