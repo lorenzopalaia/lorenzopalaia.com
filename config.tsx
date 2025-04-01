@@ -467,6 +467,40 @@ export const config = {
   extra: [
     {
       title: "Open Source Contribution",
+      company: "JSON Crack",
+      startDate: "Mar 2025",
+      endDate: "Apr 2025",
+      items: [
+        <p key={1}>
+          Fixed <span className="font-bold">UI issues</span> and improved
+          accessibility
+        </p>,
+      ],
+      owner: "AykutSarac",
+      repo: "jsoncrack.com",
+      href: "https://github.com/AykutSarac/jsoncrack.com",
+      img: "/images/jsoncrack.jpeg",
+    },
+    {
+      title: "Open Source Contribution",
+      company: "Filepizza",
+      startDate: "Mar 2025",
+      endDate: "Apr 2025",
+      items: [
+        <p>
+          Implemented{" "}
+          <span className="font-bold">multi-file selection functionality</span>{" "}
+          with sequential upload process, significantly enhancing user
+          experience and workflow
+        </p>,
+      ],
+      owner: "kern",
+      repo: "filepizza",
+      href: "https://github.com/kern/filepizza",
+      img: "/images/filepizza.png",
+    },
+    {
+      title: "Open Source Contribution",
       company: "tweakcn",
       startDate: "",
       endDate: "Mar 2025",
@@ -488,7 +522,12 @@ export const config = {
       company: "Origin UI",
       startDate: "",
       endDate: "Mar 2025",
-      items: [<p>Refactored code to improve consistency and readability</p>],
+      items: [
+        <p>
+          Refactored code to{" "}
+          <span className="font-bold">improve consistency</span> and readability
+        </p>,
+      ],
       owner: "origin-space",
       repo: "originui",
       href: "https://github.com/origin-space/originui",
