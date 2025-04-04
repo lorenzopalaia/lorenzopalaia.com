@@ -467,6 +467,23 @@ export const config = {
   extra: [
     {
       title: "Open Source Contribution",
+      company: "Plane",
+      startDate: "Mar 2025",
+      endDate: "Apr 2025",
+      items: [
+        <p>
+          Enhanced the <span className="font-bold">authentication flow UI</span>{" "}
+          to improve clarity and user experience in environments with restricted
+          access
+        </p>,
+      ],
+      owner: "makeplane",
+      repo: "plane",
+      href: "https://gitbub.com/makeplane/plane",
+      img: "/images/plane.png",
+    },
+    {
+      title: "Open Source Contribution",
       company: "JSON Crack",
       startDate: "Mar 2025",
       endDate: "Apr 2025",
