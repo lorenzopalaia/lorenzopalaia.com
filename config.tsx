@@ -467,6 +467,22 @@ export const config = {
   extra: [
     {
       title: "Open Source Contribution",
+      company: "Shadcn-UI Marketing Blocks",
+      startDate: "Mar 2025",
+      endDate: "Apr 2025",
+      items: [
+        <p>
+          Introduced <span className="font-bold">two new blocks</span> to
+          enhance user experience and design consistency
+        </p>,
+      ],
+      owner: "meschacirung",
+      repo: "cnblocks",
+      href: "https://github.com/meschacirgung/cnblocks",
+      img: "/images/cnblocks.png",
+    },
+    {
+      title: "Open Source Contribution",
       company: "Plane",
       startDate: "Mar 2025",
       endDate: "Apr 2025",
@@ -488,7 +504,7 @@ export const config = {
       startDate: "Mar 2025",
       endDate: "Apr 2025",
       items: [
-        <p key={1}>
+        <p>
           Fixed <span className="font-bold">UI issues</span> and improved
           accessibility
         </p>,
