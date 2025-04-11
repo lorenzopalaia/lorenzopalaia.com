@@ -19,11 +19,16 @@ import { useToast } from "@/hooks/use-toast";
 
 import { addLead } from "@/lib/lead";
 
+import { useAchievementsContext } from "@/contexts/AchievementsContext";
+
 export default function Lead() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
+
   const { toast } = useToast();
+
+  const { unlockAchievement } = useAchievementsContext();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,6 +61,7 @@ export default function Lead() {
         description: "You have successfully subscribed to the newsletter!",
         variant: "default",
       });
+      unlockAchievement("lead");
     }
   };
 

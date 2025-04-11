@@ -885,6 +885,13 @@ export const achievements = [
     points: 30,
     unlocked: false,
   },
+  {
+    id: "lead",
+    title: "Blog Subscription",
+    description: "You joined the blog squad! Welcome aboard! 🚀",
+    points: 30,
+    unlocked: false,
+  },
   /*
   {
     id: "avatar",
