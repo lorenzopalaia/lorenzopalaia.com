@@ -2,7 +2,8 @@ import Link from "next/link";
 
 import { ArrowRight } from "lucide-react";
 
-import Posts from "./Posts";
+import Posts from "@/components/Posts";
+import Lead from "@/components/Lead";
 
 import { getPosts } from "@/lib/posts";
 
@@ -27,6 +28,9 @@ export default async function RecentPosts() {
       </div>
       <div className="mt-8">
         <Posts posts={posts} />
+      </div>
+      <div className="mt-8">
+        <Lead />
       </div>
     </section>
   );

@@ -9,8 +9,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ClickEffectProvider from "@/components/ClickEffectProvider";
 import { AchievementsProvider } from "@/contexts/AchievementsContext";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/sections/Header";
+import Footer from "@/components/sections/Footer";
 import Overlay from "@/components/Overlay";
 import ParticlesBG from "@/components/ParticlesBG";
 import ScrollProgressBar from "@/components/ScrollProgressBar";

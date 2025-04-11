@@ -1,18 +1,23 @@
 "use client";
 
 import { Suspense } from "react";
+
 import { PostMetadata } from "@/lib/posts";
+
 import { Delete } from "lucide-react";
+
 import { useSearchParams, useRouter } from "next/navigation";
-import Posts from "./Posts";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+
+import Posts from "@/components/Posts";
+import Lead from "@/components/Lead";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface Props {
   posts: PostMetadata[];
 }
 
-// Componente che contiene tutta la logica che usa useSearchParams
 function SearchContainer({ posts }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -71,13 +76,17 @@ function SearchContainer({ posts }: Props) {
   );
 }
 
-// Componente principale che non usa useSearchParams
 export default function PostsWithSearch({ posts }: Props) {
   return (
-    <div className="mt-8 flex flex-col gap-12">
-      <Suspense fallback={<div>Loading search...</div>}>
-        <SearchContainer posts={posts} />
-      </Suspense>
-    </div>
+    <>
+      <div className="mt-8 flex flex-col gap-12">
+        <Suspense fallback={<div>Loading search...</div>}>
+          <SearchContainer posts={posts} />
+        </Suspense>
+      </div>
+      <div className="mt-8">
+        <Lead />
+      </div>
+    </>
   );
 }
