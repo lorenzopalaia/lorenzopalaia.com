@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 
-import { Globe, Github, Star } from "lucide-react";
+import { Globe, Github, Star, Download } from "lucide-react";
 
 import {
   Card,
@@ -16,6 +18,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import LanguagesList from "@/components/LanguagesList";
 import { ImageFallback } from "@/components/ImageFallback";
 
+import { useNpmDownloads } from "@/hooks/useNpmDownloads";
+
 interface ProjectCardProps {
   project: {
     img: string;
@@ -25,6 +29,7 @@ interface ProjectCardProps {
     html_url?: string;
     homepage?: string;
     stargazers_count?: number;
+    npm_package_name?: string | null;
   };
 }
 export function CardSkeleton() {
@@ -55,6 +60,14 @@ export function CardSkeleton() {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const {
+    downloads,
+    isLoading: isLoadingDownloads,
+    error: downloadError,
+  } = useNpmDownloads({
+    packageName: project.npm_package_name || null,
+  });
+
   return (
     <Card className="flex h-full w-full flex-col border-2">
       <CardHeader>
@@ -112,12 +125,19 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             </Link>
           )}
         </div>
-        {project.stargazers_count !== undefined && (
-          <CardDescription className="title flex items-center gap-2">
-            <Star size={16} className="text-yellow-500" />
-            {project.stargazers_count}
-          </CardDescription>
-        )}
+        <div className="flex items-center gap-2">
+          {project.stargazers_count !== undefined && (
+            <CardDescription className="title flex items-center gap-1">
+              <Star size={16} className="text-yellow-500" />
+              {project.stargazers_count}
+            </CardDescription>
+          )}
+          {downloads && (
+            <CardDescription className="title flex items-center gap-1">
+              <Download size={16} className="text-sky-500" /> {downloads}
+            </CardDescription>
+          )}
+        </div>
       </CardFooter>
     </Card>
   );

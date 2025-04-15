@@ -46,34 +46,66 @@ function processLanguages(languages: string[], repoName: string): string[] {
 export default function useGithubRepos() {
   const [repos, setRepos] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null); // Aggiungi stato per l'errore
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
+      setError(null); // Resetta l'errore all'inizio
       try {
         const response = await fetch("/api/github-repos");
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error(
+            `Network response was not ok: ${response.statusText}`,
+          );
         }
         const data = await response.json();
 
         // * Concatenate the new repositories to the array from the config file
         const updatedRepos = [...data, ...config.projects];
 
-        // * Process the languages
-        const processedRepos = updatedRepos.map((repo) => ({
-          ...repo,
-          languages: processLanguages(repo.languages, repo.name),
-        }));
+        // * Process the languages and add npm package name
+        const processedRepos = updatedRepos.map((repo) => {
+          const repoName = repo.name;
+          // Cerca il nome del pacchetto npm nella configurazione
+          const npmPackageName =
+            config.npmProjects[repoName as keyof typeof config.npmProjects] ||
+            null;
+
+          return {
+            ...repo,
+            languages: processLanguages(repo.languages, repoName),
+            npm_package_name: npmPackageName, // Aggiungi il nome del pacchetto npm
+          };
+        });
 
         setRepos(processedRepos);
+      } catch (fetchError) {
+        console.error("Error fetching GitHub repos data:", fetchError);
+        setError(
+          fetchError instanceof Error
+            ? fetchError
+            : new Error("Errore sconosciuto nel fetch dei repo"),
+        );
+        setRepos(
+          [...config.projects].map((repo) => ({
+            // Fallback ai soli progetti locali in caso di errore
+            ...repo,
+            languages: processLanguages(repo.languages, repo.name),
+            npm_package_name:
+              config.npmProjects[
+                repo.name as keyof typeof config.npmProjects
+              ] || null,
+          })),
+        );
+      } finally {
         setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, []); // L'effetto viene eseguito solo al mount
 
-  return { repos, isLoading };
+  // Restituisci anche lo stato di errore
+  return { repos, isLoading, error };
 }

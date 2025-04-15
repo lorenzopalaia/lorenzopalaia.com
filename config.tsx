@@ -655,7 +655,7 @@ export const config = {
       description: "Developed a corporate website for Alfa Impianti S.r.l.",
       languages: ["Javascript", "HTML", "CSS"],
       img: "/",
-      html_url: "https://alfa-impiantisrl.it",
+      html_url: "https://www.alfa-impiantiservice.it/",
       updated_at: "2020-10-01T00:00:00Z",
     },
   ],
@@ -665,6 +665,11 @@ export const config = {
     "lorenzopalaia.com": ["NextJS", "TailwindCSS", "React"],
     MediaShift: ["NextJS", "TailwindCSS", "React"],
     TurboClone: ["NextJS", "TailwindCSS", "React"],
+  },
+  npmProjects: {
+    // * Add npm packages here, they will be used to display npm downloads
+    "Tailwind-Animations": "@lorenzopalaia/tailwind-animations",
+    "Tailwind-Hero-Patterns": "@lorenzopalaia/tailwind-hero-patterns",
   },
   featuredProjects: [
     // * Add your projects here, they will be displayed in the featured section ordered as they are in the array
