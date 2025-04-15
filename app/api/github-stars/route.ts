@@ -14,7 +14,7 @@ export async function GET(request: Request) {
 
     if (!owner || !repo) {
       return NextResponse.json(
-        { error: "I parametri 'owner' e 'repo' sono obbligatori" },
+        { error: "The 'owner' and 'repo' parameters are required" },
         { status: 400 },
       );
     }
@@ -35,9 +35,9 @@ export async function GET(request: Request) {
       },
     );
   } catch (error) {
-    console.error("Errore nel recupero delle stelle:", error);
+    console.error("Error fetching stars:", error);
     return NextResponse.json(
-      { error: "Errore nel recupero delle stelle" },
+      { error: "Error fetching stars" },
       { status: 500 },
     );
   }

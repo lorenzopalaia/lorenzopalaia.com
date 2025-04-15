@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 interface UseNpmDownloadsProps {
-  packageName: string | null; // Può essere null se non c'è un pacchetto associato
+  packageName: string | null;
 }
 
 interface UseNpmDownloadsResult {
@@ -14,33 +14,31 @@ export function useNpmDownloads({
   packageName,
 }: UseNpmDownloadsProps): UseNpmDownloadsResult {
   const [downloads, setDownloads] = useState<number | null>(null);
-  // Inizia a caricare solo se c'è un nome pacchetto valido
+
   const [isLoading, setIsLoading] = useState<boolean>(!!packageName);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    // Se non c'è un nome pacchetto, non eseguiamo la fetch
     if (!packageName) {
       setIsLoading(false);
-      setDownloads(null); // Assicurati che i download siano null
+      setDownloads(null);
       return;
     }
 
     const fetchDownloads = async () => {
-      setIsLoading(true); // Imposta isLoading a true all'inizio della fetch
+      setIsLoading(true);
       try {
         const response = await fetch(
           `/api/npm-downloads?package=${encodeURIComponent(packageName)}`,
         );
 
         if (!response.ok) {
-          // npmjs restituisce 404 se il pacchetto non esiste o non ha download recenti
           if (response.status === 404) {
-            setDownloads(0); // Consideriamo 0 download se non trovato
+            setDownloads(0);
             setError(null);
           } else {
             throw new Error(
-              `Errore HTTP: ${response.status} ${response.statusText}`,
+              `HTTP Error: ${response.status} ${response.statusText}`,
             );
           }
         } else {
@@ -52,20 +50,17 @@ export function useNpmDownloads({
         setError(
           err instanceof Error
             ? err
-            : new Error("Errore sconosciuto durante il fetch dei download"),
+            : new Error("Unknown error fetching downloads"),
         );
-        console.error(
-          `Errore nel caricamento dei download per ${packageName}:`,
-          err,
-        );
-        setDownloads(null); // Imposta downloads a null in caso di errore
+        console.error(`Error loading downloads for ${packageName}:`, err);
+        setDownloads(null);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchDownloads();
-  }, [packageName]); // Dipendenza solo da packageName
+  }, [packageName]);
 
   return { downloads, isLoading, error };
 }

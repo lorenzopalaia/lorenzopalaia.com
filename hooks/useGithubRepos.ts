@@ -5,7 +5,7 @@ import { config } from "@/config";
 function processLanguages(languages: string[], repoName: string): string[] {
   let processedLanguages = [...languages];
 
-  // * Check if the repository has additional languages in the config file
+  // * Add languages from the config
   if (repoName in config.additionalProjectsLanguages) {
     processedLanguages = [
       ...new Set([
@@ -46,12 +46,12 @@ function processLanguages(languages: string[], repoName: string): string[] {
 export default function useGithubRepos() {
   const [repos, setRepos] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null); // Aggiungi stato per l'errore
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      setError(null); // Resetta l'errore all'inizio
+      setError(null);
       try {
         const response = await fetch("/api/github-repos");
         if (!response.ok) {
@@ -61,13 +61,11 @@ export default function useGithubRepos() {
         }
         const data = await response.json();
 
-        // * Concatenate the new repositories to the array from the config file
         const updatedRepos = [...data, ...config.projects];
 
-        // * Process the languages and add npm package name
         const processedRepos = updatedRepos.map((repo) => {
           const repoName = repo.name;
-          // Cerca il nome del pacchetto npm nella configurazione
+
           const npmPackageName =
             config.npmProjects[repoName as keyof typeof config.npmProjects] ||
             null;
@@ -75,7 +73,7 @@ export default function useGithubRepos() {
           return {
             ...repo,
             languages: processLanguages(repo.languages, repoName),
-            npm_package_name: npmPackageName, // Aggiungi il nome del pacchetto npm
+            npm_package_name: npmPackageName,
           };
         });
 
@@ -85,11 +83,10 @@ export default function useGithubRepos() {
         setError(
           fetchError instanceof Error
             ? fetchError
-            : new Error("Errore sconosciuto nel fetch dei repo"),
+            : new Error("An unknown error occurred"),
         );
         setRepos(
           [...config.projects].map((repo) => ({
-            // Fallback ai soli progetti locali in caso di errore
             ...repo,
             languages: processLanguages(repo.languages, repo.name),
             npm_package_name:
@@ -104,8 +101,7 @@ export default function useGithubRepos() {
     };
 
     fetchData();
-  }, []); // L'effetto viene eseguito solo al mount
+  }, []);
 
-  // Restituisci anche lo stato di errore
   return { repos, isLoading, error };
 }

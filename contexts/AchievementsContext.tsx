@@ -59,7 +59,10 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
           })),
         );
       } catch (error) {
-        console.error("Errore nel parsing degli achievement sbloccati:", error);
+        console.error(
+          "Error parsing unlocked achievements from localStorage:",
+          error,
+        );
       }
     }
   }, []);
@@ -161,7 +164,7 @@ export const AchievementsProvider = ({ children }: { children: ReactNode }) => {
       prev.map((achievement) => ({ ...achievement, unlocked: false })),
     );
     setHasTriggeredConfetti(false);
-    localStorage.removeItem("hasShownConfetti"); // Rimuovo completamente la voce invece di impostarla a false
+    localStorage.removeItem("hasShownConfetti");
   };
 
   return (

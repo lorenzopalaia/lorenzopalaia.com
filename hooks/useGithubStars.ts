@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 interface UseGithubStarsProps {
   owner: string;
   repo: string;
-  initialData?: number; // Per l'SSR
-  skipFetch?: boolean; // Nuova proprietà per saltare la fetch
+  initialData?: number; // For SSR
+  skipFetch?: boolean; // New property to skip the fetch
 }
 
 interface UseGithubStarsResult {
@@ -23,7 +23,7 @@ export function useGithubStars({
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    // Se skipFetch è true, non eseguiamo la fetch
+    // If skipFetch is true, do not perform the fetch
     if (skipFetch) {
       setIsLoading(false);
       return;
@@ -37,18 +37,15 @@ export function useGithubStars({
         );
 
         if (!response.ok) {
-          throw new Error(`Errore HTTP: ${response.status}`);
+          throw new Error(`HTTP error: ${response.status}`);
         }
 
         const data = await response.json();
         setStars(data.stars);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error("Errore sconosciuto"));
-        console.error(
-          `Errore nel caricamento delle stelle per ${owner}/${repo}:`,
-          err,
-        );
+        setError(err instanceof Error ? err : new Error("Unknown error"));
+        console.error(`Error loading stars for ${owner}/${repo}:`, err);
       } finally {
         setIsLoading(false);
       }
