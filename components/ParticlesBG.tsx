@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { useTheme } from "next-themes";
+
 import Particles from "@/components/ui/particles";
 
 export default function ParticlesBG({

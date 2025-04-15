@@ -20,6 +20,7 @@
     "contexts/**/*.{js,jsx,ts,tsx}",
     "hooks/**/*.{js,jsx,ts,tsx}",
     "lib/**/*.{js,jsx,ts,tsx}",
+    "providers/**/*.{js,jsx,ts,tsx}",
     "public/**/*",
     "config.{js,jsx,ts,tsx}"
   ],

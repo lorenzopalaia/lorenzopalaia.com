@@ -7,11 +7,13 @@ import {
   useEffect,
   ReactNode,
 } from "react";
-import confetti from "canvas-confetti";
-import { achievements as _achievements } from "@/config";
+
 import { useToast } from "@/hooks/use-toast";
 import useSound from "use-sound";
 
+import confetti from "canvas-confetti";
+
+import { achievements as _achievements } from "@/config";
 interface Achievement {
   id: string;
   title: string;

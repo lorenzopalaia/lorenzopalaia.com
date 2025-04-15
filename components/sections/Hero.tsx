@@ -1,14 +1,12 @@
 import { MapPin } from "lucide-react";
 
 import Achievements from "@/components/Achievements";
+import ResumeButton from "@/components/ResumeButton";
+import Socials from "@/components/Socials";
 
 import Image from "next/image";
 
-import Socials from "@/components/Socials";
-
 import { config } from "@/config";
-
-import ResumeButton from "@/components/ResumeButton";
 
 export default function Hero() {
   return (
@@ -16,7 +14,7 @@ export default function Hero() {
       <Achievements />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <Image
-          src="/images/avatar.png"
+          src="/images/avatar.webp"
           alt="Lorenzo Palaia"
           width={80}
           height={80}

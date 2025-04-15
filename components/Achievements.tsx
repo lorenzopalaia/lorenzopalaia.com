@@ -1,6 +1,7 @@
 "use client";
 
 import { useAchievementsContext } from "@/contexts/AchievementsContext";
+
 import { RefreshCcw } from "lucide-react";
 
 export default function Achievements() {

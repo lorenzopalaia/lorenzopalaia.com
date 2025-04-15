@@ -1,5 +1,3 @@
-// ! Getting Hydration Error (probably because of the Next.js 15 upgrade)
-
 "use client";
 
 import * as React from "react";

@@ -3,14 +3,17 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { config } from "@/config";
 
+import ThemeProvider from "@/providers/ThemeProvider";
+import ClickEffectProvider from "@/providers/ClickEffectProvider";
+
 import { Toaster } from "@/components/ui/toaster";
-import ThemeProvider from "@/components/ThemeProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import ClickEffectProvider from "@/components/ClickEffectProvider";
+
 import { AchievementsProvider } from "@/contexts/AchievementsContext";
 
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+
 import Overlay from "@/components/Overlay";
 import ParticlesBG from "@/components/ParticlesBG";
 import ScrollProgressBar from "@/components/ScrollProgressBar";

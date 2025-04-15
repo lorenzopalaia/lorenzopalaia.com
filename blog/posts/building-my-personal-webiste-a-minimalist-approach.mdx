@@ -2,7 +2,7 @@
 title: "Building My Personal Website: A Minimalist Approach"
 summary: "In the second iteration of my personal website, I shifted from a CV-oriented design to a minimalistic, user-focused approach. This post dives into the technologies I used, the rationale behind design decisions, and how I tackled technical challenges to create a robust, feature-rich website."
 publishedAt: "2024-11-19"
-image: "/blog/images/posts/building-my-personal-webiste-a-minimalist-approach/next.jpeg"
+image: "/blog/images/posts/building-my-personal-webiste-a-minimalist-approach/next.webp"
 tags: ["Web Development"]
 draft: false
 author: "lorenzo-palaia"
@@ -80,7 +80,7 @@ Featured projects are rendered using a reusable card component. Data is fetched 
 1. **GitHub API**: Retrieves repository details, including the list of languages used. To manage rate limits, I use **cache headers** for responses and handle language data through a separate endpoint.
 2. **Custom Config**: Projects not hosted on GitHub are integrated using a standardized configuration file.
 
-To handle missing elements like repository previews, I use a `repo_assets` directory where each project has a `preview.png`. If no preview exists, a fallback image is displayed. This setup balances **real-time updates** with **rate-limit management**.
+To handle missing elements like repository previews, I use a `repo_assets` directory where each project has a `preview.webp`. If no preview exists, a fallback image is displayed. This setup balances **real-time updates** with **rate-limit management**.
 
 In the **featured projects** section, I use a config file to filter and display the most relevant projects. On the **projects page**, projects are sorted by their `updated_at` field to highlight recent changes.
 

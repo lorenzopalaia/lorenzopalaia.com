@@ -405,7 +405,7 @@ export const config = {
         </p>,
       ],
       href: "https://www.sasa-aerospace.it/flight-team/",
-      img: "/images/flight-team.png",
+      img: "/images/flight-team.webp",
     },
     {
       title: "Software Developer",
@@ -424,7 +424,7 @@ export const config = {
         </p>,
       ],
       href: "https://github.com/lorenzopalaia",
-      img: "/images/github.png",
+      img: "/images/github.webp",
       links: [
         {
           title: "GitHub",
@@ -451,7 +451,7 @@ export const config = {
         </p>,
       ],
       href: "https://www.uniroma1.it/it/",
-      img: "/images/sapienza.jpeg",
+      img: "/images/sapienza.webp",
       links: [
         {
           title: "Thesis Paper",
@@ -479,7 +479,7 @@ export const config = {
       owner: "meschacirung",
       repo: "cnblocks",
       href: "https://github.com/meschacirgung/cnblocks",
-      img: "/images/cnblocks.png",
+      img: "/images/cnblocks.webp",
     },
     {
       title: "Open Source Contribution",
@@ -496,7 +496,7 @@ export const config = {
       owner: "makeplane",
       repo: "plane",
       href: "https://gitbub.com/makeplane/plane",
-      img: "/images/plane.png",
+      img: "/images/plane.webp",
     },
     {
       title: "Open Source Contribution",
@@ -512,7 +512,7 @@ export const config = {
       owner: "AykutSarac",
       repo: "jsoncrack.com",
       href: "https://github.com/AykutSarac/jsoncrack.com",
-      img: "/images/jsoncrack.jpeg",
+      img: "/images/jsoncrack.webp",
     },
     {
       title: "Open Source Contribution",
@@ -530,7 +530,7 @@ export const config = {
       owner: "kern",
       repo: "filepizza",
       href: "https://github.com/kern/filepizza",
-      img: "/images/filepizza.png",
+      img: "/images/filepizza.webp",
     },
     {
       title: "Open Source Contribution",
@@ -548,7 +548,7 @@ export const config = {
       owner: "jnsahaj",
       repo: "tweakcn",
       href: "https://github.com/jnsahaj/tweakcn",
-      img: "/images/tweakcn.png",
+      img: "/images/tweakcn.webp",
     },
     {
       title: "Open Source Contribution",
@@ -564,7 +564,7 @@ export const config = {
       owner: "origin-space",
       repo: "originui",
       href: "https://github.com/origin-space/originui",
-      img: "/images/origin-ui.png",
+      img: "/images/origin-ui.webp",
     },
     {
       title: "Open Source Contribution",
@@ -584,7 +584,7 @@ export const config = {
       owner: "maybe-finance",
       repo: "maybe",
       href: "https://github.com/maybe-finance/maybe",
-      img: "/images/maybe.jpg",
+      img: "/images/maybe.webp",
     },
     {
       title: "<Code.Your.Future> AI Hackathon",
@@ -603,7 +603,7 @@ export const config = {
         </p>,
       ],
       href: "https://www.randstad.it/",
-      img: "/images/randstad.png",
+      img: "/images/randstad.webp",
       links: [
         {
           title: "Submission",

@@ -1,8 +1,11 @@
 "use server";
 
-import ContactFormEmail from "@/components/email/ContactFormEmail";
+import Email from "@/components/contact/Email";
+
 import { Resend } from "resend";
+
 import { z } from "zod";
+
 import { ContactFormSchema } from "@/lib/schemas";
 
 import { email as toEmail } from "@/config";
@@ -27,7 +30,7 @@ export async function sendEmail(data: ContactFormInputs) {
       cc: [email],
       subject: `New message from ${name}!`,
       text: `Name:\n${name}\n\nEmail:\n${email}\n\nMessage:\n${message}`,
-      react: await ContactFormEmail({ name, email, message }),
+      react: await Email({ name, email, message }),
     });
 
     if (!data || error) {

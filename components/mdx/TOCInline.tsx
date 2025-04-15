@@ -1,16 +1,15 @@
 "use client";
 
-import React from "react";
+import { MouseEvent } from "react";
+
+import Link from "next/link";
 
 export default function TOCInline({
   sections,
 }: {
   sections: { title: string; url: string }[];
 }) {
-  const handleClick = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    url: string,
-  ) => {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>, url: string) => {
     event.preventDefault();
     const targetElement = document.querySelector(url);
     if (targetElement) {
@@ -26,17 +25,20 @@ export default function TOCInline({
   };
 
   return (
-    <div>
+    <>
       <h2>Table of Contents</h2>
       <ul>
         {sections.map((section, i) => (
           <li key={i}>
-            <a href={section.url} onClick={(e) => handleClick(e, section.url)}>
+            <Link
+              href={section.url}
+              onClick={(e) => handleClick(e, section.url)}
+            >
               {section.title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }

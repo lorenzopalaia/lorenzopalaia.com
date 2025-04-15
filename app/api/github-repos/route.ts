@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
+
 import { Octokit } from "@octokit/rest";
+
 import type { RestEndpointMethodTypes } from "@octokit/rest";
+
 import { config } from "@/config";
 
 type Repo =

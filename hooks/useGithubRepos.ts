@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { config } from "@/config";
 
 function processLanguages(languages: string[], repoName: string): string[] {

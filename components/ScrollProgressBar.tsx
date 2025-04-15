@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
+
 import { useTheme } from "next-themes";
 
-const ScrollProgressBar: React.FC = () => {
+const ScrollProgressBar: FC = () => {
   const [scrollWidth, setScrollWidth] = useState(0);
   const { resolvedTheme } = useTheme();
   const [color, setColor] = useState("#000000");

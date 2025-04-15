@@ -1,5 +1,7 @@
-import PostsWithSearch from "@/components/PostsWithSearch";
+import PostsWithSearch from "@/components/blog/PostsWithSearch";
+
 import { getPosts } from "@/lib/posts";
+
 import path from "path";
 
 const blogDirectory = path.join(process.cwd(), "blog/posts");

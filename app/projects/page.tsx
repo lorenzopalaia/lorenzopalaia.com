@@ -2,7 +2,7 @@
 
 import { config } from "@/config";
 
-import ProjectCard, { CardSkeleton } from "@/components/ProjectCard";
+import ProjectCard, { CardSkeleton } from "@/components/card/ProjectCard";
 
 import useGithubRepos from "@/hooks/useGithubRepos";
 

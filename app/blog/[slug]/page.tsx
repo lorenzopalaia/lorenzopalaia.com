@@ -1,25 +1,22 @@
-import MDXServer from "@/components/MDXServer";
-
 import { getPostBySlug, getPosts } from "@/lib/posts";
 import { getAuthor } from "@/lib/authors";
-
 import { formatDate } from "@/lib/utils";
 
 import { ArrowLeft } from "lucide-react";
 
 import Image from "next/image";
-
 import { notFound } from "next/navigation";
-
-import path from "path";
-
 import Link from "next/link";
 import Head from "next/head";
+
+import path from "path";
 
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 
-import LikeDislikeButton from "@/components/LikeDislikeButton";
+import MDXServer from "@/components/mdx/MDXServer";
+
+import LikeDislikeButton from "@/components/blog/LikeDislikeButton";
 
 const blogDirectory = path.join(process.cwd(), "blog/posts");
 
@@ -82,7 +79,7 @@ export default async function Post(props: {
               name: "Lorenzo Palaia",
               logo: {
                 "@type": "ImageObject",
-                url: "https://www.lorenzopalaia.com/images/avatar.png",
+                url: "https://www.lorenzopalaia.com/images/avatar.webp",
               },
             },
             description: content.slice(0, 150), // Assuming the first 150 characters as excerpt

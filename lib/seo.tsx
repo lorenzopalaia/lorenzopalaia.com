@@ -84,7 +84,7 @@ export const renderSchemaTags = () => {
           "@type": "SoftwareApplication",
           name: config.settings.name,
           description: config.settings.title,
-          image: `https://www.lorenzopalaia.com/icon.png`,
+          image: `https://www.lorenzopalaia.com/images/avatar.webp`,
           url: `https://www.lorenzopalaia.com/`,
           author: {
             "@type": "Person",

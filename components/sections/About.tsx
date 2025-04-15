@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import AboutCard from "@/components/AboutCard";
+import AboutCard from "@/components/card/AboutCard";
 
 import { config } from "@/config";
 

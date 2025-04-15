@@ -2,7 +2,7 @@ export const authors = [
   {
     id: "lorenzo-palaia",
     name: "Lorenzo Palaia",
-    avatar: "/blog/images/authors/lorenzo-palaia.png",
+    avatar: "/blog/images/authors/lorenzo-palaia.webp",
     occupation: "Software Engineer",
     company: "Freelance",
     email: "lorenzopalaia53@gmail.com",
