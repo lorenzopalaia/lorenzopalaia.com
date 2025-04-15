@@ -61,9 +61,7 @@ export function CardSkeleton() {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const {
-    downloads,
-    isLoading: isLoadingDownloads,
-    error: downloadError,
+    downloads,    
   } = useNpmDownloads({
     packageName: project.npm_package_name || null,
   });
