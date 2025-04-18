@@ -33,7 +33,7 @@ export default function Hero() {
         {config.about.description}
       </h2>
       <div className="title mt-4 flex gap-1">
-        Rome, Italy
+        {config.about.location}
         <MapPin />
       </div>
       <div className="mt-8 flex items-center gap-8">

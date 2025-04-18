@@ -356,6 +356,7 @@ export const config = {
     title: "Software Engineer | Computer and Automatic Engineering Graduate",
     description:
       "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automatic Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
+    location: "Rome, Italy",
   },
   socials: [
     {
