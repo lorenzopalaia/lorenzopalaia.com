@@ -19,12 +19,12 @@ export const getSEOTags = ({
 } = {}) => {
   return {
     // * up to 50 characters (what does your app do for the user?) > your main should be here
-    title: title || config.settings.title,
+    title: title || config.about.title,
     // * up to 160 characters (how does your app help the user?)
-    description: description || config.settings.description,
+    description: description || config.about.description,
     // * some keywords separated by commas. by default it will be your app name
-    keywords: keywords || [config.settings.name],
-    applicationName: config.settings.name,
+    keywords: keywords || [config.about.name],
+    applicationName: config.about.name,
     // * set a base URL prefix for other fields that require a fully qualified URL (.e.g og:image: og:image: 'https://yourdomain.com/share.png' => '/share.png')
     metadataBase: new URL(
       process.env.NODE_ENV === "development"
@@ -33,10 +33,10 @@ export const getSEOTags = ({
     ),
 
     openGraph: {
-      title: openGraph?.title || config.settings.name,
-      description: openGraph?.description || config.settings.title,
+      title: openGraph?.title || config.about.name,
+      description: openGraph?.description || config.about.title,
       url: openGraph?.url || `https://www.lorenzopalaia.com/`,
-      siteName: openGraph?.title || config.settings.name,
+      siteName: openGraph?.title || config.about.name,
       // * If you add an opengraph-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
       // * images: [
       // * {
@@ -50,8 +50,8 @@ export const getSEOTags = ({
     },
 
     twitter: {
-      title: openGraph?.title || config.settings.name,
-      description: openGraph?.description || config.settings.title,
+      title: openGraph?.title || config.about.name,
+      description: openGraph?.description || config.about.title,
       // * If you add an twitter-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
       // * images: [openGraph?.image || defaults.og.image],
       card: "summary_large_image",
@@ -82,8 +82,8 @@ export const renderSchemaTags = () => {
         __html: JSON.stringify({
           "@context": "http://schema.org",
           "@type": "SoftwareApplication",
-          name: config.settings.name,
-          description: config.settings.title,
+          name: config.about.name,
+          description: config.about.title,
           image: `https://www.lorenzopalaia.com/images/avatar.webp`,
           url: `https://www.lorenzopalaia.com/`,
           author: {

@@ -29,10 +29,6 @@ export const email = "lorenzopalaia53@gmail.com";
 
 export const config = {
   settings: {
-    name: "Lorenzo Palaia",
-    title: "Software Engineer | Computer and Automatic Engineering Graduate",
-    description:
-      "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automatic Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
     fallbackImage:
       "https://raw.githubusercontent.com/lorenzopalaia/Repo-Template/main/repo_assets/preview.png",
     keywords: [
@@ -354,6 +350,12 @@ export const config = {
       "work software developer",
       "work with software",
     ],
+  },
+  about: {
+    name: "Lorenzo Palaia",
+    title: "Software Engineer | Computer and Automatic Engineering Graduate",
+    description:
+      "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automatic Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
   },
   socials: [
     {

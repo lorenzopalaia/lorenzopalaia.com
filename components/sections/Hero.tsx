@@ -22,15 +22,15 @@ export default function Hero() {
         />
         <div>
           <p className="title text-4xl tracking-tight sm:text-5xl">
-            {config.settings.name}
+            {config.about.name}
           </p>
           <h1 className="text-muted-foreground mt-2 font-light">
-            {config.settings.title}
+            {config.about.title}
           </h1>
         </div>
       </div>
       <h2 className="text-muted-foreground mt-4 font-light">
-        {config.settings.description}
+        {config.about.description}
       </h2>
       <div className="title mt-4 flex gap-1">
         Rome, Italy
