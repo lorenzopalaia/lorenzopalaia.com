@@ -1,5 +1,5 @@
 import { Linkedin, Github, Mail, Video } from "lucide-react";
-
+import { PiXLogoBold } from "react-icons/pi";
 import {
   SiTypescript,
   SiGit,
@@ -368,6 +368,13 @@ export const config = {
       name: "GitHub",
       href: "https://github.com/lorenzopalaia",
       icon: <Github className="text-muted-foreground hover:text-primary" />,
+    },
+    {
+      name: "X",
+      href: "https://x.com/lorenzo_palaia",
+      icon: (
+        <PiXLogoBold className="text-muted-foreground hover:text-primary size-[26px]" />
+      ),
     },
     {
       name: "Email",
