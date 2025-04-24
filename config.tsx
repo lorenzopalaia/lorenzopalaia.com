@@ -675,6 +675,7 @@ export const config = {
     "lorenzopalaia.com": ["NextJS", "TailwindCSS", "React"],
     MediaShift: ["NextJS", "TailwindCSS", "React"],
     TurboClone: ["NextJS", "TailwindCSS", "React"],
+    StackHound: ["NextJS", "TailwindCSS", "React"],
   },
   npmProjects: {
     // * Add npm packages here, they will be used to display npm downloads
