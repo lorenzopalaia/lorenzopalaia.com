@@ -25,7 +25,7 @@ function CardItem({
   company: string;
   startDate: string;
   endDate: string;
-  items?: React.ReactNode[];
+  items?: string[];
   href: string;
   img: string;
   links?: { title: string; href: string }[];
@@ -75,7 +75,7 @@ function CardItem({
           <ul className="ml-4 list-outside list-disc">
             {items.map((item, index) => (
               <li key={index} className="prose dark:prose-invert pr-8 text-sm">
-                {item}
+                <p>{item}</p>
               </li>
             ))}
           </ul>
@@ -100,7 +100,7 @@ export default function AboutCard({
     company: string;
     startDate: string;
     endDate: string;
-    items?: React.ReactNode[];
+    items?: string[];
     href: string;
     img: string;
     owner?: string;

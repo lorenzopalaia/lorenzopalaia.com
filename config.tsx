@@ -362,29 +362,22 @@ export const config = {
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/lorenzopalaia/",
-      icon: <Linkedin className="text-muted-foreground hover:text-primary" />,
     },
     {
       name: "GitHub",
       href: "https://github.com/lorenzopalaia",
-      icon: <Github className="text-muted-foreground hover:text-primary" />,
     },
     {
       name: "X",
       href: "https://x.com/lorenzo_palaia",
-      icon: (
-        <PiXLogoBold className="text-muted-foreground hover:text-primary size-[26px]" />
-      ),
     },
     {
       name: "Email",
       href: `mailto:${email}`,
-      icon: <Mail className="text-muted-foreground hover:text-primary" />,
     },
     {
       name: "Book a Meeting",
       href: "https://cal.com/lorenzopalaia/30min",
-      icon: <Video className="text-muted-foreground hover:text-primary" />,
     },
   ],
   work: [
@@ -394,25 +387,10 @@ export const config = {
       startDate: "Sep 2021",
       endDate: "Oct 2022",
       items: [
-        <p key={1}>
-          Developed object detection and terrain mapping systems for a UAV,
-          training <span className="font-bold">YOLOv5/EfficientNet</span> models
-          with custom datasets
-        </p>,
-        <p key={2}>
-          Designed and implemented communication protocols between UAV and
-          Ground Station from scratch, developing a{" "}
-          <span className="font-bold">Flask‑based API</span> and revamping the
-          GUI
-        </p>,
-        <p key={3}>
-          Collaborated in a subteam of 5 within a 60‑member team, migrating the
-          entire Flight Team workflow to Slack
-        </p>,
-        <p key={4}>
-          Earned a <span className="font-bold">15th</span> position out of 71
-          entries for the Technical Design Paper in the AUVSI SUAS competition
-        </p>,
+        "Developed object detection and terrain mapping systems for a UAV, training YOLOv5/EfficientNet models with custom datasets",
+        "Designed and implemented communication protocols between UAV and Ground Station from scratch, developing a Flask‑based API and revamping the GUI",
+        "Collaborated in a subteam of 5 within a 60‑member team, migrating the entire Flight Team workflow to Slack",
+        "Earned a 15th position out of 71 entries for the Technical Design Paper in the AUVSI SUAS competition",
       ],
       href: "https://www.sasa-aerospace.it/flight-team/",
       img: "/images/flight-team.webp",
@@ -423,15 +401,8 @@ export const config = {
       startDate: "2019",
       endDate: "Present",
       items: [
-        <p key={1}>
-          Engineered websites and applications for over{" "}
-          <span className="font-bold">5</span> private and corporate clients,
-          delivering solutions including landing pages, bots and trackers
-        </p>,
-        <p key={2}>
-          Collaborated with clients to analyze requirements, propose innovative
-          ideas, document solutions and maintain software post‑release
-        </p>,
+        "Engineered websites and applications for over 5 private and corporate clients, delivering solutions including landing pages, bots and trackers",
+        "Collaborated with clients to analyze requirements, propose innovative ideas, document solutions and maintain software post‑release",
       ],
       href: "https://github.com/lorenzopalaia",
       img: "/images/github.webp",
@@ -450,15 +421,8 @@ export const config = {
       startDate: "",
       endDate: "Mar 2024",
       items: [
-        <p key={1}>
-          Excelled in Operative Systems, Functional Programming, Programming
-          Techniques (<span className="font-bold">4.0 GPA with honors</span>)
-        </p>,
-        <p key={2}>
-          Mastered Data Structures & Algorithms, Software Design, Parallel
-          Computing, Electronics, Web Development (
-          <span className="font-bold">4.0 GPA</span>)
-        </p>,
+        "Excelled in Operative Systems, Functional Programming, Programming Techniques (4.0 GPA with honors)",
+        "Mastered Data Structures & Algorithms, Software Design, Parallel Computing, Electronics, Web Development (4.0 GPA)",
       ],
       href: "https://www.uniroma1.it/it/",
       img: "/images/sapienza.webp",
@@ -481,20 +445,9 @@ export const config = {
       startDate: "Apr 2025",
       endDate: "Jun 2025",
       items: [
-        <p key={1}>
-          Led the development of an AI-enhanced{" "}
-          <span className="font-bold">music and visual product</span> in a team
-          of 5, orchestrating workflow, timeline, and project management
-        </p>,
-        <p key={2}>
-          Set up <span className="font-bold">Stable Audio Open</span> with
-          custom fine-tuning on electronic music for generating audio elements
-          with accurate prompts
-        </p>,
-        <p key={3}>
-          Utilized <span className="font-bold">third-party services</span> to
-          generate accompanying videos
-        </p>,
+        "Led the development of an AI-enhanced music and visual product in a team of 5, orchestrating workflow, timeline, and project management",
+        "Set up Stable Audio Open with custom fine-tuning on electronic music for generating audio elements with accurate prompts",
+        "Utilized third-party services to generate accompanying videos",
       ],
       href: "https://challenges.reply.com/challenges/creative/ai-music-contest/home/",
       img: "/images/reply-ai-music-contest.png",
@@ -505,10 +458,7 @@ export const config = {
       startDate: "Mar 2025",
       endDate: "Apr 2025",
       items: [
-        <p>
-          Introduced <span className="font-bold">two new blocks</span> to
-          enhance user experience and design consistency
-        </p>,
+        "Introduced two new blocks to enhance user experience and design consistency",
       ],
       owner: "meschacirung",
       repo: "cnblocks",
@@ -521,11 +471,7 @@ export const config = {
       startDate: "Mar 2025",
       endDate: "Apr 2025",
       items: [
-        <p>
-          Enhanced the <span className="font-bold">authentication flow UI</span>{" "}
-          to improve clarity and user experience in environments with restricted
-          access
-        </p>,
+        "Enhanced the authentication flow UI to improve clarity and user experience in environments with restricted access",
       ],
       owner: "makeplane",
       repo: "plane",
@@ -537,12 +483,7 @@ export const config = {
       company: "JSON Crack",
       startDate: "Mar 2025",
       endDate: "Apr 2025",
-      items: [
-        <p>
-          Fixed <span className="font-bold">UI issues</span> and improved
-          accessibility
-        </p>,
-      ],
+      items: ["Fixed UI issues and improved accessibility"],
       owner: "AykutSarac",
       repo: "jsoncrack.com",
       href: "https://github.com/AykutSarac/jsoncrack.com",
@@ -554,12 +495,7 @@ export const config = {
       startDate: "Mar 2025",
       endDate: "Apr 2025",
       items: [
-        <p>
-          Implemented{" "}
-          <span className="font-bold">multi-file selection functionality</span>{" "}
-          with sequential upload process, significantly enhancing user
-          experience and workflow
-        </p>,
+        "Implemented multi-file selection functionality with sequential upload process, significantly enhancing user experience and workflow",
       ],
       owner: "kern",
       repo: "filepizza",
@@ -572,12 +508,7 @@ export const config = {
       startDate: "",
       endDate: "Mar 2025",
       items: [
-        <p>
-          Implemented a{" "}
-          <span className="font-bold">contrast accessibility checker</span> with
-          an optimized <span className="font-bold">debounce mechanism</span> to
-          improve performance
-        </p>,
+        "Implemented a contrast accessibility checker with an optimized debounce mechanism to improve performance",
       ],
       owner: "jnsahaj",
       repo: "tweakcn",
@@ -589,12 +520,7 @@ export const config = {
       company: "Origin UI",
       startDate: "",
       endDate: "Mar 2025",
-      items: [
-        <p>
-          Refactored code to{" "}
-          <span className="font-bold">improve consistency</span> and readability
-        </p>,
-      ],
+      items: ["Refactored code to improve consistency and readability"],
       owner: "origin-space",
       repo: "originui",
       href: "https://github.com/origin-space/originui",
@@ -606,14 +532,8 @@ export const config = {
       startDate: "Jan 2024",
       endDate: "Feb 2024",
       items: [
-        <p key={1}>
-          Removed <span className="font-bold">22,000+ lines</span> of legacy
-          code to improve maintainability
-        </p>,
-        <p key={2}>
-          Identified and reported multiple UI issues including file download
-          problems and behavior bugs
-        </p>,
+        "Removed 22,000+ lines of legacy code to improve maintainability",
+        "Identified and reported multiple UI issues including file download problems and behavior bugs",
       ],
       owner: "maybe-finance",
       repo: "maybe",
@@ -626,15 +546,8 @@ export const config = {
       startDate: "",
       endDate: "Mar 2023",
       items: [
-        <p key={1}>
-          Guided the development of a job description classification neural
-          network in a team of 5 using{" "}
-          <span className="font-bold">TensorFlow</span> within 4 hours
-        </p>,
-        <p key={2}>
-          Secured 2nd place, achieving an F1 score of 75% while experimenting
-          with Bag of Words and Word2Vec approaches
-        </p>,
+        "Guided the development of a job description classification neural network in a team of 5 using TensorFlow within 4 hours",
+        "Secured 2nd place, achieving an F1 score of 75% while experimenting with Bag of Words and Word2Vec approaches",
       ],
       href: "https://www.randstad.it/",
       img: "/images/randstad.webp",
@@ -938,8 +851,7 @@ export const achievements = [
     title: "Avatar",
     description: "Am I looking good or what? You hovered over my avatar! 👀",
     points: 5,
-    unlocked: false,
-    icon: <UserCircle />,
+    unlocked: false,    
   },
   */
 ];
