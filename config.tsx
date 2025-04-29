@@ -476,6 +476,30 @@ export const config = {
   ],
   extra: [
     {
+      title: "Reply AI Music Contest",
+      company: "Reply",
+      startDate: "Apr 2025",
+      endDate: "Jun 2025",
+      items: [
+        <p key={1}>
+          Led the development of an AI-enhanced{" "}
+          <span className="font-bold">music and visual product</span> in a team
+          of 5, orchestrating workflow, timeline, and project management
+        </p>,
+        <p key={2}>
+          Set up <span className="font-bold">Stable Audio Open</span> with
+          custom fine-tuning on electronic music for generating audio elements
+          with accurate prompts
+        </p>,
+        <p key={3}>
+          Utilized <span className="font-bold">third-party services</span> to
+          generate accompanying videos
+        </p>,
+      ],
+      href: "https://challenges.reply.com/challenges/creative/ai-music-contest/home/",
+      img: "/images/reply-ai-music-contest.png",
+    },
+    {
       title: "Open Source Contribution",
       company: "Shadcn-UI Marketing Blocks",
       startDate: "Mar 2025",
