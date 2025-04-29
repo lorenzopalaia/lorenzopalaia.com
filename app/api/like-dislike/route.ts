@@ -13,25 +13,42 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "postId is required" }, { status: 400 });
   }
 
-  const likeKey = `likes:${postId}`;
-  const dislikeKey = `dislikes:${postId}`;
+  try {
+    const pipeline = redis.pipeline();
 
-  if (previousAction === "like") {
-    await redis.decr(likeKey);
-  } else if (previousAction === "dislike") {
-    await redis.decr(dislikeKey);
+    if (previousAction === "like") {
+      pipeline.decr(`likes:${postId}`);
+    } else if (previousAction === "dislike") {
+      pipeline.decr(`dislikes:${postId}`);
+    }
+
+    if (action === "like") {
+      pipeline.incr(`likes:${postId}`);
+    } else if (action === "dislike") {
+      pipeline.incr(`dislikes:${postId}`);
+    }
+
+    await pipeline.exec();
+
+    const likeKey = `likes:${postId}`;
+    const dislikeKey = `dislikes:${postId}`;
+
+    const [likes, dislikes] = await Promise.all([
+      redis.get(likeKey) || 0,
+      redis.get(dislikeKey) || 0,
+    ]);
+
+    return NextResponse.json({
+      likes: Number(likes),
+      dislikes: Number(dislikes),
+    });
+  } catch (error) {
+    console.error("Redis operation failed:", error);
+    return NextResponse.json(
+      { error: "Failed to update counts" },
+      { status: 500 },
+    );
   }
-
-  if (action === "like") {
-    await redis.incr(likeKey);
-  } else if (action === "dislike") {
-    await redis.incr(dislikeKey);
-  }
-
-  const likes = (await redis.get(likeKey)) || 0;
-  const dislikes = (await redis.get(dislikeKey)) || 0;
-
-  return NextResponse.json({ likes, dislikes });
 }
 
 export async function GET(req: Request) {

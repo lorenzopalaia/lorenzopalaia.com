@@ -1,70 +1,80 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useLikeDislikeStore } from "@/store/likeDislikeStore";
+
+type PostReaction = {
+  likes: number;
+  dislikes: number;
+  userAction: "like" | "dislike" | null;
+};
+
+const calculateNewCounts = (
+  current: PostReaction,
+  newAction: "like" | "dislike" | null,
+): PostReaction => {
+  let { likes, dislikes } = current;
+
+  if (current.userAction === "like") likes--;
+  if (current.userAction === "dislike") dislikes--;
+
+  if (newAction === "like") likes++;
+  if (newAction === "dislike") dislikes++;
+
+  return { likes, dislikes, userAction: newAction };
+};
 
 export default function useLikeDislike(postId: string) {
-  const [likes, setLikes] = useState(0);
-  const [dislikes, setDislikes] = useState(0);
-  const [userAction, setUserAction] = useState<string | null>(null);
+  const { reactions, pendingSync, setReaction, queueSync, syncWithServer } =
+    useLikeDislikeStore();
+  const localData = reactions[postId] || {
+    likes: 0,
+    dislikes: 0,
+    userAction: null,
+  };
+  const pendingData = pendingSync[postId];
 
   useEffect(() => {
-    const storedAction = localStorage.getItem(`likeStatus-${postId}`);
-    if (storedAction) setUserAction(storedAction);
-
-    fetch(`/api/like-dislike?postId=${postId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setLikes(data.likes);
-        setDislikes(data.dislikes);
-      })
-      .catch((error) => console.error("Error fetching likes:", error));
-
-    const syncState = (event: StorageEvent) => {
-      if (event.key === `likeStatus-${postId}`) {
-        setUserAction(event.newValue);
-        fetch(`/api/like-dislike?postId=${postId}`)
-          .then((res) => res.json())
-          .then((data) => {
-            setLikes(data.likes);
-            setDislikes(data.dislikes);
-          });
+    const fetchInitialData = async () => {
+      try {
+        const response = await fetch(`/api/like-dislike?postId=${postId}`);
+        const data = await response.json();
+        setReaction(postId, {
+          likes: data.likes,
+          dislikes: data.dislikes,
+          userAction: data.userAction,
+        });
+      } catch (error) {
+        console.error("Failed to fetch initial data:", error);
       }
     };
 
-    window.addEventListener("storage", syncState);
-    return () => window.removeEventListener("storage", syncState);
-  }, [postId]);
-
-  const handleVote = async (action: "like" | "dislike") => {
-    const previousAction = userAction;
-    let newAction: string | null = action;
-
-    if (previousAction === action) {
-      newAction = null;
+    if (!reactions[postId]) {
+      fetchInitialData();
     }
+  }, [postId, setReaction, reactions]);
 
-    const res = await fetch("/api/like-dislike", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ postId, action: newAction, previousAction }),
-    });
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (pendingSync[postId]) {
+        syncWithServer(postId);
+      }
+    }, 30000);
 
-    const data = await res.json();
-    setLikes(data.likes);
-    setDislikes(data.dislikes);
-    setUserAction(newAction);
+    return () => clearInterval(interval);
+  }, [postId, pendingSync, syncWithServer]);
 
-    if (newAction) {
-      localStorage.setItem(`likeStatus-${postId}`, newAction);
-    } else {
-      localStorage.removeItem(`likeStatus-${postId}`);
-    }
+  const handleVote = (action: "like" | "dislike") => {
+    const currentAction = localData.userAction;
+    const newAction = currentAction === action ? null : action;
 
-    window.dispatchEvent(
-      new StorageEvent("storage", {
-        key: `likeStatus-${postId}`,
-        newValue: newAction,
-      }),
-    );
+    const updatedData = calculateNewCounts(localData, newAction);
+    setReaction(postId, updatedData);
+    queueSync(postId, updatedData);
   };
 
-  return { likes, dislikes, userAction, handleVote };
+  return {
+    likes: pendingData?.likes || localData.likes,
+    dislikes: pendingData?.dislikes || localData.dislikes,
+    userAction: localData.userAction,
+    handleVote,
+  };
 }

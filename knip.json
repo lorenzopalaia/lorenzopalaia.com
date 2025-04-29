@@ -22,6 +22,7 @@
     "lib/**/*.{js,jsx,ts,tsx}",
     "providers/**/*.{js,jsx,ts,tsx}",
     "public/**/*",
+    "store/**/*.{js,jsx,ts,tsx}",
     "config.{js,jsx,ts,tsx}"
   ],
   "ignore": [

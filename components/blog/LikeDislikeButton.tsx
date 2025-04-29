@@ -20,19 +20,25 @@ export default function LikeDislikeButton({
   const { likes, dislikes, userAction, handleVote } = useLikeDislike(postId);
   const { unlockAchievement } = useAchievementsContext();
 
+  const handleClick = (type: "like" | "dislike") => {
+    const prevAction = userAction;
+    handleVote(type);
+
+    if (type === "like" && prevAction !== "like") {
+      unlockAchievement("post-like");
+    }
+  };
+
   return (
     <ToggleGroup
       type="single"
       value={userAction || undefined}
-      className={`${className}`}
+      className={className}
     >
       <ToggleGroupItem
-        onClick={() => {
-          handleVote("like");
-          unlockAchievement("post-like");
-        }}
         value="like"
         aria-label="Like"
+        onClick={() => handleClick("like")}
         className="group flex cursor-pointer items-center gap-2 font-bold"
       >
         <ThumbsUp
@@ -41,10 +47,11 @@ export default function LikeDislikeButton({
         />
         {likes}
       </ToggleGroupItem>
+
       <ToggleGroupItem
-        onClick={() => handleVote("dislike")}
         value="dislike"
         aria-label="Dislike"
+        onClick={() => handleClick("dislike")}
         className="group flex cursor-pointer items-center gap-2 font-bold"
       >
         <ThumbsDown
