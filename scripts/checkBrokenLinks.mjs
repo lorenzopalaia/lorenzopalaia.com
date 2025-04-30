@@ -1,4 +1,4 @@
-import { config } from "../config.ts";
+import { config } from "../config.js";
 
 const whitelist = new Set(
   config.socials
@@ -59,7 +59,7 @@ async function checkUrl(url) {
 }
 
 async function main() {
-  console.log("🔍 Checking links in config.ts...");
+  console.log("🔍 Checking links in config.js...");
   const urlsToCheck = extractUrls(config);
   const brokenLinks = [];
 
