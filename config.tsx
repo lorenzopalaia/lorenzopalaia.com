@@ -454,16 +454,16 @@ export const config = {
     },
     {
       title: "Open Source Contribution",
-      company: "Shadcn-UI Marketing Blocks",
+      company: "Tailark",
       startDate: "Mar 2025",
       endDate: "Apr 2025",
       items: [
         "Introduced two new blocks to enhance user experience and design consistency",
       ],
-      owner: "meschacirung",
-      repo: "cnblocks",
-      href: "https://github.com/meschacirgung/cnblocks",
-      img: "/images/cnblocks.webp",
+      owner: "tailark",
+      repo: "blocks",
+      href: "https://github.com/tailark/blocks",
+      img: "/images/tailark.png",
     },
     {
       title: "Open Source Contribution",
