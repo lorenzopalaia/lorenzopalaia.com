@@ -1,5 +1,3 @@
-import { Linkedin, Github, Mail, Video } from "lucide-react";
-import { PiXLogoBold } from "react-icons/pi";
 import {
   SiTypescript,
   SiGit,
