@@ -475,7 +475,7 @@ export const config = {
       ],
       owner: "makeplane",
       repo: "plane",
-      href: "https://gitbub.com/makeplane/plane",
+      href: "https://github.com/makeplane/plane",
       img: "/images/plane.webp",
     },
     {
