@@ -14,7 +14,7 @@
     "sitemap": "next-sitemap",
     "format": "prettier --write . --log-level warn",
     "knip": "knip",
-    "links": "ts-node --esm scripts/checkBrokenLinks.js",
+    "links": "ts-node --esm scripts/checkBrokenLinks.mjs",
     "update": "npm-check-updates -u && npm install --force",
     "tree": "npx tree-cli -a -l 3 --ignore 'node_modules, .git, .next'",
     "test": "jest",
