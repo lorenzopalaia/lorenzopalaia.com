@@ -15,7 +15,7 @@
     "format": "prettier --write . --log-level warn",
     "knip": "knip",
     "links": "node scripts/checkBrokenLinks.js",
-    "update": "npm-check-updates -u && npm install --force",
+    "update": "npx npm-check-updates -u && npm install --force",
     "tree": "npx tree-cli -a -l 3 --ignore 'node_modules, .git, .next'",
     "test": "jest",
     "test:watch": "jest --watch",
