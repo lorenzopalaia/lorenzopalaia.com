@@ -436,6 +436,7 @@ export const config = {
       ],
     },
   ],
+  // TODO: Use IDs for GitHub repos instead of username/repo to handle changes in usernames or repo names
   extra: [
     {
       title: "Reply AI Music Contest",
