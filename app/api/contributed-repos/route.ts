@@ -9,25 +9,28 @@ const octokit = new Octokit({
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const owner = searchParams.get("owner");
-    const repo = searchParams.get("repo");
+    const id = searchParams.get("id");
 
-    if (!owner || !repo) {
+    if (!id) {
       return NextResponse.json(
-        { error: "The 'owner' and 'repo' parameters are required" },
+        { error: "The 'id' parameter is required" },
         { status: 400 },
       );
     }
 
-    const response = await octokit.repos.get({
-      owner,
-      repo,
+    const response = await octokit.request("GET /repositories/{repo_id}", {
+      repo_id: id,
     });
-
+    const username = response.data.owner.login;
+    const repoName = response.data.name;
     const starCount = response.data.stargazers_count;
 
     return NextResponse.json(
-      { stars: starCount },
+      {
+        username,
+        repoName,
+        stars: starCount,
+      },
       {
         headers: {
           "Cache-Control": "s-maxage=3600, stale-while-revalidate",
@@ -35,10 +38,7 @@ export async function GET(request: Request) {
       },
     );
   } catch (error) {
-    console.error("Error fetching stars:", error);
-    return NextResponse.json(
-      { error: "Error fetching stars" },
-      { status: 500 },
-    );
+    console.error("Error fetching repo:", error);
+    return NextResponse.json({ error: "Error fetching repo" }, { status: 500 });
   }
 }

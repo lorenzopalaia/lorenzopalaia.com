@@ -1,23 +1,25 @@
 import { useState, useEffect } from "react";
 
-interface UseGithubStarsProps {
-  owner: string;
-  repo: string;
+interface UseContributedReposProps {
+  id: number; // The ID of the repository
   initialData?: number; // For SSR
   skipFetch?: boolean; // New property to skip the fetch
 }
 
-interface UseGithubStarsResult {
+interface UseContributedReposResult {
+  username: string | null;
+  repoName: string | null;
   stars: number | null;
   isLoading: boolean;
   error: Error | null;
 }
 
-export function useGithubStars({
-  owner,
-  repo,
+export function useContributedRepos({
+  id,
   skipFetch = false,
-}: UseGithubStarsProps): UseGithubStarsResult {
+}: UseContributedReposProps): UseContributedReposResult {
+  const [username, setUsername] = useState<string | null>(null);
+  const [repoName, setRepoName] = useState<string | null>(null);
   const [stars, setStars] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(!skipFetch);
   const [error, setError] = useState<Error | null>(null);
@@ -29,30 +31,30 @@ export function useGithubStars({
       return;
     }
 
-    const fetchStars = async () => {
+    const fetchRepo = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          `/api/github-stars?owner=${owner}&repo=${repo}`,
-        );
+        const response = await fetch(`/api/contributed-repos?id=${id}`);
 
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
         }
 
         const data = await response.json();
+        setUsername(data.username);
+        setRepoName(data.repoName);
         setStars(data.stars);
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error("Unknown error"));
-        console.error(`Error loading stars for ${owner}/${repo}:`, err);
+        console.error(`Error loading stars for ${id}:`, err);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchStars();
-  }, [owner, repo, skipFetch]);
+    fetchRepo();
+  }, [id, skipFetch]);
 
-  return { stars, isLoading, error };
+  return { username, repoName, stars, isLoading, error };
 }

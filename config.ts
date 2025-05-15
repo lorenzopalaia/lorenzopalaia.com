@@ -436,7 +436,6 @@ export const config = {
       ],
     },
   ],
-  // TODO: Use IDs for GitHub repos instead of username/repo to handle changes in usernames or repo names
   extra: [
     {
       title: "Reply AI Music Contest",
@@ -459,9 +458,7 @@ export const config = {
       items: [
         "Introduced two new blocks to enhance user experience and design consistency",
       ],
-      owner: "tailark",
-      repo: "blocks",
-      href: "https://github.com/tailark/blocks",
+      id: 933694551,
       img: "/images/tailark.png",
     },
     {
@@ -472,9 +469,7 @@ export const config = {
       items: [
         "Enhanced the authentication flow UI to improve clarity and user experience in environments with restricted access",
       ],
-      owner: "makeplane",
-      repo: "plane",
-      href: "https://github.com/makeplane/plane",
+      id: 568098118,
       img: "/images/plane.webp",
     },
     {
@@ -483,9 +478,7 @@ export const config = {
       startDate: "Mar 2025",
       endDate: "Apr 2025",
       items: ["Fixed UI issues and improved accessibility"],
-      owner: "AykutSarac",
-      repo: "jsoncrack.com",
-      href: "https://github.com/AykutSarac/jsoncrack.com",
+      id: 453717720,
       img: "/images/jsoncrack.webp",
     },
     {
@@ -496,9 +489,7 @@ export const config = {
       items: [
         "Implemented multi-file selection functionality with sequential upload process, significantly enhancing user experience and workflow",
       ],
-      owner: "kern",
-      repo: "filepizza",
-      href: "https://github.com/kern/filepizza",
+      id: 31341340,
       img: "/images/filepizza.webp",
     },
     {
@@ -509,9 +500,7 @@ export const config = {
       items: [
         "Implemented a contrast accessibility checker with an optimized debounce mechanism to improve performance",
       ],
-      owner: "jnsahaj",
-      repo: "tweakcn",
-      href: "https://github.com/jnsahaj/tweakcn",
+      id: 948174507,
       img: "/images/tweakcn.webp",
     },
     {
@@ -520,9 +509,7 @@ export const config = {
       startDate: "",
       endDate: "Mar 2025",
       items: ["Refactored code to improve consistency and readability"],
-      owner: "origin-space",
-      repo: "originui",
-      href: "https://github.com/origin-space/originui",
+      id: 872925629,
       img: "/images/origin-ui.webp",
     },
     {
@@ -534,9 +521,7 @@ export const config = {
         "Removed 22,000+ lines of legacy code to improve maintainability",
         "Identified and reported multiple UI issues including file download problems and behavior bugs",
       ],
-      owner: "maybe-finance",
-      repo: "maybe",
-      href: "https://github.com/maybe-finance/maybe",
+      id: 737898780,
       img: "/images/maybe.webp",
     },
     {

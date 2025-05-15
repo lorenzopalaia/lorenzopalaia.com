@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import CardButton from "@/components/card/CardButton";
 
-import { useGithubStars } from "@/hooks/useGithubStars";
+import { useContributedRepos } from "@/hooks/useContributedRepos";
 
 import { Star } from "lucide-react";
 
@@ -15,27 +15,22 @@ function CardItem({
   startDate,
   endDate,
   items,
-  href,
   img,
   links,
-  owner,
-  repo,
+  id,
 }: {
   title: string;
   company: string;
   startDate: string;
   endDate: string;
   items?: string[];
-  href: string;
   img: string;
   links?: { title: string; href: string }[];
-  owner?: string;
-  repo?: string;
+  id?: number;
 }) {
-  const { stars } = useGithubStars({
-    owner: owner || "",
-    repo: repo || "",
-    skipFetch: !owner || !repo,
+  const { username, repoName, stars } = useContributedRepos({
+    id: id || 0,
+    skipFetch: !id,
   });
 
   return (
@@ -43,7 +38,7 @@ function CardItem({
       <Link
         target="_blank"
         className="absolute top-4 -left-16 flex items-center justify-center rounded-full"
-        href={href}
+        href={`https://github.com/${username}/${repoName}`}
       >
         <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border-2">
           <Image
@@ -101,10 +96,8 @@ export default function AboutCard({
     startDate: string;
     endDate: string;
     items?: string[];
-    href: string;
     img: string;
-    owner?: string;
-    repo?: string;
+    id?: number;
     links?: {
       title: string;
       href: string;
