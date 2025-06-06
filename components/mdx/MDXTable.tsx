@@ -20,9 +20,10 @@ export default function MDXTable({ children }: { children: React.ReactNode }) {
       if (
         React.isValidElement(child) &&
         child.props &&
-        typeof (child.props as any).children === "string"
+        typeof (child.props as { children?: React.ReactNode }).children ===
+          "string"
       ) {
-        return (child.props as any).children;
+        return (child.props as { children: string }).children;
       }
       return "";
     })
