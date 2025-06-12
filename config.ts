@@ -445,7 +445,7 @@ export const config = {
       items: [
         "Led the development of an AI-enhanced music and visual product in a team of 5, orchestrating workflow, timeline, and project management",
         "Set up Stable Audio Open with custom fine-tuning on electronic music for generating audio elements with accurate prompts",
-        "Utilized third-party services to generate accompanying videos",
+        "Achieved finalist status among over 300 submissions",
       ],
       href: "https://challenges.reply.com/challenges/creative/ai-music-contest/home/",
       img: "/images/reply-ai-music-contest.png",
@@ -597,6 +597,13 @@ export const config = {
     MediaShift: ["NextJS", "TailwindCSS", "React"],
     TurboClone: ["NextJS", "TailwindCSS", "React"],
     StackHound: ["NextJS", "TailwindCSS", "React"],
+    "Euro-Hackathons": [
+      "NextJS",
+      "TailwindCSS",
+      "React",
+      "Supabase",
+      "Markdown",
+    ],
   },
   npmProjects: {
     // * Add npm packages here, they will be used to display npm downloads
