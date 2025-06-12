@@ -367,7 +367,7 @@ export const config = {
     },
     {
       name: "X",
-      href: "https://x.com/lorenzo_palaia",
+      href: "https://x.com/lorenzopalaia",
     },
     {
       name: "Email",
