@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { Globe, Github, Star, Download } from "lucide-react";
+import { Globe, Github, Star, Download, GitFork } from "lucide-react";
 
 import {
   Card,
@@ -29,6 +29,7 @@ interface ProjectCardProps {
     html_url?: string;
     homepage?: string;
     stargazers_count?: number;
+    forks_count?: number;
     npm_package_name?: string | null;
   };
 }
@@ -126,6 +127,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <CardDescription className="title flex items-center gap-1">
               <Star size={16} className="text-yellow-500" />
               {project.stargazers_count}
+            </CardDescription>
+          )}
+          {project.forks_count !== undefined && (
+            <CardDescription className="title flex items-center gap-1">
+              <GitFork size={16} className="text-green-500" />
+              {project.forks_count}
             </CardDescription>
           )}
           {downloads && (

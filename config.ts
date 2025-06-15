@@ -568,7 +568,7 @@ export const config = {
     {
       name: "Linktree",
       description: "Personal linktree for socials.",
-      languages: ["NextJS", "React", "Typescript", "TailwindCSS"],
+      languages: ["NextJS", "React", "Typescript", "TailwindCSS", "Supabase"],
       img: "/",
       html_url: "",
       updated_at: "2024-10-07T00:00:00Z",
@@ -576,7 +576,7 @@ export const config = {
     {
       name: "SitePulse",
       description: "Website monitoring tool for developers.",
-      languages: ["NextJS", "React", "Typescript", "TailwindCSS"],
+      languages: ["NextJS", "React", "Typescript", "TailwindCSS", "Supabase"],
       img: "/",
       html_url: "",
       updated_at: "2024-10-01T00:00:00Z",
