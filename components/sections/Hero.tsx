@@ -36,7 +36,7 @@ export default function Hero() {
         {config.about.location}
         <MapPin />
       </div>
-      <div className="mt-8 flex items-center gap-8">
+      <div className="mt-8 flex items-center gap-4 sm:gap-8">
         <ResumeButton />
         <Socials />
       </div>

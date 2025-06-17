@@ -40,7 +40,7 @@ export default function Socials() {
   const { unlockAchievement } = useAchievementsContext();
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-3 sm:gap-4">
       {config.socials.map((social, index) => {
         const IconDetails = iconMap[social.name];
         if (!IconDetails) return null;
