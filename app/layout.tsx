@@ -15,6 +15,7 @@ import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 
 import Overlay from "@/components/Overlay";
+import BeamsBG from "@/components/BeamsBG";
 import ParticlesBG from "@/components/ParticlesBG";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 
@@ -62,14 +63,16 @@ export default function RootLayout({
             <ClickEffectProvider>
               <TooltipProvider>
                 <Overlay />
-                <ParticlesBG>
-                  <ScrollProgressBar />
-                  <Header />
-                  <div className="relative z-10 container mx-auto max-w-3xl px-8">
-                    <main>{children}</main>
-                    <Footer />
-                  </div>
-                </ParticlesBG>
+                <BeamsBG>
+                  <ParticlesBG>
+                    <ScrollProgressBar />
+                    <Header />
+                    <div className="relative z-10 container mx-auto max-w-3xl px-8">
+                      <main>{children}</main>
+                      <Footer />
+                    </div>
+                  </ParticlesBG>
+                </BeamsBG>
                 <Toaster />
               </TooltipProvider>
             </ClickEffectProvider>
