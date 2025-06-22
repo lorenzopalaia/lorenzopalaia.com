@@ -351,9 +351,9 @@ export const config = {
   },
   about: {
     name: "Lorenzo Palaia",
-    title: "Software Engineer | Computer and Automatic Engineering Graduate",
+    title: "Software Engineer | Computer and Automation Engineering Graduate",
     description:
-      "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automatic Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
+      "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automation Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
     location: "Rome, Italy",
   },
   socials: [
@@ -414,7 +414,7 @@ export const config = {
   ],
   education: [
     {
-      title: "BsC in Computer and Automatic Engineering",
+      title: "BsC in Computer and Automation Engineering",
       company: "Sapienza University of Rome",
       startDate: "",
       endDate: "Mar 2024",

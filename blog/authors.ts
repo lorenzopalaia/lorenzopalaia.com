@@ -9,6 +9,6 @@ export const authors = [
     twitter: "https://x.com/lorenzopalaia",
     linkedin: "https://www.linkedin.com/in/lorenzopalaia",
     github: "https://github.com/lorenzopalaia",
-    bio: "Crypto enthusiast, passionate about programming, artificial intelligence, blockchains, finance and traveling.\nComputer and Automatic Engineering graduate at Sapienza University of Rome.\nCurrently working as a freelance fullstack developer.",
+    bio: "Crypto enthusiast, passionate about programming, artificial intelligence, blockchains, finance and traveling.\nComputer and Automation Engineering graduate at Sapienza University of Rome.\nCurrently working as a freelance fullstack developer.",
   },
 ];
