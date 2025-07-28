@@ -1,6 +1,7 @@
 import { MapPin } from "lucide-react";
 
 import Achievements from "@/components/Achievements";
+import GithubStats from "@/components/GitHubStats";
 import ResumeButton from "@/components/ResumeButton";
 import Socials from "@/components/Socials";
 
@@ -35,6 +36,9 @@ export default function Hero() {
       <div className="title mt-4 flex gap-1">
         {config.about.location}
         <MapPin />
+      </div>
+      <div className="mt-4">
+        <GithubStats />
       </div>
       <div className="mt-8 flex items-center gap-4 sm:gap-8">
         <ResumeButton />
