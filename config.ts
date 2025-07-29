@@ -445,7 +445,7 @@ export const config = {
       items: [
         "Led the development of an AI-enhanced music and visual product in a team of 5, orchestrating workflow, timeline, and project management",
         "Set up Stable Audio Open with custom fine-tuning on electronic music for generating audio elements with accurate prompts",
-        "Achieved finalist status among over 300 submissions",
+        "Achieved semifinalist status among over 300 submissions",
       ],
       href: "https://challenges.reply.com/challenges/creative/ai-music-contest/home/",
       img: "/images/reply-ai-music-contest.png",
