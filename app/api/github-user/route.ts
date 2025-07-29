@@ -7,18 +7,25 @@ const octokit = new Octokit({
 });
 
 const fetchGithubUser = async () => {
-  const response = await octokit.users.getByUsername({
-    username: "lorenzopalaia",
-  });
+  const [userResponse, starsResponse] = await Promise.all([
+    octokit.users.getByUsername({
+      username: "lorenzopalaia",
+    }),
+    fetch("https://api.github-star-counter.workers.dev/user/lorenzopalaia"), // TODO: Replace by applying a reduce on github-repos endpoint
+  ]);
+
+  const starsData = await starsResponse.json();
 
   return {
-    followers: response.data.followers,
-    following: response.data.following,
-    publicRepos: response.data.public_repos,
-    name: response.data.name,
-    bio: response.data.bio,
-    location: response.data.location,
-    company: response.data.company,
+    followers: userResponse.data.followers,
+    following: userResponse.data.following,
+    publicRepos: userResponse.data.public_repos,
+    name: userResponse.data.name,
+    bio: userResponse.data.bio,
+    location: userResponse.data.location,
+    company: userResponse.data.company,
+    stars: starsData.stars,
+    forks: starsData.forks,
   };
 };
 

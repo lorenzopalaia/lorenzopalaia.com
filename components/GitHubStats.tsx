@@ -1,7 +1,7 @@
 "use client";
 
 import { useGitHubUser } from "@/hooks/useGitHubUser";
-import { Users, UserPlus, Folder } from "lucide-react";
+import { Users, Star, Folder } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function GitHubStats() {
@@ -15,7 +15,7 @@ export default function GitHubStats() {
           <Skeleton className="h-4 w-16" />
         </div>
         <div className="flex items-center gap-1.5">
-          <UserPlus className="text-muted-foreground size-4" />
+          <Star className="text-muted-foreground size-4" />
           <Skeleton className="h-4 w-16" />
         </div>
         <div className="flex items-center gap-1.5">
@@ -39,10 +39,8 @@ export default function GitHubStats() {
         </span>
       </div>
       <div className="flex items-center gap-1.5">
-        <UserPlus className="text-muted-foreground size-4" />
-        <span className="text-sm font-medium">
-          {userData.following} following
-        </span>
+        <Star className="text-muted-foreground size-4" />
+        <span className="text-sm font-medium">{userData.stars} stars</span>
       </div>
       <div className="flex items-center gap-1.5">
         <Folder className="text-muted-foreground size-4" />

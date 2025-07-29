@@ -10,6 +10,8 @@ interface GitHubUserData {
   bio: string;
   location: string;
   company: string;
+  stars: number;
+  forks: number;
 }
 
 interface UseGitHubUserResult {
