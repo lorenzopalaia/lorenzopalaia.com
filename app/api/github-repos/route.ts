@@ -19,7 +19,7 @@ const fetchGithubRepos = async (): Promise<Repo[]> => {
   });
 
   return response.data.filter(
-    (repo) =>
+    (repo: Repo) =>
       !repo.fork || (repo.fork && config.includedForkRepos.includes(repo.name)),
   );
 };

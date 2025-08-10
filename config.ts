@@ -9,6 +9,7 @@ import {
   SiMarkdown,
   SiMdx,
   SiReact,
+  SiAngular,
   SiNextdotjs,
   SiTailwindcss,
   SiVuedotjs,
@@ -20,7 +21,9 @@ import {
   SiArduino,
   SiGnubash,
   SiSupabase,
+  SiDocker,
 } from "react-icons/si";
+import { BiLogoSpringBoot } from "react-icons/bi";
 import { FaJava, FaTerminal } from "react-icons/fa";
 
 export const email = "lorenzopalaia53@gmail.com";
@@ -351,9 +354,10 @@ export const config = {
   },
   about: {
     name: "Lorenzo Palaia",
-    title: "Software Engineer | Computer and Automation Engineering Graduate",
+    title:
+      "Software Engineer @ Reply | Computer and Automation Engineering Graduate",
     description:
-      "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automation Engineering graduate at Sapienza University of Rome. Currently working as a freelance fullstack developer.",
+      "Crypto enthusiast, passionate about programming, artificial intelligence, blockchain, finance and traveling. Computer and Automation Engineering graduate at Sapienza University of Rome. Currently working as a Software Engineer at Reply.",
     location: "Rome, Italy",
   },
   socials: [
@@ -380,18 +384,12 @@ export const config = {
   ],
   work: [
     {
-      title: "Computer Vision Software Engineer",
-      company: "Sapienza Flight Team",
-      startDate: "Sep 2021",
-      endDate: "Oct 2022",
-      items: [
-        "Developed object detection and terrain mapping systems for a UAV, training YOLOv5/EfficientNet models with custom datasets",
-        "Designed and implemented communication protocols between UAV and Ground Station from scratch, developing a Flask‑based API and revamping the GUI",
-        "Collaborated in a subteam of 5 within a 60‑member team, migrating the entire Flight Team workflow to Slack",
-        "Earned a 15th position out of 71 entries for the Technical Design Paper in the AUVSI SUAS competition",
-      ],
-      href: "https://www.sasa-aerospace.it/flight-team/",
-      img: "/images/flight-team.webp",
+      title: "Software Engineer",
+      company: "Reply",
+      startDate: "Sep 2025",
+      endDate: "Present",
+      href: "https://www.reply.com/",
+      img: "/images/reply.png",
     },
     {
       title: "Software Developer",
@@ -448,7 +446,7 @@ export const config = {
         "Achieved semifinalist status among over 300 submissions",
       ],
       href: "https://challenges.reply.com/challenges/creative/ai-music-contest/home/",
-      img: "/images/reply-ai-music-contest.png",
+      img: "/images/reply.png",
     },
     {
       title: "Open Source Contribution",
@@ -542,19 +540,36 @@ export const config = {
         },
       ],
     },
+    {
+      title: "Computer Vision Software Engineer",
+      company: "Sapienza Flight Team",
+      startDate: "Sep 2021",
+      endDate: "Oct 2022",
+      items: [
+        "Developed object detection and terrain mapping systems for a UAV, training YOLOv5/EfficientNet models with custom datasets",
+        "Designed and implemented communication protocols between UAV and Ground Station from scratch, developing a Flask‑based API and revamping the GUI",
+        "Collaborated in a subteam of 5 within a 60‑member team, migrating the entire Flight Team workflow to Slack",
+        "Earned a 15th position out of 71 entries for the Technical Design Paper in the AUVSI SUAS competition",
+      ],
+      href: "https://www.sasa-aerospace.it/flight-team/",
+      img: "/images/flight-team.webp",
+    },
   ],
   skills: [
     "NextJS",
     "Typescript",
     "TailwindCSS",
     "React",
+    "Angular",
     "Vue",
+    "Docker",
     "Supabase",
     "NodeJS",
     "Git",
     "Python",
     "C",
     "Java",
+    "Spring Boot",
     "Jupyter Notebook",
     "HTML",
     "CSS",
@@ -658,6 +673,19 @@ export const languagesMap = {
     icon: FaJava,
     description: "Class-based, object-oriented programming language.",
   },
+  springboot: {
+    label: "Spring Boot",
+    color: "108, 179, 63",
+    icon: BiLogoSpringBoot,
+    description: "Framework for building Java-based applications.",
+  },
+  docker: {
+    label: "Docker",
+    color: "35, 150, 237",
+    icon: SiDocker,
+    description:
+      "Platform for developing, shipping, and running applications in containers.",
+  },
   bash: {
     label: "Bash",
     color: "128, 128, 128",
@@ -678,7 +706,7 @@ export const languagesMap = {
   },
   typescript: {
     label: "Typescript",
-    color: "49, 120, 198",
+    color: "35, 150, 237",
     icon: SiTypescript,
     description: "Strongly typed superset of JavaScript.",
   },
@@ -699,6 +727,12 @@ export const languagesMap = {
     color: "97, 218, 251",
     icon: SiReact,
     description: "JavaScript library for building user interfaces.",
+  },
+  angular: {
+    label: "Angular",
+    color: "221, 0, 49",
+    icon: SiAngular,
+    description: "Platform for building mobile and desktop web applications.",
   },
   vue: {
     label: "Vue",
