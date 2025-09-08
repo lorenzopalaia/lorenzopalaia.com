@@ -24,6 +24,11 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+          RESEND_API_KEY: "dummy_key_for_build"
+          UPSTASH_REDIS_URL: "dummy_url_for_build"
+          UPSTASH_REDIS_TOKEN: "dummy_token_for_build"
+          NEXT_PUBLIC_BASE_URL: https://lorenzopalaia.com
 
       - name: Check for changes
         id: git-check
