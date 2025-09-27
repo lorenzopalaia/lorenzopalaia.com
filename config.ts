@@ -388,6 +388,10 @@ export const config = {
       company: "Reply",
       startDate: "Sep 2025",
       endDate: "Present",
+      items: [
+        "Developed enterprise applications for role management systems, implementing filtering mechanisms and data export functionalities",
+        "Resolved critical frontend‐backend integration issues, achieving 95%+ task completion rate while maintaining code quality standards",
+      ],
       href: "https://www.reply.com/",
       img: "/images/reply.png",
     },
