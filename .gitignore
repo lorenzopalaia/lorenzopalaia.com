@@ -40,6 +40,3 @@ next-env.d.ts
 
 # swc
 .swc/
-
-# npm-check-updates
-.ncurc
