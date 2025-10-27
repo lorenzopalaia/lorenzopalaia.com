@@ -391,6 +391,7 @@ export const config = {
       items: [
         "Developed enterprise applications for role management systems, implementing filtering mechanisms and data export functionalities",
         "Resolved critical frontend‐backend integration issues, achieving 95%+ task completion rate while maintaining code quality standards",
+        "Debugged and resolved critical issues, implementing fixes for payment processing systems and authentication workflows",
       ],
       href: "https://www.reply.com/",
       img: "/images/reply.png",
@@ -552,8 +553,7 @@ export const config = {
       items: [
         "Developed object detection and terrain mapping systems for a UAV, training YOLOv5/EfficientNet models with custom datasets",
         "Designed and implemented communication protocols between UAV and Ground Station from scratch, developing a Flask‑based API and revamping the GUI",
-        "Collaborated in a subteam of 5 within a 60‑member team, migrating the entire Flight Team workflow to Slack",
-        "Earned a 15th position out of 71 entries for the Technical Design Paper in the AUVSI SUAS competition",
+        "Collaborated in a subteam of 5 within a 60‑member team earning a 15th position out of 71 entries for the Technical Design Paper",
       ],
       href: "https://www.sasa-aerospace.it/flight-team/",
       img: "/images/flight-team.webp",
