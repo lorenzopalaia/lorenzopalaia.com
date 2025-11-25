@@ -19,7 +19,7 @@ export default function Hero() {
           alt="Lorenzo Palaia"
           width={80}
           height={80}
-          className="size-20"
+          className="size-20 rounded-full"
         />
         <div>
           <p className="title text-4xl tracking-tight sm:text-5xl">
