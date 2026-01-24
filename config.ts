@@ -22,9 +22,10 @@ import {
   SiGnubash,
   SiSupabase,
   SiDocker,
+  SiKubernetes,
 } from "react-icons/si";
-import { BiLogoSpringBoot } from "react-icons/bi";
-import { FaJava, FaTerminal } from "react-icons/fa";
+import { BiLogoPostgresql, BiLogoSpringBoot } from "react-icons/bi";
+import { FaJava, FaTerminal, FaJenkins, FaTicketAlt } from "react-icons/fa";
 
 export const email = "lorenzopalaia53@gmail.com";
 
@@ -384,29 +385,56 @@ export const config = {
   ],
   work: [
     {
-      title: "Software Engineer",
       company: "Reply",
-      startDate: "Sep 2025",
-      endDate: "Present",
-      items: [
-        "Developed enterprise applications for role management systems, implementing filtering mechanisms and data export functionalities",
-        "Resolved critical frontend‐backend integration issues, achieving 95%+ task completion rate while maintaining code quality standards",
-        "Debugged and resolved critical issues, implementing fixes for payment processing systems and authentication workflows",
-      ],
       href: "https://www.reply.com/",
       img: "/images/reply.png",
+      positions: [
+        {
+          title: "Technical Lead",
+          client: "Enel",
+          startDate: "Jan 2026",
+          endDate: "Present",
+          items: [
+            "Analyzed client requests, estimated developments, planned sprints, and coordinated a team of developers to deliver high-quality features within established deadlines",
+            "Handled production releases to ensure smooth deployments and minimal downtime for critical applications",
+          ],
+        },
+        {
+          title: "Technical Support Engineer",
+          client: "Nexi",
+          startDate: "Oct 2025",
+          endDate: "Present",
+          items: [
+            "Debugged and resolved critical issues, implementing fixes for payment processing systems and authentication workflows",
+          ]
+        },        
+        {
+          title: "Fullstack Developer",
+          client: "Enel",
+          startDate: "Sep 2025",
+          endDate: "Present",
+          items: [
+            "Developed enterprise applications for role management systems, implementing filtering mechanisms and data export functionalities",
+            "Resolved critical frontend‐backend integration issues, achieving 95%+ task completion rate while maintaining code quality standards",
+          ],
+        },
+      ],
     },
     {
-      title: "Software Developer",
       company: "Freelance",
-      startDate: "2019",
-      endDate: "Present",
-      items: [
-        "Engineered websites and applications for over 5 private and corporate clients, delivering solutions including landing pages, bots and trackers",
-        "Collaborated with clients to analyze requirements, propose innovative ideas, document solutions and maintain software post‑release",
-      ],
       href: "https://github.com/lorenzopalaia",
       img: "/images/github.webp",
+      positions: [
+        {
+          title: "Software Developer",
+          startDate: "2019",
+          endDate: "Present",
+          items: [
+            "Engineered websites and applications for over 5 private and corporate clients, delivering solutions including landing pages, bots and trackers",
+            "Collaborated with clients to analyze requirements, propose innovative ideas, document solutions and maintain software post‑release",
+          ],
+        },
+      ],
       links: [
         {
           title: "GitHub",
@@ -582,6 +610,10 @@ export const config = {
     "Bash",
     "Markdown",
     "Arduino",
+    "PostgreSQL",
+    "Jenkins",
+    "Kubernetes",
+    "ServiceNow",
   ],
   projects: [
     {
@@ -803,6 +835,30 @@ export const languagesMap = {
     color: "0, 89, 156",
     icon: SiCplusplus,
     description: "General-purpose programming language.",
+  },
+  postgresql: {
+    label: "PostgreSQL",
+    color: "51, 102, 153",
+    icon: BiLogoPostgresql,
+    description: "Open-source relational database management system.",
+  },
+  jenkins: {
+    label: "Jenkins",
+    color: "238, 118, 33",
+    icon: FaJenkins,
+    description: "Open-source automation server.",
+  },
+  kubernetes: {
+    label: "Kubernetes",
+    color: "49, 120, 198",
+    icon: SiKubernetes,
+    description: "Open-source container orchestration platform.",
+  },
+  servicenow: {
+    label: "ServiceNow",
+    color: "98, 216, 78",
+    icon: FaTicketAlt,
+    description: "Cloud-based platform for IT service management.",
   },
 };
 

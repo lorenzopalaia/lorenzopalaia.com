@@ -9,36 +9,72 @@ import { useContributedRepos } from "@/hooks/useContributedRepos";
 
 import { Star } from "lucide-react";
 
-function CardItem({
-  title,
-  company,
-  startDate,
-  endDate,
-  items,
-  img,
-  links,
-  id,
-}: {
+type Position = {
   title: string;
-  company: string;
+  client?: string;
   startDate: string;
   endDate: string;
   items?: string[];
+};
+
+type TimelineItem = {
+  company: string;
   img: string;
-  links?: { title: string; href: string }[];
+  href?: string;
   id?: number;
-}) {
+  links?: { title: string; href: string }[];
+  positions?: Position[];
+  title?: string;
+  client?: string;
+  startDate?: string;
+  endDate?: string;
+  items?: string[];
+};
+
+function CardItem({
+  company,
+  img,
+  href,
+  links,
+  id,
+  positions,
+  title,
+  client,
+  startDate,
+  endDate,
+  items,
+}: TimelineItem) {
+  const repoId = id ?? 0;
   const { username, repoName, stars } = useContributedRepos({
-    id: id || 0,
+    id: repoId,
     skipFetch: !id,
   });
 
+  const companyLink =
+    username && repoName
+      ? `https://github.com/${username}/${repoName}`
+      : (href ?? "#");
+
+  const positionsToRender: Position[] = positions
+    ? positions
+    : title
+      ? [
+          {
+            title,
+            startDate: startDate || "",
+            endDate: endDate || "",
+            items,
+            client,
+          },
+        ]
+      : [];
+
   return (
-    <li className="relative ml-10 py-4">
+    <li className="relative mx-10 py-4">
       <Link
         target="_blank"
         className="absolute top-4 -left-16 flex items-center justify-center rounded-full"
-        href={`https://github.com/${username}/${repoName}`}
+        href={companyLink}
       >
         <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border-2">
           <Image
@@ -50,12 +86,7 @@ function CardItem({
           />
         </span>
       </Link>
-      <div className="flex flex-1 flex-col justify-start gap-1">
-        <time className="text-muted-foreground text-xs">
-          <span>{startDate}</span>
-          {startDate && endDate && <span> - </span>}
-          <span>{endDate}</span>
-        </time>
+      <div className="flex flex-1 flex-col justify-start gap-3">
         <h2 className="flex items-center gap-2 leading-none font-semibold">
           {company}
           {stars !== null && (
@@ -65,16 +96,40 @@ function CardItem({
             </span>
           )}
         </h2>
-        <p className="title text-muted-foreground text-sm">{title}</p>
-        {items && items.length > 0 && (
-          <ul className="ml-4 list-outside list-disc">
-            {items.map((item, index) => (
-              <li key={index} className="prose dark:prose-invert pr-8 text-sm">
-                <p>{item}</p>
-              </li>
-            ))}
-          </ul>
-        )}
+
+        <div className="flex flex-col gap-4">
+          {positionsToRender.map((position, index) => (
+            <div
+              key={`${position.title}-${position.startDate}-${index}`}
+              className="flex flex-col gap-1"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <p className="title text-muted-foreground text-sm font-semibold">
+                  {position.title}
+                  {position.client ? ` - ${position.client}` : ""}
+                </p>
+                <time className="text-muted-foreground text-xs">
+                  <span>{position.startDate}</span>
+                  {position.startDate && position.endDate && <span> - </span>}
+                  <span>{position.endDate}</span>
+                </time>
+              </div>
+              {position.items && position.items.length > 0 && (
+                <ul className="ml-4 list-outside list-disc">
+                  {position.items.map((item, bulletIndex) => (
+                    <li
+                      key={bulletIndex}
+                      className="prose dark:prose-invert text-sm"
+                    >
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+
         {links && links.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">
             {links.map((link, index) => (
@@ -87,23 +142,7 @@ function CardItem({
   );
 }
 
-export default function AboutCard({
-  data,
-}: {
-  data: {
-    title: string;
-    company: string;
-    startDate: string;
-    endDate: string;
-    items?: string[];
-    img: string;
-    id?: number;
-    links?: {
-      title: string;
-      href: string;
-    }[];
-  }[];
-}) {
+export default function AboutCard({ data }: { data: TimelineItem[] }) {
   return (
     <div className="bg-card text-card-foreground rounded-xl border-2 shadow-sm">
       <div className="p-0">
