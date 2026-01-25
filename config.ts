@@ -397,6 +397,7 @@ export const config = {
           items: [
             "Analyzed client requests, estimated developments, planned sprints, and coordinated a team of developers to deliver high-quality features within established deadlines",
             "Handled production releases to ensure smooth deployments and minimal downtime for critical applications",
+            "Developed AI agents integrated with company knowledge base to streamline access to internal documents",
           ],
         },
         {
@@ -406,8 +407,8 @@ export const config = {
           endDate: "Present",
           items: [
             "Debugged and resolved critical issues, implementing fixes for payment processing systems and authentication workflows",
-          ]
-        },        
+          ],
+        },
         {
           title: "Fullstack Developer",
           client: "Enel",
