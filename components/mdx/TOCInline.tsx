@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function TOCInline({
   sections,
 }: {
-  sections: { title: string; url: string }[];
+  sections?: { title: string; url: string }[];
 }) {
   const handleClick = (event: MouseEvent<HTMLAnchorElement>, url: string) => {
     event.preventDefault();
@@ -23,6 +23,10 @@ export default function TOCInline({
       });
     }
   };
+
+  if (!sections || sections.length === 0) {
+    return null;
+  }
 
   return (
     <>

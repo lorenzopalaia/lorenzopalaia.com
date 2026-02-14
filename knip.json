@@ -34,9 +34,7 @@
     "@tailwindcss/typography",
     "tailwindcss",
     "critters",
-    "ts-node",
-    "eslint",
-    "eslint-config-next"
+    "ts-node"
   ],
   "ignoreBinaries": ["tree-cli"]
 }
