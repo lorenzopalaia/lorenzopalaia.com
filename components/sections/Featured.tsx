@@ -27,7 +27,7 @@ export default function Featured({
     <Link
       href={href}
       target="_blank"
-      onClick={() => unlockAchievement("featured")}
+      onClick={() => unlockAchievement("linkedin")}
     >
       <AnimatedGradientText className="mt-8">
         {emoji} <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}

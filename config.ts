@@ -649,13 +649,7 @@ export const config = {
     MediaShift: ["NextJS", "TailwindCSS", "React"],
     TurboClone: ["NextJS", "TailwindCSS", "React"],
     StackHound: ["NextJS", "TailwindCSS", "React"],
-    "Euro-Hackathons": [
-      "NextJS",
-      "TailwindCSS",
-      "React",
-      "Supabase",
-      "Markdown",
-    ],
+    "HackTrack-EU": ["NextJS", "TailwindCSS", "React", "Supabase", "Markdown"],
   },
   npmProjects: {
     // * Add npm packages here, they will be used to display npm downloads
@@ -665,10 +659,10 @@ export const config = {
   featuredProjects: [
     // * Add your projects here, they will be displayed in the featured section ordered as they are in the array
     // github projects
+    "HackTrack-EU",
     "Blocktracr",
     "Neural-Style-Transfer-and-Genre-Classification",
     "Arduino-Oscilloscope",
-    "Euro-Hackathons",
     "MediaShift",
     "Randstad-AI-Hackathon",
     // local projects
@@ -865,10 +859,10 @@ export const languagesMap = {
 
 export const achievements = [
   {
-    id: "featured",
-    title: "Featured",
+    id: "linkedin",
+    title: "LinkedIn",
     description:
-      "Ahoy, treasure hunter! You discovered the secret stash of projects! 🏆",
+      "You found me on LinkedIn! Let’s connect and share some professional vibes! 💼",
     points: 10,
     unlocked: false,
   },
