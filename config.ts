@@ -1,7 +1,7 @@
 import {
   SiTypescript,
   SiGit,
-  SiCss3,
+  SiCss,
   SiJavascript,
   SiJupyter,
   SiC,
@@ -744,7 +744,7 @@ export const languagesMap = {
   css: {
     label: "CSS",
     color: "21, 114, 182",
-    icon: SiCss3,
+    icon: SiCss,
     description: "Cascading Style Sheets.",
   },
   html: {
