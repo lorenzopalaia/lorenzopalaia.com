@@ -1,5 +1,6 @@
 {
   "reject": [
-    "react-syntax-highlighter"
+    "react-syntax-highlighter",
+		"lucide-react"
   ]
 }
