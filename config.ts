@@ -401,10 +401,10 @@ export const config = {
           ],
         },
         {
-          title: "Technical Support Engineer",
+          title: "Technical Lead/Support Engineer",
           client: "Nexi",
           startDate: "Oct 2025",
-          endDate: "Present",
+          endDate: "Jun 2026",
           items: [
             "Debugged and resolved critical issues, implementing fixes for payment processing systems and authentication workflows",
           ],
@@ -413,7 +413,7 @@ export const config = {
           title: "Fullstack Developer",
           client: "Enel",
           startDate: "Sep 2025",
-          endDate: "Present",
+          endDate: "Dec 2025",
           items: [
             "Developed enterprise applications for role management systems, implementing filtering mechanisms and data export functionalities",
             "Resolved critical frontend‐backend integration issues, achieving 95%+ task completion rate while maintaining code quality standards",
