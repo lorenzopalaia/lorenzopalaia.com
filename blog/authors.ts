@@ -5,7 +5,7 @@ export const authors = [
     avatar: "/blog/images/authors/lorenzo-palaia.webp",
     occupation: "Software Engineer",
     company: "Freelance",
-    email: "lorenzopalaia53@gmail.com",
+    email: "info@lorenzopalaia.com",
     twitter: "https://x.com/lorenzopalaia",
     linkedin: "https://www.linkedin.com/in/lorenzopalaia",
     github: "https://github.com/lorenzopalaia",
