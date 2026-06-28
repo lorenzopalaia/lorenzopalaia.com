@@ -27,7 +27,7 @@ import {
 import { BiLogoPostgresql, BiLogoSpringBoot } from "react-icons/bi";
 import { FaJava, FaTerminal, FaJenkins, FaTicketAlt } from "react-icons/fa";
 
-export const email = "lorenzopalaia53@gmail.com";
+export const email = "info@lorenzopalaia.com";
 
 export const config = {
   settings: {
