@@ -406,7 +406,7 @@ export const config = {
           startDate: "Oct 2025",
           endDate: "Jun 2026",
           items: [
-            "Debugged and resolved critical issues, implementing fixes for payment processing systems and authentication workflows",
+            "Managed and closed 100+ incidents per month, implementing fixes for payment processing systems and authentication workflows",
           ],
         },
         {
@@ -415,7 +415,7 @@ export const config = {
           startDate: "Sep 2025",
           endDate: "Dec 2025",
           items: [
-            "Developed enterprise applications for role management systems, implementing filtering mechanisms and data export functionalities",
+            "Developed enterprise applications for company management systems, implementing Angular frontend and a scalable backend leveraging a Backend‑for‑Frontend (BFF) pattern, orchestrated via Apache Camel and Kafka",
             "Resolved critical frontend‐backend integration issues, achieving 95%+ task completion rate while maintaining code quality standards",
           ],
         },
