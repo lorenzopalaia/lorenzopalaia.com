@@ -1,6 +1,6 @@
 "use server";
 
-import Email from "@/components/contact/Email";
+import EmailTemplate from "@/components/EmailTemplate";
 
 import { Resend } from "resend";
 
@@ -30,7 +30,7 @@ export async function sendEmail(data: ContactFormInputs) {
       cc: [email],
       subject: `New message from ${name}!`,
       text: `Name:\n${name}\n\nEmail:\n${email}\n\nMessage:\n${message}`,
-      react: await Email({ name, email, message }),
+      react: await EmailTemplate({ name, email, message }),
     });
 
     if (!data || error) {

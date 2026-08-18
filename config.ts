@@ -387,7 +387,7 @@ export const config = {
     {
       company: "Reply",
       href: "https://www.reply.com/",
-      img: "/images/reply.png",
+      img: "/assets/images/reply.webp",
       positions: [
         {
           title: "Technical Lead",
@@ -424,7 +424,7 @@ export const config = {
     {
       company: "Freelance",
       href: "https://github.com/lorenzopalaia",
-      img: "/images/github.webp",
+      img: "/assets/images/github.webp",
       positions: [
         {
           title: "Software Developer",
@@ -455,7 +455,7 @@ export const config = {
         "Mastered Data Structures & Algorithms, Software Design, Parallel Computing, Electronics, Web Development (4.0 GPA)",
       ],
       href: "https://www.uniroma1.it/it/",
-      img: "/images/sapienza.webp",
+      img: "/assets/images/sapienza.webp",
       links: [
         {
           title: "Thesis Paper",
@@ -480,7 +480,7 @@ export const config = {
         "Achieved semifinalist status among over 300 submissions",
       ],
       href: "https://challenges.reply.com/challenges/creative/ai-music-contest/home/",
-      img: "/images/reply.png",
+      img: "/assets/images/reply.webp",
     },
     {
       title: "Open Source Contribution",
@@ -491,7 +491,7 @@ export const config = {
         "Introduced two new blocks to enhance user experience and design consistency",
       ],
       id: 933694551,
-      img: "/images/tailark.png",
+      img: "/assets/images/tailark.webp",
     },
     {
       title: "Open Source Contribution",
@@ -502,7 +502,7 @@ export const config = {
         "Enhanced the authentication flow UI to improve clarity and user experience in environments with restricted access",
       ],
       id: 568098118,
-      img: "/images/plane.webp",
+      img: "/assets/images/plane.webp",
     },
     {
       title: "Open Source Contribution",
@@ -511,7 +511,7 @@ export const config = {
       endDate: "Apr 2025",
       items: ["Fixed UI issues and improved accessibility"],
       id: 453717720,
-      img: "/images/jsoncrack.webp",
+      img: "/assets/images/jsoncrack.webp",
     },
     {
       title: "Open Source Contribution",
@@ -522,7 +522,7 @@ export const config = {
         "Implemented multi-file selection functionality with sequential upload process, significantly enhancing user experience and workflow",
       ],
       id: 31341340,
-      img: "/images/filepizza.webp",
+      img: "/assets/images/filepizza.webp",
     },
     {
       title: "Open Source Contribution",
@@ -533,7 +533,7 @@ export const config = {
         "Implemented a contrast accessibility checker with an optimized debounce mechanism to improve performance",
       ],
       id: 948174507,
-      img: "/images/tweakcn.webp",
+      img: "/assets/images/tweakcn.webp",
     },
     {
       title: "Open Source Contribution",
@@ -542,7 +542,7 @@ export const config = {
       endDate: "Mar 2025",
       items: ["Refactored code to improve consistency and readability"],
       id: 872925629,
-      img: "/images/origin-ui.webp",
+      img: "/assets/images/origin-ui.webp",
     },
     {
       title: "Open Source Contribution",
@@ -554,7 +554,7 @@ export const config = {
         "Identified and reported multiple UI issues including file download problems and behavior bugs",
       ],
       id: 737898780,
-      img: "/images/maybe.webp",
+      img: "/assets/images/maybe.webp",
     },
     {
       title: "<Code.Your.Future> AI Hackathon",
@@ -566,7 +566,7 @@ export const config = {
         "Secured 2nd place, achieving an F1 score of 75% while experimenting with Bag of Words and Word2Vec approaches",
       ],
       href: "https://www.randstad.it/",
-      img: "/images/randstad.webp",
+      img: "/assets/images/randstad.webp",
       links: [
         {
           title: "Submission",
@@ -585,7 +585,7 @@ export const config = {
         "Collaborated in a subteam of 5 within a 60‑member team earning a 15th position out of 71 entries for the Technical Design Paper",
       ],
       href: "https://www.sasa-aerospace.it/flight-team/",
-      img: "/images/flight-team.webp",
+      img: "/assets/images/flight-team.webp",
     },
   ],
   skills: [
@@ -672,266 +672,3 @@ export const config = {
     "Randstad-AI-Hackathon",
   ],
 };
-
-export const languagesMap = {
-  nodejs: {
-    label: "Node.js",
-    color: "2, 128, 0",
-    icon: SiNodedotjs,
-    description: "JavaScript runtime built on Chrome's V8 JavaScript engine.",
-  },
-  git: {
-    label: "Git",
-    color: "238, 118, 33",
-    icon: SiGit,
-    description: "Distributed version control system.",
-  },
-  linux: {
-    label: "Linux",
-    color: "128, 128, 128",
-    icon: SiLinux,
-    description: "Open-source Unix-like operating system.",
-  },
-  arduino: {
-    label: "Arduino",
-    color: "0, 148, 151",
-    icon: SiArduino,
-    description: "Open-source electronics platform.",
-  },
-  java: {
-    label: "Java",
-    color: "219, 83, 61",
-    icon: FaJava,
-    description: "Class-based, object-oriented programming language.",
-  },
-  springboot: {
-    label: "Spring Boot",
-    color: "108, 179, 63",
-    icon: BiLogoSpringBoot,
-    description: "Framework for building Java-based applications.",
-  },
-  docker: {
-    label: "Docker",
-    color: "35, 150, 237",
-    icon: SiDocker,
-    description:
-      "Platform for developing, shipping, and running applications in containers.",
-  },
-  bash: {
-    label: "Bash",
-    color: "128, 128, 128",
-    icon: SiGnubash,
-    description: "Unix shell and command language.",
-  },
-  shell: {
-    label: "Shell",
-    color: "128, 128, 128",
-    icon: FaTerminal,
-    description: "Command-line interface for Unix-based systems.",
-  },
-  supabase: {
-    label: "Supabase",
-    color: "127, 255, 3",
-    icon: SiSupabase,
-    description: "Open-source Firebase alternative.",
-  },
-  typescript: {
-    label: "Typescript",
-    color: "35, 150, 237",
-    icon: SiTypescript,
-    description: "Strongly typed superset of JavaScript.",
-  },
-  css: {
-    label: "CSS",
-    color: "21, 114, 182",
-    icon: SiCss,
-    description: "Cascading Style Sheets.",
-  },
-  html: {
-    label: "HTML",
-    color: "227, 79, 38",
-    icon: SiHtml5,
-    description: "HyperText Markup Language.",
-  },
-  react: {
-    label: "React",
-    color: "97, 218, 251",
-    icon: SiReact,
-    description: "JavaScript library for building user interfaces.",
-  },
-  angular: {
-    label: "Angular",
-    color: "221, 0, 49",
-    icon: SiAngular,
-    description: "Platform for building mobile and desktop web applications.",
-  },
-  vue: {
-    label: "Vue",
-    color: "79, 192, 141",
-    icon: SiVuedotjs,
-    description: "Progressive JavaScript framework.",
-  },
-  javascript: {
-    label: "Javascript",
-    color: "247, 223, 30",
-    icon: SiJavascript,
-    description: "High-level, interpreted programming language.",
-  },
-  jupyternotebook: {
-    label: "Jupyter",
-    color: "243, 118, 38",
-    icon: SiJupyter,
-    description: "Open-source web application for interactive computing.",
-  },
-  c: {
-    label: "C",
-    color: "168, 185, 204",
-    icon: SiC,
-    description: "General-purpose, procedural computer programming language.",
-  },
-  makefile: {
-    label: "Make",
-    color: "0, 169, 143",
-    icon: SiMake,
-    description: "Build automation tool.",
-  },
-  python: {
-    label: "Python",
-    color: "55, 118, 171",
-    icon: SiPython,
-    description: "High-level, interpreted programming language.",
-  },
-  markdown: {
-    label: "Markdown",
-    color: "128, 128, 128",
-    icon: SiMarkdown,
-    description: "Lightweight markup language.",
-  },
-  mdx: {
-    label: "MDX",
-    color: "128, 128, 128",
-    icon: SiMdx,
-    description: "Markdown for the component era.",
-  },
-  nextjs: {
-    label: "Next.js",
-    color: "128, 128, 128",
-    icon: SiNextdotjs,
-    description: "React framework.",
-  },
-  tailwindcss: {
-    label: "Tailwind CSS",
-    color: "56, 178, 172",
-    icon: SiTailwindcss,
-    description: "Utility-first CSS framework.",
-  },
-  "c++": {
-    label: "C++",
-    color: "0, 89, 156",
-    icon: SiCplusplus,
-    description: "General-purpose programming language.",
-  },
-  postgresql: {
-    label: "PostgreSQL",
-    color: "51, 102, 153",
-    icon: BiLogoPostgresql,
-    description: "Open-source relational database management system.",
-  },
-  jenkins: {
-    label: "Jenkins",
-    color: "238, 118, 33",
-    icon: FaJenkins,
-    description: "Open-source automation server.",
-  },
-  kubernetes: {
-    label: "Kubernetes",
-    color: "49, 120, 198",
-    icon: SiKubernetes,
-    description: "Open-source container orchestration platform.",
-  },
-  servicenow: {
-    label: "ServiceNow",
-    color: "98, 216, 78",
-    icon: FaTicketAlt,
-    description: "Cloud-based platform for IT service management.",
-  },
-};
-
-export const achievements = [
-  {
-    id: "linkedin",
-    title: "LinkedIn",
-    description:
-      "You found me on LinkedIn! Let’s connect and share some professional vibes! 💼",
-    points: 10,
-    unlocked: false,
-  },
-  {
-    id: "resume",
-    title: "Resume",
-    description:
-      "Got curious, huh? You sneaked a peek into my career chronicles! 📜",
-    points: 15,
-    unlocked: false,
-  },
-  {
-    id: "socials",
-    title: "Socials",
-    description: "Caught me on the interwebs! Let’s stay connected! 🌐",
-    points: 15,
-    unlocked: false,
-  },
-  {
-    id: "thesis-paper",
-    title: "Thesis Paper",
-    description: "Brainiac alert! You explored my thesis masterpiece! 📚",
-    points: 15,
-    unlocked: false,
-  },
-  {
-    id: "blog-post",
-    title: "Blog Post",
-    description: "Whoa, reader mode on! You dove into one of my blog posts! 📝",
-    points: 15,
-    unlocked: false,
-  },
-  {
-    id: "post-like",
-    title: "Post Like",
-    description:
-      "You hit the thumbs up! Thanks for liking one of my blog posts! 👍",
-    points: 15,
-    unlocked: false,
-  },
-  {
-    id: "theme",
-    title: "Theme Switch",
-    description:
-      "Dark side or light side? You toggled the theme like a pro! 🌓",
-    points: 5,
-    unlocked: false,
-  },
-  {
-    id: "contact",
-    title: "Contact",
-    description: "Sliding into my inbox like a champ! You reached out! 🤝",
-    points: 30,
-    unlocked: false,
-  },
-  {
-    id: "lead",
-    title: "Blog Subscription",
-    description: "You joined the blog squad! Welcome aboard! 🚀",
-    points: 30,
-    unlocked: false,
-  },
-  /*
-  {
-    id: "avatar",
-    title: "Avatar",
-    description: "Am I looking good or what? You hovered over my avatar! 👀",
-    points: 5,
-    unlocked: false,    
-  },
-  */
-];

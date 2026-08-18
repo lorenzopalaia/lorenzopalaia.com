@@ -1,5 +1,5 @@
 {
-  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "$schema": "https://unpkg.com/knip/schema.json",
   "next": {
     "entry": [
       "next.config.{js,ts,cjs,mjs}",
@@ -14,23 +14,15 @@
   },
   "project": [
     "app/**/*.{js,jsx,ts,tsx,css}",
-    "blog/**/*.{js,jsx,ts,tsx}",
     "components/**/*.{js,jsx,ts,tsx}",
+    "content/**/*.{js,jsx,ts,tsx}",
     "contexts/**/*.{js,jsx,ts,tsx}",
-    "hooks/**/*.{js,jsx,ts,tsx}",
+    "data/**/*.{js,jsx,ts,tsx}",
     "lib/**/*.{js,jsx,ts,tsx}",
-    "providers/**/*.{js,jsx,ts,tsx}",
     "public/**/*",
     "scripts/**/*.{js,jsx,ts,tsx}",
     "config.{js,jsx,ts,tsx}"
   ],
-  "ignore": [
-    "components/ui/**/*.{js,jsx,ts,tsx}",
-    "hooks/use-toast.{js,jsx,ts,tsx}",
-    "lib/**/*.{js,jsx,ts,tsx}"
-  ],
-  "ignoreDependencies": [
-    "critters",
-    "ts-node"
-  ]
+  "ignore": ["components/ui/**/*.{js,jsx,ts,tsx}"],
+  "ignoreDependencies": ["critters", "ts-node"]
 }

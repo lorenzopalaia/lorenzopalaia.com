@@ -1,38 +1,54 @@
-import { ArrowLeft } from "lucide-react";
+"use client";
 
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { AlertCircle, Home } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function NotFound() {
+  const router = useRouter();
+
+  const handleGoHome = () => {
+    router.push("/");
+  };
+
   return (
-    <article className="mt-8 flex flex-col gap-8 pb-16">
-      <div className="min-h-screen px-4 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
-        <div className="mx-auto max-w-max">
-          <section className="sm:flex">
-            <p className="title text-muted-foreground text-6xl">404</p>
-            <div className="sm:ml-6">
-              <div className="sm:border-l sm:border-gray-200 sm:pl-6">
-                <h1 className="title sm:text-5xl">
-                  Oops! Page <i>not found</i>.
-                </h1>
-                <p className="text-muted-foreground mt-1 text-base">
-                  Looks like you took a <i>wrong turn</i>. Don&apos;t worry, it
-                  happens to the <i>best of us</i>. Let&apos;s get you back{" "}
-                  <i>on track</i>!
-                </p>
-              </div>
-              <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-                <Link
-                  href="/"
-                  className="text-muted-foreground hover:text-primary flex items-center gap-2"
-                >
-                  <ArrowLeft />
-                  Go back to safety
-                </Link>
-              </div>
+    <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+      <Card className="mx-4 w-full max-w-lg border-0 bg-white/80 shadow-lg backdrop-blur-sm">
+        <CardContent className="pt-8 pb-8 text-center">
+          <div className="mb-6 flex justify-center">
+            <div className="relative">
+              <div className="absolute inset-0 animate-pulse rounded-full bg-red-100" />
+              <AlertCircle className="relative h-16 w-16 text-red-500" />
             </div>
-          </section>
-        </div>
-      </div>
-    </article>
+          </div>
+
+          <h1 className="mb-2 text-4xl font-bold text-slate-900">404</h1>
+
+          <h2 className="mb-4 text-xl font-semibold text-slate-700">
+            Page Not Found
+          </h2>
+
+          <p className="mb-8 leading-relaxed text-slate-600">
+            Sorry, the page you are looking for doesn't exist.
+            <br />
+            It may have been moved or deleted.
+          </p>
+
+          <div
+            id="not-found-button-group"
+            className="flex flex-col justify-center gap-3 sm:flex-row"
+          >
+            <Button
+              onClick={handleGoHome}
+              className="rounded-lg bg-blue-600 px-6 py-2.5 text-white shadow-md transition-all duration-200 hover:bg-blue-700 hover:shadow-lg"
+            >
+              <Home className="mr-2 h-4 w-4" />
+              Go Home
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
