@@ -1,10 +1,10 @@
 {
   "name": "lorenzopalaia.com",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "npm run test && npx knip",
+    "prebuild": "npx knip",
     "build": "next build --turbopack",
     "build:updated": "npm run update && npm run build",
     "postbuild": "npm run sitemap",
@@ -16,10 +16,7 @@
     "links": "node scripts/checkBrokenLinks.js",
     "update": "npx npm-check-updates -u && npm install --force",
     "reinstall": "rm -rf node_modules .next .swc package-lock.json && npm install --force",
-    "tree": "npx tree-cli -a -l 3 --ignore 'node_modules, .git, .next'",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "tree": "npx tree-cli -a -l 3 --ignore 'node_modules, .git, .next'"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.0",
@@ -74,8 +71,6 @@
     "compression-webpack-plugin": "^12.0.0",
     "eslint": "^10.8.1",
     "eslint-config-next": "16.3.1",
-    "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.4.1",
     "knip": "^6.32.2",
     "postcss": "^8.5.26",
     "postcss-load-config": "^6.0.1",

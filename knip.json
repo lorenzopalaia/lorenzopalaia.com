@@ -13,8 +13,7 @@
     ]
   },
   "project": [
-    "__tests__/**/*.{js,jsx,ts,tsx}",
-    "app/**/*.{js,jsx,ts,tsx}",
+    "app/**/*.{js,jsx,ts,tsx,css}",
     "blog/**/*.{js,jsx,ts,tsx}",
     "components/**/*.{js,jsx,ts,tsx}",
     "contexts/**/*.{js,jsx,ts,tsx}",
@@ -31,10 +30,7 @@
     "lib/**/*.{js,jsx,ts,tsx}"
   ],
   "ignoreDependencies": [
-    "@tailwindcss/typography",
-    "tailwindcss",
     "critters",
     "ts-node"
-  ],
-  "ignoreBinaries": ["tree-cli"]
+  ]
 }
