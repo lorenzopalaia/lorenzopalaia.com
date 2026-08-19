@@ -12,9 +12,9 @@ export default function Home() {
   return (
     <HomeClient>
       <IntroScene />
+      <ExperienceScene />
       <WorkScene />
       <AboutScene />
-      <ExperienceScene />
       <LabScene />
       <NotesScene />
       <ContactScene />

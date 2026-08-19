@@ -5,7 +5,7 @@ export default function AboutScene() {
   return (
     <section id="about" className="scene scene--about">
       <div className="about-aside">
-        <span className="scene-eyebrow">02 / About</span>
+        <span className="scene-eyebrow">03 / About</span>
 
         <span className="vertical-index">SYSTEM / PERSON</span>
       </div>
@@ -43,7 +43,7 @@ export default function AboutScene() {
         <i />
       </div>
 
-      <CoordinateRail index="02" label="PERSON / SYSTEM" />
+      <CoordinateRail index="03" label="PERSON / SYSTEM" />
     </section>
   );
 }

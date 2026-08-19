@@ -12,7 +12,7 @@ export default function WorkScene() {
     <section id="work" className="scene scene--work">
       <div className="scene-heading">
         <div>
-          <span className="scene-eyebrow">01 / Selected work</span>
+          <span className="scene-eyebrow">02 / Selected work</span>
 
           <h2>Useful things, built to be explored.</h2>
         </div>
@@ -34,7 +34,7 @@ export default function WorkScene() {
 
       <ProjectRail projects={projects} />
 
-      <CoordinateRail index="01" label="WORK / 04 OBJECTS" />
+      <CoordinateRail index="02" label="WORK / 04 OBJECTS" />
 
       <div className="scene-footer">
         <Link href="/projects" data-cursor="INDEX">

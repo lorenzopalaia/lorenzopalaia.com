@@ -39,7 +39,7 @@ export default function Projects() {
           </p>
         </div>
 
-        <CoordinateRail index="01" label="WORK / LIVE INDEX" />
+        <CoordinateRail index="02" label="WORK / LIVE INDEX" />
 
         {/* GitHub metrics */}
         <ProjectsLiveData variant="metrics" />

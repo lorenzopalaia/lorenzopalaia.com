@@ -9,7 +9,7 @@ export default function ExperienceScene() {
     <section id="experience" className="scene scene--experience">
       <div className="scene-heading scene-heading--dark">
         <div>
-          <span className="scene-eyebrow">03 / Experience</span>
+          <span className="scene-eyebrow">01 / Experience</span>
 
           <h2>Work, as a timeline of systems.</h2>
         </div>
@@ -46,7 +46,7 @@ export default function ExperienceScene() {
         ))}
       </div>
 
-      <CoordinateRail index="03" label="TIMELINE / 2019—NOW" dark />
+      <CoordinateRail index="01" label="TIMELINE / 2019—NOW" dark />
 
       <div className="scene-footer scene-footer--dark">
         <Link
