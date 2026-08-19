@@ -942,6 +942,9 @@ a:focus-visible {
   flex-direction: column;
   justify-content: space-between;
 }
+.scene--contact .coordinate-rail {
+  bottom: 48px;
+}
 .contact-top {
   display: flex;
   justify-content: space-between;

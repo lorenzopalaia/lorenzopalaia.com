@@ -23,7 +23,7 @@ export default function SceneProgress({
         />
       </i>
 
-      <span>{String(totalScenes).padStart(2, "0")}</span>
+      <span>{String(totalScenes - 1).padStart(2, "0")}</span>
     </div>
   );
 }

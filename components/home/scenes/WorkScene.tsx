@@ -41,8 +41,6 @@ export default function WorkScene() {
           Open full work index
           <ArrowRight size={15} />
         </Link>
-
-        <span>01—04</span>
       </div>
     </section>
   );

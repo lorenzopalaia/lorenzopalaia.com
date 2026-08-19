@@ -48,7 +48,7 @@ export default function Experience() {
           sizes="(min-width: 1280px) 350px, 45vw"
         />
 
-        <CoordinateRail index="07" label="RECORD / VERIFIED" />
+        <CoordinateRail index="03" label="RECORD / VERIFIED" />
       </section>
 
       <section className="record-artifacts">

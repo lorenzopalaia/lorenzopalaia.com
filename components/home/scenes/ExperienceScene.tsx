@@ -57,8 +57,6 @@ export default function ExperienceScene() {
           Open full record
           <ArrowRight size={15} />
         </Link>
-
-        <span>2019—now</span>
       </div>
     </section>
   );
