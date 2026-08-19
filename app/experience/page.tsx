@@ -34,7 +34,12 @@ export default function Record() {
             an inspectable working record.
           </p>
         </div>
-        <Image src="/assets/images/avatar.webp" alt="Lorenzo Palaia" />
+        <Image
+          src="/assets/images/avatar.webp"
+          alt="Lorenzo Palaia"
+          width={1920}
+          height={1080}
+        />
         <CoordinateRail index="07" label="RECORD / VERIFIED" />
       </section>
       <section className="record-artifacts">
@@ -77,7 +82,14 @@ export default function Record() {
                   <i />
                 </div>
                 <div className="record-entry__head">
-                  {entry.image && <Image src={entry.image} alt="" />}
+                  {entry.image && (
+                    <Image
+                      src={entry.image}
+                      alt=""
+                      width={1920}
+                      height={1080}
+                    />
+                  )}
                   <div>
                     <h2>{entry.title}</h2>
                     <p>{entry.company}</p>

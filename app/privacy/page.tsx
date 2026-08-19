@@ -12,7 +12,5 @@ export const metadata: Metadata = getSEOTags({
 });
 
 export default function PrivacyPage() {
-  return (
-    <Privacy />
-  );
+  return <Privacy />;
 }

@@ -4,12 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 export function getArticleSource(slug: string) {
-  const filePath = path.join(
-    process.cwd(),
-    "content",
-    "posts",
-    `${slug}.mdx`,
-  );
+  const filePath = path.join(process.cwd(), "content", "posts", `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
     return null;

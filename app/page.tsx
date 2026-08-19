@@ -179,6 +179,8 @@ export default function Home() {
             className="hero-asset"
             src="/assets/images/bg/intro.webp"
             alt=""
+            width={1920}
+            height={1080}
           />
           <TechnicalGraphic />
           <CoordinateRail index="00" label="ORIGIN / 41.9028" />
@@ -203,6 +205,8 @@ export default function Home() {
             className="work-asset"
             src="/assets/images/bg/work.webp"
             alt=""
+            width={1920}
+            height={1080}
           />
           <ProjectRail projects={projects} />
           <CoordinateRail index="01" label="WORK / 04 OBJECTS" />
@@ -307,6 +311,8 @@ export default function Home() {
             className="lab-asset"
             src="/assets/images/bg/lab.webp"
             alt=""
+            width={1920}
+            height={1080}
           />
           <TechnicalGraphic variant="lab" />
           <CoordinateRail index="04" label="LAB / EXPERIMENT" dark />

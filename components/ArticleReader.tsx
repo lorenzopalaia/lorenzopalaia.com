@@ -17,11 +17,7 @@ import { useEffect, useState } from "react";
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { unlockSignal } from "@/components/ExplorationSignals";
 
-import {
-  getArticle,
-  articles,
-  formatArticleDate,
-} from "@/content/articles";
+import { getArticle, articles, formatArticleDate } from "@/content/articles";
 
 type Action = "like" | "dislike" | "none";
 
@@ -72,26 +68,21 @@ export default function ArticleReader({
 }) {
   const article = getArticle(slug);
 
-  const [action, setAction] =
-    useState<Action>("none");
+  const [action, setAction] = useState<Action>("none");
 
-  const [reaction, setReaction] =
-    useState<ReactionData>({
-      likes: 0,
-      dislikes: 0,
-    });
+  const [reaction, setReaction] = useState<ReactionData>({
+    likes: 0,
+    dislikes: 0,
+  });
 
-  const [isLoadingReactions, setIsLoadingReactions] =
-    useState(false);
+  const [isLoadingReactions, setIsLoadingReactions] = useState(false);
 
-  const [isVoting, setIsVoting] =
-    useState(false);
+  const [isVoting, setIsVoting] = useState(false);
 
   useEffect(() => {
-    const storedAction =
-      localStorage.getItem(
-        `note-reaction:${slug}`,
-      ) as Action | null;
+    const storedAction = localStorage.getItem(
+      `note-reaction:${slug}`,
+    ) as Action | null;
 
     setAction(storedAction ?? "none");
 
@@ -116,9 +107,7 @@ export default function ArticleReader({
         );
 
         if (!response.ok) {
-          throw new Error(
-            "Failed to load reactions",
-          );
+          throw new Error("Failed to load reactions");
         }
 
         const data = await response.json();
@@ -128,10 +117,7 @@ export default function ArticleReader({
           dislikes: Number(data.dislikes ?? 0),
         });
       } catch (error) {
-        console.error(
-          "Failed to load article reactions:",
-          error,
-        );
+        console.error("Failed to load article reactions:", error);
       } finally {
         setIsLoadingReactions(false);
       }
@@ -143,10 +129,7 @@ export default function ArticleReader({
   if (!article) {
     return (
       <main className="detail-page detail-page--missing">
-        <Link
-          href="/blog"
-          className="detail-back"
-        >
+        <Link href="/blog" className="detail-back">
           <ArrowLeft size={18} />
           Back to notes
         </Link>
@@ -156,48 +139,35 @@ export default function ArticleReader({
     );
   }
 
-  const index = articles.findIndex(
-    (entry) => entry.slug === slug,
-  );
+  const index = articles.findIndex((entry) => entry.slug === slug);
 
   const previous = articles[index + 1];
   const next = articles[index - 1];
 
-  const submit = async (
-    nextAction: Exclude<Action, "none">,
-  ) => {
+  const submit = async (nextAction: Exclude<Action, "none">) => {
     if (isVoting) return;
 
-    const resolved =
-      action === nextAction
-        ? "none"
-        : nextAction;
+    const resolved = action === nextAction ? "none" : nextAction;
 
     setIsVoting(true);
 
     try {
-      const response = await fetch(
-        "/api/like-dislike",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            postId: slug,
-            action: resolved,
-            previousAction: action,
-          }),
+      const response = await fetch("/api/like-dislike", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          postId: slug,
+          action: resolved,
+          previousAction: action,
+        }),
+      });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          data.error ??
-            "Unable to submit reaction.",
-        );
+        throw new Error(data.error ?? "Unable to submit reaction.");
       }
 
       setReaction({
@@ -207,19 +177,13 @@ export default function ArticleReader({
 
       setAction(resolved);
 
-      localStorage.setItem(
-        `note-reaction:${slug}`,
-        resolved,
-      );
+      localStorage.setItem(`note-reaction:${slug}`, resolved);
 
       if (resolved === "like") {
         unlockSignal("post-like");
       }
     } catch (error) {
-      console.error(
-        "Failed to submit reaction:",
-        error,
-      );
+      console.error("Failed to submit reaction:", error);
     } finally {
       setIsVoting(false);
     }
@@ -228,51 +192,35 @@ export default function ArticleReader({
   return (
     <main className="article-page">
       <header className="detail-header">
-        <Link
-          href="/blog"
-          className="detail-back"
-          data-cursor="BACK"
-        >
+        <Link href="/blog" className="detail-back" data-cursor="BACK">
           <ArrowLeft size={18} />
           Notes index
         </Link>
 
         <span className="scene-eyebrow">
-          Document /{" "}
-          {String(index + 1).padStart(2, "0")}
+          Document / {String(index + 1).padStart(2, "0")}
         </span>
       </header>
 
       <section className="article-hero">
         <div className="article-hero__copy">
-          <p className="detail-category">
-            {article.tags[0]}
-          </p>
+          <p className="detail-category">{article.tags[0]}</p>
 
           <h1>{article.title}</h1>
 
           <p>{article.summary}</p>
 
           <div className="article-meta">
-            <span>
-              {formatArticleDate(
-                article.publishedAt,
-              )}
-            </span>
+            <span>{formatArticleDate(article.publishedAt)}</span>
 
-            <span>
-              Written by Lorenzo Palaia
-            </span>
+            <span>Written by Lorenzo Palaia</span>
           </div>
         </div>
 
         <ArticleSchematic topic={article.tags[0]} />
 
         <CoordinateRail
-          index={String(index + 1).padStart(
-            2,
-            "0",
-          )}
+          index={String(index + 1).padStart(2, "0")}
           label="NOTE / READ"
         />
       </section>
@@ -286,38 +234,22 @@ export default function ArticleReader({
           ))}
         </aside>
 
-        <article className="article-content">
-          {children}
-        </article>
+        <article className="article-content">{children}</article>
       </section>
 
-      <section
-        className="reaction-strip"
-        aria-label="Article reactions"
-      >
+      <section className="reaction-strip" aria-label="Article reactions">
         <div>
-          <span className="scene-eyebrow">
-            Signal received?
-          </span>
+          <span className="scene-eyebrow">Signal received?</span>
 
-          <p>
-            Useful document, useful feedback.
-          </p>
+          <p>Useful document, useful feedback.</p>
         </div>
 
         <div className="reaction-strip__controls">
           <button
             type="button"
             onClick={() => submit("like")}
-            disabled={
-              isVoting ||
-              isLoadingReactions
-            }
-            className={
-              action === "like"
-                ? "is-active"
-                : ""
-            }
+            disabled={isVoting || isLoadingReactions}
+            className={action === "like" ? "is-active" : ""}
             data-cursor="LIKE"
           >
             <ThumbsUp size={17} />
@@ -326,18 +258,9 @@ export default function ArticleReader({
 
           <button
             type="button"
-            onClick={() =>
-              submit("dislike")
-            }
-            disabled={
-              isVoting ||
-              isLoadingReactions
-            }
-            className={
-              action === "dislike"
-                ? "is-active"
-                : ""
-            }
+            onClick={() => submit("dislike")}
+            disabled={isVoting || isLoadingReactions}
+            className={action === "dislike" ? "is-active" : ""}
             data-cursor="DISLIKE"
           >
             <ThumbsDown size={17} />
@@ -346,32 +269,21 @@ export default function ArticleReader({
         </div>
       </section>
 
-      <nav
-        className="article-neighbors"
-        aria-label="Adjacent documents"
-      >
+      <nav className="article-neighbors" aria-label="Adjacent documents">
         {previous ? (
-          <Link
-            href={`/blog/${previous.slug}`}
-          >
+          <Link href={`/blog/${previous.slug}`}>
             <ChevronLeft size={18} />
             <span>Previous</span>
-            <strong>
-              {previous.title}
-            </strong>
+            <strong>{previous.title}</strong>
           </Link>
         ) : (
           <span />
         )}
 
         {next ? (
-          <Link
-            href={`/blog/${next.slug}`}
-          >
+          <Link href={`/blog/${next.slug}`}>
             <span>Next</span>
-            <strong>
-              {next.title}
-            </strong>
+            <strong>{next.title}</strong>
             <ChevronRight size={18} />
           </Link>
         ) : (
@@ -380,9 +292,7 @@ export default function ArticleReader({
       </nav>
 
       <footer className="article-source">
-        <span>
-          Original content archive / V3.1
-        </span>
+        <span>Original content archive / V3.1</span>
 
         <Link
           href="https://www.lorenzopalaia.com/blog"

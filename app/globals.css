@@ -2812,6 +2812,20 @@ a:focus-visible {
   border-color: #181817;
   color: #f4f0e8;
 }
+.dark .notes-index a:hover {
+  background: var(--surface-panel);
+  color: var(--ink-strong);
+  padding-left: 13px;
+}
+.dark .notes-index a:hover span,
+.dark .notes-index a:hover em,
+.dark .notes-index a:hover h2 + p {
+  color: var(--ink-muted);
+}
+.dark .notes-index a:hover b,
+.dark .notes-index a:hover svg {
+  color: #ff7040;
+}
 
 @media (max-width: 919px) {
   .portfolio-shell {

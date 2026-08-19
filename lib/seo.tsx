@@ -34,8 +34,7 @@ export function getSEOTags({
   extraTags,
 }: SEOOptions = {}): Metadata {
   const resolvedTitle = title ?? config.about.title;
-  const resolvedDescription =
-    description ?? config.about.description;
+  const resolvedDescription = description ?? config.about.description;
 
   return {
     title: resolvedTitle,
@@ -49,12 +48,9 @@ export function getSEOTags({
     openGraph: {
       title:
         openGraph?.title ??
-        (typeof resolvedTitle === "string"
-          ? resolvedTitle
-          : config.about.name),
+        (typeof resolvedTitle === "string" ? resolvedTitle : config.about.name),
 
-      description:
-        openGraph?.description ?? resolvedDescription,
+      description: openGraph?.description ?? resolvedDescription,
 
       url:
         openGraph?.url ??
@@ -68,20 +64,15 @@ export function getSEOTags({
 
       type: openGraph?.type ?? "website",
 
-      ...(openGraph?.images
-        ? { images: openGraph.images }
-        : {}),
+      ...(openGraph?.images ? { images: openGraph.images } : {}),
     },
 
     twitter: {
       title:
         openGraph?.title ??
-        (typeof resolvedTitle === "string"
-          ? resolvedTitle
-          : config.about.name),
+        (typeof resolvedTitle === "string" ? resolvedTitle : config.about.name),
 
-      description:
-        openGraph?.description ?? resolvedDescription,
+      description: openGraph?.description ?? resolvedDescription,
 
       card: "summary_large_image",
       creator: "@lorenzopalaia",

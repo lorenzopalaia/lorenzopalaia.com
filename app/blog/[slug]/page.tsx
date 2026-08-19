@@ -4,14 +4,9 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getSEOTags } from "@/lib/seo";
 
-import {
-  articles,
-  getArticle,
-} from "@/content/articles";
+import { articles, getArticle } from "@/content/articles";
 
-import {
-  getArticleSource,
-} from "@/content/articles.server";
+import { getArticleSource } from "@/content/articles.server";
 
 import ArticleReader from "@/components/ArticleReader";
 
@@ -62,9 +57,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function BlogArticlePage({
-  params,
-}: PageProps) {
+export default async function BlogArticlePage({ params }: PageProps) {
   const { slug } = await params;
 
   const article = getArticle(slug);
@@ -87,9 +80,5 @@ export default async function BlogArticlePage({
     },
   });
 
-  return (
-    <ArticleReader slug={slug}>
-      {content}
-    </ArticleReader>
-  );
+  return <ArticleReader slug={slug}>{content}</ArticleReader>;
 }
