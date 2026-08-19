@@ -1,6 +1,6 @@
 "use server";
 
-import EmailTemplate from "@/components/EmailTemplate";
+import EmailTemplate from "@/components/home/EmailTemplate";
 
 import { Resend } from "resend";
 

@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowUpRight, Github, MoveUpRight } from "lucide-react";
 import Link from "next/link";
 import { CoordinateRail } from "@/components/CoordinateRail";
-import { ProjectArtifact } from "@/components/ProjectArtifact";
+import { ProjectArtifact } from "@/components/projects/ProjectArtifact";
 import { projects } from "@/data/portfolio";
 
 export default function ProjectDetail({ slug }: { slug: string }) {

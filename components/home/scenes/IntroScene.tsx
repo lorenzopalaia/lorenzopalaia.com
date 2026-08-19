@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { ArrowDownRight } from "lucide-react";
-import SceneLinkButton from "@/components/SceneLinkButton";
+import SceneLinkButton from "@/components/home/SceneLinkButton";
 import { CoordinateRail } from "@/components/CoordinateRail";
-import { TechnicalGraphic } from "@/components/TechnicalGraphic";
+import { TechnicalGraphic } from "@/components/home/TechnicalGraphic";
 
 export default function IntroScene() {
   return (

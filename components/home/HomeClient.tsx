@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { CursorSystem } from "@/components/CursorSystem";
 import { sceneNavigation } from "@/data/sceneNavigation";
 
 import HomeHeader from "./HomeHeader";
@@ -116,8 +115,6 @@ export default function HomeClient({ children }: HomeClientProps) {
 
   return (
     <div className="portfolio-shell">
-      <CursorSystem />
-
       <HomeHeader activeScene={activeScene} onNavigate={scrollToScene} />
 
       <div ref={viewportRef} className="scene-viewport">

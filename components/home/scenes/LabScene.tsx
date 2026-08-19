@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Sparkles } from "lucide-react";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
-import { TechnicalGraphic } from "@/components/TechnicalGraphic";
+import { TechnicalGraphic } from "@/components/home/TechnicalGraphic";
 import { labItems } from "@/data/portfolio";
 
 export default function LabScene() {

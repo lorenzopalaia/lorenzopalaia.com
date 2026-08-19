@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
-import { ProjectRail } from "@/components/ProjectRail";
+import { ProjectRail } from "@/components/projects/ProjectRail";
 import { projects } from "@/data/portfolio";
 
 export default function WorkScene() {

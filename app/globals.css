@@ -2318,6 +2318,284 @@ a:focus-visible {
   text-align: right;
 }
 
+/* =========================================================
+   NOT FOUND
+   ========================================================= */
+
+.not-found-page {
+  min-height: 100svh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  background: var(--surface-canvas);
+  color: var(--ink-strong);
+
+  padding: 0 6vw;
+}
+
+.not-found-header {
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--rule-subtle);
+}
+
+.not-found-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--ink-strong);
+
+  font: 500 10px/1 var(--font-mono);
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+}
+
+.not-found-back:hover {
+  color: var(--ring);
+}
+
+.not-found-main {
+  min-height: 0;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) minmax(280px, 0.75fr);
+
+  align-items: center;
+
+  gap: clamp(32px, 6vw, 100px);
+
+  padding: clamp(56px, 8vh, 120px) 0;
+}
+
+.not-found-meta {
+  align-self: start;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding-top: 10px;
+}
+
+.not-found-meta .detail-category {
+  color: var(--ring);
+}
+
+.not-found-code {
+  color: var(--ink-muted);
+
+  font: 500 10px/1 var(--font-mono);
+
+  letter-spacing: 0.08em;
+}
+
+.not-found-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+}
+
+.not-found-copy h1 {
+  margin: 0;
+
+  font: 500 clamp(64px, 8vw, 142px) / 0.88 var(--font-sans);
+
+  letter-spacing: -0.065em;
+  color: var(--ink-strong);
+}
+
+.not-found-copy p {
+  max-width: 430px;
+  margin: 34px 0 0;
+
+  color: var(--ink-muted);
+
+  font: 400 15px/1.55 var(--font-sans);
+}
+
+.not-found-actions {
+  margin-top: 34px;
+}
+
+.not-found-actions .text-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--ink-strong);
+}
+
+.not-found-actions .text-cta:hover {
+  color: var(--ring);
+}
+
+.not-found-diagram {
+  position: relative;
+  align-self: stretch;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.not-found-diagram svg {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+
+  overflow: visible;
+}
+
+.not-found-diagram > span {
+  position: absolute;
+  right: 0;
+  bottom: 18%;
+
+  color: var(--ink-muted);
+
+  font: 500 9px/1 var(--font-mono);
+
+  letter-spacing: 0.08em;
+}
+
+.not-found-grid {
+  stroke: var(--vector-muted);
+  stroke-width: 1;
+  opacity: 0.42;
+}
+
+.not-found-trace {
+  stroke: var(--vector-strong);
+  stroke-width: 2;
+}
+
+.not-found-trace--muted {
+  stroke: var(--vector-muted);
+  stroke-width: 1.5;
+}
+
+.not-found-node {
+  fill: var(--surface-canvas);
+  stroke: var(--vector-strong);
+  stroke-width: 2;
+}
+
+.not-found-node--accent {
+  fill: var(--ring);
+  stroke: var(--ring);
+}
+
+.not-found-signal {
+  stroke: var(--ring);
+  stroke-width: 3;
+}
+
+.not-found-footer {
+  min-height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid var(--rule-subtle);
+
+  color: var(--ink-muted);
+
+  font: 500 9px/1 var(--font-mono);
+
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* -----------------------------
+   Hide global theme switcher
+   ----------------------------- */
+
+html:has(.not-found-page) .theme-switcher {
+  display: none !important;
+}
+
+/* -----------------------------
+   Dark theme
+   ----------------------------- */
+
+.dark .not-found-back:hover,
+.dark .not-found-actions .text-cta:hover {
+  color: var(--ring);
+}
+
+/* -----------------------------
+   Mobile
+   ----------------------------- */
+
+@media (max-width: 919px) {
+  .not-found-page {
+    padding: 0 20px;
+  }
+
+  .not-found-header {
+    min-height: 64px;
+  }
+
+  .not-found-main {
+    grid-template-columns: 1fr;
+
+    gap: 44px;
+
+    padding: 48px 0 64px;
+  }
+
+  .not-found-meta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0;
+  }
+
+  .not-found-copy h1 {
+    font-size: clamp(56px, 15vw, 88px);
+  }
+
+  .not-found-copy p {
+    margin-top: 24px;
+  }
+
+  .not-found-diagram {
+    min-height: 230px;
+  }
+
+  .not-found-diagram > span {
+    right: auto;
+    left: 0;
+    bottom: 4%;
+  }
+
+  .not-found-footer {
+    min-height: 58px;
+    gap: 12px;
+
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 /* Ink mode carries the same Quiet Systems geometry into a high-contrast reading environment. */
 .dark body,
 .dark .portfolio-shell,

@@ -10,7 +10,7 @@ import Image from "next/image";
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { artifacts, recordGroups, skills } from "@/data/portfolio";
 
-import ArtifactLink from "@/components/ArtifactLink";
+import ArtifactLink from "@/components/experience/ArtifactLink";
 
 export default function Experience() {
   return (

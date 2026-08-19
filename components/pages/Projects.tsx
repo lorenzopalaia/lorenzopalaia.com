@@ -9,7 +9,7 @@ import Link from "next/link";
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { projects } from "@/data/portfolio";
 
-import ProjectsLiveData from "@/components/ProjectsLiveData";
+import ProjectsLiveData from "@/components/projects/ProjectsLiveData";
 
 export default function Projects() {
   return (

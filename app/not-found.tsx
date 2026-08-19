@@ -1,54 +1,128 @@
-"use client";
+import Link from "next/link";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, Home } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { CoordinateRail } from "@/components/CoordinateRail";
 
 export default function NotFound() {
-  const router = useRouter();
-
-  const handleGoHome = () => {
-    router.push("/");
-  };
-
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-      <Card className="mx-4 w-full max-w-lg border-0 bg-white/80 shadow-lg backdrop-blur-sm">
-        <CardContent className="pt-8 pb-8 text-center">
-          <div className="mb-6 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 animate-pulse rounded-full bg-red-100" />
-              <AlertCircle className="relative h-16 w-16 text-red-500" />
-            </div>
-          </div>
+    <main className="not-found-page">
+      <header className="not-found-header">
+        <Link href="/" className="not-found-back" data-cursor="BACK">
+          <ArrowLeft size={16} />
+          Back to the environment
+        </Link>
 
-          <h1 className="mb-2 text-4xl font-bold text-slate-900">404</h1>
+        <span className="scene-eyebrow">System / 404</span>
+      </header>
 
-          <h2 className="mb-4 text-xl font-semibold text-slate-700">
-            Page Not Found
-          </h2>
+      <section className="not-found-main">
+        <div className="not-found-meta">
+          <span className="detail-category">SIGNAL LOST</span>
 
-          <p className="mb-8 leading-relaxed text-slate-600">
-            Sorry, the page you are looking for doesn't exist.
+          <span className="not-found-code">ERR / 404</span>
+        </div>
+
+        <div className="not-found-copy">
+          <h1>
+            This system
             <br />
-            It may have been moved or deleted.
+            does not exist.
+          </h1>
+
+          <p>
+            The requested path could not be resolved inside the current
+            environment.
           </p>
 
-          <div
-            id="not-found-button-group"
-            className="flex flex-col justify-center gap-3 sm:flex-row"
-          >
-            <Button
-              onClick={handleGoHome}
-              className="rounded-lg bg-blue-600 px-6 py-2.5 text-white shadow-md transition-all duration-200 hover:bg-blue-700 hover:shadow-lg"
-            >
-              <Home className="mr-2 h-4 w-4" />
-              Go Home
-            </Button>
+          <div className="not-found-actions">
+            <Link href="/" className="text-cta" data-cursor="HOME">
+              Return to the environment
+              <ArrowUpRight size={17} />
+            </Link>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+        </div>
+
+        <div className="not-found-diagram" aria-hidden="true">
+          <svg viewBox="0 0 640 460" fill="none">
+            <path
+              className="not-found-grid"
+              d="
+                M20 80H620
+                M20 170H620
+                M20 260H620
+                M20 350H620
+
+                M100 20V440
+                M210 20V440
+                M320 20V440
+                M430 20V440
+                M540 20V440
+              "
+            />
+
+            <path
+              className="not-found-trace"
+              d="
+                M38 350
+                H125
+                V245
+                H225
+                V110
+                H340
+                V180
+                H460
+                V82
+                H602
+              "
+            />
+
+            <path
+              className="not-found-trace not-found-trace--muted"
+              d="
+                M38 125
+                H150
+                V185
+                H275
+                V300
+                H420
+              "
+            />
+
+            <circle className="not-found-node" cx="125" cy="350" r="7" />
+
+            <circle className="not-found-node" cx="340" cy="110" r="6" />
+
+            <circle
+              className="not-found-node not-found-node--accent"
+              cx="460"
+              cy="180"
+              r="9"
+            />
+
+            <circle className="not-found-node" cx="602" cy="82" r="6" />
+
+            <path
+              className="not-found-signal"
+              d="
+                M0 390
+                C85 345 120 420 205 392
+                C300 362 336 420 430 372
+                C495 340 540 358 640 310
+              "
+            />
+          </svg>
+
+          <span>NO ROUTE / NO SIGNAL</span>
+        </div>
+
+        <CoordinateRail index="404" label="SIGNAL / LOST" />
+      </section>
+
+      <footer className="not-found-footer">
+        <span>Lorenzo Palaia / Independent portfolio</span>
+
+        <span>The requested coordinate could not be mapped.</span>
+      </footer>
+    </main>
   );
 }

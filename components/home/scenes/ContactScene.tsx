@@ -2,7 +2,7 @@ import { Github } from "lucide-react";
 import Link from "next/link";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
-import { ContactPanel } from "@/components/ContactPanel";
+import { ContactPanel } from "@/components/home/ContactPanel";
 
 import SocialLinks from "@/components/home/SocialLinks";
 
