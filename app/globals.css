@@ -3,7 +3,6 @@
  * operate as a legible technical system; avoid card-template aesthetics and arbitrary effects.
  */
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
@@ -1032,6 +1031,7 @@ a:focus-visible {
   align-items: center;
   font: 400 9px/1 var(--font-mono);
   color: rgba(23, 23, 22, 0.72);
+  transition: opacity 180ms ease;
 }
 .scene-progress i {
   width: 76px;

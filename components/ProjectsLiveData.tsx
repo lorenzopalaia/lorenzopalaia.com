@@ -1,0 +1,169 @@
+"use client";
+
+import { Code2, GitFork, Github, Star } from "lucide-react";
+import Link from "next/link";
+
+import { useGithubRepos, useGithubUser } from "@/hooks/api/useGithub";
+
+import { useNpmDownloads } from "@/hooks/api/useNpmDownloads";
+
+type Variant = "metrics" | "repositories";
+
+interface ProjectsLiveDataProps {
+  variant: Variant;
+}
+
+function Metric({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div>
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </div>
+  );
+}
+
+export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
+  const githubUser = useGithubUser();
+
+  const githubRepos = useGithubRepos();
+
+  const animations = useNpmDownloads("@lorenzopalaia/tailwind-animations");
+
+  const patterns = useNpmDownloads("@lorenzopalaia/tailwind-hero-patterns");
+
+  const githubLoading = githubUser.isLoading || githubRepos.isLoading;
+
+  const githubError = githubUser.isError || githubRepos.isError;
+
+  const repos =
+    githubRepos.data?.map((repo) => ({
+      repository: repo.html_url,
+      name: repo.name,
+      description: repo.description,
+      languages: repo.languages,
+      stars: repo.stargazers_count,
+      forks: repo.forks_count,
+    })) ?? [];
+
+  const totalStars = repos.reduce((total, repo) => total + repo.stars, 0);
+
+  if (variant === "metrics") {
+    return (
+      <div className="work-metrics">
+        {githubLoading ? (
+          <span>Reading live GitHub signal…</span>
+        ) : githubError ? (
+          <span>Live GitHub data unavailable.</span>
+        ) : (
+          <>
+            <Metric
+              label="Public repos"
+              value={githubUser.data?.publicRepos ?? 0}
+            />
+
+            <Metric label="Followers" value={githubUser.data?.followers ?? 0} />
+
+            <Metric label="Stars in index" value={totalStars} />
+          </>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <section className="work-repositories">
+        <header>
+          <span className="scene-eyebrow">Repository field</span>
+
+          <span>
+            {githubLoading
+              ? "Loading live data"
+              : githubError
+                ? "Live data unavailable"
+                : `${repos.length} visible repositories`}
+          </span>
+        </header>
+
+        {githubError && (
+          <p className="work-source-error">
+            Live GitHub data is currently unavailable. Visit the public profile
+            directly for the source record.
+          </p>
+        )}
+
+        <div className="repo-list">
+          {repos.map((repo, index) => (
+            <article key={repo.repository}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+
+              <div>
+                <h2>{repo.name}</h2>
+
+                <p>{repo.description ?? "No public description supplied."}</p>
+
+                <em>{repo.languages.join(" / ") || "Unclassified"}</em>
+              </div>
+
+              <div className="repo-stats">
+                <span>
+                  <Star size={13} />
+                  {repo.stars}
+                </span>
+
+                <span>
+                  <GitFork size={13} />
+                  {repo.forks}
+                </span>
+              </div>
+
+              <Link
+                href={repo.repository}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${repo.name} on GitHub`}
+                data-cursor="OPEN"
+              >
+                <Github size={18} />
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="npm-strip">
+        <div>
+          <Code2 size={19} />
+
+          <span className="scene-eyebrow">NPM / last 12 months</span>
+        </div>
+
+        <div>
+          <Metric
+            label="Tailwind animations"
+            value={
+              animations.isLoading
+                ? "…"
+                : animations.data
+                  ? new Intl.NumberFormat("en").format(
+                      animations.data.downloads,
+                    )
+                  : "—"
+            }
+          />
+
+          <Metric
+            label="Hero patterns"
+            value={
+              patterns.isLoading
+                ? "…"
+                : patterns.data
+                  ? new Intl.NumberFormat("en").format(patterns.data.downloads)
+                  : "—"
+            }
+          />
+        </div>
+      </section>
+    </>
+  );
+}

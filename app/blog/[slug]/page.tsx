@@ -8,7 +8,7 @@ import { articles, getArticle } from "@/content/articles";
 
 import { getArticleSource } from "@/content/articles.server";
 
-import ArticleReader from "@/components/ArticleReader";
+import ArticleReader from "@/components/pages/ArticleReader";
 
 import { LatexCompiler } from "@/components/mdx/LatexCompiler";
 
@@ -48,11 +48,6 @@ export async function generateMetadata({
       description: article.summary,
       url: `https://www.lorenzopalaia.com/blog/${article.slug}`,
       type: "article",
-      images: [
-        {
-          url: article.image,
-        },
-      ],
     },
   });
 }

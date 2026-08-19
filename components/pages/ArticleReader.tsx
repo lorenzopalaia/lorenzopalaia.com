@@ -11,53 +11,18 @@ import {
   ThumbsUp,
 } from "lucide-react";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { unlockSignal } from "@/components/ExplorationSignals";
 
-import { getArticle, articles, formatArticleDate } from "@/content/articles";
+import { articles, formatArticleDate, getArticle } from "@/content/articles";
+
+import { useReactions, useSubmitReaction } from "@/hooks/api/useReactions";
 
 type Action = "like" | "dislike" | "none";
-
-interface ReactionData {
-  likes: number;
-  dislikes: number;
-}
-
-function ArticleSchematic({ topic }: { topic: string }) {
-  return (
-    <div className="article-schematic" aria-hidden="true">
-      <span>NOTE / {topic.toUpperCase()}</span>
-
-      <svg viewBox="0 0 460 310">
-        <path
-          className="article-schematic__grid"
-          d="M28 48H432M28 108H432M28 168H432M28 228H432M92 24V278M184 24V278M276 24V278M368 24V278"
-        />
-
-        <path
-          className="article-schematic__trace"
-          d="M35 226H113V165H184V85H273V128H350V60H424"
-        />
-
-        <path
-          className="article-schematic__trace article-schematic__trace--muted"
-          d="M35 93H114V125H224V222H424"
-        />
-
-        <circle cx="35" cy="226" r="5" />
-        <circle cx="184" cy="85" r="4" />
-        <circle cx="424" cy="60" r="6" />
-      </svg>
-
-      <em>
-        Source image preserved in archive / reading diagram generated for V3
-      </em>
-    </div>
-  );
-}
 
 export default function ArticleReader({
   slug,
@@ -70,14 +35,9 @@ export default function ArticleReader({
 
   const [action, setAction] = useState<Action>("none");
 
-  const [reaction, setReaction] = useState<ReactionData>({
-    likes: 0,
-    dislikes: 0,
-  });
+  const reactionQuery = useReactions(slug);
 
-  const [isLoadingReactions, setIsLoadingReactions] = useState(false);
-
-  const [isVoting, setIsVoting] = useState(false);
+  const reactionMutation = useSubmitReaction(slug);
 
   useEffect(() => {
     const storedAction = localStorage.getItem(
@@ -85,46 +45,13 @@ export default function ArticleReader({
     ) as Action | null;
 
     setAction(storedAction ?? "none");
+  }, [slug]);
 
+  useEffect(() => {
     if (article) {
       unlockSignal("blog-post");
     }
-  }, [article, slug]);
-
-  useEffect(() => {
-    if (!article) return;
-
-    const loadReactions = async () => {
-      setIsLoadingReactions(true);
-
-      try {
-        const response = await fetch(
-          `/api/like-dislike?postId=${encodeURIComponent(slug)}`,
-          {
-            method: "GET",
-            cache: "no-store",
-          },
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to load reactions");
-        }
-
-        const data = await response.json();
-
-        setReaction({
-          likes: Number(data.likes ?? 0),
-          dislikes: Number(data.dislikes ?? 0),
-        });
-      } catch (error) {
-        console.error("Failed to load article reactions:", error);
-      } finally {
-        setIsLoadingReactions(false);
-      }
-    };
-
-    loadReactions();
-  }, [article, slug]);
+  }, [article]);
 
   if (!article) {
     return (
@@ -142,37 +69,16 @@ export default function ArticleReader({
   const index = articles.findIndex((entry) => entry.slug === slug);
 
   const previous = articles[index + 1];
+
   const next = articles[index - 1];
 
   const submit = async (nextAction: Exclude<Action, "none">) => {
-    if (isVoting) return;
-
     const resolved = action === nextAction ? "none" : nextAction;
 
-    setIsVoting(true);
-
     try {
-      const response = await fetch("/api/like-dislike", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          postId: slug,
-          action: resolved,
-          previousAction: action,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error ?? "Unable to submit reaction.");
-      }
-
-      setReaction({
-        likes: Number(data.likes ?? 0),
-        dislikes: Number(data.dislikes ?? 0),
+      await reactionMutation.mutateAsync({
+        action: resolved,
+        previousAction: action,
       });
 
       setAction(resolved);
@@ -184,8 +90,6 @@ export default function ArticleReader({
       }
     } catch (error) {
       console.error("Failed to submit reaction:", error);
-    } finally {
-      setIsVoting(false);
     }
   };
 
@@ -248,23 +152,23 @@ export default function ArticleReader({
           <button
             type="button"
             onClick={() => submit("like")}
-            disabled={isVoting || isLoadingReactions}
+            disabled={reactionMutation.isPending || reactionQuery.isLoading}
             className={action === "like" ? "is-active" : ""}
             data-cursor="LIKE"
           >
             <ThumbsUp size={17} />
-            <b>{reaction.likes}</b>
+            <b>{reactionQuery.data?.likes ?? 0}</b>
           </button>
 
           <button
             type="button"
             onClick={() => submit("dislike")}
-            disabled={isVoting || isLoadingReactions}
+            disabled={reactionMutation.isPending || reactionQuery.isLoading}
             className={action === "dislike" ? "is-active" : ""}
             data-cursor="DISLIKE"
           >
             <ThumbsDown size={17} />
-            <b>{reaction.dislikes}</b>
+            <b>{reactionQuery.data?.dislikes ?? 0}</b>
           </button>
         </div>
       </section>
@@ -305,5 +209,38 @@ export default function ArticleReader({
         </Link>
       </footer>
     </main>
+  );
+}
+
+function ArticleSchematic({ topic }: { topic: string }) {
+  return (
+    <div className="article-schematic" aria-hidden="true">
+      <span>NOTE / {topic.toUpperCase()}</span>
+
+      <svg viewBox="0 0 460 310">
+        <path
+          className="article-schematic__grid"
+          d="M28 48H432M28 108H432M28 168H432M28 228H432M92 24V278M184 24V278M276 24V278M368 24V278"
+        />
+
+        <path
+          className="article-schematic__trace"
+          d="M35 226H113V165H184V85H273V128H350V60H424"
+        />
+
+        <path
+          className="article-schematic__trace article-schematic__trace--muted"
+          d="M35 93H114V125H224V222H424"
+        />
+
+        <circle cx="35" cy="226" r="5" />
+        <circle cx="184" cy="85" r="4" />
+        <circle cx="424" cy="60" r="6" />
+      </svg>
+
+      <em>
+        Source image preserved in archive / reading diagram generated for V3
+      </em>
+    </div>
   );
 }

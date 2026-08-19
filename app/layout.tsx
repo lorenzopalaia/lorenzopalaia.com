@@ -6,11 +6,21 @@ import { config } from "@/config";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import ErrorBoundary from "@/components/ErrorBoundary";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { ExplorationSignals } from "@/components/ExplorationSignals";
+import QueryProvider from "@/providers/QueryProvider";
+import ErrorBoundary from "@/components/ErrorBoundary";
+
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/700.css";
+import "@fontsource/manrope/800.css";
+
+import "@fontsource/dm-mono/400.css";
+import "@fontsource/dm-mono/500.css";
 
 export const metadata = getSEOTags({
   title: "Lorenzo Palaia | Software Engineer",
@@ -28,12 +38,14 @@ export default function RootLayout({
       <body>
         <ErrorBoundary>
           <ThemeProvider defaultTheme="light" switchable>
-            <TooltipProvider>
-              <Toaster />
-              <ThemeSwitcher />
-              <ExplorationSignals />
-              <main>{children}</main>
-            </TooltipProvider>
+            <QueryProvider>
+              <TooltipProvider>
+                <Toaster />
+                <ThemeSwitcher />
+                <ExplorationSignals />
+                <main>{children}</main>
+              </TooltipProvider>
+            </QueryProvider>
           </ThemeProvider>
         </ErrorBoundary>
         <Analytics />

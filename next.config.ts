@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
         hostname: "raw.githubusercontent.com",
       },
     ],
+    formats: ["image/avif", "image/webp"],
   },
   async headers() {
     return [

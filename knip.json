@@ -18,7 +18,9 @@
     "content/**/*.{js,jsx,ts,tsx}",
     "contexts/**/*.{js,jsx,ts,tsx}",
     "data/**/*.{js,jsx,ts,tsx}",
+    "hooks/**/*.{js,jsx,ts,tsx}",
     "lib/**/*.{js,jsx,ts,tsx}",
+    "providers/**/*.{js,jsx,ts,tsx}",
     "public/**/*",
     "scripts/**/*.{js,jsx,ts,tsx}",
     "config.{js,jsx,ts,tsx}"
