@@ -2297,6 +2297,26 @@ a:focus-visible {
 .npm-strip > div:last-child > div {
   min-width: 168px;
 }
+.article-content table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.article-content th,
+.article-content td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.article-content th {
+  font-weight: 600;
+}
+.article-content th:not(:first-child),
+.article-content td:not(:first-child) {
+  text-align: right;
+}
 
 /* Ink mode carries the same Quiet Systems geometry into a high-contrast reading environment. */
 .dark body,

@@ -1,5 +1,6 @@
 import { getSEOTags } from "@/lib/seo";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 import { config } from "@/config";
 
 import { Analytics } from "@vercel/analytics/next";

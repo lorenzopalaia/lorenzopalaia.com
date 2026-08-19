@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
+import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getSEOTags } from "@/lib/seo";
-import { articles, getArticle } from "@/content/articles";
-import { getArticleBody } from "@/content/articles.server";
+
+import {
+  articles,
+  getArticle,
+} from "@/content/articles";
+
+import {
+  getArticleSource,
+} from "@/content/articles.server";
+
 import ArticleReader from "@/components/ArticleReader";
+
+import { LatexCompiler } from "@/components/mdx/LatexCompiler";
 
 interface PageProps {
   params: Promise<{
@@ -36,25 +47,49 @@ export async function generateMetadata({
     title: `${article.title} — Lorenzo Palaia`,
     description: article.summary,
     canonicalUrlRelative: `/blog/${article.slug}`,
+    keywords: article.tags,
     openGraph: {
       title: article.title,
       description: article.summary,
       url: `https://www.lorenzopalaia.com/blog/${article.slug}`,
       type: "article",
+      images: [
+        {
+          url: article.image,
+        },
+      ],
     },
-    keywords: article.tags,
   });
 }
 
-export default async function BlogArticlePage({ params }: PageProps) {
+export default async function BlogArticlePage({
+  params,
+}: PageProps) {
   const { slug } = await params;
 
   const article = getArticle(slug);
-  const body = getArticleBody(slug);
+  const source = getArticleSource(slug);
 
-  if (!article || !body) {
+  if (!article || !source) {
     notFound();
   }
 
-  return <ArticleReader slug={slug} body={body} />;
+  const { content } = await compileMDX({
+    source,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
+    },
+    components: {
+      LatexCompiler,
+    },
+  });
+
+  return (
+    <ArticleReader slug={slug}>
+      {content}
+    </ArticleReader>
+  );
 }
