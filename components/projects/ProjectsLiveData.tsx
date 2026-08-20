@@ -24,7 +24,6 @@ function Metric({ label, value }: { label: string; value: string | number }) {
 
 export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
   const githubUser = useGithubUser();
-
   const githubRepos = useGithubRepos();
 
   const githubLoading = githubUser.isLoading || githubRepos.isLoading;
@@ -88,7 +87,15 @@ export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
             <span>{String(index + 1).padStart(2, "0")}</span>
 
             <div>
-              <h2>{project.name}</h2>
+              <h2>
+                <Link
+                  href={`/projects/${project.slug}`}
+                  data-cursor="VIEW"
+                  aria-label={`Open ${project.name} project detail`}
+                >
+                  {project.name}
+                </Link>
+              </h2>
 
               <p>{project.description}</p>
 
