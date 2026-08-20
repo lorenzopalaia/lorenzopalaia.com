@@ -60,10 +60,10 @@ export default function RootLayout({
                 <ThemeSwitcher />
                 <ExplorationSignals />
 
-                <main>
+                <div className="site-root">
                   <CursorSystem />
                   {children}
-                </main>
+                </div>
               </TooltipProvider>
             </QueryProvider>
           </ThemeProvider>

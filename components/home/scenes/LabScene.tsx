@@ -7,11 +7,11 @@ import { labItems } from "@/data/lab";
 
 export default function LabScene() {
   return (
-    <section id="lab" className="scene scene--lab">
+    <section id="lab" className="scene scene--lab" aria-labelledby="lab-title">
       <div className="lab-intro">
         <span className="scene-eyebrow">{getSceneIndex("lab")} / Lab</span>
 
-        <h2>Things I build to see what happens.</h2>
+        <h2 id="lab-title">Things I build to see what happens.</h2>
 
         <p>
           An experimental surface for curiosity, open source and applied
@@ -32,17 +32,17 @@ export default function LabScene() {
 
       <CoordinateRail scene="lab" />
 
-      <div className="lab-items">
+      <ul className="lab-items" aria-label="Selected lab experiments">
         {labItems.map((item) => (
-          <article key={item.code} className="lab-item" data-cursor="EXPLORE">
+          <li key={item.code} className="lab-item" data-cursor="EXPLORE">
             <span>{item.code}</span>
 
             <h3>{item.title}</h3>
 
             <p>{item.detail}</p>
-          </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

@@ -858,6 +858,9 @@ a:focus-visible {
   max-width: 930px;
   border-top: 1px solid rgba(244, 240, 232, 0.24);
   border-bottom: 1px solid rgba(244, 240, 232, 0.24);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .lab-item {
   min-height: 184px;
@@ -909,6 +912,9 @@ a:focus-visible {
 }
 .notes-list {
   border-top: 1px solid rgba(23, 23, 22, 0.25);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .notes-list a {
   min-height: 75px;

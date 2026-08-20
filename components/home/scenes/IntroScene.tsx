@@ -7,19 +7,24 @@ import { TechnicalGraphic } from "@/components/home/TechnicalGraphic";
 
 export default function IntroScene() {
   return (
-    <section id="intro" className="scene scene--intro">
+    <section
+      id="intro"
+      className="scene scene--intro"
+      aria-labelledby="intro-title"
+    >
+      {" "}
       <div className="scene-meta scene-meta--intro">
         <span>Rome / Italy</span>
         <span>Software engineer</span>
         <span>2026</span>
       </div>
-
       <div className="intro-copy">
         <p className="intro-kicker">
           Building software with a strong feeling for the details.
         </p>
 
-        <h1>
+        <h1 id="intro-title">
+          {" "}
           <span>Software</span>
           <span className="outline-word">engineer</span>
           <span>by nature.</span>
@@ -36,7 +41,6 @@ export default function IntroScene() {
           <ArrowDownRight size={20} />
         </SceneLinkButton>
       </div>
-
       <Image
         className="hero-asset"
         src="/assets/images/bg/intro.webp"
@@ -47,11 +51,8 @@ export default function IntroScene() {
         fetchPriority="high"
         loading="eager"
       />
-
       <TechnicalGraphic />
-
       <CoordinateRail scene="intro" />
-
       <div className="intro-side-note">
         An independent portfolio
         <br />

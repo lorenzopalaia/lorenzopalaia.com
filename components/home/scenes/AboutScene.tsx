@@ -4,15 +4,19 @@ import { skills } from "@/data/skills";
 
 export default function AboutScene() {
   return (
-    <section id="about" className="scene scene--about">
+    <section
+      id="about"
+      className="scene scene--about"
+      aria-labelledby="about-title"
+    >
+      {" "}
       <div className="about-aside">
         <span className="scene-eyebrow">{getSceneIndex("about")} / About</span>
 
         <span className="vertical-index">SYSTEM / PERSON</span>
       </div>
-
       <div className="about-copy">
-        <h2>
+        <h2 id="about-title">
           I like the point where a useful system becomes a good experience.
         </h2>
 
@@ -38,12 +42,10 @@ export default function AboutScene() {
           ))}
         </div>
       </div>
-
       <div className="about-mark">
         <span>LP</span>
         <i />
       </div>
-
       <CoordinateRail scene="about" />
     </section>
   );

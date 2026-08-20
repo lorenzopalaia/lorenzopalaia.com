@@ -127,9 +127,9 @@ export default function HomeClient({ children, scenes }: HomeClientProps) {
     <div className="portfolio-shell">
       <HomeHeader activeScene={activeSceneId} onNavigate={scrollToScene} />
 
-      <div ref={viewportRef} className="scene-viewport">
+      <main ref={viewportRef} className="scene-viewport" id="main-content">
         {children}
-      </div>
+      </main>
 
       <SceneProgress activeScene={activeSceneId} />
     </div>

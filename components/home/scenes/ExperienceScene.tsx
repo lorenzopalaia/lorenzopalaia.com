@@ -7,14 +7,19 @@ import { experienceTimeline } from "@/data/experience";
 
 export default function ExperienceScene() {
   return (
-    <section id="experience" className="scene scene--experience">
+    <section
+      id="experience"
+      className="scene scene--experience"
+      aria-labelledby="experience-title"
+    >
+      {" "}
       <div className="scene-heading scene-heading--dark">
         <div>
           <span className="scene-eyebrow">
             {getSceneIndex("experience")} / Experience
           </span>
 
-          <h2>Work, as a timeline of systems.</h2>
+          <h2 id="experience-title">Work, as a timeline of systems.</h2>
         </div>
 
         <p>
@@ -22,7 +27,6 @@ export default function ExperienceScene() {
           conventional CV.
         </p>
       </div>
-
       <div className="experience-track">
         {experienceTimeline.map((item, index) => (
           <article
@@ -48,9 +52,7 @@ export default function ExperienceScene() {
           </article>
         ))}
       </div>
-
       <CoordinateRail scene="experience" />
-
       <div className="scene-footer scene-footer--dark">
         <Link
           href="/experience"

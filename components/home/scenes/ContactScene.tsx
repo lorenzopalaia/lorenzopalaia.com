@@ -9,15 +9,19 @@ import { contact, previousVersions } from "@/data/contact";
 
 export default function ContactScene() {
   return (
-    <section id="contact" className="scene scene--contact">
+    <section
+      id="contact"
+      className="scene scene--contact"
+      aria-labelledby="contact-title"
+    >
+      {" "}
       <div className="contact-top">
         <span className="scene-eyebrow">Contact</span>
 
         <span>Available for interesting systems.</span>
       </div>
-
       <div className="contact-main">
-        <h2>
+        <h2 id="contact-title">
           Let’s make the next
           <br />
           <em>useful thing.</em>
@@ -40,7 +44,6 @@ export default function ContactScene() {
 
         <ContactPanel />
       </div>
-
       <footer className="site-footer">
         <span>© {new Date().getFullYear()} Lorenzo Palaia</span>
 
@@ -76,7 +79,6 @@ export default function ContactScene() {
           </Link>
         </div>
       </footer>
-
       <CoordinateRail scene="contact" />
     </section>
   );
