@@ -1,4 +1,5 @@
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Star } from "lucide-react";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,9 +8,53 @@ import { CoordinateRail } from "@/components/CoordinateRail";
 import { artifacts } from "@/data/artifacts";
 import { workExperience } from "@/data/experience";
 import { education } from "@/data/education";
-import { activities } from "@/data/activities";
+import { activities, type ActivityRecord } from "@/data/activities";
+
+import { getContributedRepository } from "@/lib/github/contributions";
 
 import ArtifactLink from "@/components/experience/ArtifactLink";
+
+type ActivityWithGithub = ActivityRecord & {
+  github?: {
+    username: string;
+    repoName: string;
+    stars: number;
+  };
+};
+
+async function enrichActivities(
+  records: ActivityRecord[],
+): Promise<ActivityWithGithub[]> {
+  return Promise.all(
+    records.map(async (activity) => {
+      if (!activity.repositoryId) {
+        return activity;
+      }
+
+      try {
+        const repository = await getContributedRepository(
+          activity.repositoryId,
+        );
+
+        return {
+          ...activity,
+          github: {
+            username: repository.username,
+            repoName: repository.repoName,
+            stars: repository.stars,
+          },
+        };
+      } catch (error) {
+        console.error(
+          `Failed to resolve GitHub repository for ${activity.company}:`,
+          error,
+        );
+
+        return activity;
+      }
+    }),
+  );
+}
 
 function RecordEntry({
   index,
@@ -20,6 +65,7 @@ function RecordEntry({
   href,
   image,
   links,
+  github,
 }: {
   index: number;
   title: string;
@@ -32,11 +78,21 @@ function RecordEntry({
     title: string;
     href: string;
   }[];
+  github?: {
+    username: string;
+    repoName: string;
+    stars: number;
+  };
 }) {
+  const githubHref = github
+    ? `https://github.com/${github.username}/${github.repoName}`
+    : undefined;
+
   return (
     <article className="record-entry">
       <div className="record-entry__axis">
         <span>{String(index).padStart(2, "0")}</span>
+
         <i />
       </div>
 
@@ -46,8 +102,34 @@ function RecordEntry({
         )}
 
         <div>
-          <h2>{title}</h2>
-          <p>{company}</p>
+          <h2>
+            {title}
+
+            {github && (
+              <span
+                className="record-entry__github-stars"
+                title={`${github.repoName} — GitHub stars`}
+              >
+                <Star size={13} />
+                {github.stars}
+              </span>
+            )}
+          </h2>
+
+          <p>
+            {github ? (
+              <Link
+                href={githubHref!}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="↗"
+              >
+                {company}
+              </Link>
+            ) : (
+              company
+            )}
+          </p>
         </div>
 
         <em>{period}</em>
@@ -59,9 +141,16 @@ function RecordEntry({
         ))}
       </ul>
 
-      {(href || links?.length) && (
+      {(href || links?.length || githubHref) && (
         <div className="record-entry__links">
-          {href && (
+          {githubHref && (
+            <Link href={githubHref} target="_blank" rel="noreferrer">
+              GitHub
+              <ArrowUpRight size={14} />
+            </Link>
+          )}
+
+          {href && href !== githubHref && (
             <Link href={href} target="_blank" rel="noreferrer">
               Visit source
               <ArrowUpRight size={14} />
@@ -85,7 +174,9 @@ function RecordEntry({
   );
 }
 
-export default function Experience() {
+export default async function Experience() {
+  const enrichedActivities = await enrichActivities(activities);
+
   return (
     <main className="record-page">
       <header className="detail-header">
@@ -191,11 +282,13 @@ export default function Experience() {
         <header>
           <span className="scene-eyebrow">03 / Additional activity</span>
 
-          <span>{String(activities.length).padStart(2, "0")} entries</span>
+          <span>
+            {String(enrichedActivities.length).padStart(2, "0")} entries
+          </span>
         </header>
 
         <div className="record-entries">
-          {activities.map((entry, index) => (
+          {enrichedActivities.map((entry, index) => (
             <RecordEntry
               key={`${entry.company}-${entry.title}-${index}`}
               index={index + 1}
@@ -206,6 +299,7 @@ export default function Experience() {
               href={entry.href}
               image={entry.image}
               links={entry.links}
+              github={entry.github}
             />
           ))}
         </div>

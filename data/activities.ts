@@ -7,7 +7,13 @@ export type ActivityRecord = {
   items: string[];
   href?: string;
   image: string;
+
+  /**
+   * GitHub repository ID used to resolve repository metadata
+   * for open-source contributions.
+   */
   repositoryId?: number;
+
   links?: {
     title: string;
     href: string;
@@ -29,6 +35,7 @@ export const activities: ActivityRecord[] = [
     href: "https://challenges.reply.com/challenges/creative/ai-music-contest/home/",
     image: "/assets/images/reply.webp",
   },
+
   {
     title: "Open Source Contribution",
     company: "Tailark",
@@ -41,6 +48,7 @@ export const activities: ActivityRecord[] = [
     image: "/assets/images/tailark.webp",
     repositoryId: 933694551,
   },
+
   {
     title: "Open Source Contribution",
     company: "Plane",
@@ -53,6 +61,7 @@ export const activities: ActivityRecord[] = [
     image: "/assets/images/plane.webp",
     repositoryId: 568098118,
   },
+
   {
     title: "Open Source Contribution",
     company: "JSON Crack",
@@ -63,6 +72,7 @@ export const activities: ActivityRecord[] = [
     image: "/assets/images/jsoncrack.webp",
     repositoryId: 453717720,
   },
+
   {
     title: "Open Source Contribution",
     company: "Filepizza",
@@ -75,6 +85,7 @@ export const activities: ActivityRecord[] = [
     image: "/assets/images/filepizza.webp",
     repositoryId: 31341340,
   },
+
   {
     title: "Open Source Contribution",
     company: "tweakcn",
@@ -87,6 +98,7 @@ export const activities: ActivityRecord[] = [
     image: "/assets/images/tweakcn.webp",
     repositoryId: 948174507,
   },
+
   {
     title: "Open Source Contribution",
     company: "Origin UI",
@@ -97,6 +109,7 @@ export const activities: ActivityRecord[] = [
     image: "/assets/images/origin-ui.webp",
     repositoryId: 872925629,
   },
+
   {
     title: "Open Source Contribution",
     company: "Maybe Finance",
@@ -110,6 +123,7 @@ export const activities: ActivityRecord[] = [
     image: "/assets/images/maybe.webp",
     repositoryId: 737898780,
   },
+
   {
     title: "<Code.Your.Future> AI Hackathon",
     company: "Randstad",
@@ -129,6 +143,7 @@ export const activities: ActivityRecord[] = [
       },
     ],
   },
+
   {
     title: "Computer Vision Software Engineer",
     company: "Sapienza Flight Team",

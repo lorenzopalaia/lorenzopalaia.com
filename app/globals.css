@@ -1888,6 +1888,19 @@ a:focus-visible {
   padding: 35px 0;
   border-bottom: 1px solid rgba(23, 23, 22, 0.18);
 }
+.record-entry__github-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 9px;
+  color: var(--ink-muted);
+  font: 500 9px/1 var(--font-mono);
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+}
+.record-entry__github-stars svg {
+  flex: 0 0 auto;
+}
 .record-entry__axis {
   color: #f05a24;
   font: 400 9px/1 var(--font-mono);
