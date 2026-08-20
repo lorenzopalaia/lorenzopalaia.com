@@ -1,152 +1,116 @@
-import { getPostBySlug, getPosts } from "@/lib/posts";
-import { getAuthor } from "@/lib/authors";
-import { formatDate } from "@/lib/utils";
-
-import { ArrowLeft } from "lucide-react";
-
-import Image from "next/image";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import Head from "next/head";
 
-import path from "path";
+import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
+import { getSEOTags } from "@/lib/seo";
 
-import MDXServer from "@/components/mdx/MDXServer";
+import { articles, getArticle } from "@/content/articles";
 
-import LikeDislikeButton from "@/components/blog/LikeDislikeButton";
+import { getArticleSource } from "@/content/articles.server";
 
-const blogDirectory = path.join(process.cwd(), "blog/posts");
+import ArticleReader from "@/components/pages/ArticleReader";
+import StructuredData from "@/components/seo/StructuredData";
 
-export async function generateStaticParams() {
-  const posts = await getPosts(blogDirectory);
-  const slugs = posts.map((post) => ({ slug: post.slug }));
+import { siteConfig } from "@/data/config";
+import { personStructuredData } from "@/data/structuredData";
 
-  return slugs;
+import { LatexCompiler } from "@/components/mdx/LatexCompiler";
+
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
 }
 
-function BackToBlog() {
-  return (
-    <Link
-      href="/blog"
-      className="text-muted-foreground hover:text-primary flex items-center gap-2"
-    >
-      <ArrowLeft />
-      Back to blog
-    </Link>
-  );
+export function generateStaticParams() {
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
 }
 
-export default async function Post(props: {
-  params: Promise<{ slug: string }>;
-}) {
-  const params = await props.params;
-  const { slug } = params;
-  const post = await getPostBySlug(blogDirectory, slug);
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
 
-  if (!post) {
+  const article = getArticle(slug);
+
+  if (!article) {
+    return getSEOTags({
+      title: "Document not found — Lorenzo Palaia",
+      description: "The requested field note could not be found.",
+      canonicalUrlRelative: `/blog/${slug}`,
+    });
+  }
+
+  return getSEOTags({
+    title: `${article.title} — Lorenzo Palaia`,
+    description: article.summary,
+    canonicalUrlRelative: `/blog/${article.slug}`,
+    openGraph: {
+      title: article.title,
+      description: article.summary,
+      url: `${siteConfig.url}/blog/${article.slug}`,
+      type: "article",
+    },
+  });
+}
+
+export default async function BlogArticlePage({ params }: PageProps) {
+  const { slug } = await params;
+
+  const article = getArticle(slug);
+  const source = getArticleSource(slug);
+
+  if (!article || !source) {
     notFound();
   }
 
-  const { metadata, content } = post;
-  const { title, image, publishedAt, tags, author: authorId } = metadata;
+  const articleUrl = `${siteConfig.url}/blog/${article.slug}`;
 
-  const author = authorId ? getAuthor({ id: authorId }) : null;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${articleUrl}#article`,
+    headline: article.title,
+    description: article.summary,
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
+    inLanguage: "en",
+    url: articleUrl,
+    author: {
+      "@id": `${siteConfig.url}/#person`,
+    },
+    publisher: {
+      "@id": `${siteConfig.url}/#person`,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
+    keywords: article.tags,
+  };
+
+  const { content } = await compileMDX({
+    source,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
+    },
+    components: {
+      LatexCompiler,
+    },
+  });
 
   return (
     <>
-      <Head>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `https://www.lorenzopalaia.com/blog/${slug}`,
-            },
-            headline: title,
-            image: [image],
-            datePublished: publishedAt,
-            dateModified: publishedAt,
-            author: {
-              "@type": "Person",
-              name: author?.name || "Lorenzo Palaia",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "Lorenzo Palaia",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://www.lorenzopalaia.com/images/avatar.webp",
-              },
-            },
-            description: content.slice(0, 150), // Assuming the first 150 characters as excerpt
-          })}
-        </script>
-      </Head>
-      <article className="mt-8 flex flex-col gap-8 pb-16">
-        <BackToBlog />
-        {image && (
-          <div className="relative mb-6 h-96 w-full overflow-hidden rounded-lg">
-            <Image
-              src={image}
-              alt={title || ""}
-              className="object-cover"
-              fill
-            />
-          </div>
-        )}
-        <header>
-          <h1 className="title text-5xl">{title}</h1>
-          <p className="text-muted-foreground my-2 text-xs">
-            {formatDate(publishedAt ?? "")}
-          </p>
-          <LikeDislikeButton postId={slug} className="justify-start" />
-          {author && (
-            <div className="mt-8 flex items-center justify-center gap-4">
-              <Image
-                src={author.avatar}
-                alt={author.name}
-                width={48}
-                height={48}
-                className="size-12 rounded-full"
-              />
-              <p className="text-md">
-                <span className="title">{author.name}</span>
-                <br />
-                <span className="text-muted-foreground">
-                  {author.occupation}
-                </span>
-              </p>
-            </div>
-          )}
-          <Separator className="mt-8 h-[2px]" />
-        </header>
-        <main className="prose dark:prose-invert">
-          <MDXServer source={content} />
-        </main>
-        <footer className="mt-8">
-          <Separator className="h-[2px]" />
-          <div className="flex items-center justify-between gap-2">
-            {tags && (
-              <div>
-                <p className="title text-muted-foreground mt-4">TAGS</p>
-                <div className="mt-2 mb-8 flex flex-wrap items-center gap-2">
-                  {tags.map((tag, index) => (
-                    <Link key={index} href={`/blog?search=${tag}`}>
-                      <Badge key={index}>{tag}</Badge>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-            <LikeDislikeButton postId={slug} />
-          </div>
-          <BackToBlog />
-        </footer>
-      </article>
+      <StructuredData data={structuredData} />
+
+      <ArticleReader slug={slug}>{content}</ArticleReader>
     </>
   );
 }

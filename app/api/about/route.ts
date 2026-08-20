@@ -1,24 +1,40 @@
-// ! Avoid using HTML tags inside config.tsx since it will be rendered as JSON
-// ! Move HTML tags into the components and use config.tsx only for textual content
-
 import { NextResponse } from "next/server";
 
-import { config, email } from "@/config";
+import { siteConfig } from "@/data/config";
+import { person } from "@/data/person";
+import { contact } from "@/data/contact";
+import { socials } from "@/data/socials";
+import { workExperience } from "@/data/experience";
+import { education } from "@/data/education";
+import { activities } from "@/data/activities";
+import { skills } from "@/data/skills";
+import { artifacts } from "@/data/artifacts";
+import { labItems } from "@/data/lab";
 
-const about = {
-  name: config.about.name,
-  title: config.about.title,
-  description: config.about.description,
-  location: config.about.location,
-  email,
-  socials: config.socials,
-  work: config.work,
-  education: config.education,
-  extra: config.extra,
-  skills: config.skills,
-};
+import { getPortfolioProjects } from "@/lib/github/projects";
 
 export async function GET() {
+  const projects = await getPortfolioProjects();
+
+  const about = {
+    person,
+    contact: {
+      email: siteConfig.email,
+      booking: {
+        label: contact.bookingLabel,
+        url: contact.bookingUrl,
+      },
+    },
+    socials,
+    experience: workExperience,
+    education,
+    activities,
+    skills,
+    artifacts,
+    projects,
+    lab: labItems,
+  };
+
   return NextResponse.json(about, {
     headers: {
       "Cache-Control": "s-maxage=3600, stale-while-revalidate",

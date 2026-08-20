@@ -1,45 +1,46 @@
 import { getSEOTags } from "@/lib/seo";
-import localFont from "next/font/local";
+
 import "./globals.css";
-import { config } from "@/config";
-
-import ThemeProvider from "@/providers/ThemeProvider";
-import ClickEffectProvider from "@/providers/ClickEffectProvider";
-
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-
-import { AchievementsProvider } from "@/contexts/AchievementsContext";
-
-import Header from "@/components/sections/Header";
-import Footer from "@/components/sections/Footer";
-
-import Overlay from "@/components/Overlay";
-import ParticlesBG from "@/components/ParticlesBG";
-import ScrollProgressBar from "@/components/ScrollProgressBar";
+import "katex/dist/katex.min.css";
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-const bricolageGrotesqueBold = localFont({
-  src: "./fonts/BricolageGrotesqueBold.ttf",
-  variable: "--font-bricolage-grotesque-bold",
-});
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { ExplorationSignals } from "@/components/ExplorationSignals";
+import QueryProvider from "@/providers/QueryProvider";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import { CursorSystem } from "@/components/CursorSystem";
+import StructuredData from "@/components/seo/StructuredData";
+
+import {
+  personStructuredData,
+  websiteStructuredData,
+} from "@/data/structuredData";
+
+import { siteConfig } from "@/data/config";
+
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/700.css";
+import "@fontsource/manrope/800.css";
+
+import "@fontsource/dm-mono/400.css";
+import "@fontsource/dm-mono/500.css";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [websiteStructuredData, personStructuredData],
+};
 
 export const metadata = getSEOTags({
-  title: "Lorenzo Palaia | Software Engineer",
+  title: `${siteConfig.name} | Software Engineer`,
+  description:
+    "Lorenzo Palaia is a Software Engineer and Technical Lead based in Rome, working across software development, artificial intelligence, developer tools and automation.",
   canonicalUrlRelative: "/",
-  keywords: config.settings.keywords,
 });
 
 export default function RootLayout({
@@ -48,33 +49,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesqueBold.variable} min-h-screen antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AchievementsProvider>
-            <ClickEffectProvider>
-              <TooltipProvider>
-                <Overlay />
-                <ParticlesBG>
-                  <ScrollProgressBar />
-                  <Header />
-                  <div className="relative z-10 container mx-auto max-w-3xl px-8">
-                    <main>{children}</main>
-                    <Footer />
-                  </div>
-                </ParticlesBG>
-                <Toaster />
-              </TooltipProvider>
-            </ClickEffectProvider>
-          </AchievementsProvider>
-        </ThemeProvider>
+    <html suppressHydrationWarning lang="en" data-scroll-behavior="smooth">
+      <body>
+        <ErrorBoundary>
+          <ThemeProvider>
+            <QueryProvider>
+              <Toaster />
+              <ThemeSwitcher />
+              <ExplorationSignals />
+
+              <div className="site-root">
+                <CursorSystem />
+                {children}
+              </div>
+            </QueryProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
+
+        <StructuredData data={structuredData} />
+
         <Analytics />
         <SpeedInsights />
       </body>

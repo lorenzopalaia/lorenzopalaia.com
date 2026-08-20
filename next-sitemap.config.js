@@ -1,93 +1,82 @@
+const SITE_URL = process.env.SITE_URL || "https://www.lorenzopalaia.com";
+
 const config = {
-  siteUrl: process.env.SITE_URL || "https://www.lorenzopalaia.com",
+  siteUrl: SITE_URL,
+
   generateRobotsTxt: true,
-  // * use this to exclude routes from the sitemap (i.e. a user dashboard). By default, NextJS app router metadata files are excluded (https://nextjs.org/docs/app/api-reference/file-conventions/metadata)
+
   exclude: [
+    "/privacy",
+    "/api/*",
+    "/_next/*",
+    "/404",
+    "/500",
+    "/_error",
+    "/_app",
+    "/_document",
     "/twitter-image.*",
     "/opengraph-image.*",
     "/icon.*",
     "/apple-icon.*",
     "/sitemap.xml",
     "/robots.txt",
-    "/api/*",
-    "/_next/*",
-    "/_error",
-    "/404",
-    "/500",
-    "/_app",
-    "/_document",
-    "/_error",
   ],
-  transform: (config, url) => {
+
+  transform: async (config, url) => {
     let priority = 0.5;
     let changefreq = "monthly";
 
     let path;
+
     try {
       const urlObj = new URL(url);
       path = urlObj.pathname;
-    } catch (e) {
+    } catch {
       path = url;
     }
 
     if (
       path === "" ||
       path === "/" ||
-      url === "https://www.lorenzopalaia.com" ||
-      url === "https://www.lorenzopalaia.com/"
+      url === SITE_URL ||
+      url === `${SITE_URL}/`
     ) {
       priority = 1.0;
       changefreq = "weekly";
-    } else if (path === "/blog" || url.endsWith("/blog")) {
-      priority = 0.8;
-      changefreq = "monthly";
     } else if (path === "/projects" || url.endsWith("/projects")) {
       priority = 0.8;
       changefreq = "monthly";
-    } else if (path === "/contact" || url.endsWith("/contact")) {
-      priority = 0.6;
-      changefreq = "yearly";
-    } else if (path.startsWith("/blog/") || url.includes("/blog/")) {
+    } else if (path.startsWith("/projects/")) {
       priority = 0.7;
       changefreq = "monthly";
+    } else if (path === "/blog" || url.endsWith("/blog")) {
+      priority = 0.8;
+      changefreq = "monthly";
+    } else if (path.startsWith("/blog/")) {
+      priority = 0.7;
+      changefreq = "monthly";
+    } else if (path === "/experience") {
+      priority = 0.7;
+      changefreq = "yearly";
     }
 
     return {
       loc: url,
-      changefreq: changefreq,
-      priority: priority,
-      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      changefreq,
+      priority,
+      lastmod: undefined,
       alternateRefs: config.alternateRefs ?? [],
     };
   },
+
   robotsTxtOptions: {
     policies: [
       {
         userAgent: "*",
         allow: "/",
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-      },
-      {
-        userAgent: "Googlebot-Image",
-        allow: "/",
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
-      },
-      {
-        userAgent: "Slurp", // Yahoo bot
-        allow: "/",
-      },
-      {
-        userAgent: "*",
-        disallow: ["/api/*", "/_next/*", "/privacy"],
+        disallow: ["/api/", "/_next/"],
       },
     ],
-    additionalSitemaps: [],
   },
 };
 

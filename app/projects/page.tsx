@@ -1,36 +1,14 @@
-"use client";
+import type { Metadata } from "next";
+import { getSEOTags } from "@/lib/seo";
+import Projects from "@/components/pages/Projects";
 
-import { config } from "@/config";
+export const metadata: Metadata = getSEOTags({
+  title: "Projects — Lorenzo Palaia",
+  description:
+    "Selected software projects by Lorenzo Palaia, spanning web development, developer tools, automation and experimental software.",
+  canonicalUrlRelative: "/projects",
+});
 
-import ProjectCard, { CardSkeleton } from "@/components/card/ProjectCard";
-
-import useGithubRepos from "@/hooks/useGithubRepos";
-
-export default function Projects() {
-  const { repos, isLoading } = useGithubRepos();
-
-  const projects = repos.sort((a, b) => {
-    return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
-  });
-
-  return (
-    <section className="my-16">
-      <h1 className="title text-2xl sm:text-3xl">Projects</h1>
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {isLoading ? (
-          <>
-            {Array.from({ length: config.featuredProjects.length }, (_, i) => (
-              <CardSkeleton key={i} />
-            ))}
-          </>
-        ) : (
-          <>
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
-          </>
-        )}
-      </div>
-    </section>
-  );
+export default function ProjectsPage() {
+  return <Projects />;
 }

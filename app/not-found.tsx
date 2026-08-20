@@ -1,38 +1,128 @@
-import { ArrowLeft } from "lucide-react";
-
 import Link from "next/link";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+
+import { CoordinateRail } from "@/components/CoordinateRail";
 
 export default function NotFound() {
   return (
-    <article className="mt-8 flex flex-col gap-8 pb-16">
-      <div className="min-h-screen px-4 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
-        <div className="mx-auto max-w-max">
-          <section className="sm:flex">
-            <p className="title text-muted-foreground text-6xl">404</p>
-            <div className="sm:ml-6">
-              <div className="sm:border-l sm:border-gray-200 sm:pl-6">
-                <h1 className="title sm:text-5xl">
-                  Oops! Page <i>not found</i>.
-                </h1>
-                <p className="text-muted-foreground mt-1 text-base">
-                  Looks like you took a <i>wrong turn</i>. Don&apos;t worry, it
-                  happens to the <i>best of us</i>. Let&apos;s get you back{" "}
-                  <i>on track</i>!
-                </p>
-              </div>
-              <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-                <Link
-                  href="/"
-                  className="text-muted-foreground hover:text-primary flex items-center gap-2"
-                >
-                  <ArrowLeft />
-                  Go back to safety
-                </Link>
-              </div>
-            </div>
-          </section>
+    <main className="not-found-page">
+      <header className="not-found-header">
+        <Link href="/" className="not-found-back" data-cursor="BACK">
+          <ArrowLeft size={16} />
+          Back to the environment
+        </Link>
+
+        <span className="scene-eyebrow">System / 404</span>
+      </header>
+
+      <section className="not-found-main">
+        <div className="not-found-meta">
+          <span className="detail-category">SIGNAL LOST</span>
+
+          <span className="not-found-code">ERR / 404</span>
         </div>
-      </div>
-    </article>
+
+        <div className="not-found-copy">
+          <h1>
+            This system
+            <br />
+            does not exist.
+          </h1>
+
+          <p>
+            The requested path could not be resolved inside the current
+            environment.
+          </p>
+
+          <div className="not-found-actions">
+            <Link href="/" className="text-cta" data-cursor="HOME">
+              Return to the environment
+              <ArrowUpRight size={17} />
+            </Link>
+          </div>
+        </div>
+
+        <div className="not-found-diagram" aria-hidden="true">
+          <svg viewBox="0 0 640 460" fill="none">
+            <path
+              className="not-found-grid"
+              d="
+                M20 80H620
+                M20 170H620
+                M20 260H620
+                M20 350H620
+
+                M100 20V440
+                M210 20V440
+                M320 20V440
+                M430 20V440
+                M540 20V440
+              "
+            />
+
+            <path
+              className="not-found-trace"
+              d="
+                M38 350
+                H125
+                V245
+                H225
+                V110
+                H340
+                V180
+                H460
+                V82
+                H602
+              "
+            />
+
+            <path
+              className="not-found-trace not-found-trace--muted"
+              d="
+                M38 125
+                H150
+                V185
+                H275
+                V300
+                H420
+              "
+            />
+
+            <circle className="not-found-node" cx="125" cy="350" r="7" />
+
+            <circle className="not-found-node" cx="340" cy="110" r="6" />
+
+            <circle
+              className="not-found-node not-found-node--accent"
+              cx="460"
+              cy="180"
+              r="9"
+            />
+
+            <circle className="not-found-node" cx="602" cy="82" r="6" />
+
+            <path
+              className="not-found-signal"
+              d="
+                M0 390
+                C85 345 120 420 205 392
+                C300 362 336 420 430 372
+                C495 340 540 358 640 310
+              "
+            />
+          </svg>
+
+          <span>NO ROUTE / NO SIGNAL</span>
+        </div>
+
+        <CoordinateRail coordinate="notFound" />
+      </section>
+
+      <footer className="not-found-footer">
+        <span>Lorenzo Palaia / Independent portfolio</span>
+
+        <span>The requested coordinate could not be mapped.</span>
+      </footer>
+    </main>
   );
 }

@@ -1,7 +1,22 @@
-import { config } from "../config.ts";
+import { socials } from "../data/socials.ts";
+import { contact, previousVersions } from "../data/contact.ts";
+import { workExperience } from "../data/experience.ts";
+import { education } from "../data/education.ts";
+import { activities } from "../data/activities.ts";
+import { localProjects } from "../data/projects.ts";
+
+const sourceData = {
+  socials,
+  contact,
+  previousVersions,
+  workExperience,
+  education,
+  activities,
+  localProjects,
+};
 
 const whitelist = new Set(
-  (config.socials || [])
+  socials
     .filter((social) => ["LinkedIn", "X"].includes(social.name))
     .map((social) => social.href),
 );
@@ -16,8 +31,14 @@ function extractUrls(cfg) {
       typeof obj === "string" &&
       (obj.startsWith("http://") || obj.startsWith("https://"))
     ) {
-      if (obj.includes("mailto:") || obj.startsWith("/") || whitelist.has(obj))
+      if (
+        obj.includes("mailto:") ||
+        obj.startsWith("/") ||
+        whitelist.has(obj)
+      ) {
         return;
+      }
+
       urls.add(obj);
     } else if (Array.isArray(obj)) {
       obj.forEach(recursiveExtract);
@@ -25,6 +46,7 @@ function extractUrls(cfg) {
       if (obj.href && typeof obj.href === "string") {
         recursiveExtract(obj.href);
       }
+
       if (obj.html_url && typeof obj.html_url === "string") {
         recursiveExtract(obj.html_url);
       }
@@ -34,11 +56,13 @@ function extractUrls(cfg) {
   };
 
   recursiveExtract(cfg);
+
   return Array.from(urls);
 }
 
 async function checkUrl(url) {
   const headController = new AbortController();
+
   const headTimeout = setTimeout(() => headController.abort(), 10000);
 
   try {
@@ -47,75 +71,127 @@ async function checkUrl(url) {
       signal: headController.signal,
       redirect: "follow",
     });
+
     clearTimeout(headTimeout);
 
     if (!response.ok && response.status === 405) {
       const getController = new AbortController();
+
       const getTimeout = setTimeout(() => getController.abort(), 15000);
+
       try {
         response = await fetch(url, {
           method: "GET",
           signal: getController.signal,
           redirect: "follow",
         });
+
         clearTimeout(getTimeout);
       } catch (getError) {
         clearTimeout(getTimeout);
+
         if (getError.name === "AbortError") {
-          return { url, ok: false, error: "Timeout GET" };
+          return {
+            url,
+            ok: false,
+            error: "Timeout GET",
+          };
         }
 
-        return { url, ok: false, error: getError.message };
+        return {
+          url,
+          ok: false,
+          error: getError.message,
+        };
       }
     }
 
     if (!response.ok) {
-      return { url, ok: false, status: response.status };
+      return {
+        url,
+        ok: false,
+        status: response.status,
+      };
     }
 
     process.stdout.write(".");
-    return { url, ok: true, status: response.status };
+
+    return {
+      url,
+      ok: true,
+      status: response.status,
+    };
   } catch (error) {
     clearTimeout(headTimeout);
 
     if (error.name === "AbortError") {
       const getController = new AbortController();
+
       const getTimeout = setTimeout(() => getController.abort(), 15000);
+
       try {
         const response = await fetch(url, {
           method: "GET",
           signal: getController.signal,
           redirect: "follow",
         });
+
         clearTimeout(getTimeout);
+
         if (!response.ok) {
-          return { url, ok: false, status: response.status };
-        }
-        process.stdout.write(".");
-        return { url, ok: true, status: response.status };
-      } catch (getError) {
-        clearTimeout(getTimeout);
-        if (getError.name === "AbortError") {
-          return { url, ok: false, error: "Timeout GET after Timeout HEAD" };
+          return {
+            url,
+            ok: false,
+            status: response.status,
+          };
         }
 
-        return { url, ok: false, error: getError.message };
+        process.stdout.write(".");
+
+        return {
+          url,
+          ok: true,
+          status: response.status,
+        };
+      } catch (getError) {
+        clearTimeout(getTimeout);
+
+        if (getError.name === "AbortError") {
+          return {
+            url,
+            ok: false,
+            error: "Timeout GET after Timeout HEAD",
+          };
+        }
+
+        return {
+          url,
+          ok: false,
+          error: getError.message,
+        };
       }
     }
 
-    return { url, ok: false, error: error.message };
+    return {
+      url,
+      ok: false,
+      error: error.message,
+    };
   }
 }
 
 async function main() {
-  console.log("🔍 Checking links in config.js...");
-  const urlsToCheck = extractUrls(config);
+  console.log("🔍 Checking links in site data...");
+
+  const urlsToCheck = extractUrls(sourceData);
+
   const brokenLinks = [];
 
   if (urlsToCheck.length === 0) {
     console.log(
       "✅ No external links found to check (after whitelist filtering).",
     );
+
     process.exit(0);
   }
 
@@ -124,6 +200,7 @@ async function main() {
   );
 
   const results = await Promise.allSettled(urlsToCheck.map(checkUrl));
+
   console.log("\n");
 
   results.forEach((result) => {
@@ -137,38 +214,42 @@ async function main() {
       console.error(`\n❌ Promise rejected unexpectedly: ${result.reason}`);
 
       const url = result.reason?.url || "Unknown URL (Promise Rejected)";
+
       brokenLinks.push({
-        url: url,
+        url,
         error:
           result.reason?.message ||
           String(result.reason) ||
-          "Unknown rejection reason",
+          "Unknown rejection",
       });
     }
   });
 
   if (brokenLinks.length > 0) {
     console.error("\n💥 Found broken or problematic links:");
+
     brokenLinks.forEach((link) => {
       const reason = link.status
         ? `Status: ${link.status}`
         : `Error: ${link.error || "Unknown error"}`;
+
       console.error(`  - ${link.url} (${reason})`);
     });
+
     console.error(
       `\nBuild failed due to ${brokenLinks.length} broken link(s).`,
     );
+
     process.exit(1);
-  } else {
-    console.log("✅ All checked external links are working!");
-    process.exit(0);
   }
+
+  console.log("✅ All checked external links are working!");
+
+  process.exit(0);
 }
 
 main().catch((error) => {
-  console.error(
-    "\n🚨 An unexpected error occurred during the link checking process:",
-    error,
-  );
+  console.error("\n🚨 An unexpected error occurred:", error);
+
   process.exit(1);
 });

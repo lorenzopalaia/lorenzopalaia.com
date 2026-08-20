@@ -1,7 +1,30 @@
-import "katex/dist/katex.min.css";
+import katex from "katex";
 
-import Latex from "react-latex-next";
+interface LatexCompilerProps {
+  formula: string;
+}
 
-export default function LatexCompiler({ formula }: { formula: string }) {
-  return <Latex>{formula}</Latex>;
+export function LatexCompiler({ formula }: LatexCompilerProps) {
+  const value = formula.trim();
+
+  const displayMode = value.startsWith("$$") && value.endsWith("$$");
+
+  const latex = displayMode
+    ? value.slice(2, -2).trim()
+    : value.replace(/^\$+/, "").replace(/\$+$/, "").trim();
+
+  const html = katex.renderToString(latex, {
+    displayMode,
+    throwOnError: false,
+    strict: false,
+  });
+
+  return (
+    <span
+      className={displayMode ? "mdx-latex mdx-latex--display" : "mdx-latex"}
+      dangerouslySetInnerHTML={{
+        __html: html,
+      }}
+    />
+  );
 }
