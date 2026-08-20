@@ -1,13 +1,10 @@
 import { notFound } from "next/navigation";
-
 import type { Metadata } from "next";
-
 import { getSEOTags } from "@/lib/seo";
 import {
   getPortfolioProject,
   getPortfolioProjects,
 } from "@/lib/github/projects";
-
 import ProjectDetail from "@/components/pages/ProjectDetail";
 
 interface PageProps {
@@ -34,26 +31,20 @@ export async function generateMetadata({
   if (!project) {
     return getSEOTags({
       title: "Project not found — Lorenzo Palaia",
+      description: "The requested project could not be found.",
       canonicalUrlRelative: `/projects/${slug}`,
+      noIndex: true,
     });
   }
 
   return getSEOTags({
     title: `${project.name} — Lorenzo Palaia`,
-
     description: project.description,
-
     canonicalUrlRelative: `/projects/${project.slug}`,
-
-    keywords: project.technologies,
-
     openGraph: {
-      title: project.name,
-
+      title: `${project.name} — Lorenzo Palaia`,
       description: project.description,
-
       url: `https://www.lorenzopalaia.com/projects/${project.slug}`,
-
       type: "website",
     },
   });

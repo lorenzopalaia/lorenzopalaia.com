@@ -1,11 +1,11 @@
-import Experience from "@/components/pages/Experience";
 import type { Metadata } from "next";
 import { getSEOTags } from "@/lib/seo";
+import Experience from "@/components/pages/Experience";
 
 export const metadata: Metadata = getSEOTags({
   title: "Experience — Lorenzo Palaia",
   description:
-    "A timeline of work, collaborations and roles, arranged as a path rather than a conventional CV.",
+    "Professional experience, education, open source contributions and technical work by Lorenzo Palaia, Software Engineer and Technical Lead.",
   canonicalUrlRelative: "/experience",
 });
 

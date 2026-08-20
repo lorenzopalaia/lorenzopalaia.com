@@ -1,4 +1,5 @@
 import { getSEOTags } from "@/lib/seo";
+
 import "./globals.css";
 import "katex/dist/katex.min.css";
 
@@ -15,7 +16,6 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import { CursorSystem } from "@/components/CursorSystem";
 
 import { siteConfig } from "@/data/config";
-import { seoKeywords } from "@/data/seo";
 
 import "@fontsource/manrope/400.css";
 import "@fontsource/manrope/500.css";
@@ -27,9 +27,10 @@ import "@fontsource/dm-mono/400.css";
 import "@fontsource/dm-mono/500.css";
 
 export const metadata = getSEOTags({
-  title: `${siteConfig.name} | Software Engineer`,
+  title: "Lorenzo Palaia — Software Engineer",
+  description:
+    "Lorenzo Palaia is a Software Engineer and Technical Lead based in Rome, working across software development, artificial intelligence, developer tools and automation.",
   canonicalUrlRelative: "/",
-  keywords: seoKeywords,
 });
 
 export default function RootLayout({
@@ -47,7 +48,6 @@ export default function RootLayout({
                 <Toaster />
                 <ThemeSwitcher />
                 <ExplorationSignals />
-
                 <main>
                   <CursorSystem />
                   {children}
@@ -56,7 +56,6 @@ export default function RootLayout({
             </QueryProvider>
           </ThemeProvider>
         </ErrorBoundary>
-
         <Analytics />
         <SpeedInsights />
       </body>

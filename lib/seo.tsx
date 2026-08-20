@@ -6,7 +6,6 @@ import { person } from "@/data/person";
 type SEOOptions = {
   title?: Metadata["title"];
   description?: string;
-  keywords?: string[];
   openGraph?: {
     title?: string;
     description?: string;
@@ -19,6 +18,7 @@ type SEOOptions = {
       : never;
   };
   canonicalUrlRelative?: string;
+  noIndex?: boolean;
   extraTags?: Record<string, string>;
 };
 
@@ -27,66 +27,70 @@ const SITE_URL =
     ? "http://localhost:3000"
     : siteConfig.url;
 
+function resolveTitle(title: Metadata["title"]) {
+  if (typeof title === "string") {
+    return title;
+  }
+
+  return person.name;
+}
+
 export function getSEOTags({
   title,
   description,
-  keywords,
   openGraph,
   canonicalUrlRelative,
+  noIndex = false,
   extraTags,
 }: SEOOptions = {}): Metadata {
-  const resolvedTitle = title ?? person.title;
+  const resolvedTitle = title ?? `${person.name} — Software Engineer`;
 
   const resolvedDescription = description ?? person.description;
+
+  const resolvedTitleString = resolveTitle(resolvedTitle);
+
+  const canonicalUrl = canonicalUrlRelative
+    ? `${SITE_URL}${canonicalUrlRelative}`
+    : SITE_URL;
 
   return {
     title: resolvedTitle,
     description: resolvedDescription,
-    keywords: keywords ?? [person.name],
-
-    applicationName: person.name,
-
+    applicationName: siteConfig.name,
     metadataBase: new URL(`${SITE_URL}/`),
-
-    openGraph: {
-      title:
-        openGraph?.title ??
-        (typeof resolvedTitle === "string" ? resolvedTitle : person.name),
-
-      description: openGraph?.description ?? resolvedDescription,
-
-      url:
-        openGraph?.url ??
-        (canonicalUrlRelative
-          ? `${SITE_URL}${canonicalUrlRelative}`
-          : SITE_URL),
-
-      siteName: person.name,
-
-      locale: "en_US",
-
-      type: openGraph?.type ?? "website",
-
-      ...(openGraph?.images ? { images: openGraph.images } : {}),
-    },
-
-    twitter: {
-      title:
-        openGraph?.title ??
-        (typeof resolvedTitle === "string" ? resolvedTitle : person.name),
-
-      description: openGraph?.description ?? resolvedDescription,
-
-      card: "summary_large_image",
-      creator: "@lorenzopalaia",
-    },
-
     ...(canonicalUrlRelative && {
       alternates: {
         canonical: canonicalUrlRelative,
       },
     }),
-
+    robots: noIndex
+      ? {
+          index: false,
+          follow: false,
+        }
+      : {
+          index: true,
+          follow: true,
+        },
+    openGraph: {
+      title: openGraph?.title ?? resolvedTitleString,
+      description: openGraph?.description ?? resolvedDescription,
+      url: openGraph?.url ?? canonicalUrl,
+      siteName: siteConfig.name,
+      locale: "en_US",
+      type: openGraph?.type ?? "website",
+      ...(openGraph?.images
+        ? {
+            images: openGraph.images,
+          }
+        : {}),
+    },
+    twitter: {
+      title: openGraph?.title ?? resolvedTitleString,
+      description: openGraph?.description ?? resolvedDescription,
+      card: "summary_large_image",
+      creator: "@lorenzopalaia",
+    },
     ...extraTags,
   };
 }

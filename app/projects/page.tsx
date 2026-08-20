@@ -1,11 +1,11 @@
-import Projects from "@/components/pages/Projects";
 import type { Metadata } from "next";
 import { getSEOTags } from "@/lib/seo";
+import Projects from "@/components/pages/Projects";
 
 export const metadata: Metadata = getSEOTags({
   title: "Projects — Lorenzo Palaia",
   description:
-    "A collection of personal and professional projects, showcasing a range of skills and technologies.",
+    "Selected software projects by Lorenzo Palaia, spanning web development, developer tools, automation and experimental software.",
   canonicalUrlRelative: "/projects",
 });
 

@@ -3,13 +3,9 @@ import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getSEOTags } from "@/lib/seo";
-
 import { articles, getArticle } from "@/content/articles";
-
 import { getArticleSource } from "@/content/articles.server";
-
 import ArticleReader from "@/components/pages/ArticleReader";
-
 import { LatexCompiler } from "@/components/mdx/LatexCompiler";
 
 interface PageProps {
@@ -34,7 +30,9 @@ export async function generateMetadata({
   if (!article) {
     return getSEOTags({
       title: "Document not found — Lorenzo Palaia",
+      description: "The requested field note could not be found.",
       canonicalUrlRelative: `/blog/${slug}`,
+      noIndex: true,
     });
   }
 
@@ -42,9 +40,8 @@ export async function generateMetadata({
     title: `${article.title} — Lorenzo Palaia`,
     description: article.summary,
     canonicalUrlRelative: `/blog/${article.slug}`,
-    keywords: article.tags,
     openGraph: {
-      title: article.title,
+      title: `${article.title} — Lorenzo Palaia`,
       description: article.summary,
       url: `https://www.lorenzopalaia.com/blog/${article.slug}`,
       type: "article",
@@ -56,6 +53,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const { slug } = await params;
 
   const article = getArticle(slug);
+
   const source = getArticleSource(slug);
 
   if (!article || !source) {
