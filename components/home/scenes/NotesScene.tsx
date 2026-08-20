@@ -2,13 +2,16 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
+import { getSceneIndex } from "@/data/sceneNavigation";
 import { articles } from "@/content/articles";
 
 export default function NotesScene() {
   return (
     <section id="notes" className="scene scene--notes">
       <div className="notes-intro">
-        <span className="scene-eyebrow">05 / Field notes</span>
+        <span className="scene-eyebrow">
+          {getSceneIndex("notes")} / Field notes
+        </span>
 
         <h2>Technical curiosity, put into words.</h2>
 
@@ -32,7 +35,7 @@ export default function NotesScene() {
         ))}
       </div>
 
-      <CoordinateRail index="05" label="NOTES / INDEX" />
+      <CoordinateRail scene="notes" />
     </section>
   );
 }

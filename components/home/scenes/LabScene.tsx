@@ -2,13 +2,14 @@ import Image from "next/image";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { TechnicalGraphic } from "@/components/home/TechnicalGraphic";
+import { getSceneIndex } from "@/data/sceneNavigation";
 import { labItems } from "@/data/portfolio";
 
 export default function LabScene() {
   return (
     <section id="lab" className="scene scene--lab">
       <div className="lab-intro">
-        <span className="scene-eyebrow">04 / Lab</span>
+        <span className="scene-eyebrow">{getSceneIndex("lab")} / Lab</span>
 
         <h2>Things I build to see what happens.</h2>
 
@@ -29,7 +30,7 @@ export default function LabScene() {
 
       <TechnicalGraphic variant="lab" />
 
-      <CoordinateRail index="04" label="LAB / EXPERIMENT" dark />
+      <CoordinateRail scene="lab" />
 
       <div className="lab-items">
         {labItems.map((item) => (

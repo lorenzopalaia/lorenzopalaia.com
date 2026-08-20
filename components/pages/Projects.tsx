@@ -1,8 +1,3 @@
-/**
- * Quiet Systems style reminder: live project data is presented as an inspectable
- * repository field, not a dashboard card wall.
- */
-
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -39,9 +34,8 @@ export default function Projects() {
           </p>
         </div>
 
-        <CoordinateRail index="02" label="WORK / LIVE INDEX" />
+        <CoordinateRail coordinate="projectsIndex" />
 
-        {/* GitHub metrics */}
         <ProjectsLiveData variant="metrics" />
       </section>
 
@@ -63,7 +57,6 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* GitHub repositories + NPM telemetry */}
       <ProjectsLiveData variant="repositories" />
     </main>
   );

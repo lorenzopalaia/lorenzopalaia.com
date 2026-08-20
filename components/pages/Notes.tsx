@@ -1,10 +1,5 @@
 "use client";
 
-/**
- * Quiet Systems style reminder: Notes is an indexed document system with lightweight search,
- * retaining every real entry rather than compressing the archive into a marketing list.
- */
-
 import { ArrowLeft, ArrowRight, Search, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
@@ -93,7 +88,7 @@ export default function Notes() {
 
         <h1>Notes from building, learning, and looking closely.</h1>
 
-        <CoordinateRail index="05" label="FIELD / ARCHIVE" />
+        <CoordinateRail coordinate="notesIndex" />
 
         <label className="notes-search">
           <Search size={17} />
@@ -131,8 +126,6 @@ export default function Notes() {
             (article) => article.slug === note.slug,
           );
 
-          // First article = highest number
-          // Last article = 01
           const index = articles.length - originalIndex;
 
           return (

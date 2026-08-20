@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { CoordinateRail } from "@/components/CoordinateRail";
 import GithubStats from "@/components/home/GithubStats";
 import { ProjectRail } from "@/components/projects/ProjectRail";
-
+import { getSceneIndex } from "@/data/sceneNavigation";
 import { projects } from "@/data/portfolio";
 
 export default function WorkScene() {
@@ -14,7 +14,9 @@ export default function WorkScene() {
     <section id="work" className="scene scene--work">
       <div className="scene-heading">
         <div>
-          <span className="scene-eyebrow">02 / Selected work</span>
+          <span className="scene-eyebrow">
+            {getSceneIndex("work")} / Selected work
+          </span>
 
           <h2>Useful things, built to be explored.</h2>
         </div>
@@ -38,7 +40,7 @@ export default function WorkScene() {
 
       <ProjectRail projects={projects} />
 
-      <CoordinateRail index="02" label="WORK / 04 OBJECTS" />
+      <CoordinateRail scene="work" />
 
       <div className="scene-footer">
         <Link href="/projects" data-cursor="INDEX">

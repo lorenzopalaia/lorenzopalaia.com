@@ -2,12 +2,22 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { sceneNavigation } from "@/data/sceneNavigation";
+import type { SceneId } from "@/data/sceneNavigation";
 
 import HomeHeader from "./HomeHeader";
 import SceneProgress from "./SceneProgress";
 
-const scenes = sceneNavigation.map((scene) => scene.id);
+interface HomeScene {
+  readonly id: SceneId;
+  readonly label: string;
+  readonly coordinateLabel: string;
+  readonly dark?: boolean;
+}
+
+interface HomeClientProps {
+  children: React.ReactNode;
+  scenes: readonly HomeScene[];
+}
 
 function scrollToScene(id: string) {
   document.getElementById(id)?.scrollIntoView({
@@ -17,14 +27,12 @@ function scrollToScene(id: string) {
   });
 }
 
-interface HomeClientProps {
-  children: React.ReactNode;
-}
-
-export default function HomeClient({ children }: HomeClientProps) {
+export default function HomeClient({ children, scenes }: HomeClientProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
 
   const [activeScene, setActiveScene] = useState(0);
+
+  const sceneIds = scenes.map((scene) => scene.id);
 
   const syncScene = useCallback(() => {
     const node = viewportRef.current;
@@ -36,13 +44,13 @@ export default function HomeClient({ children }: HomeClientProps) {
     const nextScene = Math.max(
       0,
       Math.min(
-        scenes.length - 1,
+        sceneIds.length - 1,
         Math.round(node.scrollLeft / node.clientWidth),
       ),
     );
 
     setActiveScene(nextScene);
-  }, []);
+  }, [sceneIds.length]);
 
   useEffect(() => {
     const node = viewportRef.current;
@@ -80,9 +88,9 @@ export default function HomeClient({ children }: HomeClientProps) {
       if (event.key === "ArrowRight") {
         event.preventDefault();
 
-        const nextIndex = Math.min(activeScene + 1, scenes.length - 1);
+        const nextIndex = Math.min(activeScene + 1, sceneIds.length - 1);
 
-        scrollToScene(scenes[nextIndex]);
+        scrollToScene(sceneIds[nextIndex]);
       }
 
       if (event.key === "ArrowLeft") {
@@ -90,7 +98,7 @@ export default function HomeClient({ children }: HomeClientProps) {
 
         const previousIndex = Math.max(activeScene - 1, 0);
 
-        scrollToScene(scenes[previousIndex]);
+        scrollToScene(sceneIds[previousIndex]);
       }
     };
 
@@ -98,7 +106,9 @@ export default function HomeClient({ children }: HomeClientProps) {
       passive: false,
     });
 
-    node.addEventListener("scroll", syncScene, { passive: true });
+    node.addEventListener("scroll", syncScene, {
+      passive: true,
+    });
 
     window.addEventListener("keydown", onKeyDown);
 
@@ -106,22 +116,22 @@ export default function HomeClient({ children }: HomeClientProps) {
 
     return () => {
       node.removeEventListener("wheel", onWheel);
-
       node.removeEventListener("scroll", syncScene);
-
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [activeScene, syncScene]);
+  }, [activeScene, sceneIds, syncScene]);
+
+  const activeSceneId = sceneIds[activeScene] ?? sceneIds[0];
 
   return (
     <div className="portfolio-shell">
-      <HomeHeader activeScene={activeScene} onNavigate={scrollToScene} />
+      <HomeHeader activeScene={activeSceneId} onNavigate={scrollToScene} />
 
       <div ref={viewportRef} className="scene-viewport">
         {children}
       </div>
 
-      <SceneProgress activeScene={activeScene} totalScenes={scenes.length} />
+      <SceneProgress activeScene={activeSceneId} />
     </div>
   );
 }

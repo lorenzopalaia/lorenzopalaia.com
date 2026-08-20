@@ -1,23 +1,12 @@
 import HomeClient from "@/components/home/HomeClient";
+import SceneRegistry from "@/components/home/SceneRegistry";
 
-import IntroScene from "@/components/home/scenes/IntroScene";
-import WorkScene from "@/components/home/scenes/WorkScene";
-import AboutScene from "@/components/home/scenes/AboutScene";
-import ExperienceScene from "@/components/home/scenes/ExperienceScene";
-import LabScene from "@/components/home/scenes/LabScene";
-import NotesScene from "@/components/home/scenes/NotesScene";
-import ContactScene from "@/components/home/scenes/ContactScene";
+import { sceneNavigation } from "@/data/sceneNavigation";
 
 export default function Home() {
   return (
-    <HomeClient>
-      <IntroScene />
-      <ExperienceScene />
-      <WorkScene />
-      <AboutScene />
-      <LabScene />
-      <NotesScene />
-      <ContactScene />
+    <HomeClient scenes={sceneNavigation}>
+      <SceneRegistry />
     </HomeClient>
   );
 }

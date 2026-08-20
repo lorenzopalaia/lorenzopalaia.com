@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
+import { getSceneIndex } from "@/data/sceneNavigation";
 import { experience } from "@/data/portfolio";
 
 export default function ExperienceScene() {
@@ -9,7 +10,9 @@ export default function ExperienceScene() {
     <section id="experience" className="scene scene--experience">
       <div className="scene-heading scene-heading--dark">
         <div>
-          <span className="scene-eyebrow">01 / Experience</span>
+          <span className="scene-eyebrow">
+            {getSceneIndex("experience")} / Experience
+          </span>
 
           <h2>Work, as a timeline of systems.</h2>
         </div>
@@ -46,7 +49,7 @@ export default function ExperienceScene() {
         ))}
       </div>
 
-      <CoordinateRail index="01" label="TIMELINE / 2019—NOW" dark />
+      <CoordinateRail scene="experience" />
 
       <div className="scene-footer scene-footer--dark">
         <Link

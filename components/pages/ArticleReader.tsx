@@ -11,7 +11,6 @@ import {
   ThumbsUp,
 } from "lucide-react";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -36,7 +35,6 @@ export default function ArticleReader({
   const [action, setAction] = useState<Action>("none");
 
   const reactionQuery = useReactions(slug);
-
   const reactionMutation = useSubmitReaction(slug);
 
   useEffect(() => {
@@ -69,8 +67,9 @@ export default function ArticleReader({
   const index = articles.findIndex((entry) => entry.slug === slug);
 
   const previous = articles[index + 1];
-
   const next = articles[index - 1];
+
+  const documentIndex = String(index + 1).padStart(2, "0");
 
   const submit = async (nextAction: Exclude<Action, "none">) => {
     const resolved = action === nextAction ? "none" : nextAction;
@@ -97,13 +96,10 @@ export default function ArticleReader({
     <main className="article-page">
       <header className="detail-header">
         <Link href="/blog" className="detail-back" data-cursor="BACK">
-          <ArrowLeft size={18} />
           Notes index
         </Link>
 
-        <span className="scene-eyebrow">
-          Document / {String(index + 1).padStart(2, "0")}
-        </span>
+        <span className="scene-eyebrow">Document / {documentIndex}</span>
       </header>
 
       <section className="article-hero">
@@ -123,10 +119,7 @@ export default function ArticleReader({
 
         <ArticleSchematic topic={article.tags[0]} />
 
-        <CoordinateRail
-          index={String(index + 1).padStart(2, "0")}
-          label="NOTE / READ"
-        />
+        <CoordinateRail coordinate="article" index={documentIndex} />
       </section>
 
       <section className="article-layout">
@@ -234,7 +227,9 @@ function ArticleSchematic({ topic }: { topic: string }) {
         />
 
         <circle cx="35" cy="226" r="5" />
+
         <circle cx="184" cy="85" r="4" />
+
         <circle cx="424" cy="60" r="6" />
       </svg>
 

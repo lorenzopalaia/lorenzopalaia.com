@@ -1,5 +1,3 @@
-"use client";
-
 import { ArrowLeft, ArrowUpRight, Github, MoveUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -57,7 +55,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
 
         <ProjectArtifact project={project} />
 
-        <CoordinateRail index={project.index} label="PROJECT / INSPECT" />
+        <CoordinateRail coordinate="projectDetail" index={project.index} />
       </section>
 
       <section className="detail-grid">

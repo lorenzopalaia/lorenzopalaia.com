@@ -1,9 +1,4 @@
-/**
- * Quiet Systems style reminder: the long-form record is a technical ledger—dense,
- * indexed and calm—rather than a conventional CV page or card grid.
- */
-
-import { ArrowLeft, ArrowUpRight, Download } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -48,7 +43,7 @@ export default function Experience() {
           sizes="(min-width: 1280px) 350px, 45vw"
         />
 
-        <CoordinateRail index="01" label="RECORD / VERIFIED" />
+        <CoordinateRail coordinate="experienceRecord" />
       </section>
 
       <section className="record-artifacts">

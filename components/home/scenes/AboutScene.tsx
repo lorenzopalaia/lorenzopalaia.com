@@ -1,11 +1,12 @@
-import { skills } from "@/data/portfolio";
 import { CoordinateRail } from "@/components/CoordinateRail";
+import { getSceneIndex } from "@/data/sceneNavigation";
+import { skills } from "@/data/portfolio";
 
 export default function AboutScene() {
   return (
     <section id="about" className="scene scene--about">
       <div className="about-aside">
-        <span className="scene-eyebrow">03 / About</span>
+        <span className="scene-eyebrow">{getSceneIndex("about")} / About</span>
 
         <span className="vertical-index">SYSTEM / PERSON</span>
       </div>
@@ -43,7 +44,7 @@ export default function AboutScene() {
         <i />
       </div>
 
-      <CoordinateRail index="03" label="PERSON / SYSTEM" />
+      <CoordinateRail scene="about" />
     </section>
   );
 }

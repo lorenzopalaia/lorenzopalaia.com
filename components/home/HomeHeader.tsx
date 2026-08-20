@@ -3,10 +3,14 @@
 import { Mail } from "lucide-react";
 import Link from "next/link";
 
-import { sceneNavigation } from "@/data/sceneNavigation";
+import {
+  sceneNavigation,
+  getSceneIndex,
+  type SceneId,
+} from "@/data/sceneNavigation";
 
 interface HomeHeaderProps {
-  activeScene: number;
+  activeScene: SceneId;
   onNavigate: (id: string) => void;
 }
 
@@ -32,15 +36,15 @@ export default function HomeHeader({
       </Link>
 
       <nav className="site-nav" aria-label="Primary navigation">
-        {sceneNavigation.map((scene, index) => (
+        {sceneNavigation.map((scene) => (
           <button
             key={scene.id}
             type="button"
             onClick={() => onNavigate(scene.id)}
-            className={activeScene === index ? "is-active" : ""}
+            className={activeScene === scene.id ? "is-active" : ""}
             data-cursor="GO"
           >
-            <span>{scene.index}</span>
+            <span>{getSceneIndex(scene.id)}</span>
             {scene.label}
           </button>
         ))}

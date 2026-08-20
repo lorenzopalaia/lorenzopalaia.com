@@ -11,7 +11,7 @@ export default function ContactScene() {
   return (
     <section id="contact" className="scene scene--contact">
       <div className="contact-top">
-        <span className="scene-eyebrow">06 / Contact</span>
+        <span className="scene-eyebrow">Contact</span>
 
         <span>Available for interesting systems.</span>
       </div>
@@ -77,7 +77,7 @@ export default function ContactScene() {
         </div>
       </footer>
 
-      <CoordinateRail index="06" label="CONTACT / OPEN" />
+      <CoordinateRail scene="contact" />
     </section>
   );
 }

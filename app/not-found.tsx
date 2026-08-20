@@ -115,7 +115,7 @@ export default function NotFound() {
           <span>NO ROUTE / NO SIGNAL</span>
         </div>
 
-        <CoordinateRail index="404" label="SIGNAL / LOST" />
+        <CoordinateRail coordinate="notFound" />
       </section>
 
       <footer className="not-found-footer">

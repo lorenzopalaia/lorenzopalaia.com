@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowDownRight } from "lucide-react";
+
 import SceneLinkButton from "@/components/home/SceneLinkButton";
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { TechnicalGraphic } from "@/components/home/TechnicalGraphic";
@@ -49,7 +50,7 @@ export default function IntroScene() {
 
       <TechnicalGraphic />
 
-      <CoordinateRail index="00" label="ORIGIN / 41.9028" />
+      <CoordinateRail scene="intro" />
 
       <div className="intro-side-note">
         An independent portfolio
