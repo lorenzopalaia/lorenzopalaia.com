@@ -1,10 +1,11 @@
-import { Github } from "lucide-react";
+import { ArrowUpRight, CalendarDays } from "lucide-react";
 import Link from "next/link";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { ContactPanel } from "@/components/home/ContactPanel";
-
 import SocialLinks from "@/components/home/SocialLinks";
+
+import { contact, previousVersions } from "@/data/contact";
 
 export default function ContactScene() {
   return (
@@ -22,6 +23,21 @@ export default function ContactScene() {
           <em>useful thing.</em>
         </h2>
 
+        <Link
+          href={contact.bookingUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="contact-orbit"
+          data-cursor="CAL"
+          aria-label={contact.bookingLabel}
+        >
+          <CalendarDays size={18} strokeWidth={1.5} />
+
+          <span>{contact.bookingLabel}</span>
+
+          <ArrowUpRight size={14} strokeWidth={1.5} />
+        </Link>
+
         <ContactPanel />
       </div>
 
@@ -33,6 +49,22 @@ export default function ContactScene() {
         <div className="footer-utility">
           <Link href="/privacy">Privacy</Link>
 
+          <div className="footer-archive">
+            <span>Archive</span>
+
+            {previousVersions.map((version) => (
+              <Link
+                key={version.label}
+                href={version.href}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="↗"
+              >
+                {version.label}
+              </Link>
+            ))}
+          </div>
+
           <Link
             href="https://github.com/lorenzopalaia"
             target="_blank"
@@ -40,7 +72,6 @@ export default function ContactScene() {
             className="footer-github"
             data-cursor="↗"
           >
-            <Github size={16} />
             Source
           </Link>
         </div>

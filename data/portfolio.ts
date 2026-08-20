@@ -126,21 +126,21 @@ export const experience = [
 export const labItems = [
   {
     code: "01",
-    title: "Open source",
+    title: "Machine vision",
     detail:
-      "Contributions to Tailark, Plane, JSON Crack, Filepizza, tweakcn, Origin UI and Maybe Finance.",
+      "Developed object detection and terrain mapping systems for UAVs, training YOLOv5 and EfficientNet models on custom datasets and connecting them to ground-station software.",
   },
   {
     code: "02",
-    title: "AI music",
+    title: "Generative systems",
     detail:
-      "A Reply AI Music Contest project, built collaboratively around generated audio and visual workflows.",
+      "Experiments spanning neural style transfer, genre classification and AI-generated music, including a collaborative Reply project built around Stable Audio Open.",
   },
   {
     code: "03",
-    title: "Research by making",
+    title: "Open source",
     detail:
-      "Experiments around computer vision, neural style transfer, automation and developer tooling.",
+      "Contributed features, accessibility improvements, UI fixes and refactors to projects including Tailark, Plane, Filepizza, JSON Crack, tweakcn, Origin UI and Maybe Finance.",
   },
 ];
 

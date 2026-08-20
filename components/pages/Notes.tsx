@@ -6,15 +6,51 @@
  */
 
 import { ArrowLeft, ArrowRight, Search, X } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { NewsletterSignal } from "@/components/NewsletterSignal";
 import { articles, formatArticleDate } from "@/content/articles";
 
+function getSearchQuery() {
+  if (typeof window === "undefined") {
+    return "";
+  }
+
+  return new URLSearchParams(window.location.search).get("search") ?? "";
+}
+
+function updateSearchQuery(value: string) {
+  const url = new URL(window.location.href);
+  const normalized = value.trim();
+
+  if (normalized) {
+    url.searchParams.set("search", normalized);
+  } else {
+    url.searchParams.delete("search");
+  }
+
+  const search = url.searchParams.toString();
+  const nextUrl = search ? `${url.pathname}?${search}` : url.pathname;
+
+  window.history.replaceState(null, "", nextUrl);
+}
+
 export default function Notes() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(() => getSearchQuery());
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setQuery(getSearchQuery());
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   const visible = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -30,6 +66,16 @@ export default function Notes() {
         .includes(normalized),
     );
   }, [query]);
+
+  const handleSearchChange = (value: string) => {
+    setQuery(value);
+    updateSearchQuery(value);
+  };
+
+  const clearSearch = () => {
+    setQuery("");
+    updateSearchQuery("");
+  };
 
   return (
     <main className="notes-page">
@@ -54,7 +100,7 @@ export default function Notes() {
 
           <input
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => handleSearchChange(event.target.value)}
             placeholder="Search title, tag or theme"
             aria-label="Search Notes"
           />
@@ -62,7 +108,7 @@ export default function Notes() {
           {query && (
             <button
               type="button"
-              onClick={() => setQuery("")}
+              onClick={clearSearch}
               aria-label="Clear search"
             >
               <X size={15} />

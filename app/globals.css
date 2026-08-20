@@ -1749,6 +1749,11 @@ a:focus-visible {
   align-items: center;
   gap: 15px;
 }
+.footer-archive {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
 .experience-record-link {
   display: inline-flex;
   align-items: center;

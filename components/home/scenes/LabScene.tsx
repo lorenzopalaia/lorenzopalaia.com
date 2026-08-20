@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Sparkles } from "lucide-react";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { TechnicalGraphic } from "@/components/home/TechnicalGraphic";
@@ -40,8 +39,6 @@ export default function LabScene() {
             <h3>{item.title}</h3>
 
             <p>{item.detail}</p>
-
-            <Sparkles size={16} />
           </article>
         ))}
       </div>
