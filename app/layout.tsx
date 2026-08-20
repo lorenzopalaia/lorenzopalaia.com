@@ -14,6 +14,12 @@ import { ExplorationSignals } from "@/components/ExplorationSignals";
 import QueryProvider from "@/providers/QueryProvider";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { CursorSystem } from "@/components/CursorSystem";
+import StructuredData from "@/components/seo/StructuredData";
+
+import {
+  personStructuredData,
+  websiteStructuredData,
+} from "@/data/structuredData";
 
 import { siteConfig } from "@/data/config";
 
@@ -26,8 +32,13 @@ import "@fontsource/manrope/800.css";
 import "@fontsource/dm-mono/400.css";
 import "@fontsource/dm-mono/500.css";
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [websiteStructuredData, personStructuredData],
+};
+
 export const metadata = getSEOTags({
-  title: "Lorenzo Palaia — Software Engineer",
+  title: `${siteConfig.name} | Software Engineer`,
   description:
     "Lorenzo Palaia is a Software Engineer and Technical Lead based in Rome, working across software development, artificial intelligence, developer tools and automation.",
   canonicalUrlRelative: "/",
@@ -48,6 +59,7 @@ export default function RootLayout({
                 <Toaster />
                 <ThemeSwitcher />
                 <ExplorationSignals />
+
                 <main>
                   <CursorSystem />
                   {children}
@@ -56,6 +68,9 @@ export default function RootLayout({
             </QueryProvider>
           </ThemeProvider>
         </ErrorBoundary>
+
+        <StructuredData data={structuredData} />
+
         <Analytics />
         <SpeedInsights />
       </body>

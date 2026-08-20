@@ -1,11 +1,17 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+
 import { getSEOTags } from "@/lib/seo";
+
 import {
   getPortfolioProject,
   getPortfolioProjects,
 } from "@/lib/github/projects";
+
 import ProjectDetail from "@/components/pages/ProjectDetail";
+import StructuredData from "@/components/seo/StructuredData";
+
+import { siteConfig } from "@/data/config";
 
 interface PageProps {
   params: Promise<{
@@ -42,9 +48,9 @@ export async function generateMetadata({
     description: project.description,
     canonicalUrlRelative: `/projects/${project.slug}`,
     openGraph: {
-      title: `${project.name} — Lorenzo Palaia`,
+      title: project.name,
       description: project.description,
-      url: `https://www.lorenzopalaia.com/projects/${project.slug}`,
+      url: `${siteConfig.url}/projects/${project.slug}`,
       type: "website",
     },
   });
@@ -65,5 +71,34 @@ export default async function ProjectPage({ params }: PageProps) {
 
   const index = String(projectIndex + 1).padStart(2, "0");
 
-  return <ProjectDetail project={project} index={index} />;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "@id": `${siteConfig.url}/projects/${project.slug}#software`,
+    name: project.name,
+    description: project.description,
+    url: `${siteConfig.url}/projects/${project.slug}`,
+    codeRepository: project.repository,
+    author: {
+      "@id": `${siteConfig.url}/#person`,
+    },
+    creator: {
+      "@id": `${siteConfig.url}/#person`,
+    },
+    isPartOf: {
+      "@id": `${siteConfig.url}/#website`,
+    },
+    ...(project.live && {
+      sameAs: project.live,
+    }),
+    dateModified: project.updatedAt,
+  };
+
+  return (
+    <>
+      <StructuredData data={structuredData} />
+
+      <ProjectDetail project={project} index={index} />
+    </>
+  );
 }
