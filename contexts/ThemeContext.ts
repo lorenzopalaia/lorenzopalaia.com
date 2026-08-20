@@ -1,11 +1,15 @@
+"use client";
+
 import { createContext, useContext } from "react";
 
-export type Theme = "light" | "dark";
+export type ThemePreference = "system" | "light" | "dark";
+
+export type ResolvedTheme = "light" | "dark";
 
 export interface ThemeContextType {
-  theme: Theme;
-  toggleTheme?: () => void;
-  switchable: boolean;
+  preference: ThemePreference;
+  theme: ResolvedTheme;
+  setTheme: (theme: Exclude<ThemePreference, "system">) => void;
 }
 
 export const ThemeContext = createContext<ThemeContextType | undefined>(

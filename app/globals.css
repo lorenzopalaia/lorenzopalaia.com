@@ -192,42 +192,48 @@ a:focus-visible {
   z-index: 45;
   display: flex;
   height: 38px;
-  border: 1px solid rgba(23, 23, 22, 0.28);
-  background: rgba(244, 240, 232, 0.88);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 88%, transparent);
   backdrop-filter: blur(12px);
   font: 500 8px/1 var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+
 .theme-switcher--home {
   top: 24px;
   left: 260px;
 }
+
 .theme-switcher--route {
   top: 15px;
   right: calc(7vw + 150px);
 }
+
 .theme-switcher button {
   display: flex;
   align-items: center;
   gap: 6px;
   border: 0;
   background: transparent;
-  color: rgba(23, 23, 22, 0.6);
+  color: var(--ink-muted);
   padding: 0 10px;
   transition:
     background 150ms ease,
     color 150ms ease;
 }
+
 .theme-switcher button + button {
-  border-left: 1px solid rgba(23, 23, 22, 0.18);
+  border-left: 1px solid var(--border);
 }
+
 .theme-switcher button:hover {
-  color: #171716;
+  color: var(--foreground);
 }
+
 .theme-switcher button.is-active {
-  background: #171716;
-  color: #f4f0e8;
+  background: var(--foreground);
+  color: var(--background);
 }
 
 .scene-viewport {

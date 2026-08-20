@@ -38,12 +38,13 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en" data-scroll-behavior="smooth">
       <body>
         <ErrorBoundary>
-          <ThemeProvider defaultTheme="light" switchable>
+          <ThemeProvider>
             <QueryProvider>
               <TooltipProvider>
                 <Toaster />
                 <ThemeSwitcher />
                 <ExplorationSignals />
+
                 <main>
                   <CursorSystem />
                   {children}
@@ -52,6 +53,7 @@ export default function RootLayout({
             </QueryProvider>
           </ThemeProvider>
         </ErrorBoundary>
+
         <Analytics />
         <SpeedInsights />
       </body>

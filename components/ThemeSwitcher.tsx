@@ -1,6 +1,10 @@
 "use client";
 
-/** Quiet Systems style reminder: the theme control is a visible system state, compact and deliberate. */
+/**
+ * Quiet Systems style reminder: the theme control is a visible system state,
+ * compact and deliberate. System preference is implicit; the UI exposes only
+ * the two explicit appearance choices.
+ */
 
 import { Moon, Sun } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -9,11 +13,16 @@ import { unlockSignal } from "@/components/ExplorationSignals";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export function ThemeSwitcher() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, preference, setTheme } = useTheme();
+
   const pathname = usePathname();
 
-  const setTheme = () => {
-    toggleTheme?.();
+  const handleThemeChange = (nextTheme: "light" | "dark") => {
+    if (nextTheme === theme && preference === nextTheme) {
+      return;
+    }
+
+    setTheme(nextTheme);
     unlockSignal("theme");
   };
 
@@ -27,10 +36,9 @@ export function ThemeSwitcher() {
     >
       <button
         type="button"
-        onClick={theme === "dark" ? setTheme : undefined}
+        onClick={() => handleThemeChange("light")}
         aria-pressed={theme === "light"}
         className={theme === "light" ? "is-active" : ""}
-        aria-label="Use light theme"
         data-cursor="LIGHT"
       >
         <Sun size={13} />
@@ -39,10 +47,9 @@ export function ThemeSwitcher() {
 
       <button
         type="button"
-        onClick={theme === "light" ? setTheme : undefined}
+        onClick={() => handleThemeChange("dark")}
         aria-pressed={theme === "dark"}
         className={theme === "dark" ? "is-active" : ""}
-        aria-label="Use dark theme"
         data-cursor="DARK"
       >
         <Moon size={13} />
