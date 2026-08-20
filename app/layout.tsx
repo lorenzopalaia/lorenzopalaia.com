@@ -7,7 +7,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { ExplorationSignals } from "@/components/ExplorationSignals";
@@ -55,16 +54,14 @@ export default function RootLayout({
         <ErrorBoundary>
           <ThemeProvider>
             <QueryProvider>
-              <TooltipProvider>
-                <Toaster />
-                <ThemeSwitcher />
-                <ExplorationSignals />
+              <Toaster />
+              <ThemeSwitcher />
+              <ExplorationSignals />
 
-                <div className="site-root">
-                  <CursorSystem />
-                  {children}
-                </div>
-              </TooltipProvider>
+              <div className="site-root">
+                <CursorSystem />
+                {children}
+              </div>
             </QueryProvider>
           </ThemeProvider>
         </ErrorBoundary>
