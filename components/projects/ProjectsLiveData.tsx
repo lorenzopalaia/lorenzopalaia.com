@@ -1,11 +1,11 @@
 "use client";
 
-import { Code2, GitFork, Github, Star } from "lucide-react";
+import { GitFork, Github, Star } from "lucide-react";
 import Link from "next/link";
 
 import { useGithubRepos, useGithubUser } from "@/hooks/api/useGithub";
 
-import { useNpmDownloads } from "@/hooks/api/useNpmDownloads";
+import ProjectNpmTelemetry from "@/components/projects/ProjectNpmTelemetry";
 
 type Variant = "metrics" | "repositories";
 
@@ -24,12 +24,7 @@ function Metric({ label, value }: { label: string; value: string | number }) {
 
 export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
   const githubUser = useGithubUser();
-
   const githubRepos = useGithubRepos();
-
-  const animations = useNpmDownloads("@lorenzopalaia/tailwind-animations");
-
-  const patterns = useNpmDownloads("@lorenzopalaia/tailwind-hero-patterns");
 
   const githubLoading = githubUser.isLoading || githubRepos.isLoading;
 
@@ -71,99 +66,65 @@ export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
   }
 
   return (
-    <>
-      <section className="work-repositories">
-        <header>
-          <span className="scene-eyebrow">Repository field</span>
+    <section className="work-repositories">
+      <header>
+        <span className="scene-eyebrow">Repository field</span>
 
-          <span>
-            {githubLoading
-              ? "Loading live data"
-              : githubError
-                ? "Live data unavailable"
-                : `${repos.length} visible repositories`}
-          </span>
-        </header>
+        <span>
+          {githubLoading
+            ? "Loading live data"
+            : githubError
+              ? "Live data unavailable"
+              : `${repos.length} visible repositories`}
+        </span>
+      </header>
 
-        {githubError && (
-          <p className="work-source-error">
-            Live GitHub data is currently unavailable. Visit the public profile
-            directly for the source record.
-          </p>
-        )}
+      {githubError && (
+        <p className="work-source-error">
+          Live GitHub data is currently unavailable. Visit the public profile
+          directly for the source record.
+        </p>
+      )}
 
-        <div className="repo-list">
-          {repos.map((repo, index) => (
-            <article key={repo.repository}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
+      <div className="repo-list">
+        {repos.map((repo, index) => (
+          <article key={repo.repository}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
 
-              <div>
-                <h2>{repo.name}</h2>
+            <div>
+              <h2>{repo.name}</h2>
 
-                <p>{repo.description ?? "No public description supplied."}</p>
+              <p>{repo.description ?? "No public description supplied."}</p>
 
-                <em>{repo.languages.join(" / ") || "Unclassified"}</em>
-              </div>
+              <em>{repo.languages.join(" / ") || "Unclassified"}</em>
+            </div>
 
-              <div className="repo-stats">
-                <span>
-                  <Star size={13} />
-                  {repo.stars}
-                </span>
+            <div className="repo-stats">
+              <span>
+                <Star size={13} />
+                {repo.stars}
+              </span>
 
-                <span>
-                  <GitFork size={13} />
-                  {repo.forks}
-                </span>
-              </div>
+              <span>
+                <GitFork size={13} />
+                {repo.forks}
+              </span>
 
-              <Link
-                href={repo.repository}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Open ${repo.name} on GitHub`}
-                data-cursor="OPEN"
-              >
-                <Github size={18} />
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
+              <ProjectNpmTelemetry repositoryName={repo.name} />
+            </div>
 
-      <section className="npm-strip">
-        <div>
-          <Code2 size={19} />
-
-          <span className="scene-eyebrow">NPM / last 12 months</span>
-        </div>
-
-        <div>
-          <Metric
-            label="Tailwind animations"
-            value={
-              animations.isLoading
-                ? "…"
-                : animations.data
-                  ? new Intl.NumberFormat("en").format(
-                      animations.data.downloads,
-                    )
-                  : "—"
-            }
-          />
-
-          <Metric
-            label="Hero patterns"
-            value={
-              patterns.isLoading
-                ? "…"
-                : patterns.data
-                  ? new Intl.NumberFormat("en").format(patterns.data.downloads)
-                  : "—"
-            }
-          />
-        </div>
-      </section>
-    </>
+            <Link
+              href={repo.repository}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${repo.name} on GitHub`}
+              data-cursor="OPEN"
+            >
+              <Github size={18} />
+            </Link>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }

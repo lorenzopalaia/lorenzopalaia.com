@@ -4,7 +4,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
+import GithubStats from "@/components/home/GithubStats";
 import { ProjectRail } from "@/components/projects/ProjectRail";
+
 import { projects } from "@/data/portfolio";
 
 export default function WorkScene() {
@@ -22,6 +24,8 @@ export default function WorkScene() {
           workflows easier to move through.
         </p>
       </div>
+
+      <GithubStats />
 
       <Image
         className="work-asset"

@@ -1,7 +1,14 @@
+"use client";
+
 import { ArrowLeft, ArrowUpRight, Github, MoveUpRight } from "lucide-react";
 import Link from "next/link";
+
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { ProjectArtifact } from "@/components/projects/ProjectArtifact";
+import ProjectNpmTelemetry, {
+  getNpmPackage,
+} from "@/components/projects/ProjectNpmTelemetry";
+
 import { projects } from "@/data/portfolio";
 
 export default function ProjectDetail({ slug }: { slug: string }) {
@@ -23,6 +30,10 @@ export default function ProjectDetail({ slug }: { slug: string }) {
   const otherProjects = projects
     .filter((entry) => entry.slug !== project.slug)
     .slice(0, 2);
+
+  const repositoryName = project.repository.split("/").pop() ?? project.name;
+
+  const npmPackage = getNpmPackage(repositoryName);
 
   return (
     <main className="detail-page">
@@ -65,8 +76,17 @@ export default function ProjectDetail({ slug }: { slug: string }) {
         <aside className="detail-specs">
           <div>
             <span>Stack</span>
+
             <p>{project.technologies.join(" · ")}</p>
           </div>
+
+          {npmPackage && (
+            <div>
+              <span>NPM telemetry</span>
+
+              <ProjectNpmTelemetry repositoryName={repositoryName} />
+            </div>
+          )}
 
           <Link
             href={project.repository}

@@ -3,7 +3,7 @@ export const queryKeys = {
 
   githubRepos: ["github-repos"] as const,
 
-  npmDownloads: (packageName: string) =>
+  npmDownloads: (packageName: string | null) =>
     ["npm-downloads", packageName] as const,
 
   reactions: (postId: string) => ["reactions", postId] as const,
