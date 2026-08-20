@@ -37,22 +37,24 @@ export function ThemeSwitcher() {
       <button
         type="button"
         onClick={() => handleThemeChange("light")}
+        aria-label="Switch to light theme"
         aria-pressed={theme === "light"}
         className={theme === "light" ? "is-active" : ""}
         data-cursor="LIGHT"
       >
-        <Sun size={13} />
+        <Sun size={13} aria-hidden="true" />
         <span>Light</span>
       </button>
 
       <button
         type="button"
         onClick={() => handleThemeChange("dark")}
+        aria-label="Switch to dark theme"
         aria-pressed={theme === "dark"}
         className={theme === "dark" ? "is-active" : ""}
         data-cursor="DARK"
       >
-        <Moon size={13} />
+        <Moon size={13} aria-hidden="true" />
         <span>Dark</span>
       </button>
     </div>

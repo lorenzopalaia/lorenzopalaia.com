@@ -140,7 +140,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "quantum-computing-unlocking-the-future-of-computation",
     title: "Quantum Computing: Unlocking the Future of Computation",
-    seoTitle: "Quantum Computing: The Future of Computation",
+    seoTitle: "Quantum Computing: Future of Computation",
     summary:
       "Quantum computing is a revolutionary technology that leverages quantum mechanics to perform computations at speeds unimaginable with classical computers.",
     publishedAt: "2024-12-12",
