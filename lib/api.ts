@@ -1,3 +1,5 @@
+import type { PortfolioProject } from "@/data/projects";
+
 async function request<T>(
   input: RequestInfo | URL,
   init?: RequestInit,
@@ -35,14 +37,7 @@ export type GithubUserResponse = {
   forks: number;
 };
 
-export type GithubRepoResponse = {
-  html_url: string;
-  name: string;
-  description: string | null;
-  languages: string[];
-  stargazers_count: number;
-  forks_count: number;
-};
+export type GithubRepoResponse = PortfolioProject;
 
 export type NpmDownloadsResponse = {
   downloads: number;

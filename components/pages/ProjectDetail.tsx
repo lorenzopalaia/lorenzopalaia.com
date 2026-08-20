@@ -3,35 +3,21 @@ import Link from "next/link";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { ProjectArtifact } from "@/components/projects/ProjectArtifact";
-import ProjectNpmTelemetry, {
-  getNpmPackage,
-} from "@/components/projects/ProjectNpmTelemetry";
+import ProjectNpmTelemetry from "@/components/projects/ProjectNpmTelemetry";
 
-import { projects } from "@/data/portfolio";
+import { getFeaturedProject } from "@/lib/projects/featured";
 
-export default function ProjectDetail({ slug }: { slug: string }) {
-  const project = projects.find((entry) => entry.slug === slug);
+import type { PortfolioProject } from "@/data/projects";
 
-  if (!project) {
-    return (
-      <main className="detail-page detail-page--missing">
-        <Link href="/" className="detail-back">
-          <ArrowLeft size={18} />
-          Back to the environment
-        </Link>
+interface ProjectDetailProps {
+  project: PortfolioProject;
+  index: string;
+}
 
-        <h1>Project not found.</h1>
-      </main>
-    );
-  }
+export default function ProjectDetail({ project, index }: ProjectDetailProps) {
+  const featured = getFeaturedProject(project);
 
-  const otherProjects = projects
-    .filter((entry) => entry.slug !== project.slug)
-    .slice(0, 2);
-
-  const repositoryName = project.repository.split("/").pop() ?? project.name;
-
-  const npmPackage = getNpmPackage(repositoryName);
+  const coordinateIndex = featured?.index ?? index;
 
   return (
     <main className="detail-page">
@@ -41,7 +27,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           Back to work
         </Link>
 
-        <span className="scene-eyebrow">Project / {project.index}</span>
+        <span className="scene-eyebrow">Project / {coordinateIndex}</span>
       </header>
 
       <section className="detail-hero">
@@ -53,9 +39,16 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           <p className="detail-lede">{project.description}</p>
         </div>
 
-        <ProjectArtifact project={project} />
+        {featured && (
+          <ProjectArtifact
+            artifact={featured.artifact}
+            category={project.category}
+            projectIndex={featured.index}
+            projectName={project.name}
+          />
+        )}
 
-        <CoordinateRail coordinate="projectDetail" index={project.index} />
+        <CoordinateRail coordinate="projectDetail" index={coordinateIndex} />
       </section>
 
       <section className="detail-grid">
@@ -78,54 +71,40 @@ export default function ProjectDetail({ slug }: { slug: string }) {
             <p>{project.technologies.join(" · ")}</p>
           </div>
 
-          {npmPackage && (
+          {project.npmPackage && (
             <div>
               <span>NPM telemetry</span>
 
-              <ProjectNpmTelemetry repositoryName={repositoryName} />
+              <ProjectNpmTelemetry project={project} />
             </div>
           )}
 
-          <Link
-            href={project.repository}
-            target="_blank"
-            rel="noreferrer"
-            data-cursor="↗"
-          >
-            <Github size={18} />
-            Source
-            <ArrowUpRight size={16} />
-          </Link>
-
-          <Link
-            href={project.live}
-            target="_blank"
-            rel="noreferrer"
-            data-cursor="↗"
-          >
-            <MoveUpRight size={18} />
-            Live project
-            <ArrowUpRight size={16} />
-          </Link>
-        </aside>
-      </section>
-
-      <section className="detail-next">
-        <span className="scene-eyebrow">Continue exploring</span>
-
-        <div>
-          {otherProjects.map((entry) => (
+          {project.repository && (
             <Link
-              key={entry.slug}
-              href={`/projects/${entry.slug}`}
-              data-cursor="NEXT"
+              href={project.repository}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="↗"
             >
-              <span>{entry.index}</span>
-              {entry.name}
-              <ArrowUpRight size={19} />
+              <Github size={18} />
+              Source
+              <ArrowUpRight size={16} />
             </Link>
-          ))}
-        </div>
+          )}
+
+          {project.live && (
+            <Link
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="↗"
+            >
+              <MoveUpRight size={18} />
+              Live project
+              <ArrowUpRight size={16} />
+            </Link>
+          )}
+        </aside>
       </section>
     </main>
   );

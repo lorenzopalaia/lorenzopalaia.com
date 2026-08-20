@@ -3,7 +3,7 @@ import Image from "next/image";
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { TechnicalGraphic } from "@/components/home/TechnicalGraphic";
 import { getSceneIndex } from "@/data/sceneNavigation";
-import { labItems } from "@/data/portfolio";
+import { labItems } from "@/data/lab";
 
 export default function LabScene() {
   return (

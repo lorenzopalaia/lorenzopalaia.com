@@ -3,6 +3,7 @@ export const sceneNavigation = [
     id: "intro",
     label: "Intro",
     coordinateLabel: "ORIGIN / 41.9028",
+    dark: false,
   },
   {
     id: "experience",
@@ -14,11 +15,13 @@ export const sceneNavigation = [
     id: "work",
     label: "Work",
     coordinateLabel: "WORK / 04 OBJECTS",
+    dark: false,
   },
   {
     id: "about",
     label: "About",
     coordinateLabel: "PERSON / SYSTEM",
+    dark: false,
   },
   {
     id: "lab",
@@ -30,11 +33,13 @@ export const sceneNavigation = [
     id: "notes",
     label: "Notes",
     coordinateLabel: "NOTES / INDEX",
+    dark: false,
   },
   {
     id: "contact",
     label: "Contact",
     coordinateLabel: "CONTACT / OPEN",
+    dark: false,
   },
 ] as const;
 

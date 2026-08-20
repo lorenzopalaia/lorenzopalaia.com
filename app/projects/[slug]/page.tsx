@@ -1,7 +1,13 @@
 import { notFound } from "next/navigation";
-import { projects } from "@/data/portfolio";
-import { getSEOTags } from "@/lib/seo";
+
 import type { Metadata } from "next";
+
+import { getSEOTags } from "@/lib/seo";
+import {
+  getPortfolioProject,
+  getPortfolioProjects,
+} from "@/lib/github/projects";
+
 import ProjectDetail from "@/components/pages/ProjectDetail";
 
 interface PageProps {
@@ -10,7 +16,9 @@ interface PageProps {
   }>;
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getPortfolioProjects();
+
   return projects.map((project) => ({
     slug: project.slug,
   }));
@@ -21,7 +29,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const project = projects.find((entry) => entry.slug === slug);
+  const project = await getPortfolioProject(slug);
 
   if (!project) {
     return getSEOTags({
@@ -32,13 +40,20 @@ export async function generateMetadata({
 
   return getSEOTags({
     title: `${project.name} — Lorenzo Palaia`,
+
     description: project.description,
+
     canonicalUrlRelative: `/projects/${project.slug}`,
+
     keywords: project.technologies,
+
     openGraph: {
       title: project.name,
+
       description: project.description,
+
       url: `https://www.lorenzopalaia.com/projects/${project.slug}`,
+
       type: "website",
     },
   });
@@ -47,11 +62,17 @@ export async function generateMetadata({
 export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
 
+  const projects = await getPortfolioProjects();
+
   const project = projects.find((entry) => entry.slug === slug);
 
   if (!project) {
     notFound();
   }
 
-  return <ProjectDetail slug={slug} />;
+  const projectIndex = projects.findIndex((entry) => entry.slug === slug);
+
+  const index = String(projectIndex + 1).padStart(2, "0");
+
+  return <ProjectDetail project={project} index={index} />;
 }

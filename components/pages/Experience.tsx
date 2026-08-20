@@ -3,9 +3,87 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
-import { artifacts, recordGroups, skills } from "@/data/portfolio";
+
+import { artifacts } from "@/data/artifacts";
+import { workExperience } from "@/data/experience";
+import { education } from "@/data/education";
+import { activities } from "@/data/activities";
 
 import ArtifactLink from "@/components/experience/ArtifactLink";
+
+function RecordEntry({
+  index,
+  title,
+  company,
+  period,
+  items,
+  href,
+  image,
+  links,
+}: {
+  index: number;
+  title: string;
+  company: string;
+  period: string;
+  items: string[];
+  href?: string;
+  image?: string;
+  links?: {
+    title: string;
+    href: string;
+  }[];
+}) {
+  return (
+    <article className="record-entry">
+      <div className="record-entry__axis">
+        <span>{String(index).padStart(2, "0")}</span>
+        <i />
+      </div>
+
+      <div className="record-entry__head">
+        {image && (
+          <Image src={image} alt="" width={1920} height={1080} sizes="31px" />
+        )}
+
+        <div>
+          <h2>{title}</h2>
+          <p>{company}</p>
+        </div>
+
+        <em>{period}</em>
+      </div>
+
+      <ul>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+
+      {(href || links?.length) && (
+        <div className="record-entry__links">
+          {href && (
+            <Link href={href} target="_blank" rel="noreferrer">
+              Visit source
+              <ArrowUpRight size={14} />
+            </Link>
+          )}
+
+          {links?.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {link.title}
+              <ArrowUpRight size={14} />
+            </Link>
+          ))}
+        </div>
+      )}
+    </article>
+  );
+}
 
 export default function Experience() {
   return (
@@ -56,85 +134,79 @@ export default function Experience() {
         </div>
       </section>
 
-      {recordGroups.map((group, groupIndex) => (
-        <section key={group.id} className="record-group" id={group.id}>
-          <header>
-            <span className="scene-eyebrow">
-              {String(groupIndex + 1).padStart(2, "0")} / {group.label}
-            </span>
+      <section className="record-group" id="work">
+        <header>
+          <span className="scene-eyebrow">01 / Work log</span>
 
-            <span>{String(group.entries.length).padStart(2, "0")} entries</span>
-          </header>
+          <span>{String(workExperience.length).padStart(2, "0")} entries</span>
+        </header>
 
-          <div className="record-entries">
-            {group.entries.map((entry, entryIndex) => (
-              <article key={`${entry.company}-${entry.title}-${entryIndex}`}>
-                <div className="record-entry__axis">
-                  <span>{String(entryIndex + 1).padStart(2, "0")}</span>
+        <div className="record-entries">
+          {workExperience.flatMap((company) =>
+            company.positions.map((position, index) => (
+              <RecordEntry
+                key={`${company.company}-${position.title}-${position.startDate}`}
+                index={index + 1}
+                title={position.title}
+                company={
+                  position.client
+                    ? `${company.company} / ${position.client}`
+                    : company.company
+                }
+                period={`${position.startDate} — ${position.endDate}`}
+                items={position.items}
+                href={company.href}
+                image={company.image}
+              />
+            )),
+          )}
+        </div>
+      </section>
 
-                  <i />
-                </div>
+      <section className="record-group" id="education">
+        <header>
+          <span className="scene-eyebrow">02 / Education</span>
 
-                <div className="record-entry__head">
-                  {entry.image && (
-                    <Image
-                      src={entry.image}
-                      alt=""
-                      width={1920}
-                      height={1080}
-                      sizes="31px"
-                    />
-                  )}
+          <span>{String(education.length).padStart(2, "0")} entries</span>
+        </header>
 
-                  <div>
-                    <h2>{entry.title}</h2>
+        <div className="record-entries">
+          {education.map((entry, index) => (
+            <RecordEntry
+              key={`${entry.company}-${entry.title}`}
+              index={index + 1}
+              title={entry.title}
+              company={entry.company}
+              period={entry.period}
+              items={entry.items}
+              href={entry.href}
+              image={entry.image}
+              links={entry.links}
+            />
+          ))}
+        </div>
+      </section>
 
-                    <p>{entry.company}</p>
-                  </div>
+      <section className="record-group" id="extra">
+        <header>
+          <span className="scene-eyebrow">03 / Additional activity</span>
 
-                  <em>{entry.period}</em>
-                </div>
+          <span>{String(activities.length).padStart(2, "0")} entries</span>
+        </header>
 
-                <ul>
-                  {entry.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-
-                {(entry.href || entry.links?.length) && (
-                  <div className="record-entry__links">
-                    {entry.href && (
-                      <Link href={entry.href} target="_blank" rel="noreferrer">
-                        Visit source
-                        <ArrowUpRight size={14} />
-                      </Link>
-                    )}
-
-                    {entry.links?.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {link.title}
-                        <ArrowUpRight size={14} />
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </article>
-            ))}
-          </div>
-        </section>
-      ))}
-
-      <section className="record-skills">
-        <span className="scene-eyebrow">Technical vocabulary</span>
-
-        <div>
-          {skills.map((skill) => (
-            <b key={skill}>{skill}</b>
+        <div className="record-entries">
+          {activities.map((entry, index) => (
+            <RecordEntry
+              key={`${entry.company}-${entry.title}-${index}`}
+              index={index + 1}
+              title={entry.title}
+              company={entry.company}
+              period={entry.period}
+              items={entry.items}
+              href={entry.href}
+              image={entry.image}
+              links={entry.links}
+            />
           ))}
         </div>
       </section>

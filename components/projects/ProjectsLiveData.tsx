@@ -24,23 +24,19 @@ function Metric({ label, value }: { label: string; value: string | number }) {
 
 export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
   const githubUser = useGithubUser();
+
   const githubRepos = useGithubRepos();
 
   const githubLoading = githubUser.isLoading || githubRepos.isLoading;
 
   const githubError = githubUser.isError || githubRepos.isError;
 
-  const repos =
-    githubRepos.data?.map((repo) => ({
-      repository: repo.html_url,
-      name: repo.name,
-      description: repo.description,
-      languages: repo.languages,
-      stars: repo.stargazers_count,
-      forks: repo.forks_count,
-    })) ?? [];
+  const projects = githubRepos.data ?? [];
 
-  const totalStars = repos.reduce((total, repo) => total + repo.stars, 0);
+  const totalStars = projects.reduce(
+    (total, project) => total + project.stars,
+    0,
+  );
 
   if (variant === "metrics") {
     return (
@@ -75,7 +71,7 @@ export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
             ? "Loading live data"
             : githubError
               ? "Live data unavailable"
-              : `${repos.length} visible repositories`}
+              : `${projects.length} visible projects`}
         </span>
       </header>
 
@@ -87,41 +83,47 @@ export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
       )}
 
       <div className="repo-list">
-        {repos.map((repo, index) => (
-          <article key={repo.repository}>
+        {projects.map((project, index) => (
+          <article key={project.slug}>
             <span>{String(index + 1).padStart(2, "0")}</span>
 
             <div>
-              <h2>{repo.name}</h2>
+              <h2>{project.name}</h2>
 
-              <p>{repo.description ?? "No public description supplied."}</p>
+              <p>{project.description}</p>
 
-              <em>{repo.languages.join(" / ") || "Unclassified"}</em>
+              <em>{project.technologies.join(" / ") || "Unclassified"}</em>
             </div>
 
             <div className="repo-stats">
-              <span>
-                <Star size={13} />
-                {repo.stars}
-              </span>
+              {project.repository && (
+                <>
+                  <span>
+                    <Star size={13} />
+                    {project.stars}
+                  </span>
 
-              <span>
-                <GitFork size={13} />
-                {repo.forks}
-              </span>
+                  <span>
+                    <GitFork size={13} />
+                    {project.forks}
+                  </span>
+                </>
+              )}
 
-              <ProjectNpmTelemetry repositoryName={repo.name} />
+              <ProjectNpmTelemetry project={project} />
             </div>
 
-            <Link
-              href={repo.repository}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Open ${repo.name} on GitHub`}
-              data-cursor="OPEN"
-            >
-              <Github size={18} />
-            </Link>
+            {project.repository && (
+              <Link
+                href={project.repository}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${project.name} on GitHub`}
+                data-cursor="OPEN"
+              >
+                <Github size={18} />
+              </Link>
+            )}
           </article>
         ))}
       </div>

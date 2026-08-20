@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { config } from "@/config";
+
+import { siteConfig } from "@/data/config";
+import { person } from "@/data/person";
 
 type SEOOptions = {
   title?: Metadata["title"];
@@ -23,7 +25,7 @@ type SEOOptions = {
 const SITE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://www.lorenzopalaia.com";
+    : siteConfig.url;
 
 export function getSEOTags({
   title,
@@ -33,22 +35,23 @@ export function getSEOTags({
   canonicalUrlRelative,
   extraTags,
 }: SEOOptions = {}): Metadata {
-  const resolvedTitle = title ?? config.about.title;
-  const resolvedDescription = description ?? config.about.description;
+  const resolvedTitle = title ?? person.title;
+
+  const resolvedDescription = description ?? person.description;
 
   return {
     title: resolvedTitle,
     description: resolvedDescription,
-    keywords: keywords ?? [config.about.name],
+    keywords: keywords ?? [person.name],
 
-    applicationName: config.about.name,
+    applicationName: person.name,
 
     metadataBase: new URL(`${SITE_URL}/`),
 
     openGraph: {
       title:
         openGraph?.title ??
-        (typeof resolvedTitle === "string" ? resolvedTitle : config.about.name),
+        (typeof resolvedTitle === "string" ? resolvedTitle : person.name),
 
       description: openGraph?.description ?? resolvedDescription,
 
@@ -58,7 +61,7 @@ export function getSEOTags({
           ? `${SITE_URL}${canonicalUrlRelative}`
           : SITE_URL),
 
-      siteName: config.about.name,
+      siteName: person.name,
 
       locale: "en_US",
 
@@ -70,7 +73,7 @@ export function getSEOTags({
     twitter: {
       title:
         openGraph?.title ??
-        (typeof resolvedTitle === "string" ? resolvedTitle : config.about.name),
+        (typeof resolvedTitle === "string" ? resolvedTitle : person.name),
 
       description: openGraph?.description ?? resolvedDescription,
 

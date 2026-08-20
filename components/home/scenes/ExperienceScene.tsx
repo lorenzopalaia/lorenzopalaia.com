@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { getSceneIndex } from "@/data/sceneNavigation";
-import { experience } from "@/data/portfolio";
+import { experienceTimeline } from "@/data/experience";
 
 export default function ExperienceScene() {
   return (
@@ -24,10 +24,10 @@ export default function ExperienceScene() {
       </div>
 
       <div className="experience-track">
-        {experience.map((item, index) => (
+        {experienceTimeline.map((item, index) => (
           <article
             className="experience-node"
-            key={`${item.company}-${item.role}`}
+            key={`${item.company}-${item.role}-${item.period}`}
             data-cursor="VIEW"
           >
             <span className="experience-node__line" />

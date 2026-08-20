@@ -2,26 +2,20 @@
 
 import { Download } from "lucide-react";
 
-import { config } from "@/config";
+import type { PortfolioProject } from "@/data/projects";
+
 import { useNpmDownloads } from "@/hooks/api/useNpmDownloads";
 
-export function getNpmPackage(repositoryName: string) {
-  return (
-    config.npmProjects[repositoryName as keyof typeof config.npmProjects] ??
-    null
-  );
-}
-
 interface ProjectNpmTelemetryProps {
-  repositoryName: string;
+  project: PortfolioProject;
 }
 
 export default function ProjectNpmTelemetry({
-  repositoryName,
+  project,
 }: ProjectNpmTelemetryProps) {
-  const packageName = getNpmPackage(repositoryName);
+  const packageName = project.npmPackage;
 
-  const npmDownloads = useNpmDownloads(packageName);
+  const npmDownloads = useNpmDownloads(packageName ?? null);
 
   if (!packageName) {
     return null;
@@ -42,6 +36,7 @@ export default function ProjectNpmTelemetry({
   return (
     <span title={`${packageName} — last 12 months`}>
       <Download size={13} />
+
       {new Intl.NumberFormat("en").format(npmDownloads.data.downloads)}
     </span>
   );

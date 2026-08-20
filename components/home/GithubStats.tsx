@@ -20,10 +20,7 @@ export default function GithubStats() {
   const isError = githubUser.isError || githubRepos.isError;
 
   const totalStars =
-    githubRepos.data?.reduce(
-      (total, repo) => total + repo.stargazers_count,
-      0,
-    ) ?? 0;
+    githubRepos.data?.reduce((total, project) => total + project.stars, 0) ?? 0;
 
   return (
     <div className="work-metrics">

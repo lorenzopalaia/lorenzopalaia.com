@@ -1,6 +1,6 @@
 import { CoordinateRail } from "@/components/CoordinateRail";
 import { getSceneIndex } from "@/data/sceneNavigation";
-import { skills } from "@/data/portfolio";
+import { skills } from "@/data/skills";
 
 export default function AboutScene() {
   return (

@@ -1,10 +1,10 @@
 import { getSEOTags } from "@/lib/seo";
 import "./globals.css";
 import "katex/dist/katex.min.css";
-import { config } from "@/config";
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
@@ -12,6 +12,10 @@ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { ExplorationSignals } from "@/components/ExplorationSignals";
 import QueryProvider from "@/providers/QueryProvider";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { CursorSystem } from "@/components/CursorSystem";
+
+import { siteConfig } from "@/data/config";
+import { seoKeywords } from "@/data/seo";
 
 import "@fontsource/manrope/400.css";
 import "@fontsource/manrope/500.css";
@@ -21,12 +25,11 @@ import "@fontsource/manrope/800.css";
 
 import "@fontsource/dm-mono/400.css";
 import "@fontsource/dm-mono/500.css";
-import { CursorSystem } from "@/components/CursorSystem";
 
 export const metadata = getSEOTags({
-  title: "Lorenzo Palaia | Software Engineer",
+  title: `${siteConfig.name} | Software Engineer`,
   canonicalUrlRelative: "/",
-  keywords: config.settings.keywords,
+  keywords: seoKeywords,
 });
 
 export default function RootLayout({

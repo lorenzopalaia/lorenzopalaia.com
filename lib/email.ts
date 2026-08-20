@@ -8,38 +8,50 @@ import { z } from "zod";
 
 import { ContactFormSchema } from "@/lib/schemas";
 
-import { email as toEmail } from "@/config";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { siteConfig } from "@/data/config";
 
 type ContactFormInputs = z.infer<typeof ContactFormSchema>;
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(data: ContactFormInputs) {
   const result = ContactFormSchema.safeParse(data);
 
   if (result.error) {
-    return { error: result.error.format() };
+    return {
+      error: result.error.format(),
+    };
   }
 
   try {
     const { name, email, message } = result.data;
-    const { data, error } = await resend.emails.send({
+
+    const { data: sentData, error } = await resend.emails.send({
       from: "lorenzopalaia.com <contact@lorenzopalaia.com>",
-      to: toEmail,
+      to: siteConfig.email,
       replyTo: [email],
       cc: [email],
       subject: `New message from ${name}!`,
       text: `Name:\n${name}\n\nEmail:\n${email}\n\nMessage:\n${message}`,
-      react: await EmailTemplate({ name, email, message }),
+      react: await EmailTemplate({
+        name,
+        email,
+        message,
+      }),
     });
 
-    if (!data || error) {
+    if (!sentData || error) {
       console.error(error?.message);
+
       throw new Error("Failed to send email!");
     }
 
-    return { success: true };
+    return {
+      success: true,
+    };
   } catch (error) {
-    return { error };
+    return {
+      error,
+    };
   }
 }

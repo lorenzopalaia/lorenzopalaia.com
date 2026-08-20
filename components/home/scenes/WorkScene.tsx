@@ -7,7 +7,6 @@ import { CoordinateRail } from "@/components/CoordinateRail";
 import GithubStats from "@/components/home/GithubStats";
 import { ProjectRail } from "@/components/projects/ProjectRail";
 import { getSceneIndex } from "@/data/sceneNavigation";
-import { projects } from "@/data/portfolio";
 
 export default function WorkScene() {
   return (
@@ -38,7 +37,7 @@ export default function WorkScene() {
         sizes="(min-width: 1280px) 65vw, 90vw"
       />
 
-      <ProjectRail projects={projects} />
+      <ProjectRail />
 
       <CoordinateRail scene="work" />
 

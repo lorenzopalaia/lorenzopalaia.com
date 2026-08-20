@@ -1,12 +1,29 @@
+"use client";
+
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
+import { useGithubRepos } from "@/hooks/api/useGithub";
+
+import { featuredProjectNames } from "@/data/projects";
+
 import { CoordinateRail } from "@/components/CoordinateRail";
-import { projects } from "@/data/portfolio";
 
 import ProjectsLiveData from "@/components/projects/ProjectsLiveData";
 
 export default function Projects() {
+  const { data: projects, isLoading, isError } = useGithubRepos();
+
+  const selectedProjects = featuredProjectNames
+    .map((name) => projects?.find((project) => project.name === name))
+    .filter((project): project is NonNullable<typeof project> =>
+      Boolean(project),
+    )
+    .map((project, index) => ({
+      ...project,
+      index: String(index + 1).padStart(2, "0"),
+    }));
+
   return (
     <main className="work-page">
       <header className="detail-header">
@@ -42,19 +59,29 @@ export default function Projects() {
       <section className="work-selected">
         <span className="scene-eyebrow">Selected objects</span>
 
-        <div>
-          {projects.map((project) => (
-            <Link key={project.slug} href={`/projects/${project.slug}`}>
-              <span>{project.index}</span>
+        {isLoading ? (
+          <div>
+            <span>Reading selected projects…</span>
+          </div>
+        ) : isError ? (
+          <div>
+            <span>Selected project data unavailable.</span>
+          </div>
+        ) : (
+          <div>
+            {selectedProjects.map((project) => (
+              <Link key={project.slug} href={`/projects/${project.slug}`}>
+                <span>{project.index}</span>
 
-              <strong>{project.name}</strong>
+                <strong>{project.name}</strong>
 
-              <em>{project.category}</em>
+                <em>{project.category}</em>
 
-              <ArrowUpRight size={17} />
-            </Link>
-          ))}
-        </div>
+                <ArrowUpRight size={17} />
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       <ProjectsLiveData variant="repositories" />

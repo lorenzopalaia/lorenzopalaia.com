@@ -1,4 +1,7 @@
+import { siteConfig } from "@/data/config";
+
 export const contact = {
+  email: siteConfig.email,
   bookingUrl: "https://cal.com/lorenzopalaia/30min",
   bookingLabel: "Book a 30 min call",
 } as const;
