@@ -8,7 +8,7 @@ import Privacy from "@/components/pages/Privacy";
 export const metadata: Metadata = getSEOTags({
   title: "Privacy — Lorenzo Palaia",
   description:
-    "Privacy information for the Lorenzo Palaia portfolio, contact form and field-notes subscription.",
+    "Privacy information for Lorenzo Palaia's portfolio, contact form and Field Notes subscription, including how personal data is collected, used, stored and protected.",
   canonicalUrlRelative: "/privacy",
   noIndex: true,
 });

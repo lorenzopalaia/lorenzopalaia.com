@@ -14,7 +14,6 @@ import ArticleReader from "@/components/pages/ArticleReader";
 import StructuredData from "@/components/seo/StructuredData";
 
 import { siteConfig } from "@/data/config";
-import { personStructuredData } from "@/data/structuredData";
 
 import { LatexCompiler } from "@/components/mdx/LatexCompiler";
 
@@ -46,7 +45,7 @@ export async function generateMetadata({
   }
 
   return getSEOTags({
-    title: `${article.title} — Lorenzo Palaia`,
+    title: `${article.seoTitle ?? article.title} — Lorenzo Palaia`,
     description: article.summary,
     canonicalUrlRelative: `/blog/${article.slug}`,
     openGraph: {
