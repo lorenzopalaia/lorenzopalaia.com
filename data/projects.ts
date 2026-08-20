@@ -23,7 +23,10 @@ export type PortfolioProject = {
   description: string;
   summary: string;
   category: string;
-  technologies: string[];
+
+  languages: string[];
+  frameworks: string[];
+  tools: string[];
 
   repository?: string;
   live?: string;

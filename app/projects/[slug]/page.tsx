@@ -37,20 +37,29 @@ export async function generateMetadata({
   if (!project) {
     return getSEOTags({
       title: "Project not found — Lorenzo Palaia",
+
       description: "The requested project could not be found.",
+
       canonicalUrlRelative: `/projects/${slug}`,
+
       noIndex: true,
     });
   }
 
   return getSEOTags({
     title: `${project.name} — Lorenzo Palaia`,
+
     description: project.description,
+
     canonicalUrlRelative: `/projects/${project.slug}`,
+
     openGraph: {
       title: project.name,
+
       description: project.description,
+
       url: `${siteConfig.url}/projects/${project.slug}`,
+
       type: "website",
     },
   });
@@ -73,24 +82,39 @@ export default async function ProjectPage({ params }: PageProps) {
 
   const structuredData = {
     "@context": "https://schema.org",
+
     "@type": "SoftwareSourceCode",
+
     "@id": `${siteConfig.url}/projects/${project.slug}#software`,
+
     name: project.name,
+
     description: project.description,
+
     url: `${siteConfig.url}/projects/${project.slug}`,
+
     codeRepository: project.repository,
+
+    ...(project.languages.length > 0 && {
+      programmingLanguage: project.languages,
+    }),
+
     author: {
       "@id": `${siteConfig.url}/#person`,
     },
+
     creator: {
       "@id": `${siteConfig.url}/#person`,
     },
+
     isPartOf: {
       "@id": `${siteConfig.url}/#website`,
     },
+
     ...(project.live && {
       sameAs: project.live,
     }),
+
     dateModified: project.updatedAt,
   };
 

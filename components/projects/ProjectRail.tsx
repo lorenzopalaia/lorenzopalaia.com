@@ -106,39 +106,47 @@ export async function ProjectRail() {
 
   return (
     <div className="project-rail">
-      {featured.map(({ project, index, artifact }) => (
-        <Link
-          key={project.slug}
-          href={`/projects/${project.slug}`}
-          className="project-object"
-          data-cursor="OPEN"
-          aria-label={`Open ${project.name}`}
-        >
-          <span className="project-object__index">{index}</span>
+      {featured.map(({ project, index, artifact }) => {
+        const stack = [
+          ...project.languages,
+          ...project.frameworks,
+          ...project.tools,
+        ];
 
-          <div className="project-object__main">
-            <span className="project-object__type">{project.category}</span>
+        return (
+          <Link
+            key={project.slug}
+            href={`/projects/${project.slug}`}
+            className="project-object"
+            data-cursor="OPEN"
+            aria-label={`Open ${project.name}`}
+          >
+            <span className="project-object__index">{index}</span>
 
-            <h3>{project.name}</h3>
+            <div className="project-object__main">
+              <span className="project-object__type">{project.category}</span>
 
-            <p>{project.description}</p>
+              <h3>{project.name}</h3>
 
-            <ObjectArtifact artifact={artifact} />
+              <p>{project.description}</p>
 
-            <div className="project-object__stack">
-              {project.technologies.slice(0, 3).map((technology) => (
-                <span key={technology}>{technology}</span>
-              ))}
+              <ObjectArtifact artifact={artifact} />
+
+              <div className="project-object__stack">
+                {stack.slice(0, 3).map((technology) => (
+                  <span key={technology}>{technology}</span>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <span className="project-object__open">
-            <ChevronRight size={20} />
+            <span className="project-object__open">
+              <ChevronRight size={20} />
 
-            <ArrowUpRight size={17} />
-          </span>
-        </Link>
-      ))}
+              <ArrowUpRight size={17} />
+            </span>
+          </Link>
+        );
+      })}
     </div>
   );
 }

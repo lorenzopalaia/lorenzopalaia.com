@@ -14,6 +14,20 @@ interface ProjectDetailProps {
   index: string;
 }
 
+function StackGroup({ label, items }: { label: string; items: string[] }) {
+  if (!items.length) {
+    return null;
+  }
+
+  return (
+    <div>
+      <span>{label}</span>
+
+      <p>{items.join(" · ")}</p>
+    </div>
+  );
+}
+
 export default function ProjectDetail({ project, index }: ProjectDetailProps) {
   const featured = getFeaturedProject(project);
 
@@ -65,11 +79,11 @@ export default function ProjectDetail({ project, index }: ProjectDetailProps) {
         </div>
 
         <aside className="detail-specs">
-          <div>
-            <span>Stack</span>
+          <StackGroup label="Languages" items={project.languages} />
 
-            <p>{project.technologies.join(" · ")}</p>
-          </div>
+          <StackGroup label="Frameworks" items={project.frameworks} />
+
+          <StackGroup label="Tools" items={project.tools} />
 
           {project.npmPackage && (
             <div>

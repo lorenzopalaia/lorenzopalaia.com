@@ -24,6 +24,7 @@ function Metric({ label, value }: { label: string; value: string | number }) {
 
 export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
   const githubUser = useGithubUser();
+
   const githubRepos = useGithubRepos();
 
   const githubLoading = githubUser.isLoading || githubRepos.isLoading;
@@ -82,57 +83,65 @@ export default function ProjectsLiveData({ variant }: ProjectsLiveDataProps) {
       )}
 
       <div className="repo-list">
-        {projects.map((project, index) => (
-          <article key={project.slug}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
+        {projects.map((project, index) => {
+          const stack = [
+            ...project.languages,
+            ...project.frameworks,
+            ...project.tools,
+          ];
 
-            <div>
-              <h2>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  data-cursor="VIEW"
-                  aria-label={`Open ${project.name} project detail`}
-                >
-                  {project.name}
-                </Link>
-              </h2>
+          return (
+            <article key={project.slug}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
 
-              <p>{project.description}</p>
+              <div>
+                <h2>
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    data-cursor="VIEW"
+                    aria-label={`Open ${project.name} project detail`}
+                  >
+                    {project.name}
+                  </Link>
+                </h2>
 
-              <em>{project.technologies.join(" / ") || "Unclassified"}</em>
-            </div>
+                <p>{project.description}</p>
 
-            <div className="repo-stats">
+                <em>{stack.join(" / ") || "Unclassified"}</em>
+              </div>
+
+              <div className="repo-stats">
+                {project.repository && (
+                  <>
+                    <span>
+                      <Star size={13} />
+                      {project.stars}
+                    </span>
+
+                    <span>
+                      <GitFork size={13} />
+                      {project.forks}
+                    </span>
+                  </>
+                )}
+
+                <ProjectNpmTelemetry project={project} />
+              </div>
+
               {project.repository && (
-                <>
-                  <span>
-                    <Star size={13} />
-                    {project.stars}
-                  </span>
-
-                  <span>
-                    <GitFork size={13} />
-                    {project.forks}
-                  </span>
-                </>
+                <Link
+                  href={project.repository}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open ${project.name} on GitHub`}
+                  data-cursor="OPEN"
+                >
+                  <Github size={18} />
+                </Link>
               )}
-
-              <ProjectNpmTelemetry project={project} />
-            </div>
-
-            {project.repository && (
-              <Link
-                href={project.repository}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Open ${project.name} on GitHub`}
-                data-cursor="OPEN"
-              >
-                <Github size={18} />
-              </Link>
-            )}
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </section>
   );
