@@ -44,9 +44,6 @@ const config = {
     } else if (path === "/projects" || url.endsWith("/projects")) {
       priority = 0.8;
       changefreq = "monthly";
-    } else if (path === "/contact" || url.endsWith("/contact")) {
-      priority = 0.6;
-      changefreq = "yearly";
     } else if (path.startsWith("/blog/") || url.includes("/blog/")) {
       priority = 0.7;
       changefreq = "monthly";
