@@ -1,18 +1,31 @@
 "use client";
 
 /**
- * Quiet Systems style reminder: achievement is a quiet exploration signal,
- * never a gamified overlay.
+ * Quiet Systems style reminder: achievements are exploration signals,
+ * never a gamification layer. Unlock feedback should be brief, quiet,
+ * and disappear automatically.
  */
 
 import { useEffect, useMemo, useState } from "react";
 
 import { achievementCatalog, type AchievementId } from "@/data/achievements";
 
+const UNLOCK_STORAGE_KEY = "unlockedAchievements";
+
+const UNLOCK_EVENT_NAME = "portfolio:unlock";
+
+const FEEDBACK_DURATION = 2400;
+
+type UnlockFeedback = {
+  id: AchievementId;
+  title: string;
+  points: number;
+} | null;
+
 export function unlockSignal(id: AchievementId) {
   if (typeof window !== "undefined") {
     window.dispatchEvent(
-      new CustomEvent<AchievementId>("portfolio:unlock", {
+      new CustomEvent<AchievementId>(UNLOCK_EVENT_NAME, {
         detail: id,
       }),
     );
@@ -41,25 +54,48 @@ function getSignalProgress(ids: readonly string[]) {
   };
 }
 
+function readUnlockedSignals(): AchievementId[] {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  try {
+    const stored = localStorage.getItem(UNLOCK_STORAGE_KEY);
+
+    if (!stored) {
+      return [];
+    }
+
+    const parsed = JSON.parse(stored);
+
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+
+    return normalizeSignals(parsed);
+  } catch {
+    return [];
+  }
+}
+
 export function ExplorationSignals() {
   const [unlocked, setUnlocked] = useState<AchievementId[]>([]);
-  const [last, setLast] = useState<string | null>(null);
+
+  const [unlockFeedback, setUnlockFeedback] = useState<UnlockFeedback>(null);
 
   useEffect(() => {
-    try {
-      setUnlocked(
-        normalizeSignals(
-          JSON.parse(
-            localStorage.getItem("unlockedAchievements") ?? "[]",
-          ) as string[],
-        ),
-      );
-    } catch {
-      setUnlocked([]);
-    }
+    setUnlocked(readUnlockedSignals());
+
+    let feedbackTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const onUnlock = (event: Event) => {
       const id = (event as CustomEvent<AchievementId>).detail;
+
+      const achievement = achievementCatalog.find((entry) => entry.id === id);
+
+      if (!achievement) {
+        return;
+      }
 
       setUnlocked((current) => {
         if (current.includes(id)) {
@@ -68,22 +104,41 @@ export function ExplorationSignals() {
 
         const next = [...current, id];
 
-        localStorage.setItem("unlockedAchievements", JSON.stringify(next));
+        localStorage.setItem(UNLOCK_STORAGE_KEY, JSON.stringify(next));
 
-        setLast(
-          achievementCatalog.find((entry) => entry.id === id)?.title ?? null,
-        );
+        setUnlockFeedback({
+          id,
+          title: achievement.title,
+          points: achievement.points,
+        });
+
+        if (feedbackTimeout) {
+          clearTimeout(feedbackTimeout);
+        }
+
+        feedbackTimeout = setTimeout(() => {
+          setUnlockFeedback(null);
+        }, FEEDBACK_DURATION);
 
         return next;
       });
     };
 
-    window.addEventListener("portfolio:unlock", onUnlock);
+    window.addEventListener(UNLOCK_EVENT_NAME, onUnlock);
 
-    return () => window.removeEventListener("portfolio:unlock", onUnlock);
+    return () => {
+      window.removeEventListener(UNLOCK_EVENT_NAME, onUnlock);
+
+      if (feedbackTimeout) {
+        clearTimeout(feedbackTimeout);
+      }
+    };
   }, []);
 
   const progress = useMemo(() => getSignalProgress(unlocked), [unlocked]);
+
+  const progressRatio =
+    progress.total > 0 ? progress.points / progress.total : 0;
 
   return (
     <aside className="exploration-signals" aria-label="Exploration signals">
@@ -91,15 +146,25 @@ export function ExplorationSignals() {
         {progress.points}/{progress.total} signal
       </span>
 
-      <i>
+      <i aria-hidden="true">
         <b
           style={{
-            transform: `scaleX(${progress.points / progress.total})`,
+            transform: `scaleX(${progressRatio})`,
           }}
         />
       </i>
 
-      {last && <em>{last} recorded</em>}
+      <span className="sr-only" aria-live="polite">
+        {unlockFeedback
+          ? `Achievement unlocked: ${unlockFeedback.title}, ${unlockFeedback.points} points`
+          : ""}
+      </span>
+
+      {unlockFeedback && (
+        <em key={unlockFeedback.id}>
+          Unlocked · {unlockFeedback.title} +{unlockFeedback.points}
+        </em>
+      )}
     </aside>
   );
 }
