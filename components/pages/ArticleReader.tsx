@@ -54,7 +54,7 @@ export default function ArticleReader({
   if (!article) {
     return (
       <main className="detail-page detail-page--missing">
-        <Link href="/blog" className="detail-back">
+        <Link href="/blog" className="detail-back" data-cursor="BACK">
           <ArrowLeft size={18} />
           Back to notes
         </Link>
@@ -96,7 +96,8 @@ export default function ArticleReader({
     <main className="article-page">
       <header className="detail-header">
         <Link href="/blog" className="detail-back" data-cursor="BACK">
-          Notes index
+          <ArrowLeft size={18} />
+          Back to notes
         </Link>
 
         <span className="scene-eyebrow">Document / {documentIndex}</span>
@@ -168,20 +169,40 @@ export default function ArticleReader({
 
       <nav className="article-neighbors" aria-label="Adjacent documents">
         {previous ? (
-          <Link href={`/blog/${previous.slug}`}>
-            <ChevronLeft size={18} />
-            <span>Previous</span>
-            <strong>{previous.title}</strong>
+          <Link
+            href={`/blog/${previous.slug}`}
+            className="article-neighbor article-neighbor--previous"
+          >
+            <ChevronLeft
+              className="article-neighbor__icon"
+              size={18}
+              aria-hidden="true"
+            />
+
+            <div className="article-neighbor__content">
+              <span>Previous</span>
+              <strong>{previous.title}</strong>
+            </div>
           </Link>
         ) : (
           <span />
         )}
 
         {next ? (
-          <Link href={`/blog/${next.slug}`}>
-            <span>Next</span>
-            <strong>{next.title}</strong>
-            <ChevronRight size={18} />
+          <Link
+            href={`/blog/${next.slug}`}
+            className="article-neighbor article-neighbor--next"
+          >
+            <div className="article-neighbor__content">
+              <span>Next</span>
+              <strong>{next.title}</strong>
+            </div>
+
+            <ChevronRight
+              className="article-neighbor__icon"
+              size={18}
+              aria-hidden="true"
+            />
           </Link>
         ) : (
           <span />

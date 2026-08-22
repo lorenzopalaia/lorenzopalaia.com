@@ -1,11 +1,5 @@
 "use client";
 
-/**
- * Quiet Systems style reminder: the theme control is a visible system state,
- * compact and deliberate. System preference is implicit; the UI exposes only
- * the two explicit appearance choices.
- */
-
 import { Moon, Sun } from "lucide-react";
 import { usePathname } from "next/navigation";
 

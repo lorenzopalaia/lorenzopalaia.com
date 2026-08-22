@@ -11,8 +11,6 @@ export default function Privacy() {
           <ArrowLeft size={18} />
           Back to the environment
         </Link>
-
-        <span className="scene-eyebrow">Privacy / V3.1</span>
       </header>
 
       <section className="privacy-hero">

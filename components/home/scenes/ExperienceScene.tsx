@@ -12,7 +12,6 @@ export default function ExperienceScene() {
       className="scene scene--experience"
       aria-labelledby="experience-title"
     >
-      {" "}
       <div className="scene-heading scene-heading--dark">
         <div>
           <span className="scene-eyebrow">
@@ -27,6 +26,7 @@ export default function ExperienceScene() {
           conventional CV.
         </p>
       </div>
+
       <div className="experience-track">
         {experienceTimeline.map((item, index) => (
           <article
@@ -52,7 +52,9 @@ export default function ExperienceScene() {
           </article>
         ))}
       </div>
+
       <CoordinateRail scene="experience" />
+
       <div className="scene-footer scene-footer--dark">
         <Link
           href="/experience"
