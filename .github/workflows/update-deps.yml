@@ -25,6 +25,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESEND_API_KEY: "dummy_key_for_build"
           UPSTASH_REDIS_URL: "https://dummy-redis-url.upstash.io"
           UPSTASH_REDIS_TOKEN: "dummy_token_for_build"
